@@ -1,0 +1,30 @@
+$red:   #FF595E;
+$blue:  #0A2463;
+$yellow:#F9CB40;
+$white: #FFF;
+
+$dark: #0f172a;
+
+
+//$enable-negative-margins: true;
+
+
+$primary:   $red;
+$secondary: $yellow;
+$warning:   $blue;
+
+$custom-01:    $white;
+$custom-02:    $red;
+
+$custom-colors: (
+  "custom-color-01": $custom-01,
+  "custom-color-02": $custom-02
+);
+
+
+.custom-button {
+  color: tint-color($custom-01, 50%);
+  background-color: shade-color($custom-02, 50%);
+}
+
+$enable-negative-margins: true;

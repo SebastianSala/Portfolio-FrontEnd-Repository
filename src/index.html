@@ -9,23 +9,95 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+        
+        <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="./assets/scss/main.scss">
+        
         <title>Maqueta HTML</title>
     </head>
 
 
-    <body class="container-fluid" id="theBody">
+    <body class="container-fluid gy-3" id="theBody">
 
 
-        <nav class="navbar navbar-expand-md">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark my-1" id="theNavbar">
 
-        </nav>
-
-        <article id="firstArticle">
             <div class="container-fluid">
-                <h1 class="text-primary">hola!</h1>
+
+                <a href="#" class="navbar-brand px-3">
+                    <img class="img-fluid" src="./assets/img/arg-prog-logo.png" alt="the image" name="img" class="d-inline-block align-text-top"></a>
+
+                <!-- Toggler -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- /Toggler -->
+                
+                <!-- Navbar links -->
+                <div class="collapse navbar-collapse container-fluid" id="collapsibleNavbar">
+                    <p class="navbar-text d-block d-md-none">el texto</p>
+                    <ul class="navbar-nav navbar-nav-scroll" style="--bs-scroll-height: 6rem;">
+                        <li class="nav-item"><a href="#aboutMe" class="nav-link">Acerca de mi</a></li>
+                        <li class="nav-item"><a href="#experience" class="nav-link">Experiencia</a></li>
+                        <li class="nav-item"><a href="#projects" class="nav-link">Proyectos</a></li>
+                    </ul>
+                </div>
+                <!-- /Navbar links -->
+
+                <!-- Log in -->
+                <div class="container-fluid">
+                    <button class="btn btn-outline-primary">Log In!</button>
+                </div>
+                <!-- /Log in -->
+
+            </div>
+        </nav>
+        <!-- /Navbar -->
+
+        <!-- About Me -->
+        <article id="aboutMe">
+            <div class="container-fluid my-5">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Acerca de mi</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Sebastián Sala</h6>
+                      <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis delectus debitis necessitatibus ex molestiae nulla doloremque vero ea. Inventore corporis, soluta iure ratione sequi fugit magnam amet vel ipsum hic.</p>                      
+                    </div>
+                  </div>
             </div>
         </article>
+        <!-- /About Me -->
+
+
+        <!-- Experience -->
+        <article id="experience">
+            <div class="container-fluid my-5">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Experiencia</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Trabajos</h6>
+                      <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis delectus debitis necessitatibus ex molestiae nulla doloremque vero ea. Inventore corporis, soluta iure ratione sequi fugit magnam amet vel ipsum hic.</p>                      
+                    </div>
+                  </div>
+            </div>
+        </article>
+        <!-- /Experience -->
+        
+        
+        <!-- Projects -->
+        <article id="projects">
+            <div class="container-fluid my-5">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Proyectos</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Links</h6>
+                      <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis delectus debitis necessitatibus ex molestiae nulla doloremque vero ea. Inventore corporis, soluta iure ratione sequi fugit magnam amet vel ipsum hic.</p>                      
+                    </div>
+                  </div>
+            </div>
+        </article>
+        <!-- /Experience -->
         
         
         <script src="https://kit.fontawesome.com/76c13cdc19.js" crossorigin="anonymous"></script>
