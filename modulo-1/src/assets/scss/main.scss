@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/functions";
+
+@import "./abstracts/custom-variables";
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/bootstrap";
+
+@import "./abstracts/css-variables";
+
+@import "./components/navbar";
+@import "./components/logos";
