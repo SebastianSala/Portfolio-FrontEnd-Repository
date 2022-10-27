@@ -1,0 +1,30 @@
+{
+  "name": "portfolio-frontend-repository",
+  "version": "0.1.0",
+  "description": "Repositorio para el Front-End del Portfolio personal.",
+  "source": "./src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebastianSala/Portfolio-FrontEnd-Repository.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SebastianSala/Portfolio-FrontEnd-Repository/issues"
+  },
+  "homepage": "https://github.com/SebastianSala/Portfolio-FrontEnd-Repository#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.1"
+  }
+}
