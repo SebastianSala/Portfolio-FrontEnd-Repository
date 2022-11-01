@@ -1,11 +1,11 @@
 {
   "name": "portfolio-frontend-repository",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Repositorio para el Front-End del Portfolio personal.",
   "source": "./src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel",
+    "dev": "parcel serve ./src/index.html --public-url / --dist-dir dist",
     "build": "parcel build"
   },
   "repository": {
