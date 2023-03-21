@@ -1,0 +1,74 @@
+$red:   #EB40E4;
+$blue:  #0A2463;
+$yellow:#F9CB40;
+$white: #FFF;
+$dark: #0f172a;
+
+$grey: #eee;
+
+$palette-01:    #EB40E4;
+$palette-02:    #A35FA1;
+$palette-03:    #17EBCF;
+$palette-04:    #759E99;
+$palette-05:    #EBD171;
+
+/* Color Theme Swatches in Hex */
+$darkgreen: #3EB35D;
+$lightgreen: #4DFF7C;
+$orange: #F3819D;//FF7741;
+$darkblue: #1B7AB3;
+$lightblue: #33B3FF;
+
+// $primary:   $palette-01;
+// $secondary: $palette-02;
+// $light:     $palette-03;
+// $dark:      $palette-04;
+// $info:      $palette-05;
+
+$primary:   $orange;
+$secondary: $darkgreen;
+$light:     $lightblue;
+$dark:      $darkblue;
+$info:      $lightgreen;
+
+
+$custom-colors: (
+  "palette-01": $palette-01,
+  "palette-02": $palette-02,
+  "palette-03": $palette-03,
+  "palette-04": $palette-04,
+  "palette-05": $palette-05
+);
+
+
+.custom-button {
+  color: tint-color($palette-01, 50%);
+  background-color: shade-color($palette-02, 50%);
+}
+
+$spacer: 1rem;
+
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 5,
+  8: $spacer * 7,
+  9: $spacer * 8,
+  10: $spacer * 10,
+);
+
+
+$enable-negative-margins: true;
+
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);
+
+$enable-shadows: true;
+
+#card-aboutme:hover {
+  box-shadow: #FFF;
+}

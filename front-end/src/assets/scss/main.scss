@@ -1,0 +1,18 @@
+// @import "~bootstrap/scss/functions";
+@import "./../../../node_modules/bootstrap/scss/functions";
+
+@import "./abstracts/custom-variables";
+
+@import "./abstracts/text-colors";
+
+// @import "./../../../node_modules/bootstrap/scss/functions";
+@import "./../../../node_modules/bootstrap/scss/variables";
+@import "./../../../node_modules/bootstrap/scss/bootstrap";
+
+@import "./abstracts/css-variables";
+
+@import "./components/navbar";
+@import "./components/logos";
+@import "./components/header";
+
+@import "./abstracts/efects-and-shadows";

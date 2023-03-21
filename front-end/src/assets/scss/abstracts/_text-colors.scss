@@ -1,0 +1,54 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+$palette-01:    #EB40E4;
+$palette-02:    #A35FA1;
+$palette-03:    #17EBCF;
+$palette-04:    #759E99;
+$palette-05:    #EBD171;
+
+/* Color Theme Swatches in Hex */
+$Portfolio-Palette-1-hex: #3EB35D;
+$Portfolio-Palette-2-hex: #4DFF7C;
+$Portfolio-Palette-3-hex: #F3819D;
+$Portfolio-Palette-4-hex: #1B7AB3;
+$Portfolio-Palette-5-hex: #33B3FF;
+
+
+$palette-colors: (
+    "palette-01": $palette-01,
+    "palette-02": $palette-02,
+    "palette-03": $palette-03,
+    "palette-04": $palette-04,
+    "palette-05": $palette-05,
+    "orange": $Portfolio-Palette-3-hex,
+    "lightgreen": $Portfolio-Palette-2-hex,
+    "darkgreen": $Portfolio-Palette-1-hex,
+    "lightblue": $Portfolio-Palette-5-hex,
+    "darkblue": $Portfolio-Palette-4-hex
+
+);
+
+$all-colors: map-merge-multiple($palette-colors);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "color": map-merge(
+      map-get($utilities, "color"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "color"), "values"),
+          (
+            $all-colors
+          ),
+        ),
+      ),
+    ),
+  )
+);
+
+@import "bootstrap/scss/utilities/api";
