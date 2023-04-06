@@ -3,7 +3,37 @@
     <header class="row mb-1 pt-8 mx-auto">
 
 
-        <div class="bg-secondary py-2 mx-auto align-items-center rounded-3 mb-1 border border-white">
+        <!-- Redes -->
+        <div class="row bg-dark py-1 d-flex justify-content-between align-items-center mx-auto rounded-3 mb-1 border border-white px-1">
+
+            <div class="col-3 col-md-4 text-start px-0">
+                <a target="_blanc" href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa">
+                    <img class="img-fluid rounded shadow bg-dark" id="argProgLogo" src="./assets/img/argprog-logo-scaled.png" alt="logo argentina programa">
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4 px-0">
+                <ul class="nav d-flex justify-content-around flex-nowrap gap-2 gap-md-4 mx-1 shadow border border-secondary rounded-5">
+                    <li class="nav-item shadow" [ngClass]="{'border-start border-end': hover[1], '': !hover[1]}"><a target="_blank" href="https://www.linkedin.com/in/sebastian-sala-perfil" class="shadow nav-link d-flex align-items-center borde border-info p-0"><i id="icon1" (mouseenter)="isHovering(1);" (mouseleave)="isHovering(1);" [ngClass]="{'fa-flip border-start border-end hoverflow-hidden': hover[1], '': !hover[1]}" class="fab fab-hover fa-linkedin fa-2x"></i></a></li>
+                    <li class="nav-item shadow" [ngClass]="{'border-start border-end rounded-circle': hover[2], '': !hover[2]}"><a target="_blank" href="https://github.com/SebastianSala" class="shadow nav-link d-flex align-items-center borde border-info rounded-circle p-0"><i id="icon2" (mouseenter)="isHovering(2);" (mouseleave)="isHovering(2);" [ngClass]="{'fa-flip border-start border-end rounded-circle': hover[2], '': !hover[2]}" class="fab fab-hover fa-github fa-2x"></i></a></li>
+                    <li class="nav-item shadow" [ngClass]="{'border-start border-end': hover[3], '': !hover[3]}"><a target="_blank" href="https://www.instagram.com/sebastiansala.ig/" class="shadow nav-link d-flex align-items-center borde border-info p-0"><i id="icon3" (mouseenter)="isHovering(3);" (mouseleave)="isHovering(3);" [ngClass]="{'fa-flip border-start border-end': hover[3], '': !hover[3]}" class="fab fab-hover fa-instagram fa-2x"></i></a></li>
+                </ul>
+            </div>
+
+            <!-- Log in -->
+            <div class="col-3 col-md-4 text-end px-0 shadow">
+                <a routerLink="/login" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">Log In!</a>
+                <!-- <form class="col-2 d-flex justify-content-end word-wrap">
+                    <button class="btn btn-outline-primary" type="submit">Log In!</button>
+                </form> -->
+            </div>
+            <!-- /Log in -->
+
+        </div>
+        <!-- Redes -->
+        
+        <div class="row bg-secondary py-0 mx-auto align-items-center rounded-3 mb-1 border border-white">
+
 
             <div class="d-flex justify-content-start px-3 py-2">
                 <div class="card row-cols-1 border-0 p-2">
@@ -13,84 +43,13 @@
                         Sebastián Sala</h5>
                 </div>
             </div>
-
-            <!-- <div class="col-5">                        
-                            <img class="img-thumbnail bg-dark text-secondary"  id="Logo" src="#" alt="GreenPixel">
-                        </a>
-                    </div>
-  
-                    <div class="col-5">
-                        <ul class="nav justify-content-between">
-                            <li class="nav-item"><a href="#" class="nav-link border rounded-circle">T</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link border rounded-circle">F</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link border rounded-circle">L</a></li>
-                        </ul>
-                    </div> -->
-
-            <!-- Log in -->
-            <!-- <form class="col-2 d-flex justify-content-end word-wrap">
-                        <button class="btn btn-outline-primary" type="submit">Log In!</button>
-                    </form> -->
-            <!-- /Log in -->
+            
 
         </div>
 
 
         <!-- Navbar -->
-        <!-- <nav class="mx-3 mt-1 row navbar fixed-top navbar-expand-md bg-dark navbar-dark rounded-0 rounded-pill border border-white border-2 py-3" id="theNavbar" (click)="toggleMenu()"> -->
-        <nav class="row d-flex justify-content-between align-items-center text-center" id="theNavbar"
-            (click)="menuClicked()" (parentEvent)="bodyClick($event)">
-            <!-- <div class="container-fluid text-center justify-content-center" (click)="toggleMenu()"> -->
-            <div
-                class="mx-auto mt-1 row navbar fixed-top navbar-expand-md bg-dark navbar-dark rounded-0 rounded-pill border border-white border-2 py-3">
-
-
-                <!-- Toggler -->
-                <!-- <span (click)="toggleMenu()" id="menu-toggler" class="navbar-toggler d-xsm-flex flex-column align-items-center border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation"> -->
-                <span id="menu-toggler" class="navbar-toggler d-xsm-flex flex-column align-items-center border-0"
-                    type="button" data-bs-toggle="collaps" data-bs-target="#collapsibleNavbar"
-                    aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span>MENÚ</span>
-                    <span class="navbar-toggler-icon"></span>
-                </span>
-                <!-- /Toggler -->
-
-
-
-                <!-- Navbar links -->
-                <!-- <div class="collapse navbar-collapse mt-1 text-center justify-content-center align-item-center" id="collapsibleNavbar" (mouseleave)="toggleMenu()"> -->
-                <div class="collapse navbar-collapse mt-1 text-center justify-content-center align-item-center"
-                    id="collapsibleNavbar">
-                    <!-- <p class="navbar-text d-block d-md-none">menú</p> -->
-
-                    <div class="d-flex">
-                        <div class="d-flex flex-column text-center justify-content-center align-item-center">
-                            <hr class="w-50">
-                        </div>
-                    </div>
-                    <ul class="navbar-nav col-12 justify-content-between align-items-center text-shadow-light">
-                        <li class="nav-item d-flex justify-content-center flex-column"><a href="#aboutMe"
-                                class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Conoceme!</a>
-                        </li>
-                        <li class="nav-item d-flex justify-content-center flex-column"><a href="#experience"
-                                class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Trabajos</a>
-                        </li>
-                        <li class="nav-item flex-column"><a href="#projects"
-                                class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Proyectos</a>
-                        </li>
-                        <li class="nav-item flex-column"><a href="#skills"
-                                class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Habilidades</a>
-                        </li>
-                        <li class="nav-item d-flex justify-content-center flex-column"><a href="#contactMe"
-                                class="shdow rounded-pill border border-primary nav-link text-primary text-bg-info">Contactame</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /Navbar links -->
-
-
-            </div>
-        </nav>
+        <!-- <app-navbar></app-navbar> -->
         <!-- /Navbar -->
 
 

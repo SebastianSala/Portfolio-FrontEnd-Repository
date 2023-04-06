@@ -13,6 +13,10 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ContactMeComponent } from './components/contact-me/contact-me.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { IndexComponent } from './components/index/index.component';
+import { Error404Component } from './components/error404/error404.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
 
 //import { StorageService } from './services/storage.service';
 
@@ -28,7 +32,11 @@ import { FooterComponent } from './components/footer/footer.component';
     ProjectsComponent,
     SkillsComponent,
     ContactMeComponent,
-    FooterComponent
+    FooterComponent,
+    IndexComponent,
+    Error404Component,
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
