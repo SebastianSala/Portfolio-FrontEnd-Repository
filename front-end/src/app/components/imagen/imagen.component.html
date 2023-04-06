@@ -1,3 +1,9 @@
-<input type="file" accept=".png, .jpg, .jpeg, .webp, .gif" multiple (change)="cargarImagen($event)">
+<div class="row mx-auto">
+    <div class="col px-0">
 
-<img src="{{imagenes[0]}}" alt="la imagen">
+        <input type="file" placeholder="hola" accept=".png, .jpg, .jpeg, .webp, .gif" multiple
+            (change)="cargarImagen($event)">
+        <img src="{{imagenes[0]}}" alt="la imagen">
+
+    </div>
+</div>
