@@ -17,6 +17,7 @@ import { IndexComponent } from './components/index/index.component';
 import { Error404Component } from './components/error404/error404.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
+import { SiteMapComponent } from './components/site-map/site-map.component';
 
 //import { StorageService } from './services/storage.service';
 
@@ -36,7 +37,8 @@ import { LoginComponent } from './components/login/login.component';
     IndexComponent,
     Error404Component,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    SiteMapComponent
   ],
   imports: [
     BrowserModule,
