@@ -1,5 +1,20 @@
 <article id="experience">
     <div class="row mx-auto my-5 pt-8">
+
+
+        <!-- Edit -->
+        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.modoEdit">
+            <div class="col-12 text-end text-primary">
+                <!-- <p>edit icons</p>                 -->
+                <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
+                <!-- <i class="fa-solid fa-trash fa-2x px-2"></i> -->
+                <i class="fas fa-pen-to-square fa-2x p-1"></i>
+                <i class="fas fa-trash fa-2x p-1"></i>
+            </div>
+        </div>
+        <!-- /Edit -->
+
+
         <div class="card border border-light rounded-3 bg-secondary shadow-lg pb-5">
             <div class="card-body">
 
@@ -11,7 +26,7 @@
                     <div class="card-header">
 
 
-                        <h4>Jésica Confecciones</h4>
+                        <h4>{{dWorks[0].name}}</h4>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Se realizó desarrollo integral</h5>

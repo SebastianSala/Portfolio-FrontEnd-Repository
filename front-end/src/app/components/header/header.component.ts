@@ -17,7 +17,9 @@ export class HeaderComponent implements OnInit {
   // menuOpen: boolean = false;
   menuOpen: GlobalClick = globalClick;
 
-  protected hover: Array<boolean> = [false, false, false];
+  protected hover: Array<boolean> = [];//[false, false, false];
+
+  modoEdit: boolean = true;
 
   constructor(private eventHandler: EventHandlerService) {
 
@@ -93,9 +95,17 @@ export class HeaderComponent implements OnInit {
         break;
 
       case 3:
-        case 1: this.hover[id] = !this.hover[id];
+        this.hover[id] = !this.hover[id];
         break;
-    
+
+      case 4:
+        this.hover[id] = !this.hover[id];
+        break;
+
+      case 5:
+        this.hover[id] = !this.hover[id];
+        break;
+
       default:
         break;
     }

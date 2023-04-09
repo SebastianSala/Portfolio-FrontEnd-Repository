@@ -1,0 +1,151 @@
+{
+    "name": "Sebastián Sala",
+    "img": "./assets/img/foto-perfil-cropped.png",
+    "backImg": "./assets/img/consoles-box.png",
+    "expertise": "Full Stack Developer",
+    "company": {
+        "name": "Green Pixels",
+        "img": "./assets/img/green-pixels-logo.png",
+        "url": "greenpixels.web.app"
+    },
+    "studies": [
+        {
+            "id": 1,
+            "title": "Ingenieria en Sistemas",
+            "institution": "Universidad Tecnológica Nacional",
+            "inicio": "15-02-2009",
+            "fin": "15-12-2009",
+            "img": "./assets/img/utn-logo.png",
+            "url": "www.utn.com"
+        },
+        {
+            "id": 2,
+            "title": "Programacion no visual",
+            "institution": "Instituto Superior Mariano Moreno",
+            "inicio": "15-02-2004",
+            "fin": "15-12-2004",
+            "img": "./assets/img/ismm-logo.png",
+            "url": "www.marianomoreno.com"
+        }
+    ],
+    "location": "Entre Ríos, Argentina",
+    "about": [
+        {
+            "part": "Me apasiona la programación y el desarrollo. Cuando a los 11 años conocí el lenguaje LOGO e hice mis primeros dibujos con líneas de comandos en la escuela primaria, nació en mi un deseo de conocer y aprender todo lo posible sobre este mundo tan atrapante."
+        },
+        {
+            "part": "Aprendí por mi cuenta, leyendo documentación oficial en inglés, hice cursos, aprendí diseño gráfico y 3D, programé juegos desde Visual Basic hasta C++ escribiendo código implementando APIs como Direct 3d, Direct Draw, Direct Sound, Direct Input, OpenGL y OpenAL. Actualmente, desarrollo juegos multiplataforma y móviles con el framework Phaser, en Typescript aplicando conceptos como Gamificación y con un enfoque educativo y de conciencia medioambiental y ecológica que funcionan en cualquier dispositivo y sistema operativo."
+        },
+        {
+            "part": "Trabajé haciendo paginas web y animaciones con las tecnologías fundamentales como HTML, CSS, JavaScript y Flash. Aprendí bases de datos y PHP, como casi todo, de manera autodidacta. También aprendí Assembler en el tiempo que cursé Ingeniería en sistemas en la UTN. Soy un entusiasta de los lenguajes de programación. Ahora agregué a mi repertorio Typescript y Java gracias a la certificación que hice en Argentina Programa y estoy incorporando nuevamente como autodidacta C#, Lua, Python y Rust."
+        },
+        {
+            "part": "Tengo un nivel de inglés C1, casi nativo. Esta fluidez me permite comunicarme con clientes de todo el mundo de forma ágil, entendiendo y pudiendo dar solución a sus necesidades, al mismo tiempo que crear relaciones constructivas."
+        },
+        {
+            "part": "Hoy sigo expandiendo mis saberes y buscando adquirir nuevas habilidades enfrentando desafíos, trabajando con empresas exitosas para en un futuro cercano, aplicar todo a la par en mi propio estudio de diseño y desarrollo. Mi pasión por programar y crear me llevó a estudiar Guion, Música, Actuación, Voice-over, Marketing, entre otras cosas y sobre todo Game Design, para llevar a cabo las ideas de juegos a la realidad."
+        },
+        {
+            "part": "Actualmente diseñando y desarrollando videojuegos"
+        }
+    ],
+    "works": [
+        {
+            "id": 1,
+            "name": "Jésica Confecciones",
+            "title": "Se realizó desarrollo integral",
+            "description": "Este cliente solicitó un sitio web para poder mostrar su catálogo y contar su historia con la ropa y el diseño. Junto con el sitio, se diseñó un Logo, paleta de colores, tipografías acordes e identidad corporativa. Se fue iterando en los diseños con el cliente hasta ser satisfactorio",
+            "img": [
+                {
+                    "img": "./assets/img/jesica-confecciones.png"
+                }
+            ],
+            "url": "https://jesicaconfecciones.web.app/"
+        },
+        {
+            "id": 2,
+            "name": "DibujArte Digital",
+            "title": "Sitio de muestra de trabajos digitales y cerámica",
+            "description": "Este artista plástico necesitaba la realización de un sitio web donde exponer sus trabajos y ser contactado. Su interés principal era poder ir actualizando seguido el contenido de la web por lo que se desarrolló un sistema que le permita hacerlo.",
+            "img": [
+                {
+                    "img": "./assets/img/dibujarte-digital.png"
+                }
+            ],
+            "url": "https://dibujarte-digital.web.app/"
+        }
+    ],
+    "Projects": [
+        {
+            "id": 1,
+            "name": "Carpincha, lucha contra la extinción!",
+            "title": "Videojuego Móvil y Web en desarrollo",
+            "description": "El proyecto principal del estudio Green PixelS.",
+            "img": [
+                {
+                    "img": "./assets/img/carpincha-01.png"
+                },
+                {
+                    "img": "./assets/img/carpincha-02.png"
+                },
+                {
+                    "img": "./assets/img/carpincha-03.png"
+                }
+            ],
+            "url": "https://carpincho-demo.web.app/"
+        }
+    ],
+    "skills": [
+        [
+            "name",
+            "Hard Skills",
+            "Desarrollo web FrontEnd",
+            95,
+            "Desarrollo BackEnd",
+            85,
+            "Typescript",
+            90,
+            "Angular",
+            90,
+            "Bootstrap y custom SCSS",
+            95,
+            "Java",
+            85,
+            "Spring Boot",
+            80,
+            "C++",
+            85,
+            "Git y control de versiones",
+            95,
+            "Modelado y Animación 3D",
+            80,
+            "Phaser",
+            90,
+            "Game Design",
+            95,
+            "Inglés, Oral, escrito nivel C1",
+            95
+        ],
+        [
+            "name",
+            "Soft Skills",
+            "Trabajo en Equipo",
+            "Rápido aprendiendo tecnologías nuevas",
+            "Predispuesto",
+            "Rápido aprendiendo metodologías nuevas",
+            "Proactividad",
+            "Mentalidad y actitud de resolución de problemas",
+            "Todo el tiempo capacitándome dentro y fuera del ámbito de la tecnología"
+        ]
+    ],
+    "ContactMe": {
+        "name": "Contactame",
+        "title": "Mi e-mail de trabajo:",
+        "description": "Si tenés proyectos interesantes en los que pensás que mis talentos te podrían ayudar, no dudes en contactarme! A disposición, siempre!",
+        "url": "sebastiansala.dev@gmail.com"
+    },
+    "footer": {
+        "name": "© 2022 Sebastian Sala",
+        "url": "https://sebastiansala.web.app/"
+    }
+}

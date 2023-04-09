@@ -3,18 +3,16 @@
         <div class="card border border-light rounded-3 bg-dark shadow-lg" id="card-aboutme">
             <div class="card-body shadow">
 
-                <h4 class="card-title shadow-sm text-white text-shadow-title shadow">Contactame</h4>
-                <h6 class="card-subtitle mb-2 shadow-sm text-light shadow">Mi e-mail de trabajo:</h6>
-                <p class="card-text text-end shadow-sm text-white text-shadow-dark shadow">
-                    Si tenés proyectos interesantes en los que pensás que mis talentos te podrían ayudar, no
-                    dudes en contactarme!</p>
-                <p class="card-text text-end shadow-sm text-white text-shadow-dark shadow">A disposición,
-                    siempre!</p>
+                <h4 class="card-title shadow-sm text-white text-shadow-title shadow">{{dContactMe?.name}}</h4>
+                <h6 class="card-subtitle mb-2 shadow-sm text-light shadow">{{dContactMe?.title}}</h6>
+                <p class="card-text text-end shadow-sm text-white text-shadow-simple shadow">{{dContactMe?.description}}</p>
+                <!-- <p class="card-text text-end shadow-sm text-white text-shadow-dark shadow">A disposición, siempre!</p> -->
 
                 <div class="">
                     <h3 class="text-center shadow">
-                        <span id="mail-badge"
-                            class="border border-primary badge bg-info shadow text-break text-wrap shadow text-dark text-shadow-light">sebastiansala.dev@gmail.com</span>
+                        <button id="mail-badge"
+                            class="btn btn-secondary border border-primary badge shadow text-break text-wrap shadow text-dark text-shadow-light">{{dContactMe?.url}}
+                        </button>
                     </h3>
                 </div>
             </div>

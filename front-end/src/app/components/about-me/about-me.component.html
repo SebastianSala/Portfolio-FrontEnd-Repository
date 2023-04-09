@@ -1,53 +1,76 @@
 <article id="aboutMe">
     <div class="row mx-auto my-5 pt-8">
+
+
+        <!-- Edit -->
+        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.modoEdit">
+            <div class="col-12 text-end text-primary">
+                <!-- <p>edit icons</p>                 -->
+                <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
+                <!-- <i class="fa-solid fa-trash fa-2x px-2"></i> -->
+                <i class="fas fa-pen-to-square fa-2x p-1"></i>
+                <i class="fas fa-trash fa-2x p-1"></i>
+            </div>
+        </div>
+        <!-- /Edit -->
+
+
         <div class="card border border-light rounded-3 bg-secondary shadow-lg p-2" id="card-aboutme">
-            
+
             <div class="card-body mt-0">
                 <h4 class="card-title shadow-sm text-white text-shadow-title mb-3">Conoceme!</h4>
                 <h6 class="card-subtitle mb-2 text-info shadow-sm mb-3">resumen</h6>
-                
-                <p class="card-text shadow-sm text-white text-shadow-dark p-3">
 
-                    <p class="card-text text-end shadow-sm text-white text-shadow-dark p-3">
-                        Me apasiona la programación y el desarrollo.
-                        <br>
-                        Cuando a los 11 años conocí el lenguaje LOGO e hice mis primeros dibujos con líneas de comandos en la escuela primaria, nació en mi un deseo de conocer y aprender todo lo posible sobre este mundo tan atrapante.
+                <!-- <p class="card-text shadow-sm text-white text-shadow-dark p-3"> -->
+
+
+                <div *ngFor="let part of dataAbout">
+
+                    <p class="card-text text-end shadow-sm text-white text-shadow-simple p-3">
+                        {{part.part}}
                     </p>
 
-                        <br><br>
+                    <br><br>
 
-                    <p class="card-text text-start shadow-sm text-white text-shadow-dark p-3">
-                        Aprendí por mi cuenta, leyendo documentación oficial en inglés, hice cursos, aprendí diseño gráfico y 3D, programé juegos desde Visual Basic hasta C++ escribiendo código implementando APIs como Direct 3d, Direct Draw, Direct Sound, Direct Input, OpenGL y OpenAL.
-                        <br>
-                        Actualmente, desarrollo juegos multiplataforma y móviles con el framework Phaser, en Typescript aplicando conceptos como Gamificación y con un enfoque educativo y de conciencia medioambiental y ecológica que funcionan en cualquier dispositivo y sistema operativo.
-                    </p>
+                </div>
 
-                        <br><br>
 
-                    <p class="card-text text-end shadow-sm text-white text-shadow-dark p-3">
-                        Trabajé haciendo paginas web y animaciones con las tecnologías fundamentales como HTML, CSS, JavaScript y Flash.
-                        <br>
-                        Aprendí bases de datos y PHP, como casi todo, de manera autodidacta. También aprendí Assembler en el tiempo que cursé Ingeniería en sistemas en la UTN. Soy un entusiasta de los lenguajes de programación. Ahora agregué a mi repertorio Typescript y Java gracias a la certificación que hice en Argentina Programa y estoy incorporando nuevamente como autodidacta C#, Lua, Python y Rust.
-                    </p>
+                <!-- <p class="card-text text-end shadow-sm text-white text-shadow-dark p-3">
+                    {{data.about[0].part}}
+                </p>
 
-                        <br><br>
+                <br><br>
 
-                        <p class="card-text text-start shadow-sm text-white text-shadow-dark p-3">
-                        Tengo un nivel de inglés C1, casi nativo. Esta fluidez me permite comunicarme con clientes de todo el mundo de forma ágil, entendiendo y pudiendo dar solución a sus necesidades, al mismo tiempo que crear relaciones constructivas.
-                        </p>
+                <p class="card-text text-start shadow-sm text-white text-shadow-dark p-3">
+                    {{data.about[1].part}}
+                </p>
 
-                        <br><br>
-                        
-                        <p class="card-text text-end shadow-sm text-white text-shadow-dark p-3">
-                        Hoy sigo expandiendo mis saberes y buscando adquirir nuevas habilidades enfrentando desafíos, trabajando con empresas exitosas para en un futuro cercano, aplicar todo a la par en mi propio estudio de diseño y desarrollo.
-                        Mi pasión por programar y crear me llevó a estudiar Guion, Música, Actuación, Voice-over, Marketing, entre otras cosas y sobre todo Game Design, para llevar a cabo las ideas de juegos a la realidad.
-                    </p>
-                    <br>
-                    <p class="card-text text-start shadow-sm text-white text-shadow-dark p-3">
-                        Actualmente diseñando y desarrollando videojuegos
-                    </p>
+                <br><br>
+
+                <p class="card-text text-end shadow-sm text-white text-shadow-dark p-3">
+                    {{data.about[2].part}}
+                </p>
+
+                <br><br>
+
+                <p class="card-text text-start shadow-sm text-white text-shadow-dark p-3">
+                    {{data.about[3].part}}
+                </p>
+
+                <br><br>
+
+                <p class="card-text text-end shadow-sm text-white text-shadow-dark p-3">
+                    {{data.about[4].part}}
+                </p>
+
+                <br>
+
+                <p class="card-text text-start shadow-sm text-white text-shadow-dark p-3">
+                    {{data.about[5].part}}
+                </p> -->
+
             </div>
 
-            </div>
+        </div>
     </div>
 </article>

@@ -4,6 +4,19 @@
 
 
         <!-- Redes -->
+
+        <!-- Edit -->
+        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.modoEdit">
+            <div class="col-12 text-end text-primary">
+                <!-- <p>edit icons</p>                 -->
+                <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
+                <!-- <i class="fa-solid fa-trash fa-2x px-2"></i> -->
+                <i id="icon4" (mouseenter)="isHovering(4);" (mouseleave)="isHovering(4);" [ngClass]="{'fa-beat-fade border-start border-end hoverflow-hidden': hover[4], '': !hover[4]}" class="fas fa-pen-to-square fa-2x p-1"></i>
+                <i id="icon4" (mouseenter)="isHovering(5);" (mouseleave)="isHovering(5);" [ngClass]="{'fa-beat-fade border-start border-end hoverflow-hidden': hover[5], '': !hover[5]}" class="fas fa-trash fa-2x p-1"></i>
+            </div>
+        </div>
+        <!-- /Edit -->
+
         <div class="row bg-dark py-1 d-flex justify-content-between align-items-center mx-auto rounded-3 mb-1 border border-white px-1">
 
             <div class="col-3 col-md-4 text-start px-0">
@@ -14,9 +27,9 @@
 
             <div class="col-6 col-md-4 px-0">
                 <ul class="nav d-flex justify-content-around flex-nowrap gap-2 gap-md-4 mx-1 shadow border border-secondary rounded-5">
-                    <li class="nav-item shadow" [ngClass]="{'border-start border-end': hover[1], '': !hover[1]}"><a target="_blank" href="https://www.linkedin.com/in/sebastian-sala-perfil" class="shadow nav-link d-flex align-items-center borde border-info p-0"><i id="icon1" (mouseenter)="isHovering(1);" (mouseleave)="isHovering(1);" [ngClass]="{'fa-flip border-start border-end hoverflow-hidden': hover[1], '': !hover[1]}" class="fab fab-hover fa-linkedin fa-2x"></i></a></li>
-                    <li class="nav-item shadow" [ngClass]="{'border-start border-end rounded-circle': hover[2], '': !hover[2]}"><a target="_blank" href="https://github.com/SebastianSala" class="shadow nav-link d-flex align-items-center borde border-info rounded-circle p-0"><i id="icon2" (mouseenter)="isHovering(2);" (mouseleave)="isHovering(2);" [ngClass]="{'fa-flip border-start border-end rounded-circle': hover[2], '': !hover[2]}" class="fab fab-hover fa-github fa-2x"></i></a></li>
-                    <li class="nav-item shadow" [ngClass]="{'border-start border-end': hover[3], '': !hover[3]}"><a target="_blank" href="https://www.instagram.com/sebastiansala.ig/" class="shadow nav-link d-flex align-items-center borde border-info p-0"><i id="icon3" (mouseenter)="isHovering(3);" (mouseleave)="isHovering(3);" [ngClass]="{'fa-flip border-start border-end': hover[3], '': !hover[3]}" class="fab fab-hover fa-instagram fa-2x"></i></a></li>
+                    <li class="nav-item shadow" [ngClass]="{'border-start border-end': hover[1], '': !hover[1]}"><a target="_blank" href="https://www.linkedin.com/in/sebastian-sala-perfil" class="shadow nav-link d-flex align-items-center borde border-info p-0"><i id="icon1" (mouseenter)="isHovering(1);" (mouseleave)="isHovering(1);" [ngClass]="{'fa-flip border-start border-end hoverflow-hidden': hover[1], '': !hover[1]}" class="fab fab-hover fa-linkedin fa-2x p-1"></i></a></li>
+                    <li class="nav-item shadow" [ngClass]="{'border-start border-end rounded-circle': hover[2], '': !hover[2]}"><a target="_blank" href="https://github.com/SebastianSala" class="shadow nav-link d-flex align-items-center borde border-info rounded-circle p-0"><i id="icon2" (mouseenter)="isHovering(2);" (mouseleave)="isHovering(2);" [ngClass]="{'fa-flip border-start border-end rounded-circle': hover[2], '': !hover[2]}" class="fab fab-hover fa-github fa-2x p-1"></i></a></li>
+                    <li class="nav-item shadow" [ngClass]="{'border-start border-end': hover[3], '': !hover[3]}"><a target="_blank" href="https://www.instagram.com/sebastiansala.ig/" class="shadow nav-link d-flex align-items-center borde border-info p-0"><i id="icon3" (mouseenter)="isHovering(3);" (mouseleave)="isHovering(3);" [ngClass]="{'fa-flip border-start border-end': hover[3], '': !hover[3]}" class="fab fab-hover fa-instagram fa-2x p-1"></i></a></li>
                 </ul>
             </div>
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SiteMapComponent } from './components/site-map/site-map.component';
 
 //import { StorageService } from './services/storage.service';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { SiteMapComponent } from './components/site-map/site-map.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

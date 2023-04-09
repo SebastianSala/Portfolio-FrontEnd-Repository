@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DbService } from '../../services/db.service'
 
 @Component({
   selector: 'app-index',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent {
+
+  constructor(private db: DbService) { }
+
+  ngOnInit() {
+
+    this.db.getData().subscribe(
+      data => {
+        console.log(data);
+      }
+    );
+  }
 
 }
