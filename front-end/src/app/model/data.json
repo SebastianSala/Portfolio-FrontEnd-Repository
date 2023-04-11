@@ -57,7 +57,7 @@
             "description": "Este cliente solicitó un sitio web para poder mostrar su catálogo y contar su historia con la ropa y el diseño. Junto con el sitio, se diseñó un Logo, paleta de colores, tipografías acordes e identidad corporativa. Se fue iterando en los diseños con el cliente hasta ser satisfactorio",
             "img": [
                 {
-                    "img": "./assets/img/jesica-confecciones.png"
+                    "url": "./assets/img/sitios/jesica-confecciones.png" 
                 }
             ],
             "url": "https://jesicaconfecciones.web.app/"
@@ -69,7 +69,7 @@
             "description": "Este artista plástico necesitaba la realización de un sitio web donde exponer sus trabajos y ser contactado. Su interés principal era poder ir actualizando seguido el contenido de la web por lo que se desarrolló un sistema que le permita hacerlo.",
             "img": [
                 {
-                    "img": "./assets/img/dibujarte-digital.png"
+                    "url": "./assets/img/sitios/dibujarte-digital.jpg"
                 }
             ],
             "url": "https://dibujarte-digital.web.app/"
@@ -83,13 +83,16 @@
             "description": "El proyecto principal del estudio Green PixelS.",
             "img": [
                 {
-                    "img": "./assets/img/carpincha-01.png"
+                    "url": "./assets/img/sitios/red.png"
                 },
                 {
-                    "img": "./assets/img/carpincha-02.png"
+                    "url": "./assets/img/sitios/atrapados.png"
                 },
                 {
-                    "img": "./assets/img/carpincha-03.png"
+                    "url": "./assets/img/sitios/trato.png"
+                },
+                {
+                    "url": "./assets/img/sitios/auto.png"
                 }
             ],
             "url": "https://carpincho-demo.web.app/"

@@ -20,27 +20,40 @@
 
 
                 <h5 class="card-title">Proyectos</h5>
-                <h6 class="card-subtitle mb-2 text-white">Links</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Links</h6>
 
-                <div
-                    class="card text-white text-center border border-primary rounded-3 bg-secondary shadow-lg my-5 py-3">
+                <div class="card text-white text-center border border-primary rounded-3 bg-secondary shadow-lg my-5 py-3"
+                    *ngFor="let project of dProjects, let i = index, let even = even">
+                
                     <div class="card-header my-2">
-                        Carpincha, lucha contra la extinción!
+                        {{project.name}}
                     </div>
+                
                     <div class="card-body m-3">
-                        <h5 class="card-title">Videojuego Móvil y Web en desarrollo</h5>
-                        <p class="card-text">El proyecto principal del estudio Green PixelS.</p>
+                        <!-- <h5 class="card-title">Videojuego Móvil y Web en desarrollo</h5> -->
+                        <h5 class="card-title">{{project.title}}</h5>
+                        <!-- <p class="card-text">El proyecto principal del estudio Green PixelS.</p> -->
+                        <p class="card-text">{{project.description}}</p>
                     </div>
-                    <div class="card-footer text-muted my-0 pt-5 justify-content-between d-flex">
-                        <img class="img-thumbnail w-25 mb-2 bg-light" src="./assets/img/sitios/red.png"
-                            alt="imagen juego">
-                        <img class="img-thumbnail w-25 mb-2 bg-primary" src="./assets/img/sitios/trato.png"
-                            alt="imagen juego">
-                        <img class="img-thumbnail w-25 mb-2 bg-info" src="./assets/img/sitios/auto.png"
-                            alt="imagen juego">
+                
+                    <div class="card-footer my-0 pt-5">
+
+                        <div class="row">
+                            <div class="col-6 col-md-3 g-3" *ngFor="let img of project.img, let i = index, let even = even">
+                             
+                                <div class="card h-100 bg-light border rounded-3">
+                                    <img class="img-fluid mb-2 bg-light rounded-3" [src]="img.url" alt="imagen juego">                            
+                                </div>
+
+                            </div>
+                        </div>                          
+
                     </div>
-                    <a target="_blank" href="https://carpincho-demo.web.app/" class="btn btn-dark mx-3 my-3">Web
-                        del juego </a>
+
+                    <a target="_blank" [href]="project.url" class="btn btn-dark mx-3 my-3">
+                        Web del juego
+                    </a>
+
                 </div>
 
             </div>

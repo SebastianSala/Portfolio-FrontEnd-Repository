@@ -33,9 +33,13 @@ export interface DataWorksProjects {
     name: string;
     title: string;
     description: string;
-    img: {}[];
+    img: Img[];
     url: string;
 };
+
+interface Img {
+    url: string;
+}
 
 export interface DataContacMe {
     name: string;

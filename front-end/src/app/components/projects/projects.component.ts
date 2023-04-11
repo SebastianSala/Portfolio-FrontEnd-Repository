@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import {DbService} from '../../services/db.service';
+
+import { Data, DataWorksProjects } from '../../model/data';
+
 
 @Component({
   selector: 'app-projects',
@@ -7,6 +12,26 @@ import { Component } from '@angular/core';
 })
 export class ProjectsComponent {
 
+  
   modoEdit: boolean = true;
+  dProjects!: DataWorksProjects[];
+
+
+  constructor(private db: DbService) {
+
+  }
+
+
+  ngOnInit(): void {
+
+    this.db.getData().subscribe(
+      data => {
+        const lData: Data = data as Data;
+        this.dProjects = lData.Projects;
+      }
+    );
+
+  }
+
 
 }

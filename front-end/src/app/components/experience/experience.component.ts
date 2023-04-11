@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { DbService } from '../../services/db.service';
 
 import { Data, DataWorksProjects } from '../../model/data';
@@ -13,7 +14,6 @@ export class ExperienceComponent implements OnInit {
 
 
   modoEdit: boolean = true;
-
   dWorks!: DataWorksProjects[];
 
 
@@ -27,12 +27,9 @@ export class ExperienceComponent implements OnInit {
     this.db.getData().subscribe(
       data => {
         const datos = data as Data
-            this.dWorks = datos.works //as unknown as DataWorksProjects[]
-            console.log(this.dWorks);
-            
+        this.dWorks = datos.works //as unknown as DataWorksProjects[]
       }
     );
-
 
   }
 
