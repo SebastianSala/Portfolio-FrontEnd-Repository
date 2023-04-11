@@ -4,7 +4,7 @@ export interface Data {
     "backImg": string;
     "expertise": string;
     "company": DataCompany;
-    "studies": DataStudies;
+    "studies": DataStudies[];
     "location": string;
     "about": DataAbout;
     "works": DataWorksProjects[];
@@ -24,7 +24,7 @@ export interface DataStudies {
     institution: string;
     inicio: Date;
     fin: Date;
-    img: string;
+    logo: string;
     url: string;
 };
 
@@ -60,10 +60,12 @@ export interface DataCompany {
 };
 
 export interface DataSkills {
-    Skills: [];
-
+    hardSkills: Skill[];
+    softSkills: Skill[];
 }
 
-export interface DataHardSkills {
-    
+export interface Skill {
+    id: number;
+    name: string;
+    level: number;
 }

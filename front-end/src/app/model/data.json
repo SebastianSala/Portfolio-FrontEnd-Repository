@@ -14,17 +14,17 @@
             "title": "Ingenieria en Sistemas",
             "institution": "Universidad Tecnológica Nacional",
             "inicio": "15-02-2009",
-            "fin": "15-12-2009",
-            "img": "./assets/img/utn-logo.png",
+            "fin": "10-12-2009",
+            "logo": "./assets/img/utn-logo.png",
             "url": "www.utn.com"
         },
         {
             "id": 2,
             "title": "Programacion no visual",
             "institution": "Instituto Superior Mariano Moreno",
-            "inicio": "15-02-2004",
-            "fin": "15-12-2004",
-            "img": "./assets/img/ismm-logo.png",
+            "inicio": "24-02-2004",
+            "fin": "05-12-2004",
+            "logo": "./assets/img/ismm-logo.png",
             "url": "www.marianomoreno.com"
         }
     ],
@@ -57,7 +57,7 @@
             "description": "Este cliente solicitó un sitio web para poder mostrar su catálogo y contar su historia con la ropa y el diseño. Junto con el sitio, se diseñó un Logo, paleta de colores, tipografías acordes e identidad corporativa. Se fue iterando en los diseños con el cliente hasta ser satisfactorio",
             "img": [
                 {
-                    "url": "./assets/img/sitios/jesica-confecciones.png" 
+                    "url": "./assets/img/sitios/jesica-confecciones.png"
                 }
             ],
             "url": "https://jesicaconfecciones.web.app/"
@@ -97,50 +97,113 @@
             ],
             "url": "https://carpincho-demo.web.app/"
         }
-    ],
-    "skills": [
-        [
-            "name",
-            "Hard Skills",
-            "Desarrollo web FrontEnd",
-            95,
-            "Desarrollo BackEnd",
-            85,
-            "Typescript",
-            90,
-            "Angular",
-            90,
-            "Bootstrap y custom SCSS",
-            95,
-            "Java",
-            85,
-            "Spring Boot",
-            80,
-            "C++",
-            85,
-            "Git y control de versiones",
-            95,
-            "Modelado y Animación 3D",
-            80,
-            "Phaser",
-            90,
-            "Game Design",
-            95,
-            "Inglés, Oral, escrito nivel C1",
-            95
+    ],    
+    "skills": {
+        "hardSkills": [
+            {
+                "id": 1,
+                "name": "Desarrollo web FrontEnd",
+                "level": "95"
+            },
+            {
+                "id": 2,
+                "name": "Desarrollo BackEnd",
+                "level": "85"
+            },
+            {
+                "id": 3,
+                "name": "Typescript",
+                "level": "90"
+            },
+            {
+                "id": 4,
+                "name": "Angular",
+                "level": "90"
+            },
+            {
+                "id": 5,
+                "name": "Bootstrap y custom SCSS",
+                "level": "95"
+            },
+            {
+                "id": 6,
+                "name": "Java",
+                "level": "85"
+            },
+            {
+                "id": 7,
+                "name": "Spring Boot",
+                "level": "80"
+            },
+            {
+                "id": 8,
+                "name": "C++",
+                "level": "85"
+            },
+            {
+                "id": 9,
+                "name": "Git y control de versiones",
+                "level": "95"
+            },
+            {
+                "id": 10,
+                "name": "Modelado y Animación 3D",
+                "level": "80"
+            },
+            {
+                "id": 11,
+                "name": "Phaser",
+                "level": "90"
+            },
+            {
+                "id": 12,
+                "name": "Game Design",
+                "level": "95"
+            },
+            {
+                "id": 13,
+                "name": "Inglés, Oral, escrito nivel C1",
+                "level": "95"
+            }
         ],
-        [
-            "name",
-            "Soft Skills",
-            "Trabajo en Equipo",
-            "Rápido aprendiendo tecnologías nuevas",
-            "Predispuesto",
-            "Rápido aprendiendo metodologías nuevas",
-            "Proactividad",
-            "Mentalidad y actitud de resolución de problemas",
-            "Todo el tiempo capacitándome dentro y fuera del ámbito de la tecnología"
+        "softSkills": [
+            {
+                "id": 1,
+                "name": "Trabajo en Equipo",
+                "level": "100"
+            },
+            {
+                "id": 2,
+                "name": "Rápido aprendiendo tecnologías nuevas",
+                "level": "100"
+            },
+            {
+                "id": 3,
+                "name": "Predispuesto",
+                "level": "100"
+            },
+            {
+                "id": 4,
+                "name": "Rápido aprendiendo metodologías nuevas",
+                "level": "100"
+            },
+            {
+                "id": 5,
+                "name": "Proactividad",
+                "level": "100"
+            },
+            {
+                "id": 6,
+                "name": "Mentalidad y actitud de resolución de problemas",
+                "level": "100"
+            },
+            {
+                "id": 7,
+                "name": "Todo el tiempo capacitándome dentro y fuera del ámbito de la tecnología",
+                "level": "100"
+            }
         ]
-    ],
+    },
     "ContactMe": {
         "name": "Contactame",
         "title": "Mi e-mail de trabajo:",

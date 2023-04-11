@@ -25,10 +25,11 @@ export class ExperienceComponent implements OnInit {
   ngOnInit(): void {
 
     this.db.getData().subscribe(
-      data => {
-        const datos = data as Data
-        this.dWorks = datos.works //as unknown as DataWorksProjects[]
+      (data) => {
+        const datos = data as Data;
+        this.dWorks = datos.works; //as unknown as DataWorksProjects[]
       }
+      
     );
 
   }

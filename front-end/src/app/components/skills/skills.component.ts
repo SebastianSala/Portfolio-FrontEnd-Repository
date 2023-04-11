@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { DbService } from './../../services/db.service';
+
+import { Data, DataSkills } from './../../model/data';
+
 
 @Component({
   selector: 'app-skills',
@@ -11,6 +15,7 @@ export class SkillsComponent implements OnInit {
   modoEdit: boolean = true;
   hardSkills: any;
   softSkills: any;
+  skills?: DataSkills;
 
   constructor(private db: DbService) {
 
@@ -20,8 +25,8 @@ export class SkillsComponent implements OnInit {
 
     this.db.getData().subscribe(
       data => {
-        this.hardSkills = data.skills[0],
-        this.softSkills = data.skills[1]
+        const lData: Data = data as Data;
+        this.skills = lData.skills;
       },
       error => console.error("Error in Skills, error")      
     )
