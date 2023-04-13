@@ -3,6 +3,7 @@
     "img": "./assets/img/foto-perfil-cropped.png",
     "backImg": "./assets/img/consoles-box.png",
     "expertise": "Full Stack Developer",
+    "email": "sebastiansala.dev@gmail.com",
     "company": {
         "name": "Green Pixels",
         "img": "./assets/img/green-pixels-logo.png",
@@ -13,19 +14,19 @@
             "id": 1,
             "title": "Ingenieria en Sistemas",
             "institution": "Universidad Tecnológica Nacional",
-            "inicio": "15-02-2009",
-            "fin": "10-12-2009",
-            "logo": "./assets/img/utn-logo.png",
-            "url": "www.utn.com"
+            "inicio": "'2009-02-15'",
+            "fin": "'2009-12-10'",
+            "logo": "./assets/img/logos/logo-utn.png",
+            "url": "https://utn.edu.ar/"
         },
         {
             "id": 2,
             "title": "Programacion no visual",
             "institution": "Instituto Superior Mariano Moreno",
-            "inicio": "24-02-2004",
-            "fin": "05-12-2004",
-            "logo": "./assets/img/ismm-logo.png",
-            "url": "www.marianomoreno.com"
+            "inicio": "24/02/2004",
+            "fin": "05/12/2004",
+            "logo": "./assets/img/logos/logo-ismm.jpg",
+            "url": "https://www.mariano-moreno.com.ar/"
         }
     ],
     "location": "Entre Ríos, Argentina",

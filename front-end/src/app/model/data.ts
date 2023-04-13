@@ -3,6 +3,7 @@ export interface Data {
     "img": string;
     "backImg": string;
     "expertise": string;
+    "email": string;
     "company": DataCompany;
     "studies": DataStudies[];
     "location": string;
