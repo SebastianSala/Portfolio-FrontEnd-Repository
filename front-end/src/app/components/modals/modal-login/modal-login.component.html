@@ -60,14 +60,17 @@
                                         <label for="email" class="form-label">Correo electrónico</label>
                                         <!-- <input type="email" class="form-control" name="email"
                                             placeholder="ej: usuario@mail.com" formControlName="email"
-                                            [class.border-danger]="MailInvalid"> -->
+                                            [class.border-danger]="EmailInvalid"> -->
                                         <input type="email" class="form-control" name="email"
-                                            placeholder="ej: usuario@mail.com" formControlName="email"
-                                            [ngClass]="{'is-invalid': Mail?.errors && Mail?.touched, 'is-valid': !Mail?.errors && Mail?.touched}">
+                                            placeholder="ej: usuario@mail.com" formControlName="email"                                            
+                                            [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}">
                                     </div>
-                                    <div *ngIf="MailInvalid">
-                                        <!-- <p *ngIf="Mail?.hasError('required')" class="border border-warning"> -->
-                                        <p *ngIf="MailInvalid" class="border border-warning">
+                                    <div *ngIf="EmailInvalid">
+                                        <!-- <p *ngIf="Email?.hasError('required')" class="border border-warning"> -->
+                                        <p *ngIf="Email?.hasError('required')" class="border border-warning">
+                                            Email es requerido
+                                        </p>
+                                        <p *ngIf="Email?.hasError('email')" class="border border-warning">
                                             Email válido requerido
                                         </p>
                                     </div>
@@ -75,13 +78,17 @@
                                     <div class="mb-4">
                                         <label for="password" class="form-label">Password</label>
                                         <input type="password" class="form-control" name="password" placeholder=""
-                                            formControlName="password" [class.border-danger]="PasswordInvalid">
+                                            formControlName="password"
+                                            [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}">
                                     </div>
                                     <div *ngIf="Password?.errors && Password?.touched">
-                                        <p *ngIf="( Password?.hasError('required') || Password?.hasError('minlength') )"
-                                            class="border border-warning">
+                                        <!-- <p *ngIf="( Password?.hasError('required') || Password?.hasError('minlength') )" -->
+                                        <p *ngIf="( Password?.hasError('required') )" class="border border-warning">
                                             <!-- <p *ngIf="( PasswordInvalid )" class="border border-warning"> -->
                                             El password es requerido
+                                        </p>
+                                        <p *ngIf="Password?.hasError('minlength')" class="border border-warning">
+                                            El password debe tener al menos 8 caracteres
                                         </p>
                                     </div>
 

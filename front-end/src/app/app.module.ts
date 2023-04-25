@@ -52,7 +52,7 @@ import { ModalLoginComponent } from './components/modals/modal-login/modal-login
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    // FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
