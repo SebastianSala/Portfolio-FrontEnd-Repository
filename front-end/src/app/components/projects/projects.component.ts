@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {DbService} from '../../services/db.service';
 
-import { Data, DataWorksProjects } from '../../model/data';
+import { Data, DataExperienceProjects } from '../../model/data';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class ProjectsComponent {
 
   
   modoEdit: boolean = true;
-  dProjects!: DataWorksProjects[];
+  dProjects!: DataExperienceProjects[];
 
 
   constructor(private db: DbService) {

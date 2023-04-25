@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { DbService } from 'src/app/services/db.service';
+
+import { Data } from 'src/app/model/data';
 
 
 @Component({
@@ -10,7 +13,7 @@ import { DbService } from 'src/app/services/db.service';
 export class BannerComponent implements OnInit {
 
   modoEdit: boolean = true;
-  data: any;
+  data?: Data;
 
 
   constructor(private db: DbService) {
@@ -21,7 +24,10 @@ export class BannerComponent implements OnInit {
   ngOnInit(): void {
 
     this.db.getData().subscribe(
-      data => this.data = data,
+      data => {
+        const lData: Data = data as Data;
+        this.data = lData;
+      },
       error => console.error("Error on Banner", error)      
       );
       

@@ -26,7 +26,7 @@
                     *ngFor="let project of dProjects, let i = index, let even = even">
                 
                     <div class="card-header my-2">
-                        {{project.name}}
+                        <h5>{{project.name}}</h5>
                     </div>
                 
                     <div class="card-body m-3">
@@ -39,9 +39,9 @@
                     <div class="card-footer my-0 pt-5">
 
                         <div class="row">
-                            <div class="col-6 col-md-3 g-3" *ngFor="let img of project.img, let i = index, let even = even">
+                            <div class="col-6 col-md-3 g-3 mx-auto" *ngFor="let img of project.img, let i = index, let even = even">
                              
-                                <div class="card h-100 bg-light border rounded-3">
+                                <div class="card h-100 bg-light border rounded-3 ">
                                     <img class="img-fluid mb-2 bg-light rounded-3" [src]="img.url" alt="imagen juego">                            
                                 </div>
 
@@ -51,7 +51,7 @@
                     </div>
 
                     <a target="_blank" [href]="project.url" class="btn btn-dark mx-3 my-3">
-                        Web del juego
+                        Web
                     </a>
 
                 </div>

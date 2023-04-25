@@ -22,29 +22,29 @@
                 <h4 class="card-title text-white text-shadow-title pb-2 pt-1">Trabajos</h4>
                 <h6 class="card-subtitle mb-2 text-info pb-2">Algunos de mis trabajos</h6>
 
-                <div *ngFor="let work of dWorks, let i = index, let even = even">
+                <div *ngFor="let experience of dExperience, let i = index, let even = even">
                     <div class="card text-white text-center border border-primary rounded-3 bg-dark shadow-lg py-4 text-shadow-simple">
                         
                         <div class="card-header shadow">
-                            <h4 class="fw-bold py-3 shadow-sm">{{work.name}}</h4>
+                            <h4 class="fw-bold py-3 shadow-sm">{{experience.name}}</h4>
                         </div>
 
                         <div class="card-body p-4 shadow-sm">
-                            <h5 class="card-title p-3">{{work.title}}</h5>
-                            <p class="card-text p-3 shadow-sm">{{work.description}}</p>
+                            <h5 class="card-title p-3">{{experience.title}}</h5>
+                            <p class="card-text p-3 shadow-sm">{{experience.description}}</p>
                         </div>
                         
                         <div class="card-footer text-muted d-flex flex-column shadow-sm">
-                            <img class="img-thumbnail w-25 mb-2 mx-auto shadow-lg mt-5 mb-5" src="{{work.img[0].url}}"
+                            <img class="img-thumbnail w-25 mb-2 mx-auto shadow-lg mt-5 mb-5" src="{{experience.img[0].url}}"
                                 alt="Web Jésica Confecciones">                                                                
 
-                            <a target="_blank" [href]="work.url"
-                                class="btn btn-primary align-items-end">Web {{work.name}}</a>
+                            <a target="_blank" [href]="experience.url"
+                                class="btn btn-primary align-items-end">Sitio {{experience.name}}</a>
                         </div>
                     
                     </div>
 
-                    <div class="py-4" *ngIf="i!==(dWorks.length-1)">
+                    <div class="py-4" *ngIf="i!==(dExperience.length-1)">
                         <hr>
                         <hr>
                         <hr>

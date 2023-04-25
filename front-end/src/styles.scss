@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/scss/main';
 
+* {
+    scroll-behavior: smooth;
+}
+
 .text-3d {
 
     border: 1px solid white;

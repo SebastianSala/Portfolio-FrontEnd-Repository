@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DbService } from '../../services/db.service';
 
-import { Data, DataWorksProjects } from '../../model/data';
+import { Data, DataExperienceProjects } from '../../model/data';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class ExperienceComponent implements OnInit {
 
 
   modoEdit: boolean = true;
-  dWorks!: DataWorksProjects[];
+  dExperience!: DataExperienceProjects[];
 
 
   constructor(private db: DbService) {
@@ -27,7 +27,7 @@ export class ExperienceComponent implements OnInit {
     this.db.getData().subscribe(
       (data) => {
         const datos = data as Data;
-        this.dWorks = datos.works; //as unknown as DataWorksProjects[]
+        this.dExperience = datos.experience; //as unknown as DataWorksProjects[]
       }
       
     );

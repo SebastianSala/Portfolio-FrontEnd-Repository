@@ -18,10 +18,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { IndexComponent } from './components/index/index.component';
 import { Error404Component } from './components/error404/error404.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginComponent } from './components/login/login.component';
+// import { LoginComponent } from './components/login/login.component';
 import { SiteMapComponent } from './components/site-map/site-map.component';
 import { StudiesComponent } from './components/studies/studies.component';
-
+import { NetworksComponent } from './components/networks/networks.component';
+import { ModalLoginComponent } from './components/modals/modal-login/modal-login.component';
 //import { StorageService } from './services/storage.service';
 
 
@@ -41,9 +42,11 @@ import { StudiesComponent } from './components/studies/studies.component';
     IndexComponent,
     Error404Component,
     NavbarComponent,
-    LoginComponent,
+    // LoginComponent,
     SiteMapComponent,
-    StudiesComponent
+    StudiesComponent,
+    NetworksComponent,
+    ModalLoginComponent
   ],
   imports: [
     BrowserModule,

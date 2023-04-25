@@ -1,15 +1,17 @@
 export interface Data {
     "name": string;
-    "img": string;
-    "backImg": string;
-    "expertise": string;
+    // "img": string;
+    // "backImg": string;
+    "imgs": Imgs,
+    "title": string;
     "email": string;
     "company": DataCompany;
+    "networks": DataNetworks[];
     "studies": DataStudies[];
     "location": string;
     "about": DataAbout;
-    "works": DataWorksProjects[];
-    "Projects": DataWorksProjects[];
+    "experience": DataExperienceProjects[];
+    "Projects": DataExperienceProjects[];
     "skills": DataSkills;
     "ContactMe": DataContacMe;
     "footer": DataFooter;
@@ -29,7 +31,7 @@ export interface DataStudies {
     url: string;
 };
 
-export interface DataWorksProjects {
+export interface DataExperienceProjects {
     id: number;
     name: string;
     title: string;
@@ -41,6 +43,12 @@ export interface DataWorksProjects {
 interface Img {
     url: string;
 }
+
+interface Imgs {
+    logo: Img;
+    backImg: Img;
+}
+
 
 export interface DataContacMe {
     name: string;
@@ -69,4 +77,11 @@ export interface Skill {
     id: number;
     name: string;
     level: number;
+}
+
+export interface DataNetworks {
+    id: number;
+    name: string;
+    logo: string;
+    url: string;
 }

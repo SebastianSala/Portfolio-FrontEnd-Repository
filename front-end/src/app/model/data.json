@@ -1,14 +1,40 @@
 {
     "name": "Sebastián Sala",
-    "img": "./assets/img/foto-perfil-cropped.png",
-    "backImg": "./assets/img/consoles-box.png",
-    "expertise": "Full Stack Developer",
+    "imgs": {
+        "logo": {
+            "url": "./assets/img/foto-perfil-cropped.png"
+        },
+        "backImg": {
+            "url": "./assets/img/consoles-box.png"
+        }
+    },
+    "title": "Full Stack Developer",
     "email": "sebastiansala.dev@gmail.com",
     "company": {
         "name": "Green Pixels",
         "img": "./assets/img/green-pixels-logo.png",
         "url": "greenpixels.web.app"
     },
+    "networks": [
+        {
+            "id": 1,
+            "name": "linkedin",
+            "logo": "fa-linkedin",
+            "url": "https://www.linkedin.com/in/sebastian-sala-perfil"
+        },
+        {
+            "id": 2,
+            "name": "github",
+            "logo": "fa-github",
+            "url": "https://github.com/SebastianSala"
+        },
+        {
+            "id": 3,
+            "name": "instagram",
+            "logo": "fa-instagram",
+            "url": "https://www.instagram.com/sebastiansala.ig/"
+        }
+    ],
     "studies": [
         {
             "id": 1,
@@ -50,7 +76,34 @@
             "part": "Actualmente diseñando y desarrollando videojuegos"
         }
     ],
-    "works": [
+    "experience": [
+        {
+            "id": 1,
+            "name": "Green Pixels",
+            "title": "Diseño y Desarrollo de videojuegos multiplataforma",
+            "description": "Start Up de desarrollo de videojuegos donde estoy a cargo del diseño y realización de experiencias educativas con gamificación multiplataformas",
+            "img": [
+                {
+                    "logo": "./assets/img/green-pixels-logo.png",
+                    "backImg": "./assets/img/sitios/green-pixels-logo.png"
+                }
+            ],
+            "url": "https://greenpixels.web.app"
+        },
+        {
+            "id": 2,
+            "name": "Web Design",
+            "title": "Diseño y desarrollo de sitios Web",
+            "description": "Realización y diseño de sitios Web para emprendedores y empresas, para ayudarlas a lograr presencia en internet y como medio para relacionarse con sus clientes",
+            "img": [
+                {
+                    "url": "./assets/img/sitios/web-design-logo.png"
+                }
+            ],
+            "url": "https://jesicaconfecciones.web.app/"
+        }
+    ],
+    "Projects": [
         {
             "id": 1,
             "name": "Jésica Confecciones",
@@ -74,11 +127,9 @@
                 }
             ],
             "url": "https://dibujarte-digital.web.app/"
-        }
-    ],
-    "Projects": [
+        },
         {
-            "id": 1,
+            "id": 3,
             "name": "Carpincha, lucha contra la extinción!",
             "title": "Videojuego Móvil y Web en desarrollo",
             "description": "El proyecto principal del estudio Green PixelS.",
@@ -98,7 +149,7 @@
             ],
             "url": "https://carpincho-demo.web.app/"
         }
-    ],    
+    ],
     "skills": {
         "hardSkills": [
             {
