@@ -69,6 +69,8 @@ export class AboutMeComponent implements OnInit {
         console.log("locaData as PersonData interface", localData);
 
         this.thePerson = new Person(localData.id, localData.name, localData.title, localData.email, localData.password, localData.location, localData.aboutMe, localData.imgUrl, localData.imgBackUrl, localData.webUrl);
+        // this.thePerson = Object.assign({}, data);
+        this.thePerson.setId = (data as unknown as PersonData).id;
         console.log("constructor multiple", this.thePerson);
         
         let thePerson2 = new Person(data as unknown as PersonData);
