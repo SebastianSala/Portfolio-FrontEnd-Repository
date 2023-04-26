@@ -46,7 +46,7 @@ import { ModalLoginComponent } from './components/modals/modal-login/modal-login
     SiteMapComponent,
     StudiesComponent,
     NetworksComponent,
-    ModalLoginComponent
+    ModalLoginComponent,    
   ],
   imports: [
     BrowserModule,

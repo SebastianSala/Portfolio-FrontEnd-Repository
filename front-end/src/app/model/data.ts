@@ -1,3 +1,32 @@
+import { Person } from "./person";
+
+export interface PersonData {
+    id: number;
+    name: string;
+    title: string;
+    email: string;
+    password: string;
+    location: string;
+    aboutMe: string;
+    imgUrl: string;
+    imgBackUrl: string;
+    webUrl: string;
+}
+
+export interface ProjectData {
+    id: number;
+    name: string;
+    date: string;
+    shortDescription: string;
+    longDescription: string;
+    logoUrl: string;
+    imgUrl: string;
+    webUrl: string;
+    // person: PersonData;
+    person: Person;
+}
+
+
 export interface Data {
     "name": string;
     // "img": string;

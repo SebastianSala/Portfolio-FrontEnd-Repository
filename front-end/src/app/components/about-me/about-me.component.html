@@ -24,7 +24,7 @@
                 <!-- <p class="card-text shadow-sm text-white text-shadow-dark p-3"> -->
 
 
-                <div *ngFor="let part of dataAbout">
+                <!-- <div *ngFor="let part of dataAbout">
 
                     <p class="card-text text-end shadow-sm text-white text-shadow-simple p-3">
                         {{part.part}}
@@ -32,7 +32,17 @@
 
                     <br><br>
 
-                </div>
+                </div> -->
+                <!-- <div *ngFor="let part of dataAbout"> -->
+
+                    <p class="card-text text-end shadow-sm text-white text-shadow-simple p-3">
+                        <!-- {{thePerson.aboutMe}} -->
+                        {{thePerson?.getAboutMe}}
+                    </p>
+
+                    <br><br>
+
+                <!-- </div> -->
 
 
                 <!-- <p class="card-text text-end shadow-sm text-white text-shadow-dark p-3">
