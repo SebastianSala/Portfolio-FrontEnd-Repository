@@ -23,6 +23,9 @@ import { SiteMapComponent } from './components/site-map/site-map.component';
 import { StudiesComponent } from './components/studies/studies.component';
 import { NetworksComponent } from './components/networks/networks.component';
 import { ModalLoginComponent } from './components/modals/modal-login/modal-login.component';
+import { ModalEditProjectComponent } from './components/modals/modal-edit-project/modal-edit-project.component';
+import { ModalAddProjectComponent } from './components/modals/modal-add-project/modal-add-project.component';
+import { ModalDeleteProjectComponent } from './components/modals/modal-delete-project/modal-delete-project.component';
 //import { StorageService } from './services/storage.service';
 
 
@@ -46,7 +49,10 @@ import { ModalLoginComponent } from './components/modals/modal-login/modal-login
     SiteMapComponent,
     StudiesComponent,
     NetworksComponent,
-    ModalLoginComponent,    
+    ModalLoginComponent,
+    ModalEditProjectComponent,
+    ModalAddProjectComponent,
+    ModalDeleteProjectComponent,    
   ],
   imports: [
     BrowserModule,

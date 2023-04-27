@@ -17,26 +17,26 @@ export class ProjectService {
 
 
   public getProjectsByPersonId(personId: number): Observable<Project[]> {
-    return this.httpClient.get<Project[]>(this.url + `${personId}` + "/list");
+    return this.httpClient.get<Project[]>(this.url + `/person/${personId}` + "/list");
   }
 
   public getProjectsByPersonIdByProjectId(personId: number, projectId: number): Observable<Project> {
     return this.httpClient.get<Project>(this.url + `/person/${personId}/project/${projectId}`);
   }
 
-  public createProjectByPersonId(personId: number, project: Project): Observable<any> {
-    return this.httpClient.post<Project>(`${this.url}/person/${personId}/project`, project);
+  public createProjectByPersonId(personId: number, project: Project): Observable<HttpResponse<JSON>> {
+    return this.httpClient.post<JSON>(`${this.url}/person/${personId}/project`, project, {observe: 'response'});
   }
 
-  public updateProjectByPersonIdByProjectId(personId: number, projectId: number, project: Project): Observable<any> {
+  public updateProjectByPersonIdByProjectId(personId: number, projectId: number, project: Project): Observable<HttpResponse<JSON>> {
     const theUrl: string = `${this.url}/person/${personId}/project/${projectId}`;
-    return this.httpClient.put<Project>(theUrl, project);
+    return this.httpClient.put<JSON>(theUrl, project, {observe: "response"});
   }
 
   public deleteProjectByPersonIdByProjectId(personId: number, projectId: number): Observable<HttpResponse<JSON>> {
     
     const theUrl: string = `${this.url}/person/delete?personId=${personId}&projectId=${projectId}`
-    return this.httpClient.delete<HttpResponse<JSON>>(theUrl);//, {observe: 'response'});
+    return this.httpClient.delete<JSON>(theUrl, {observe: 'response'});
 
   }
 

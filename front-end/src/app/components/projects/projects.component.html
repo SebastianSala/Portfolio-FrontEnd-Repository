@@ -2,17 +2,43 @@
     <div class="row mx-auto my-5 pt-8">
 
 
-        <!-- Edit -->
-        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.modoEdit">
+        <!-- Admin Add/Edit/Delete -->
+        <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.modoEdit">
             <div class="col-12 text-end text-primary">
                 <!-- <p>edit icons</p>                 -->
                 <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
                 <!-- <i class="fa-solid fa-trash fa-2x px-2"></i> -->
-                <i class="fas fa-pen-to-square fa-2x p-1"></i>
-                <i class="fas fa-trash fa-2x p-1"></i>
+
+                <!-- Add -->
+                <button type="button" class="btn btn-outline-dark text-info" data-bs-toggle="modal"
+                    data-bs-target="#modalAddProject">
+                    <i class="fa-solid fa-plus fa-2x p-1"></i>
+                </button>
+
+                <app-modal-add-project></app-modal-add-project>
+                <!-- /Add -->
+
+                <!-- Edit -->
+                <!-- <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
+                    data-bs-target="#modalEditProject">
+                    <i class="fas fa-pen-to-square fa-2x p-1"></i>
+                </button>
+
+                <app-modal-edit-project></app-modal-edit-project> -->
+                <!-- /Edit -->
+
+                <!-- Delete -->
+                <!-- <button type="button" class="btn btn-outline-dark text-danger" data-bs-toggle="modal"
+                    data-bs-target="#modalDeleteProject">
+                    <i class="fas fa-trash fa-2x p-1"></i>
+                </button>
+
+                <app-modal-delete-project></app-modal-delete-project> -->
+                <!-- /Delete -->
+
             </div>
         </div>
-        <!-- /Edit -->
+        <!-- /Admin Add/Edit/Delete -->
 
 
         <div class="card text-white text-center border border-primary rounded-3 bg-dark shadow-lg p-2">
@@ -22,35 +48,87 @@
                 <h5 class="card-title">Proyectos</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Links</h6>
 
+                <!-- <div class="card text-white text-center border border-primary rounded-3 bg-secondary shadow-lg my-5 py-3"
+                    *ngFor="let project of dProjects, let i = index, let even = even"> -->
                 <div class="card text-white text-center border border-primary rounded-3 bg-secondary shadow-lg my-5 py-3"
-                    *ngFor="let project of dProjects, let i = index, let even = even">
-                
-                    <div class="card-header my-2">
-                        <h5>{{project.name}}</h5>
+                    *ngFor="let project of allProjects, let i = index, let even = even">
+
+                    <!-- Admin Add/Edit/Delete -->
+                    <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.modoEdit">
+                        <div class="col-12 text-end text-primary">
+                            <!-- <p>edit icons</p>                 -->
+                            <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
+                            <!-- <i class="fa-solid fa-trash fa-2x px-2"></i> -->
+
+                            <!-- Add -->
+                            <!-- <button type="button" class="btn btn-outline-dark text-info" data-bs-toggle="modal"
+                                data-bs-target="#modalAddProject">
+                                <i class="fa-solid fa-plus fa-2x p-1"></i>
+                            </button>
+
+                            <app-modal-add-project></app-modal-add-project> -->
+                            <!-- /Add -->
+
+                            <!-- Edit -->
+                            <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
+                                data-bs-target="#modalEditProject">
+                                <i class="fas fa-pen-to-square fa-2x p-1"></i>
+                            </button>
+
+                            <app-modal-edit-project></app-modal-edit-project>
+                            <!-- /Edit -->
+
+                            <!-- Delete -->
+                            <button type="button" class="btn btn-outline-dark text-danger" data-bs-toggle="modal"
+                                data-bs-target="#modalDeleteProject">
+                                <i class="fas fa-trash fa-2x p-1"></i>
+                            </button>
+
+                            <app-modal-delete-project></app-modal-delete-project>
+                            <!-- /Delete -->
+
+                        </div>
                     </div>
-                
+                    <!-- /Admin Add/Edit/Delete -->
+
+                    <div class="card-header my-2">
+                        <h5>{{project.getName}}</h5>
+                    </div>
+
                     <div class="card-body m-3">
                         <!-- <h5 class="card-title">Videojuego Móvil y Web en desarrollo</h5> -->
-                        <h5 class="card-title">{{project.title}}</h5>
+                        <h5 class="card-title">{{project.getShortDescription}}</h5>
                         <!-- <p class="card-text">El proyecto principal del estudio Green PixelS.</p> -->
-                        <p class="card-text">{{project.description}}</p>
+                        <p class="card-text">{{project.getLongDescription}}</p>
                     </div>
-                
+
                     <div class="card-footer my-0 pt-5">
 
                         <div class="row">
-                            <div class="col-6 col-md-3 g-3 mx-auto" *ngFor="let img of project.img, let i = index, let even = even">
-                             
+
+                            <!-- <div class="col-6 col-md-3 g-3 mx-auto"
+                                *ngFor="let img of project.img, let i = index, let even = even">
+
                                 <div class="card h-100 bg-light border rounded-3 ">
-                                    <img class="img-fluid mb-2 bg-light rounded-3" [src]="img.url" alt="imagen juego">                            
+                                    <img class="img-fluid mb-2 bg-light rounded-3" [src]="img.url" alt="imagen juego">
+                                </div>
+
+                            </div> -->
+
+                            <div class="col-6 col-md-3 g-3 mx-auto">
+
+                                <div class="card h-100 bg-light border rounded-3 ">
+                                    <img class="img-fluid mb-2 bg-light rounded-3" [src]="project.getImgUrl"
+                                        alt="imagen juego">
                                 </div>
 
                             </div>
-                        </div>                          
+
+                        </div>
 
                     </div>
 
-                    <a target="_blank" [href]="project.url" class="btn btn-dark mx-3 my-3">
+                    <a target="_blank" [href]="project.getWebUrl" class="btn btn-dark mx-3 my-3">
                         Web
                     </a>
 

@@ -21,10 +21,11 @@ export class Person {
 
     // this.thePerson = new Person(localData.id as number, localData.name, localData.title, localData.email, localData.password, localData.location, localData.aboutMe, localData.imgUrl, localData.imgBackUrl, localData.webUrl);
 
+    constructor();
     constructor(data: PersonData);
-    constructor(id: number, name: string, title: string, email: string, password: string, location: string, aboutMe: string, imgUrl: string, imgBackUrl: string, webUrl: string);
+    constructor(id: number | undefined, name: string, title: string, email: string, password: string, location: string, aboutMe: string, imgUrl: string, imgBackUrl: string, webUrl: string);
     constructor(
-        dataOrId: PersonData | number,
+        dataOrIdOrUndefined?: PersonData | number,
         name?: string,
         title?: string,
         email?: string,
@@ -35,7 +36,21 @@ export class Person {
         imgBackUrl?: string,
         webUrl?: string
     ) {
-        if (typeof dataOrId === 'object') {
+
+        if (typeof dataOrIdOrUndefined === undefined) {
+            this.id = undefined;
+            this.name = "";
+            this.title = "";
+            this.email = "";
+            this.password = "";
+            this.location = "";
+            this.aboutMe = "";
+            this.imgUrl = "";
+            this.imgBackUrl = "";
+            this.webUrl = "";
+        }
+
+        if (typeof dataOrIdOrUndefined === 'object') {
             const {
                 id,
                 name,
@@ -47,7 +62,7 @@ export class Person {
                 imgUrl,
                 imgBackUrl,
                 webUrl,
-            } = dataOrId;
+            } = dataOrIdOrUndefined;
             this.id = id as number;
             this.name = name;
             this.title = title;
@@ -59,7 +74,7 @@ export class Person {
             this.imgBackUrl = imgBackUrl;
             this.webUrl = webUrl;
         } else {
-            this.id = dataOrId;
+            this.id = dataOrIdOrUndefined;
             this.name = name!;
             this.title = title!;
             this.email = email!;

@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
 
   modoEdit: boolean = true;
 
+  isLoggedIn: boolean = true;
+
   constructor(private eventHandler: EventHandlerService) {
 
     // const collapseElement = document.getElementById('collapsibleNavbar');

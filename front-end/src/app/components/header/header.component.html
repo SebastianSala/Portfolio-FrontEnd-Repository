@@ -48,11 +48,11 @@
             <!-- Log in -->
             <div class="col-3 col-md-4 text-end px-0 shadow">
                 <!-- <a routerLink="/login" data-bs-toggle="modal" data-bs-target="#exampleModal class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap"> -->
-                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
+                <a *ngIf="!isLoggedIn" data-bs-toggle="modal" data-bs-target="#modalLogIn" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
                     Log In!
-                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Launch demo modal
-                    </button> -->
+                </a>
+                <a *ngIf="isLoggedIn" data-bs-toggle="modal" data-bs-target="#modalLogOut" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
+                    Log out!
                 </a>
                 <!-- <form class="col-2 d-flex justify-content-end word-wrap">
                     <button class="btn btn-outline-primary" type="submit">Log In!</button>

@@ -17,10 +17,14 @@ export class AboutMeComponent implements OnInit {
   data?: Person[];
   dataAbout: any;
 
+  // thePerson: Person = new Person();
   thePerson?: Person;
 
   personData?: PersonData;
   // personData?: any;
+
+  aboutMeSplit: any;
+  aboutMeArray?: string[];
 
 
   modoEdit: boolean = true;
@@ -32,6 +36,13 @@ export class AboutMeComponent implements OnInit {
   ngOnInit(): void {
 
     this.getPerson();
+
+    // this.aboutMeSplit = this.thePerson?.getAboutMe;
+    // console.log(this.aboutMeSplit);
+    // this.aboutMeArray = this.aboutMeSplit.split("/");
+    // console.log(this.aboutMeSplit);
+    // console.log(this.aboutMeArray);
+    
 
     // this.db.getData().subscribe(
     //   data => {
@@ -63,31 +74,42 @@ export class AboutMeComponent implements OnInit {
 
     this.personService.getPersonById(1).subscribe(
       data => {
-        console.log("raw data", data);
-        
-        let localData: PersonData = data as unknown as PersonData;
-        console.log("locaData as PersonData interface", localData);
 
-        this.thePerson = new Person(localData.id, localData.name, localData.title, localData.email, localData.password, localData.location, localData.aboutMe, localData.imgUrl, localData.imgBackUrl, localData.webUrl);
-        // this.thePerson = Object.assign({}, data);
-        this.thePerson.setId = (data as unknown as PersonData).id;
-        console.log("constructor multiple", this.thePerson);
+        this.thePerson = new Person(data as unknown as PersonData);
+        console.log("ThePerson: ", this.thePerson);
+
+    this.aboutMeSplit = this.thePerson.getAboutMe;
+    console.log(this.aboutMeSplit);
+    this.aboutMeSplit = this.aboutMeSplit.trim();
+    this.aboutMeArray = this.aboutMeSplit.split("/");
+    console.log(this.aboutMeSplit);
+    console.log(this.aboutMeArray);
+
         
-        let thePerson2 = new Person(data as unknown as PersonData);
-        console.log("with only one object constructor", thePerson2);
+        // console.log("raw data", data);
+        // let localData: PersonData = data as unknown as PersonData;
+        // console.log("locaData as PersonData interface", localData);
+
+        // this.thePerson = new Person(localData.id, localData.name, localData.title, localData.email, localData.password, localData.location, localData.aboutMe, localData.imgUrl, localData.imgBackUrl, localData.webUrl);
+        // // this.thePerson = Object.assign({}, data);
+        // this.thePerson.setId = (data as unknown as PersonData).id;
+        // console.log("constructor multiple", this.thePerson);
         
-        // this.thePerson = data;
+        // let thePerson2 = new Person(data as unknown as PersonData);
+        // console.log("with only one object constructor", thePerson2);
         
-        // this.thePerson.setId = data.getId;
-        // this.thePerson = new Person(data as unknown as PersonData);
-        // console.log("Person from endpoint: ", data.getAboutMe);
-        // console.log("about me: ", this.thePerson.aboutMe);
+        // // this.thePerson = data;
         
-        // console.log("Data, about me  : ", data.aboutMe);
-        // this.thePerson.aboutMe = data.aboutMe;
-        thePerson2.setAboutMe="hola";
-        console.log("Person from endpoint: ", thePerson2);
-        console.log("about me 2 : ", thePerson2.getAboutMe);
+        // // this.thePerson.setId = data.getId;
+        // // this.thePerson = new Person(data as unknown as PersonData);
+        // // console.log("Person from endpoint: ", data.getAboutMe);
+        // // console.log("about me: ", this.thePerson.aboutMe);
+        
+        // // console.log("Data, about me  : ", data.aboutMe);
+        // // this.thePerson.aboutMe = data.aboutMe;
+        // thePerson2.setAboutMe="hola";
+        // console.log("Person from endpoint: ", thePerson2);
+        // console.log("about me 2 : ", thePerson2.getAboutMe);
         
       }
     );

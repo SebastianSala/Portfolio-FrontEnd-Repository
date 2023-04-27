@@ -31,10 +31,11 @@ export class Project {
 
     // this.thePerson = new Person(localData.id as number, localData.name, localData.title, localData.email, localData.password, localData.location, localData.aboutMe, localData.imgUrl, localData.imgBackUrl, localData.webUrl);
 
+    constructor();
     constructor(data: ProjectData);
-    constructor(id: number, name: string, date: string, shortDescription: string, longDescription: string, logoUrl: string, imgUrl: string, webUrl: string, person: Person);
+    constructor(id: number | undefined, name: string, date: string, shortDescription: string, longDescription: string, logoUrl: string, imgUrl: string, webUrl: string, person: Person);
     constructor(
-        dataOrId: ProjectData | number,
+        dataOrIdOrUndefined?: ProjectData | number,
         name?: string,
         date?: string,
         shortDescription?: string,
@@ -44,7 +45,18 @@ export class Project {
         webUrl?: string,
         person?: Person,
     ) {
-        if (typeof dataOrId === 'object') {
+        if (typeof dataOrIdOrUndefined === undefined) {
+            this.id = undefined;
+            this.name = "";
+            this.date = "";
+            this.shortDescription = "";
+            this.longDescription = "";
+            this.logoUrl = "";
+            this.imgUrl = "";
+            this.webUrl = "";
+            this.person = new Person();
+        }
+        if (typeof dataOrIdOrUndefined === 'object') {
             const {
                 id,
                 name,
@@ -55,8 +67,8 @@ export class Project {
                 imgUrl,
                 webUrl,
                 person
-            } = dataOrId;
-            this.id = id as number;
+            } = dataOrIdOrUndefined;
+            this.id = id;
             this.name = name;
             this.date = date;
             this.shortDescription = shortDescription;
@@ -65,9 +77,9 @@ export class Project {
             this.imgUrl = imgUrl;
             this.webUrl = webUrl;
             // this.person = person as unknown as PersonData;
-            this.person = person;
+            this.person = new Person(person as unknown as PersonData);
         } else {
-            this.id = dataOrId;
+            this.id = dataOrIdOrUndefined;
             this.name = name!;
             this.date = date!;
             this.shortDescription = shortDescription!;
@@ -75,7 +87,8 @@ export class Project {
             this.logoUrl = logoUrl!;
             this.imgUrl = imgUrl!;
             this.webUrl = webUrl!;
-            this.person = person!;
+            // this.person = person!;
+            this.person = new Person(person as unknown as PersonData)!;
         }
     }
 
@@ -152,7 +165,7 @@ export class Project {
     public get getDate(): string {
         return this.date;
     }
-    public set SetDate(date: string) {
+    public set setDate(date: string) {
         this.date = date;
     }
 
@@ -194,6 +207,14 @@ export class Project {
     }
     public set setWebUrl(webUrl: string) {
         this.webUrl = webUrl;
+    }
+
+
+    public get getPerson(): Person {
+        return this.person;
+    }
+    public set setPerson(person: Person) {
+        this.person = person;
     }
 
 
