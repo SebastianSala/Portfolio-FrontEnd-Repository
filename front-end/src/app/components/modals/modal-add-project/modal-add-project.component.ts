@@ -62,7 +62,8 @@ export class ModalAddProjectComponent implements OnInit {
 
     
 
-    const projectConstructor: ProjectData = {
+    // const projectConstructor: ProjectData = {
+    const projectConstructor = {
       id: 0,
       name: this.formControl['name'].value,
       date: this.formControl['date'].value,
@@ -74,8 +75,12 @@ export class ModalAddProjectComponent implements OnInit {
       person: new Person()
     }
 
+    // const project = Object.assign(new Project(), projectConstructor);
+    
+    
     projectConstructor.person.setId = 1;
-    const theProject = new Project(projectConstructor);
+    const theProject = Object.assign(new Project(), projectConstructor);
+    // const theProject = new Project(projectConstructor);
 
     console.log("log from if valid");
     this.projectService.createProjectByPersonId(1, theProject).subscribe({
@@ -83,7 +88,7 @@ export class ModalAddProjectComponent implements OnInit {
         console.log("the return of create: ", data);
 
         // window.location.reload();
-        alert("Proyecto cargado: " + theProject.getName);
+        // alert("Proyecto cargado: " + theProject.getName);
         this.formGroup.reset();
         // this.router.navigate([this.router.url])
         // this.router.navigate([this.activatedRoute.snapshot.url.join('/')]);

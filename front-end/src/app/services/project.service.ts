@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Project } from '../model/project';
 
 
@@ -16,8 +16,14 @@ export class ProjectService {
   constructor(private httpClient: HttpClient) { }
 
 
+  // public getProjectsByPersonId(personId: number): Observable<Project[]> {
+  //   return this.httpClient.get<Project[]>(this.url + `/person/${personId}` + "/list");
+  // }
   public getProjectsByPersonId(personId: number): Observable<Project[]> {
     return this.httpClient.get<Project[]>(this.url + `/person/${personId}` + "/list");
+    // .pipe(
+    //   map(allProjects => allProjects.map(individualProject => new Project(individualProject)))
+    // )
   }
 
   public getProjectsByPersonIdByProjectId(personId: number, projectId: number): Observable<Project> {

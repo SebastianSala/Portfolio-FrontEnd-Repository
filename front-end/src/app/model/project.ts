@@ -2,6 +2,7 @@ import { PersonData, ProjectData } from "./data";
 import { Person } from "./person";
 
 
+// export class Project implements ProjectData{
 export class Project {
 
 
@@ -30,6 +31,63 @@ export class Project {
     //   }
 
     // this.thePerson = new Person(localData.id as number, localData.name, localData.title, localData.email, localData.password, localData.location, localData.aboutMe, localData.imgUrl, localData.imgBackUrl, localData.webUrl);
+
+    // constructor();
+    // constructor(data: Partial<Project> | undefined);
+    // constructor(data?: Partial<Project> | undefined) {
+
+    //     // if (data === undefined) {
+    //     if (typeof data === undefined) {
+    //         console.log("Project contructor undefined");
+    //         this.id = undefined;
+    //         this.name = "";
+    //         this.date = "";
+    //         this.shortDescription = "";
+    //         this.longDescription = "";
+    //         this.logoUrl = "";
+    //         this.imgUrl = "";
+    //         this.webUrl = "";
+    //         this.person = new Person();
+    //     } else if (data instanceof Project) {
+    //         console.log("Project contructor instanceof Project");
+    //         this.id = data.id;
+    //         this.name = data.name;
+    //         this.date = data.date;
+    //         this.shortDescription = data.shortDescription;
+    //         this.longDescription = data.longDescription;
+    //         this.logoUrl = data.logoUrl;
+    //         this.imgUrl = data.imgUrl;
+    //         this.webUrl = data.webUrl;
+    //         this.person = data.person;
+    //     } else {
+    //         console.log("Project contructor error");
+
+    //         this.id = undefined;
+    //         this.name = "";
+    //         this.date = "";
+    //         this.shortDescription = "";
+    //         this.longDescription = "";
+    //         this.logoUrl = "";
+    //         this.imgUrl = "";
+    //         this.webUrl = "";
+    //         this.person = new Person();
+
+    //     }
+
+    //     this.id = undefined;
+    //     this.name = "";
+    //     this.date = "";
+    //     this.shortDescription = "";
+    //     this.longDescription = "";
+    //     this.logoUrl = "";
+    //     this.imgUrl = "";
+    //     this.webUrl = "";
+    //     this.person = new Person();
+
+    // }
+
+
+
 
     constructor();
     constructor(data: ProjectData);
@@ -157,7 +215,7 @@ export class Project {
     public get getName(): string {
         return this.name;
     }
-    public set SetName(name: string) {
+    public set setName(name: string) {
         this.name = name;
     }
 
