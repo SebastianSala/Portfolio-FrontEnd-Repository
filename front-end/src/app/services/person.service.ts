@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Person } from '../model/person';
 import { Observable, map } from 'rxjs';
@@ -27,6 +27,12 @@ export class PersonService {
 
   public getPersonById(personId: number): Observable<Person> {
     return this.httpClient.get<Person>(this.url + `/list/${personId}`)
+  }
+
+  public deletePersonById(personId: number): Observable<HttpResponse<JSON>> {
+    const theUrl = this.url + `/delete?id=${personId}`;
+    console.log("deleting person: ", personId, theUrl);
+    return this.httpClient.delete<JSON>(theUrl, {observe: "response"});
   }
 
 

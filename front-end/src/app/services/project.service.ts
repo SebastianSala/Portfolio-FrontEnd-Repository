@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { Project } from '../model/project';
 import { ProjectData } from '../model/data';
 
@@ -41,9 +41,42 @@ export class ProjectService {
   }
 
   public deleteProjectByPersonIdByProjectId(personId: number, projectId: number): Observable<HttpResponse<JSON>> {
+    // public deleteProjectByPersonIdByProjectId(personId: number, projectId: number): Observable<any>{
+
+    console.log("From delete service, person id: ", personId);
+    console.log("From delete service, project id: ", projectId);
 
     const theUrl: string = `${this.url}/person/delete?personId=${personId}&projectId=${projectId}`
-    return this.httpClient.delete<JSON>(theUrl, { observe: 'response' });
+
+    console.log("From delete service, theUrl: ", theUrl);
+
+    return this.httpClient.delete<JSON>(theUrl, { observe: 'response' }).pipe(
+      // return this.httpClient.delete(theUrl).pipe(
+      catchError(error => {
+        console.log("Error in projectService delete: ", error);
+        return throwError(error);
+      })
+    );
+
+  }
+
+  // public deleteProjectByProjectId(projectId: number): Observable<HttpResponse<JSON>> {
+    public deleteProjectByProjectId(projectId: number): Observable<any>{
+
+    console.log("From delete service, project id: ", projectId);
+
+    const theUrl: string = `${this.url}/person/deletex?id=${projectId}`
+
+    console.log("From delete service, theUrl: ", theUrl);
+
+    return this.httpClient.delete<JSON>(theUrl, { observe: 'response' }).pipe(
+    // return this.httpClient.delete<any>(theUrl).pipe(
+      // return this.httpClient.delete(theUrl).pipe(
+      catchError(error => {
+        console.log("Error in projectService delete: ", error);
+        return throwError(error);
+      })
+    );
 
   }
 

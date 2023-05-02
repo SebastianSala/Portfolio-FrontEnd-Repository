@@ -71,7 +71,7 @@
 
                             <!-- Edit -->
                             <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
-                                data-bs-target="#modalEditProject">
+                                data-bs-target="#modalEditProject" (click)="logProject(project)">
                                 <i class="fas fa-pen-to-square fa-2x p-1"></i>
                             </button>
 
@@ -80,11 +80,12 @@
 
                             <!-- Delete -->
                             <button type="button" class="btn btn-outline-dark text-danger" data-bs-toggle="modal"
-                                data-bs-target="#modalDeleteProject">
+                                data-bs-target="#modalDeleteProject" (click)="logProject(project)" (click)="sendProject(project)">
                                 <i class="fas fa-trash fa-2x p-1"></i>
                             </button>
 
-                            <app-modal-delete-project></app-modal-delete-project>
+                            <!-- <app-modal-delete-project [projectToDelete]="project"></app-modal-delete-project> -->
+                            <app-modal-delete-project [projectToDelete]="projectToSend" (deleteEvent)="reloadProjects($event)"></app-modal-delete-project>
                             <!-- /Delete -->
 
                         </div>
@@ -92,11 +93,12 @@
                     <!-- /Admin Add/Edit/Delete -->
 
                     <div class="card-header my-2">
-                        <!-- <h5>{{project.getName}}</h5> -->
-                        <h5>{{project.getId}}</h5>
-                        <script>
+                        <h4>{{project.getName}}</h4>
+                        <h6> {{project.getDate}}</h6>
+                        <!-- <h5>{{project.getId}}</h5> -->
+                        <!-- <script>
                             console.log("the Project is: ", project[0])
-                        </script>
+                        </script> -->
 
                     </div>
 
@@ -120,11 +122,12 @@
 
                             </div> -->
 
-                            <div class="col-6 col-md-3 g-3 mx-auto">
+                            <div class="col-12 col-md-6 g-3 mx-auto">
 
-                                <div class="card h-100 bg-light border rounded-3 ">
-                                    <img class="img-fluid mb-2 bg-light rounded-3" [src]="project.getImgUrl"
-                                        alt="imagen juego">
+                                <!-- <div class="card bg-light border rounded-3 w-auto"> -->
+                                <div class="card bg-light border rounded-3 w-auto">
+                                    <img class="mx-auto img-fluid mb-2 bg-light rounded-3" [src]="project.getImgUrl"
+                                        alt="imagen {{project.getName}}">
                                 </div>
 
                             </div>

@@ -21,11 +21,9 @@ export class Person {
 
     // this.thePerson = new Person(localData.id as number, localData.name, localData.title, localData.email, localData.password, localData.location, localData.aboutMe, localData.imgUrl, localData.imgBackUrl, localData.webUrl);
 
-    constructor();
-    constructor(data: PersonData);
-    constructor(id: number | undefined, name: string, title: string, email: string, password: string, location: string, aboutMe: string, imgUrl: string, imgBackUrl: string, webUrl: string);
     constructor(
-        dataOrIdOrUndefined?: PersonData | number,
+        data?: PersonData,
+        id?: number,
         name?: string,
         title?: string,
         email?: string,
@@ -36,21 +34,7 @@ export class Person {
         imgBackUrl?: string,
         webUrl?: string
     ) {
-
-        if (typeof dataOrIdOrUndefined === undefined) {
-            this.id = undefined;
-            this.name = "";
-            this.title = "";
-            this.email = "";
-            this.password = "";
-            this.location = "";
-            this.aboutMe = "";
-            this.imgUrl = "";
-            this.imgBackUrl = "";
-            this.webUrl = "";
-        }
-
-        if (typeof dataOrIdOrUndefined === 'object') {
+        if (data) {
             const {
                 id,
                 name,
@@ -62,8 +46,8 @@ export class Person {
                 imgUrl,
                 imgBackUrl,
                 webUrl,
-            } = dataOrIdOrUndefined;
-            this.id = id as number;
+            } = data;
+            this.id = id;
             this.name = name;
             this.title = title;
             this.email = email;
@@ -73,19 +57,86 @@ export class Person {
             this.imgUrl = imgUrl;
             this.imgBackUrl = imgBackUrl;
             this.webUrl = webUrl;
+            return;
         } else {
-            this.id = dataOrIdOrUndefined;
-            this.name = name!;
-            this.title = title!;
-            this.email = email!;
-            this.password = password!;
-            this.location = location!;
-            this.aboutMe = aboutMe!;
-            this.imgUrl = imgUrl!;
-            this.imgBackUrl = imgBackUrl!;
-            this.webUrl = webUrl!;
+            this.id = id ?? undefined;
+            this.name = name ?? "";            
+            this.title = title ?? "";
+            this.email = email ?? "";
+            this.password = password ?? "";
+            this.location = location ?? "";
+            this.aboutMe = aboutMe ?? "";
+            this.imgUrl = imgUrl ?? "";
+            this.imgBackUrl = imgBackUrl ?? "";
+            this.webUrl = webUrl ?? "";            
         }
     }
+
+    // constructor();
+    // constructor(data: PersonData);
+    // constructor(id: number | undefined, name: string, title: string, email: string, password: string, location: string, aboutMe: string, imgUrl: string, imgBackUrl: string, webUrl: string);
+    // constructor(
+    //     dataOrIdOrUndefined?: PersonData | number,
+    //     name?: string,
+    //     title?: string,
+    //     email?: string,
+    //     password?: string,
+    //     location?: string,
+    //     aboutMe?: string,
+    //     imgUrl?: string,
+    //     imgBackUrl?: string,
+    //     webUrl?: string
+    // ) {
+
+    //     if (typeof dataOrIdOrUndefined === undefined) {
+    //         this.id = undefined;
+    //         this.name = "";
+    //         this.title = "";
+    //         this.email = "";
+    //         this.password = "";
+    //         this.location = "";
+    //         this.aboutMe = "";
+    //         this.imgUrl = "";
+    //         this.imgBackUrl = "";
+    //         this.webUrl = "";
+    //     }
+
+    //     if (typeof dataOrIdOrUndefined === 'object') {
+    //         const {
+    //             id,
+    //             name,
+    //             title,
+    //             email,
+    //             password,
+    //             location,
+    //             aboutMe,
+    //             imgUrl,
+    //             imgBackUrl,
+    //             webUrl,
+    //         } = dataOrIdOrUndefined;
+    //         this.id = id as number;
+    //         this.name = name;
+    //         this.title = title;
+    //         this.email = email;
+    //         this.password = password;
+    //         this.location = location;
+    //         this.aboutMe = aboutMe;
+    //         this.imgUrl = imgUrl;
+    //         this.imgBackUrl = imgBackUrl;
+    //         this.webUrl = webUrl;
+    //     } else {
+    //         this.id = dataOrIdOrUndefined;
+    //         this.name = name!;
+    //         this.title = title!;
+    //         this.email = email!;
+    //         this.password = password!;
+    //         this.location = location!;
+    //         this.aboutMe = aboutMe!;
+    //         this.imgUrl = imgUrl!;
+    //         this.imgBackUrl = imgBackUrl!;
+    //         this.webUrl = webUrl!;
+    //     }
+    // }
 
 
     // constructor(name: string, title: string, email: string, password: string, location: string, aboutMe: string, imgUrl: string, imgBackUrl: string, webUrl: string) {

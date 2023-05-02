@@ -85,7 +85,7 @@
             "img": [
                 {
                     "logo": "./assets/img/green-pixels-logo.png",
-                    "backImg": "./assets/img/sitios/jesica-confecciones.png"
+                    "backImg": "./assets/img/sitios/confecciones/jesica-confecciones.png"
                 }
             ],
             "url": "https://greenpixels.web.app"
@@ -97,7 +97,7 @@
             "description": "Realización y diseño de sitios Web para emprendedores y empresas, para ayudarlas a lograr presencia en internet y como medio para relacionarse con sus clientes",
             "img": [
                 {
-                    "url": "./assets/img/sitios/jesica-confecciones.png"
+                    "url": "./assets/img/sitios/confecciones/jesica-confecciones.png"
                 }
             ],
             "url": "https://jesicaconfecciones.web.app/"

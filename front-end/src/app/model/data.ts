@@ -1,5 +1,10 @@
 import { Person } from "./person";
 
+export interface ResponseData extends JSON{
+    key: string;
+    value: string;
+}
+
 export interface PersonData {
     id: number;
     name: string;
@@ -22,9 +27,22 @@ export interface ProjectData {
     logoUrl: string;
     imgUrl: string;
     webUrl: string;
-    // person: PersonData;
-    person: Person;
+    person: PersonData;
+    // person: Person;
 }
+
+// export class ProjectClassData {
+//     protected id: number | undefined;
+//     protected name: string | undefined;
+//     protected date: string | undefined;
+//     protected shortDescription: string | undefined;
+//     protected longDescription: string | undefined;
+//     protected logoUrl: string | undefined;
+//     protected imgUrl: string | undefined;
+//     protected webUrl: string | undefined;
+//     // person: PersonData;
+//     protected person: Person | undefined;
+// }
 
 
 export interface Data {

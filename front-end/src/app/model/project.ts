@@ -19,6 +19,54 @@ export class Project {
     private person: Person;
 
 
+    constructor(
+        data?: ProjectData,
+        id?: number,
+        name?: string,
+        date?: string,
+        shortDescription?: string,
+        longDescription?: string,
+        logoUrl?: string,
+        imgUrl?: string,
+        webUrl?: string,
+        person?: PersonData
+    ) {        
+        if (data) {
+            const {
+                id,
+                name,
+                date,
+                shortDescription,
+                longDescription,
+                logoUrl,
+                imgUrl,
+                webUrl,
+                person
+            } = data;
+            this.id = id;
+            this.name = name;
+            this.date = date;
+            this.shortDescription = shortDescription;
+            this.longDescription = longDescription;
+            this.logoUrl = logoUrl;
+            this.imgUrl = imgUrl;
+            this.webUrl = webUrl;
+            this.person = new Person(person as unknown as PersonData);
+            return; //return in case is accidentally provided the data object as well as more parameters
+        } else {
+            this.id = id ?? undefined;
+            this.name = name ?? "";
+            this.date = date ?? "";
+            this.shortDescription = shortDescription ?? "";
+            this.longDescription = longDescription ?? "";
+            this.logoUrl = logoUrl ?? "";
+            this.imgUrl = imgUrl ?? "";
+            this.webUrl = webUrl ?? "";            
+            this.person = (person? new Person(person) : new Person());
+        }
+    }
+
+
     // public constructor(name: string, date: string, shortDescription: string, longDescription: string, logoUrl: string, imgUrl: string, webUrl: string, person: Person) {
     //     this.name = name;
     //     this.date = date;
@@ -89,66 +137,66 @@ export class Project {
 
 
 
-    constructor();
-    constructor(data: ProjectData);
-    constructor(id: number | undefined, name: string, date: string, shortDescription: string, longDescription: string, logoUrl: string, imgUrl: string, webUrl: string, person: Person);
-    constructor(
-        dataOrIdOrUndefined?: ProjectData | number,
-        name?: string,
-        date?: string,
-        shortDescription?: string,
-        longDescription?: string,
-        logoUrl?: string,
-        imgUrl?: string,
-        webUrl?: string,
-        person?: Person,
-    ) {
-        if (typeof dataOrIdOrUndefined === undefined) {
-            this.id = undefined;
-            this.name = "";
-            this.date = "";
-            this.shortDescription = "";
-            this.longDescription = "";
-            this.logoUrl = "";
-            this.imgUrl = "";
-            this.webUrl = "";
-            this.person = new Person();
-        }
-        if (typeof dataOrIdOrUndefined === 'object') {
-            const {
-                id,
-                name,
-                date,
-                shortDescription,
-                longDescription,
-                logoUrl,
-                imgUrl,
-                webUrl,
-                person
-            } = dataOrIdOrUndefined;
-            this.id = id;
-            this.name = name;
-            this.date = date;
-            this.shortDescription = shortDescription;
-            this.longDescription = longDescription;
-            this.logoUrl = logoUrl;
-            this.imgUrl = imgUrl;
-            this.webUrl = webUrl;
-            // this.person = person as unknown as PersonData;
-            this.person = new Person(person as unknown as PersonData);
-        } else {
-            this.id = dataOrIdOrUndefined;
-            this.name = name!;
-            this.date = date!;
-            this.shortDescription = shortDescription!;
-            this.longDescription = longDescription!;
-            this.logoUrl = logoUrl!;
-            this.imgUrl = imgUrl!;
-            this.webUrl = webUrl!;
-            // this.person = person!;
-            this.person = new Person(person as unknown as PersonData)!;
-        }
-    }
+    // constructor();
+    // constructor(data: ProjectData);
+    // constructor(id: number | undefined, name: string, date: string, shortDescription: string, longDescription: string, logoUrl: string, imgUrl: string, webUrl: string, person: Person);
+    // constructor(
+    //     dataOrIdOrUndefined?: ProjectData | number,
+    //     name?: string,
+    //     date?: string,
+    //     shortDescription?: string,
+    //     longDescription?: string,
+    //     logoUrl?: string,
+    //     imgUrl?: string,
+    //     webUrl?: string,
+    //     person?: Person,
+    // ) {
+    //     if (typeof dataOrIdOrUndefined === undefined) {
+    //         this.id = undefined;
+    //         this.name = "";
+    //         this.date = "";
+    //         this.shortDescription = "";
+    //         this.longDescription = "";
+    //         this.logoUrl = "";
+    //         this.imgUrl = "";
+    //         this.webUrl = "";
+    //         this.person = new Person();
+    //     }
+    //     if (typeof dataOrIdOrUndefined === 'object') {
+    //         const {
+    //             id,
+    //             name,
+    //             date,
+    //             shortDescription,
+    //             longDescription,
+    //             logoUrl,
+    //             imgUrl,
+    //             webUrl,
+    //             person
+    //         } = dataOrIdOrUndefined;
+    //         this.id = id;
+    //         this.name = name;
+    //         this.date = date;
+    //         this.shortDescription = shortDescription;
+    //         this.longDescription = longDescription;
+    //         this.logoUrl = logoUrl;
+    //         this.imgUrl = imgUrl;
+    //         this.webUrl = webUrl;
+    //         // this.person = person as unknown as PersonData;
+    //         this.person = new Person(person as unknown as PersonData);
+    //     } else {
+    //         this.id = dataOrIdOrUndefined;
+    //         this.name = name!;
+    //         this.date = date!;
+    //         this.shortDescription = shortDescription!;
+    //         this.longDescription = longDescription!;
+    //         this.logoUrl = logoUrl!;
+    //         this.imgUrl = imgUrl!;
+    //         this.webUrl = webUrl!;
+    //         // this.person = person!;
+    //         this.person = new Person(person as unknown as PersonData)!;
+    //     }
+    // }
 
 
     // constructor(name: string, title: string, email: string, password: string, location: string, aboutMe: string, imgUrl: string, imgBackUrl: string, webUrl: string) {

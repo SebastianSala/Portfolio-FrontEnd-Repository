@@ -92,7 +92,15 @@ export class ModalAddProjectComponent implements OnInit {
         this.formGroup.reset();
         // this.router.navigate([this.router.url])
         // this.router.navigate([this.activatedRoute.snapshot.url.join('/')]);
-      }
+      },
+      error: (err) => {
+        console.log("Error from Create Project addModal: ", err);
+        
+          
+      },
+      complete: () => {
+          window.location.reload();
+      },
     })
     console.log("log from after form creation");
 
