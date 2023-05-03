@@ -29,7 +29,8 @@ export class Project {
         logoUrl?: string,
         imgUrl?: string,
         webUrl?: string,
-        person?: PersonData
+        // person?: PersonData
+        person?: Person
     ) {        
         if (data) {
             const {
@@ -62,7 +63,7 @@ export class Project {
             this.logoUrl = logoUrl ?? "";
             this.imgUrl = imgUrl ?? "";
             this.webUrl = webUrl ?? "";            
-            this.person = (person? new Person(person) : new Person());
+            this.person = (person ? new Person(person as unknown as PersonData) : new Person());
         }
     }
 

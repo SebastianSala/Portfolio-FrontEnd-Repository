@@ -3,19 +3,24 @@
 
 
         <!-- Admin Add/Edit/Delete -->
-        <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.modoEdit">
-            <div class="col-12 text-end text-primary">
+        <div class="row mx-auto px-0 bg-dark border border-light my-1 rounded-3" *ngIf="this.modoEdit">
+            <div class="col-12 text-end">
                 <!-- <p>edit icons</p>                 -->
                 <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
                 <!-- <i class="fa-solid fa-trash fa-2x px-2"></i> -->
 
                 <!-- Add -->
-                <button type="button" class="btn btn-outline-dark text-info" data-bs-toggle="modal"
+                <!-- <h3 class="d-inline-block mx-3 text-info">Agregar un projecto</h3> -->
+                <button type="button" class="btn btn-outline-info my-2" data-bs-toggle="modal"
                     data-bs-target="#modalAddProject">
-                    <i class="fa-solid fa-plus fa-2x p-1"></i>
+
+                    <!-- <h3 class="d-inline-block mx-3 text-info">Agregar un projecto</h3> -->
+                    <i class="fa-solid fa-plus fa-2x p-1 d-flex align-items-center">
+                        <span class="fs-5 ps-2">Agregar un projecto</span>
+                    </i>
                 </button>
 
-                <app-modal-add-project></app-modal-add-project>
+                <app-modal-add-project (addEvent)="reloadProjects($event)"></app-modal-add-project>
                 <!-- /Add -->
 
                 <!-- Edit -->
@@ -71,21 +76,25 @@
 
                             <!-- Edit -->
                             <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
-                                data-bs-target="#modalEditProject" (click)="logProject(project)">
+                                data-bs-target="#modalEditProject" (click)="logProject(project)"
+                                (click)="sendProject(project)">
                                 <i class="fas fa-pen-to-square fa-2x p-1"></i>
                             </button>
 
-                            <app-modal-edit-project></app-modal-edit-project>
+                            <app-modal-edit-project [projectToEdit]="projectToSend"
+                                (editEvent)="reloadProjects($event)"></app-modal-edit-project>
                             <!-- /Edit -->
 
                             <!-- Delete -->
                             <button type="button" class="btn btn-outline-dark text-danger" data-bs-toggle="modal"
-                                data-bs-target="#modalDeleteProject" (click)="logProject(project)" (click)="sendProject(project)">
+                                data-bs-target="#modalDeleteProject" (click)="logProject(project)"
+                                (click)="sendProject(project)">
                                 <i class="fas fa-trash fa-2x p-1"></i>
                             </button>
 
                             <!-- <app-modal-delete-project [projectToDelete]="project"></app-modal-delete-project> -->
-                            <app-modal-delete-project [projectToDelete]="projectToSend" (deleteEvent)="reloadProjects($event)"></app-modal-delete-project>
+                            <app-modal-delete-project [projectToDelete]="projectToSend"
+                                (deleteEvent)="reloadProjects($event)"></app-modal-delete-project>
                             <!-- /Delete -->
 
                         </div>

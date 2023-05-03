@@ -59,7 +59,8 @@ export class Person {
             this.webUrl = webUrl;
             return;
         } else {
-            this.id = id ?? undefined;
+            // this.id = id ?? undefined;
+            this.id ??= undefined;
             this.name = name ?? "";            
             this.title = title ?? "";
             this.email = email ?? "";

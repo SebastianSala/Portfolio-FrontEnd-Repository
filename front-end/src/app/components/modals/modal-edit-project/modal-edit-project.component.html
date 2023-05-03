@@ -2,33 +2,147 @@
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalProjectEdit">
     Launch static backdrop modal
 </button> -->
-  
-  <!-- Modal -->
-  <div class="modal fade" id="modalEditProject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Projecto</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
 
-            
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Nombre del Projecto</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-              </div>
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              </div>
+<!-- Modal -->
+<!-- <div class="modal fade" id="modalEditProject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true" (focus)="update($event)"> -->
+<div class="modal fade" id="modalEditProject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Guardar edición</button>
-        </div>
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Projecto</h1>
+        <button type="button" class="btn-close" id="modalEditClose" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+
+
+      <div class="modal-body">
+
+
+        <div>
+          <form [formGroup]="formGroup" (ngSubmit)="validateForm($event)">
+            <div class="form-group">
+
+
+              <div class="mb-3">
+                <label for="newProjectName" class="form-label">Nombre del Projecto</label>
+                <input type="text" class="form-control" id="newProjectName" formControlName="name"
+                  [ngClass]="{'is-invalid': formControl['name'].errors && formGroup.controls['name'].touched, 'is-valid': formControl['name'].touched && !formControl['name'].errors}">
+
+                <div class="invalid-feedback">
+                  <!-- <div *ngIf="Name?.hasError('required')">El nombre no puede faltar</div> -->
+                  <!-- <div *ngIf="formGroup.controls['name'].hasError('required')">El nombre no puede faltar</div> -->
+                  <div *ngIf="formControl['name'].hasError('required')">El nombre no puede faltar</div>
+                </div>
+              </div>
+
+
+              <div class="mb-3">
+                <label for="newProjectDate" class="form-label">Fecha del Projecto</label>
+                <input type="date" class="form-control" id="newProjectDate" formControlName="date"
+                  [ngClass]="{'is-invalid': formControl['date'].errors && formGroup.controls['date'].touched, 'is-valid': formControl['date'].touched && !formControl['date'].errors}">
+
+                <div class="invalid-feedback">
+                  <!-- <div *ngIf="Name?.hasError('required')">El nombre no puede faltar</div> -->
+                  <!-- <div *ngIf="formGroup.controls['name'].hasError('required')">El nombre no puede faltar</div> -->
+                  <div *ngIf="formControl['date'].hasError('required')">La fecha no puede faltar</div>
+                </div>
+              </div>
+
+
+              <div class="mb-3">
+                <label for="newProjectShortDescription" class="form-label">Descripción corta del Projecto</label>
+                <input type="text" class="form-control" id="newProjectShortDescription"
+                  formControlName="shortDescription"
+                  [ngClass]="{'is-invalid': formControl['shortDescription'].errors && formGroup.controls['shortDescription'].touched, 'is-valid': formControl['shortDescription'].touched && !formControl['shortDescription'].errors}">
+
+                <div class="invalid-feedback">
+                  <!-- <div *ngIf="Name?.hasError('required')">El nombre no puede faltar</div> -->
+                  <!-- <div *ngIf="formGroup.controls['name'].hasError('required')">El nombre no puede faltar</div> -->
+                  <div *ngIf="formControl['shortDescription'].hasError('required')">La descripción corta no puede faltar
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="mb-3">
+                <label for="newProjectLongDescription" class="form-label">Descripción detallada del Projecto</label>
+                <textarea class="form-control" id="newProjectLongDescription" rows="3" formControlName="longDescription"
+                  [ngClass]="{'is-invalid': formControl['longDescription'].errors && formGroup.controls['longDescription'].touched, 'is-valid': formControl['longDescription'].touched && !formControl['longDescription'].errors}">
+                  </textarea>
+
+                <div class="invalid-feedback">
+                  <!-- <div *ngIf="Name?.hasError('required')">El nombre no puede faltar</div> -->
+                  <!-- <div *ngIf="formGroup.controls['longDescription'].hasError('required')">El nombre no puede faltar</div> -->
+                  <div *ngIf="formControl['longDescription'].hasError('required')">La descripción detallada no puede
+                    faltar</div>
+                </div>
+              </div>
+
+
+              <div class="mb-3">
+                <label for="newProjectLogoUrl" class="form-label">Logo del Projecto</label>
+                <input type="text" class="form-control" id="newProjectLogoUrl" formControlName="logoUrl"
+                  [ngClass]="{'is-invalid': formControl['logoUrl'].errors && formGroup.controls['logoUrl'].touched, 'is-valid': formControl['logoUrl'].touched && !formControl['logoUrl'].errors}">
+
+                <div class="invalid-feedback">
+                  <!-- <div *ngIf="Name?.hasError('required')">El nombre no puede faltar</div> -->
+                  <!-- <div *ngIf="formGroup.controls['logoUrl'].hasError('required')">El nombre no puede faltar</div> -->
+                  <div *ngIf="formControl['logoUrl'].hasError('required')">El logo no puede faltar</div>
+                </div>
+              </div>
+
+
+              <div class="mb-3">
+                <label for="newProjectImgUrl" class="form-label">Imagen del Projecto</label>
+                <input type="text" class="form-control" id="newProjectImgUrl" formControlName="imgUrl"
+                  [ngClass]="{'is-invalid': formControl['imgUrl'].errors && formGroup.controls['imgUrl'].touched, 'is-valid': formControl['imgUrl'].touched && !formControl['imgUrl'].errors}">
+
+                <div class="invalid-feedback">
+                  <!-- <div *ngIf="Name?.hasError('required')">El nombre no puede faltar</div> -->
+                  <!-- <div *ngIf="formGroup.controls['imgUrl'].hasError('required')">El nombre no puede faltar</div> -->
+                  <div *ngIf="formControl['imgUrl'].hasError('required')">La imagen no puede faltar</div>
+                </div>
+              </div>
+
+
+              <div class="mb-3">
+                <label for="newProjectWebUrl" class="form-label">Web del Projecto</label>
+                <input type="text" class="form-control" id="newProjectWebUrl" formControlName="webUrl"
+                  [ngClass]="{'is-invalid': formControl['webUrl'].errors && formGroup.controls['webUrl'].touched, 'is-valid': formControl['webUrl'].touched && !formControl['webUrl'].errors}">
+
+                <div class="invalid-feedback">
+                  <!-- <div *ngIf="Name?.hasError('required')">El nombre no puede faltar</div> -->
+                  <!-- <div *ngIf="formGroup.controls['webUrl'].hasError('required')">El nombre no puede faltar</div> -->
+                  <div *ngIf="formControl['webUrl'].hasError('required')">La web no puede faltar</div>
+                </div>
+              </div>
+
+
+              <div class="mx-auto d-flex">
+                <button type="button" class="btn btn-outline-danger mx-1 me-auto"
+                  data-bs-dismiss="modal">Cancelar!</button>
+
+                <!-- <button type="button" class="btn btn-outline-light mx-1" (click)="clearForm()">Limpiar</button> -->
+                <!-- <div class="m-0 p-0" (click)=""> -->
+
+                <!-- <button type="submit" class="btn btn-outline-secondary mx-1" data-bs-dismiss="modal">Crear -->
+                <button type="submit" class="btn btn-outline-secondary mx-1">
+                  Actualizar Proyecto!
+                </button>
+              </div>
+
+
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+
+
     </div>
   </div>
+</div>

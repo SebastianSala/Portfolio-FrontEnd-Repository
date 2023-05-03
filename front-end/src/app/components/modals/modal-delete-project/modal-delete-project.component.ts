@@ -38,8 +38,7 @@ export class ModalDeleteProjectComponent implements OnInit {
 
   public deleteEmit(value: boolean) {
     this.deleteEvent.emit(value);
-    console.log("emiting from modal delte: ", value);
-    
+    console.log("emiting from modal delte: ", value);    
   }
 
 
@@ -53,12 +52,14 @@ export class ModalDeleteProjectComponent implements OnInit {
 
     console.log("Modal delteProject", this.projectToDelete);
 
-    if (confirm(`Borrar el projecto ${this.projectToDelete?.getName}?`)) {
-      this.delete();
-      alert("Borrando Projecto")
-    } else {
-      alert("No se borrará el Projecto")
-    }
+    this.delete();
+    
+    // if (confirm(`Borrar el projecto ${this.projectToDelete?.getName}?`)) {
+    //   this.delete();
+    //   alert("Borrando Projecto")
+    // } else {
+    //   alert("No se borrará el Projecto")
+    // }
   }
 
   delete(): void {
@@ -81,6 +82,7 @@ export class ModalDeleteProjectComponent implements OnInit {
       },
       complete: () => {
         console.log("deletion completed!");
+        // alert("Projecto eliminado: " + this.projectToDelete.getName)
         // window.location.reload();
         this.isDeleted = true;
         this.deleteEmit(this.isDeleted);

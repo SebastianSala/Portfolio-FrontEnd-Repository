@@ -27,8 +27,8 @@ export interface ProjectData {
     logoUrl: string;
     imgUrl: string;
     webUrl: string;
-    person: PersonData;
-    // person: Person;
+    // person: PersonData;
+    person: Person;
 }
 
 // export class ProjectClassData {

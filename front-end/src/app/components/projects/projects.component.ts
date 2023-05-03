@@ -75,6 +75,11 @@ export class ProjectsComponent implements OnInit {
     console.log("logging from reload project event", event);
     if ((event) = true) {
       console.log("logging from reload project event, true: ", event);
+      
+      //reset the project to send
+      this.projectToSend = new Project();
+      
+      //reload the projects from the data base to show
       this.getAllProjects();
     } else {
       console.log("logging from reload project event, false: ", event);
@@ -293,13 +298,14 @@ export class ProjectsComponent implements OnInit {
     console.log("The child parameter is: ", message);
   }
 
+  
   protected sendProject(theProject: Project) {
     console.log("the project to send is Project", theProject);
+    // this.projectToSend = new Project(theProject as unknown as ProjectData);
     this.projectToSend = theProject;
 
     console.log("project send and return?: ");
     // this.getAllProjects();
-
   }
 
 

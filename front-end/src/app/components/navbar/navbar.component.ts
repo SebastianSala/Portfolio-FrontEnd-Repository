@@ -10,7 +10,7 @@ import { GlobalClick, globalClick } from 'src/app/model/GlobalClick';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent  implements OnInit {
+export class NavbarComponent implements OnInit {
 
   protected collapse!: Collapse;
   // menuOpen: boolean = false;
@@ -29,39 +29,44 @@ export class NavbarComponent  implements OnInit {
     this.collapse = new Collapse(collapseElement!, { toggle: false });
 
     // this.eventHandler.parentEvent.subscribe((event: string) => {
-      //   console.log(event);
-      //   console.log("recibed from child");
-      // });
-      // this.eventHandler.parentEvent.subscribe(this.bodyClick);
-      this.eventHandler.parentEvent.subscribe(this.bodyClick.bind(this));
-      
+    //   console.log(event);
+    //   console.log("recibed from child");
+    // });
+    // this.eventHandler.parentEvent.subscribe(this.bodyClick);
+    // this.eventHandler.parentEvent.subscribe(this.bodyClick.bind(this));
+
+  }
+
+
+  protected menuClick() {
+    document.getElementById('menu-toggler')?.click();
   }
 
 
   // bodyClick(event: boolean) {
-  bodyClick(event: any) {
-    
-    //this.menuOpen = event;
-    console.log('event recived on child, bodyClicked method 1', event, this.menuOpen);
-    
-    if (this.menuOpen) {
-      console.log('event recived on child, bodyClicked method 2', event, this.menuOpen);
-      //this.menuOpen = !this.menuOpen;
-       this.toggleMenu();
-      // (this.toggleMenu as () => void).bind(new AppComponent())();
-    }
+  // bodyClick(event: any) {
 
-  }
-  
+  //   //this.menuOpen = event;
+  //   console.log('event recived on child, bodyClicked method 1', event, this.menuOpen);
+
+  //   if (this.menuOpen) {
+  //     console.log('event recived on child, bodyClicked method 2', event, this.menuOpen);
+  //     //this.menuOpen = !this.menuOpen;
+  //      this.toggleMenu();
+  //     // (this.toggleMenu as () => void).bind(new AppComponent())();
+  //   }
+
+  // }
+
   public menuClicked() {
-    
+
     // this.menuOpen.clickedMenu = !this.menuOpen.clickedMenu;
     // if(this.menuOpen) {
     //   console.log('menu open', this.menuOpen);
     //   this.eventHandler.parentEvent.emit(this.menuOpen);
     // }
     // console.log('menu clicked', this.menuOpen);
-        
+
     this.toggleMenu();
   }
 
@@ -74,7 +79,7 @@ export class NavbarComponent  implements OnInit {
     //Togle the collapse menu
     this.collapse.toggle();
     console.log("toggle menu");
-    
+
   }
 
 
