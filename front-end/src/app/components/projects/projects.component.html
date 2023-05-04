@@ -56,7 +56,7 @@
                 <!-- <div class="card text-white text-center border border-primary rounded-3 bg-secondary shadow-lg my-5 py-3"
                     *ngFor="let project of dProjects, let i = index, let even = even"> -->
                 <div class="card text-white text-center border border-primary rounded-3 bg-secondary shadow-lg my-5 py-3"
-                    *ngFor="let project of allProjects, let i = index, let even = even">
+                    *ngFor="let project of allProjects, let i = index, let even = even" id="project{{i}}">
 
                     <!-- Admin Add/Edit/Delete -->
                     <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.modoEdit">

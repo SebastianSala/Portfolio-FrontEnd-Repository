@@ -6,6 +6,7 @@ import { ProjectService } from '../../../services/project.service';
 import { PersonService } from 'src/app/services/person.service';
 import { HttpResponse } from '@angular/common/http';
 import { ResponseData } from 'src/app/model/data';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ModalDeleteProjectComponent implements OnInit {
   @Output() deleteEvent = new EventEmitter<boolean>();
 
 
-  constructor(private projectService: ProjectService, private personService: PersonService) {
+  constructor(private projectService: ProjectService, private personService: PersonService, private router: Router) {
 
     console.log("Modal contructor", this.projectToDelete);
 
@@ -86,6 +87,8 @@ export class ModalDeleteProjectComponent implements OnInit {
         // window.location.reload();
         this.isDeleted = true;
         this.deleteEmit(this.isDeleted);
+        // this.router.navigate(['/index'], {fragment: 'headerId'});
+        this.router.navigate(['/index'], {fragment: 'projects'});
         // this.ngOnInit();
       }
     })

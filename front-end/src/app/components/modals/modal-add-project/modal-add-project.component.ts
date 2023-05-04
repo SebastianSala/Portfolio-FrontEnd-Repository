@@ -32,7 +32,7 @@ export class ModalAddProjectComponent implements OnInit, OnChanges {
   protected person: Person = new Person();
 
 
-  public constructor(protected formBuilder: FormBuilder, private projectService: ProjectService) {
+  public constructor(protected formBuilder: FormBuilder, private projectService: ProjectService, private router: Router) {
 
     //creation of form's form controls group
     this.formGroup = this.formBuilder.group({
@@ -124,6 +124,12 @@ export class ModalAddProjectComponent implements OnInit, OnChanges {
         this.addEmit(this.isAdded);
         //close modal
         document.getElementById("modalClose")?.click()
+
+        //scroll to the newly created Project
+        this.router.navigate(['/index'], {fragment: 'projects'});
+
+
+
       },
     })
     console.log("log from after form creation");
