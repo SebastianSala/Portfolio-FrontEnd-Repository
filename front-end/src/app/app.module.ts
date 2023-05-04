@@ -26,6 +26,7 @@ import { ModalLoginComponent } from './components/modals/modal-login/modal-login
 import { ModalEditProjectComponent } from './components/modals/modal-edit-project/modal-edit-project.component';
 import { ModalAddProjectComponent } from './components/modals/modal-add-project/modal-add-project.component';
 import { ModalDeleteProjectComponent } from './components/modals/modal-delete-project/modal-delete-project.component';
+import { ModalLogoutComponent } from './components/modals/modal-logout/modal-logout.component';
 //import { StorageService } from './services/storage.service';
 
 
@@ -52,7 +53,8 @@ import { ModalDeleteProjectComponent } from './components/modals/modal-delete-pr
     ModalLoginComponent,
     ModalEditProjectComponent,
     ModalAddProjectComponent,
-    ModalDeleteProjectComponent,    
+    ModalDeleteProjectComponent,
+    ModalLogoutComponent,    
   ],
   imports: [
     BrowserModule,

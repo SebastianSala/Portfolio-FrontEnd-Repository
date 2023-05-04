@@ -48,10 +48,10 @@
             <!-- Log in -->
             <div class="col-3 col-md-4 text-end px-0 shadow">
                 <!-- <a routerLink="/login" data-bs-toggle="modal" data-bs-target="#exampleModal class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap"> -->
-                <a *ngIf="!isLoggedIn" data-bs-toggle="modal" data-bs-target="#modalLogIn" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
+                <a *ngIf="isLoggedIn" data-bs-toggle="modal" data-bs-target="#modalLogIn" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
                     Log In!
                 </a>
-                <a *ngIf="isLoggedIn" data-bs-toggle="modal" data-bs-target="#modalLogOut" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
+                <a *ngIf="!isLoggedIn" data-bs-toggle="modal" data-bs-target="#modalLogOut" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
                     Log out!
                 </a>
                 <!-- <form class="col-2 d-flex justify-content-end word-wrap">
@@ -60,6 +60,7 @@
             </div>
             
             <app-modal-login></app-modal-login>
+            <app-modal-logout></app-modal-logout>
             <!-- /Log in -->
 
         </div>

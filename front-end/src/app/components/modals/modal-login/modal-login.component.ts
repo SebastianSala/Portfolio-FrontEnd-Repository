@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-login',
@@ -9,12 +11,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ModalLoginComponent implements OnInit {
 
 
-  form: FormGroup;
+  formGroup: FormGroup;
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
 
-    this.form = this.formBuilder.group(
+    this.formGroup = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(8)]]
@@ -28,51 +30,85 @@ export class ModalLoginComponent implements OnInit {
 
 
   get Password() {
-    return this.form.get('password');
+    return this.formGroup.get('password');
   }
 
   get Email() {
-    return this.form.get('email');
+    return this.formGroup.get('email');
   }
 
-  get PasswordInvalid() {
-    return this.Password?.touched && !this.Password?.valid;
-  }
+  // get PasswordInvalid() {
+  //   // return this.Password?.touched && !this.Password?.valid;
+  //   if (this.Password?.touched) {
+  //     if (this.Password.errors) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   }
+  //   return;
 
-  get EmailInvalid() {
-    // return this.Email?.touched && !this.Email?.valid;
-    return this.Email?.touched && this.Email?.errors;
-    // return this.Email?.touched && this.Email?.hasError("email");
-  }
+  // }
+
+  // get EmailInvalid() {
+  //   // return this.Email?.touched && !this.Email?.valid;
+  //   return this.Email?.touched && this.Email?.errors;
+  //   // return this.Email?.touched && this.Email?.hasError("email");
+  // }
 
 
-  onSend(event: Event) {
+  validateAndSend(event: Event) {
 
     event.preventDefault();
 
-    if (this.form.valid) {
-      console.log(this.form.value);
-      
-      alert("Todo ok, enviar formulario")
+    if (this.formGroup.valid) {
+      console.log("log from validateAndSend: ", this.formGroup.value);
+
+      this.sendLogin();
+
+      // alert("Todo ok, enviar formulario")
       //sessionStorage.setItem('currentUser', 'someValue')
       // for (let key in this.form.value) {
-        // //   sessionStorage.setItem(key, this.form.value[key]);
+      // //   sessionStorage.setItem(key, this.form.value[key]);
       // }
-      for (let [key, value] of Object.entries(this.form.value)) {
-          sessionStorage.setItem(key, String(value));
-        }
-        
-        let data = this.form.value;
-        sessionStorage.setItem('currentUser', JSON.stringify(this.form.value));//JSON.stringify(data));
+      for (let [key, value] of Object.entries(this.formGroup.value)) {
+        sessionStorage.setItem(key, String(value));
+      }
+
+      let data = this.formGroup.value;
+      sessionStorage.setItem('currentUser', JSON.stringify(this.formGroup.value));//JSON.stringify(data));
     }
     else {
-      console.log(this.form.value);
-      // this.form.markAllAsTouched();
-      this.form.get("email")?.markAsTouched();
-      this.form.get("password")?.markAsTouched();
+      console.log("Log from validate error", this.formGroup.value);
+      // this.formGroup.markAllAsTouched();
+      this.formGroup.get("email")?.markAsTouched();
+      this.formGroup.get("password")?.markAsTouched();
       alert("Mail o contraseña incorrectos")
       sessionStorage.clear();
     }
+
+  }
+
+
+   sendLogin() {
+
+    console.log("log from SendLogin");
+
+    this.loginService.login(this.formGroup.value).subscribe({
+      next: (response) => {
+        console.log("the Response from the backend login: ", response);
+        console.log("expected: personId and name: ", response);
+        // this.router.navigate(['/index']);
+      },
+      error: (err) => {
+        console.log("Error in login method: ", err);
+        // this.router.navigate(['/index']);        
+      },
+      complete: () => {
+        console.log("Login method complete, redirecting to index edit");
+        this.router.navigate(['/index']);
+      }
+    })
 
   }
 

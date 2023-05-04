@@ -19,14 +19,16 @@ export class PersonService {
 
   public getPersons(): Observable<Person[]> {
     // return this.httpClient.get<Person[]>(this.url + '/list');
-    return this.httpClient.get<Person[]>(this.url + '/list').pipe(
-      map(allPersons => allPersons.map(individualPerson => new Person(individualPerson as unknown as PersonData)))
+    return this.httpClient.get<PersonData[]>(this.url + '/list').pipe(
+      map(allPersons => allPersons.map(individualPerson => new Person(individualPerson)))
     )
 
   }
 
   public getPersonById(personId: number): Observable<Person> {
-    return this.httpClient.get<Person>(this.url + `/list/${personId}`)
+    return this.httpClient.get<PersonData>(this.url + `/list/${personId}`).pipe(
+      map(personData => new Person(personData))
+    )
   }
 
   public deletePersonById(personId: number): Observable<HttpResponse<JSON>> {

@@ -24,9 +24,7 @@
                 <input type="text" class="form-control" id="newProjectName" formControlName="name"
                   [ngClass]="{'is-invalid': formControl['name'].errors && formGroup.controls['name'].touched, 'is-valid': formControl['name'].touched && !formControl['name'].errors}">
 
-                <div class="invalid-feedback">
-                  <!-- <div *ngIf="Name?.hasError('required')">El nombre no puede faltar</div> -->
-                  <!-- <div *ngIf="formGroup.controls['name'].hasError('required')">El nombre no puede faltar</div> -->
+                <div class="invalid-feedback">                  
                   <div *ngIf="formControl['name'].hasError('required')">El nombre no puede faltar</div>
                 </div>
               </div>

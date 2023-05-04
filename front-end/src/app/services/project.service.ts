@@ -22,13 +22,18 @@ export class ProjectService {
   // }
   public getProjectsByPersonId(personId: number): Observable<Project[]> {
     // return this.httpClient.get<Project[]>(this.url + `/person/${personId}` + "/list");
-    return this.httpClient.get<Project[]>(this.url + `/person/${personId}` + "/list").pipe(
-      map(allProjects => allProjects.map(individualProject => new Project(individualProject as unknown as ProjectData)))
+    // return this.httpClient.get<Project[]>(this.url + `/person/${personId}` + "/list").pipe(
+    return this.httpClient.get<ProjectData[]>(this.url + `/person/${personId}` + "/list").pipe(
+      // map(allProjects => allProjects.map(individualProject => new Project(individualProject as unknown as ProjectData)))
+      map(allProjects => allProjects.map(individualProject => new Project(individualProject)))
     )
   }
 
   public getProjectsByPersonIdByProjectId(personId: number, projectId: number): Observable<Project> {
-    return this.httpClient.get<Project>(this.url + `/person/${personId}/project/${projectId}`);
+    // return this.httpClient.get<Project>(this.url + `/person/${personId}/project/${projectId}`);
+    return this.httpClient.get<ProjectData>(this.url + `/person/${personId}/project/${projectId}`).pipe(
+      map(project => new Project(project))
+    )
   }
 
   public createProjectByPersonId(personId: number, project: Project): Observable<HttpResponse<JSON>> {

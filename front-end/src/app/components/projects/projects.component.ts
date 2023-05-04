@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-// import {DbService} from '../../services/db.service';
 import { ProjectService } from '../../services/project.service';
 
-import { Data, DataExperienceProjects, ProjectData } from '../../model/data';
+import { ProjectData } from '../../model/data';
 import { Project } from '../../model/project';
-import { HttpResponse } from '@angular/common/http';
-import { Person } from 'src/app/model/person';
 
 
 @Component({
@@ -55,12 +52,11 @@ export class ProjectsComponent implements OnInit {
 
 
     this.projectService.getProjectsByPersonId(1).subscribe({
+
       next: (data) => {
-        console.log("the type of data and data[0]", ((data[0] instanceof Project) ? "Is Project instance" : "is not instance of Project"), data[0], data);
+        this.allProjects = data;
 
-        this.allProjects = data.map(project => new Project(project as unknown as ProjectData));
         console.log("The data of allProjects: ", this.allProjects);
-
       },
 
       error: (err) => {
