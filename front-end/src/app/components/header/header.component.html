@@ -6,7 +6,8 @@
         <!-- Redes -->
 
         <!-- Edit -->
-        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.modoEdit">
+        <!-- <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.modoEdit"> -->
+        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.isLogged">
             <div class="col-12 text-end text-primary">
                 <!-- <p>edit icons</p>                 -->
                 <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
@@ -41,17 +42,17 @@
             </div> -->
 
             <div class="col-6 col-md-4 px-0">
-                <app-networks></app-networks>
+                <app-networks [isLogged]="isLogged"></app-networks>
             </div>
 
 
             <!-- Log in -->
             <div class="col-3 col-md-4 text-end px-0 shadow">
                 <!-- <a routerLink="/login" data-bs-toggle="modal" data-bs-target="#exampleModal class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap"> -->
-                <a *ngIf="isLoggedIn" data-bs-toggle="modal" data-bs-target="#modalLogIn" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
+                <a *ngIf="!isLogged" data-bs-toggle="modal" data-bs-target="#modalLogIn" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
                     Log In!
                 </a>
-                <a *ngIf="!isLoggedIn" data-bs-toggle="modal" data-bs-target="#modalLogOut" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
+                <a *ngIf="isLogged" data-bs-toggle="modal" data-bs-target="#modalLogOut" class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
                     Log out!
                 </a>
                 <!-- <form class="col-2 d-flex justify-content-end word-wrap">
@@ -59,8 +60,8 @@
                 </form> -->
             </div>
             
-            <app-modal-login></app-modal-login>
-            <app-modal-logout></app-modal-logout>
+            <app-modal-login (logged)="loginState($event)"></app-modal-login>
+            <app-modal-logout (logged)="loginState($event)"></app-modal-logout>
             <!-- /Log in -->
 
         </div>

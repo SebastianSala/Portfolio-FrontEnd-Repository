@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { DbService } from 'src/app/services/db.service';
 
@@ -12,7 +12,9 @@ import { Data } from 'src/app/model/data';
 })
 export class BannerComponent implements OnInit {
 
-  modoEdit: boolean = true;
+  // modoEdit: boolean = true;
+  @Input() isLogged: boolean = false;
+  
   data?: Data;
 
 
@@ -30,6 +32,9 @@ export class BannerComponent implements OnInit {
       },
       error => console.error("Error on Banner", error)      
       );
+
+      console.log("log from banner, ngOnInit: ", this.isLogged);
+      
       
   }
 

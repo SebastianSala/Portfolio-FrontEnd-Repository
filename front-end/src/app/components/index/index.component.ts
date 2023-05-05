@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { DbService } from '../../services/db.service'
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PersonData } from '../../model/data';
 
 
 @Component({
@@ -8,22 +8,66 @@ import { Router } from '@angular/router';
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss']
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit, OnChanges {
+
+  
+  isLogged: boolean = false;
+  user?: PersonData ;
 
 
-  constructor(private db: DbService, private router: Router) { }
+  constructor(private router: Router) {
+    
+  }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
+
+    this.router.navigate(['/index'], { fragment: 'start' });
+
+    this.checkLogin();
+    // this.db.getData().subscribe(
+    //   data => {
+    //     console.log(data);
+    //   }
+    // );
+
+  }
 
 
-    this.router.navigate(['/index'], {fragment: 'headerId'});
+  ngOnChanges(): void {
+    this.checkLogin();
+  }
 
-    this.db.getData().subscribe(
-      data => {
-        console.log(data);
-      }
-    );
+
+  protected loginState(isLogged: boolean): void {
+    // this.isLogged = isLogged;
+    this.checkLogin();
+  }
+
+
+  private checkLogin(): void {
+    // let personData = {
+    //   id: response.body?.getId,
+    //   email: response.body?.getEmail      
+    // } as PersonData;
+    // this.personLogin = new Person(personData);
+    
+    let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser2")!);
+    // console.log("the data from currentUser2: ", user, user.id, user.email);
+    
+    // if (user && user.id) {
+    if (user) {
+      this.isLogged = true;
+      console.log("------------------------------------ TRUE log from checkLogin", user);
+      
+    } else {
+      this.isLogged = false;
+      console.log("------------------------------------ FALSE log from checkLogin", user);
+    }
+
+    // console.log("loggin userData: ", user.id, user.email);
+    // sessionStorage.setItem("currentUser2", JSON.stringify(this.personLogin))
+    // let userId = sessionStorage.getItem("id");
   }
 
 

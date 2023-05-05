@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-networks',
@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class NetworksComponent {
 
   protected hover: Array<boolean> = [];
-  modoEdit: boolean = true;
-  
+  // modoEdit: boolean = true;
+  @Input() isLogged: boolean = false;
 
   protected isHovering(id: number): void {
     // this.hover = !this.hover;

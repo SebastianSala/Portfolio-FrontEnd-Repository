@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 // import { Collapse } from 'bootstrap';
 import { Collapse } from 'bootstrap';
 import { EventHandlerService } from 'src/app/services/event-handler.service';
@@ -19,10 +19,12 @@ export class HeaderComponent implements OnInit {
 
   protected hover: Array<boolean> = [];//[false, false, false];
 
-  modoEdit: boolean = true;
-
-  isLoggedIn: boolean = true;
-
+  
+  
+  @Output() private logged = new EventEmitter<boolean>;
+  isLogged: boolean = false;
+  //modoEdit: boolean = true;
+  
   constructor(private eventHandler: EventHandlerService) {
 
     // const collapseElement = document.getElementById('collapsibleNavbar');
@@ -111,6 +113,12 @@ export class HeaderComponent implements OnInit {
       default:
         break;
     }
+  }
+
+
+  protected loginState(isLogged: boolean): void {
+    this.isLogged = isLogged;
+    this.logged.emit(this.isLogged);
   }
 
 

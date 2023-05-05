@@ -33,14 +33,21 @@
                                 <!-- <form [formGroup]="form" (ngSubmit)="onSend($event)"> -->
 
 
-                                    <!-- <div class="d-grid"> -->
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary w-100">
+                                <!-- <div class="d-grid"> -->
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">
+                                            Seguir editando
+                                        </button>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <button type="button" class="btn btn-primary w-100" (click)="logout()" data-bs-dismiss="modal">
                                             Cerrar sesión!
                                         </button>
                                     </div>
+                                </div>
 
-                                    <!-- <div class="my-3">
+                                <!-- <div class="my-3">
                                         <span>No tienes cuenta? <a class="text-dark" href="#">Regístrate</a></span>
                                         <br>
                                         <span><a class="text-dark" href="#">Recuperar password</a></span>

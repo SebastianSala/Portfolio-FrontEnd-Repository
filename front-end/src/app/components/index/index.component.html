@@ -1,5 +1,5 @@
 <div class="row mx-auto">
-    <div class="col px-0 pt-7 pt-md-8">
+    <div class="col px-0 pt-7 pt-md-8" id="start">
 
 
         <!-- Navbar -->
@@ -9,11 +9,12 @@
 
         <!-- <app-imagen></app-imagen> -->
         <!-- Header -->
-        <app-header></app-header>
+        <!-- <app-header (logged)="loginState($event)"></app-header> -->
+        <app-header (logged)="loginState($event)"></app-header>
         <!-- /Header -->
 
         <!-- Banner / Hero section -->
-        <app-banner></app-banner>
+        <app-banner [isLogged]="isLogged"></app-banner>
         <!-- /Banner / Hero section -->
 
         <!-- HR -->

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-logout',
@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./modal-logout.component.scss']
 })
 export class ModalLogoutComponent {
+
+
+  @Output() private logged = new EventEmitter<boolean>;
+
+
+  protected logout() {
+    console.log("---------loggin out----------");
+    
+    sessionStorage.clear();
+    // sessionStorage.setItem("currentUser2", JSON.stringify({}));
+    
+    this.logged.emit(false);    
+        
+  }
+
 
 }
