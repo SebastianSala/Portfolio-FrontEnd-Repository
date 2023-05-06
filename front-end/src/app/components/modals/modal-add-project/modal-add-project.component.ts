@@ -1,38 +1,28 @@
-import { Component, EventEmitter, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Person } from '../../../model/person';
 import { ProjectData } from 'src/app/model/data';
 import { Project } from 'src/app/model/project';
 import { ProjectService } from 'src/app/services/project.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-modal-add-project',
   templateUrl: './modal-add-project.component.html',
   styleUrls: ['./modal-add-project.component.scss']
 })
-export class ModalAddProjectComponent implements OnInit, OnChanges {
+export class ModalAddProjectComponent {
 
   @Output() addEvent = new EventEmitter<boolean>;
   protected isAdded: boolean = false;
 
   protected formGroup: FormGroup;
 
-  // protected id: number | undefined;
-
-  // protected name: string = "";
-
-  // protected date: string = "";
-  // protected shortDescription: string = "";
-  // protected longDescription: string = "";
-  // protected logoUrl: string = "";
-  // protected imgUrl: string = "";
-  // protected webUrl: string = "";
-
   protected person: Person = new Person();
 
 
-  public constructor(protected formBuilder: FormBuilder, private projectService: ProjectService, private router: Router) {
+  public constructor(protected formBuilder: FormBuilder, private projectService: ProjectService, private router: Router, private authenticationService: AuthenticationService) {
 
     //creation of form's form controls group
     this.formGroup = this.formBuilder.group({
@@ -45,17 +35,6 @@ export class ModalAddProjectComponent implements OnInit, OnChanges {
       webUrl: ['', [Validators.required]],
     })
 
-  }
-
-
-  ngOnInit(): void {
-
-    console.log("calling from modal add project: ", this.formControl['name']);
-    
-  }
-  
-  ngOnChanges(): void {
-    console.log("calling from modal add project: ", this.formControl['name']);
   }
 
 
@@ -75,7 +54,6 @@ export class ModalAddProjectComponent implements OnInit, OnChanges {
   protected onSubmit() {
 
 
-
     const projectConstructor: ProjectData = {
       // const projectConstructor = {
       //setting id to 0 to create a new project instead of updating an existing one
@@ -90,49 +68,38 @@ export class ModalAddProjectComponent implements OnInit, OnChanges {
       person: new Person()
     }
 
-    // const project = Object.assign(new Project(), projectConstructor);
-
-
     //set the person to the only person relevant for this portfolio project
     //but the backend allows creation of multiple persons with its corresponding projects, experiences, etc and proper relationships between them.
-    projectConstructor.person.setId = 1;
+    // projectConstructor.person.setId = 1;        
+    projectConstructor.person.setId = this.authenticationService.authenticatedUser.id;
 
-    // const theProject = Object.assign(new Project(), projectConstructor);
     const theProject = new Project(projectConstructor);
 
-    console.log("log from if valid");
-    this.projectService.createProjectByPersonId(1, theProject).subscribe({
+    this.projectService.createProjectByPersonId(theProject.getPerson.getId!, theProject).subscribe({
+
       next: (data) => {
         console.log("the return of create: ", data);
-
-        // window.location.reload();
-        // alert("Proyecto cargado: " + theProject.getName);
         this.formGroup.reset();
-        // this.router.navigate([this.router.url])
-        // this.router.navigate([this.activatedRoute.snapshot.url.join('/')]);
       },
+
       error: (err) => {
         console.log("Error from Create Project addModal: ", err);
         this.isAdded = false;
 
       },
+
       complete: () => {
-        // window.location.reload();
-        // alert(`Projecto creado: ${theProject.getName}`)
         //reload and show all projects
-        this.isAdded = true;        
+        this.isAdded = true;
         this.addEmit(this.isAdded);
         //close modal
         document.getElementById("modalClose")?.click()
 
         //scroll to the newly created Project
-        this.router.navigate(['/index'], {fragment: 'projects'});
+        this.router.navigate(['/index'], { fragment: 'projects' });
+      }
 
-
-
-      },
-    })
-    console.log("log from after form creation");
+    });
 
   }
 
@@ -146,13 +113,10 @@ export class ModalAddProjectComponent implements OnInit, OnChanges {
     if (this.formGroup.valid) {
       console.log("form validated: ", this.formControl['value']);
       this.onSubmit();
-      // return true;
     } else {
       console.log("form not validated: ", JSON.stringify(this.formControl['value']));
       this.formGroup.markAllAsTouched();
       alert("revisar campos");
-      // document.getElementById("cancelButton")?.click()
-      // return false;
     }
 
   }
@@ -161,8 +125,6 @@ export class ModalAddProjectComponent implements OnInit, OnChanges {
   protected clearForm(): void {
     this.formGroup.reset();
   }
-
-
 
 
 }

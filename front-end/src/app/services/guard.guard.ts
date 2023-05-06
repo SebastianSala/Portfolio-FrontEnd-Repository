@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { LoginService } from './login.service';
+import { AuthenticationService } from './authentication.service';
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import { LoginService } from './login.service';
 export class GuardGuard implements CanActivate {
 
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
 
   }
 
@@ -19,7 +19,7 @@ export class GuardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    let currentUser = this.loginService.autenticatedUser;
+    let currentUser = this.authenticationService.authenticatedUser;
 
     if (currentUser && currentUser.id) {
       return true;

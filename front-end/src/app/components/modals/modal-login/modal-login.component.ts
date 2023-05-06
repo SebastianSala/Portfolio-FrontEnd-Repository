@@ -1,9 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../../../services/login.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 import { Router } from '@angular/router';
 import { Person } from '../../../model/person';
 import { PersonData } from '../../../model/data';
+import { PersonService } from 'src/app/services/person.service';
 
 @Component({
   selector: 'app-modal-login',
@@ -16,13 +17,13 @@ export class ModalLoginComponent implements OnInit {
   formGroup: FormGroup;
 
   // userData?: { id?: number, email?: string } = { id: 0, email: "" };
-  personLogin? : Person;
+  personLogin?: Person;
 
   @Output() private logged = new EventEmitter<boolean>;
 
 
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, private router: Router, private personService: PersonService) {
 
     this.formGroup = this.formBuilder.group(
       {
@@ -51,8 +52,7 @@ export class ModalLoginComponent implements OnInit {
     event.preventDefault();
 
     if (this.formGroup.valid) {
-      console.log("log from validateAndSend: ", this.formGroup.value);
-
+      
       for (let [key, value] of Object.entries(this.formGroup.value)) {
         sessionStorage.setItem(key, String(value));
       }
@@ -73,35 +73,19 @@ export class ModalLoginComponent implements OnInit {
 
 
   sendLogin() {
-
-    console.log("log from SendLogin");
-
-    this.loginService.login(this.formGroup.value).subscribe({
+    
+    this.authenticationService.login(this.formGroup.value).subscribe({
       next: (response) => {
 
-        // let onePerson = new Person(response as PersonData)
-        console.log("the Response from the backend login: ", response);
-        console.log("the Response from the backend login: ", response.body?.getId);
-        console.log("the Response from the backend login: ", response.body?.getEmail);
-        console.log("the Response from the backend login: ", response.body?.getName);
-        console.log("the Response from the backend login: ", response.body);
-        console.log("expected: personId and name: ", response.status);
-        // this.router.navigate(['/index']);
-
-        // this.userData = response as unknown as { id: number, email: string };
-        // this.userData!.id = response.body?.getId;
         let personData = {
           id: response.body?.getId,
-          email: response.body?.getEmail      
+          email: response.body?.getEmail,
+          name: response.body?.getName
         } as PersonData;
-        // this.personLogin = new Person(personData);
-        // this.personLogin = JSON.parse("Person", JSON.parse(JSON.stringify(response)))
-        this.personLogin = new Person(JSON.parse(JSON.stringify(response.body)))// as PersonData)
-        console.log("-----------------------------------------------loggin userData: ", this.personLogin, this.personLogin?.getName, this.personLogin?.getId, this.personLogin?.getEmail);
-        sessionStorage.setItem("currentUser2", JSON.stringify(this.personLogin))
-        // let userId = sessionStorage.getItem("id");
-        let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser2")!);
-        console.log("the data from currentUser2: ", user, user.id, user.email);
+
+        // this.personLogin = new Person(JSON.parse(JSON.stringify(response.body)))// as PersonData)
+        // this.personService.getPersonByEmail(response.body?.getEmail || "").subscribe();
+
       },
       error: (err) => {
         console.log("Error in login method: ", err.body, err.status);
@@ -116,7 +100,7 @@ export class ModalLoginComponent implements OnInit {
         this.logged.emit(true);
 
         document.getElementById("modalLoginClose")?.click();
-        this.router.navigate(['/index']);
+        this.router.navigate(['/index'], { fragment: 'start' });
       }
     });
 

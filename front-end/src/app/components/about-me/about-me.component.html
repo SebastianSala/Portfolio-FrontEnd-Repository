@@ -3,11 +3,8 @@
 
 
         <!-- Edit -->
-        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.modoEdit">
+        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.isLogged">
             <div class="col-12 text-end text-primary">
-                <!-- <p>edit icons</p>                 -->
-                <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
-                <!-- <i class="fa-solid fa-trash fa-2x px-2"></i> -->
                 <i class="fas fa-pen-to-square fa-2x p-1"></i>
                 <i class="fas fa-trash fa-2x p-1"></i>
             </div>
@@ -16,72 +13,26 @@
 
 
         <div class="card border border-light rounded-3 bg-secondary shadow-lg p-2" id="card-aboutme">
-
             <div class="card-body mt-0">
                 <h4 class="card-title shadow-sm text-white text-shadow-title mb-3">Conoceme!</h4>
                 <h6 class="card-subtitle mb-2 text-info shadow-sm mb-3">resumen</h6>
 
-                <!-- <p class="card-text shadow-sm text-white text-shadow-dark p-3"> -->
 
+                <div *ngFor="let part of aboutMeArray, let even = even">
 
-                <!-- <div *ngFor="let part of dataAbout"> -->
-                <div *ngFor="let part of aboutMeArray">
-
-                    <p class="card-text text-end shadow-sm text-white text-shadow-simple p-3">
+                    <p class="card-text text-end shadow-sm text-white text-shadow-simple p-3"
+                        [ngClass]="{'text-start': !even, 'text-end': even}">
                         {{part}}
                     </p>
 
                     <br><br>
 
                 </div>
-                <!-- <div *ngFor="let part of dataAbout"> -->
 
-                    <!-- <p class="card-text text-end shadow-sm text-white text-shadow-simple p-3"> -->
-                        <!-- {{thePerson.aboutMe}} -->
-                        <!-- {{thePerson?.getAboutMe}}
-                    </p>
-
-                    <br><br> -->
-
-                <!-- </div> -->
-
-
-                <!-- <p class="card-text text-end shadow-sm text-white text-shadow-dark p-3">
-                    {{data.about[0].part}}
-                </p>
-
-                <br><br>
-
-                <p class="card-text text-start shadow-sm text-white text-shadow-dark p-3">
-                    {{data.about[1].part}}
-                </p>
-
-                <br><br>
-
-                <p class="card-text text-end shadow-sm text-white text-shadow-dark p-3">
-                    {{data.about[2].part}}
-                </p>
-
-                <br><br>
-
-                <p class="card-text text-start shadow-sm text-white text-shadow-dark p-3">
-                    {{data.about[3].part}}
-                </p>
-
-                <br><br>
-
-                <p class="card-text text-end shadow-sm text-white text-shadow-dark p-3">
-                    {{data.about[4].part}}
-                </p>
-
-                <br>
-
-                <p class="card-text text-start shadow-sm text-white text-shadow-dark p-3">
-                    {{data.about[5].part}}
-                </p> -->
 
             </div>
-
         </div>
+
+
     </div>
 </article>

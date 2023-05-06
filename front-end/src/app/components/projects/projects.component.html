@@ -3,7 +3,7 @@
 
 
         <!-- Admin Add/Edit/Delete -->
-        <div class="row mx-auto px-0 bg-dark border border-light my-1 rounded-3" *ngIf="this.modoEdit">
+        <div class="row mx-auto px-0 bg-dark border border-light my-1 rounded-3" *ngIf="this.isLogged">
             <div class="col-12 text-end">
                 <!-- <p>edit icons</p>                 -->
                 <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
@@ -59,7 +59,7 @@
                     *ngFor="let project of allProjects, let i = index, let even = even" id="project{{i}}">
 
                     <!-- Admin Add/Edit/Delete -->
-                    <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.modoEdit">
+                    <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.isLogged">
                         <div class="col-12 text-end text-primary">
                             <!-- <p>edit icons</p>                 -->
                             <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
@@ -76,8 +76,7 @@
 
                             <!-- Edit -->
                             <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
-                                data-bs-target="#modalEditProject" (click)="logProject(project)"
-                                (click)="sendProject(project)">
+                                data-bs-target="#modalEditProject" (click)="sendProject(project)">
                                 <i class="fas fa-pen-to-square fa-2x p-1"></i>
                             </button>
 
@@ -87,8 +86,7 @@
 
                             <!-- Delete -->
                             <button type="button" class="btn btn-outline-dark text-danger" data-bs-toggle="modal"
-                                data-bs-target="#modalDeleteProject" (click)="logProject(project)"
-                                (click)="sendProject(project)">
+                                data-bs-target="#modalDeleteProject" (click)="sendProject(project)">
                                 <i class="fas fa-trash fa-2x p-1"></i>
                             </button>
 

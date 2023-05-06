@@ -1,9 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-// import { Collapse } from 'bootstrap';
-import { Collapse } from 'bootstrap';
-import { EventHandlerService } from 'src/app/services/event-handler.service';
-
-import { GlobalClick, globalClick } from 'src/app/model/GlobalClick';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PersonData } from '../../model/data';
+import { Person } from '../../model/person';
 
 
 @Component({
@@ -13,80 +10,53 @@ import { GlobalClick, globalClick } from 'src/app/model/GlobalClick';
 })
 export class HeaderComponent implements OnInit {
 
-  protected collapse!: Collapse;
-  // menuOpen: boolean = false;
-  menuOpen: GlobalClick = globalClick;
 
-  protected hover: Array<boolean> = [];//[false, false, false];
-
-  
-  
   @Output() private logged = new EventEmitter<boolean>;
-  isLogged: boolean = false;
-  //modoEdit: boolean = true;
+  @Input() isLogged: boolean = false;
   
-  constructor(private eventHandler: EventHandlerService) {
+  @Input() thePerson?: Person;
+  localPerson?: Person;
 
-    // const collapseElement = document.getElementById('collapsibleNavbar');
-    // this.collapse = new Collapse(collapseElement!, { toggle: false });
+  protected theName?: string;
+
+  protected hover: Array<boolean> = []
+
+
+  constructor() {
 
   }
+
 
   ngOnInit(): void {
+    // this.getNameSessionStorage();
+    this.getNameInputVariable();
+  }
 
-    const collapseElement = document.getElementById('collapsibleNavbar');
-    this.collapse = new Collapse(collapseElement!, { toggle: false });
-
-    // this.eventHandler.parentEvent.subscribe((event: string) => {
-    //   console.log(event);
-    //   console.log("recibed from child");
-    // });
-    // this.eventHandler.parentEvent.subscribe(this.bodyClick);
-    this.eventHandler.parentEvent.subscribe(this.bodyClick.bind(this));
-
+  ngOnChanges() {
+    this.localPerson = this.thePerson;
+    // this.getNameInputVariable();
   }
 
 
-  // bodyClick(event: boolean) {
-  bodyClick(event: any) {
+  private getName(): void {
 
-    //this.menuOpen = event;
-    console.log('event recived on child, bodyClicked method 1', event, this.menuOpen);
+    const tempName: PersonData = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
 
-    if (this.menuOpen) {
-      console.log('event recived on child, bodyClicked method 2', event, this.menuOpen);
-      //this.menuOpen = !this.menuOpen;
-      this.toggleMenu();
-      // (this.toggleMenu as () => void).bind(new AppComponent())();
-    }
+    this.theName = (tempName && tempName.name
+      ? tempName.name
+      : '');
+
+  }
+  
+
+  private getNameInputVariable(): void {
+
+    let tempName: string = this.thePerson?.getName || "Nombre";
+    this.theName = tempName;
 
   }
 
-  public menuClicked() {
-
-    this.menuOpen.clickedMenu = !this.menuOpen.clickedMenu;
-    if (this.menuOpen) {
-      console.log('menu open', this.menuOpen);
-      this.eventHandler.parentEvent.emit(this.menuOpen);
-    }
-    console.log('menu clicked', this.menuOpen);
-
-    this.toggleMenu();
-  }
-
-
-  toggleMenu(): void {
-
-    // Check if the menu is currently expanded or not
-    // const isExpanded = this.collapse._isTransitioning || this.collapse._isExpanded;
-
-    //Togle the collapse menu
-    this.collapse.toggle();
-    console.log("toggle menu");
-
-  }
-
-
+  
   protected isHovering(id: number): void {
     // this.hover = !this.hover;
     switch (id) {
@@ -117,8 +87,7 @@ export class HeaderComponent implements OnInit {
 
 
   protected loginState(isLogged: boolean): void {
-    this.isLogged = isLogged;
-    this.logged.emit(this.isLogged);
+    this.logged.emit(isLogged);
   }
 
 

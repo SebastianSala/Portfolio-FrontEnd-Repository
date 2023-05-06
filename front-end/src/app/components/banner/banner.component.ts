@@ -1,8 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
-import { DbService } from 'src/app/services/db.service';
-
-import { Data } from 'src/app/model/data';
+import { Person } from '../../model/person';
 
 
 @Component({
@@ -10,32 +8,21 @@ import { Data } from 'src/app/model/data';
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.scss']
 })
-export class BannerComponent implements OnInit {
+export class BannerComponent implements OnChanges {
 
   // modoEdit: boolean = true;
   @Input() isLogged: boolean = false;
-  
-  data?: Data;
+  @Input() thePerson?: Person;
+  localPerson?: Person;
 
 
-  constructor(private db: DbService) {
+  constructor() {
 
   }
 
 
-  ngOnInit(): void {
-
-    this.db.getData().subscribe(
-      data => {
-        const lData: Data = data as Data;
-        this.data = lData;
-      },
-      error => console.error("Error on Banner", error)      
-      );
-
-      console.log("log from banner, ngOnInit: ", this.isLogged);
-      
-      
+  ngOnChanges() {
+    this.localPerson = this.thePerson;
   }
 
 

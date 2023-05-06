@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 import { ProjectService } from '../../services/project.service';
 
-import { ProjectData } from '../../model/data';
 import { Project } from '../../model/project';
+import { Person } from '../../model/person';
 
 
 @Component({
@@ -11,10 +11,13 @@ import { Project } from '../../model/project';
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnChanges {
 
 
-  modoEdit: boolean = true;
+  @Input() isLogged: boolean = false;
+  
+  @Input() thePerson?: Person;
+  private localPerson?: Person;
 
   allProjects: Project[] = [];
   projectToSend: Project = new Project();
@@ -24,19 +27,16 @@ export class ProjectsComponent implements OnInit {
 
   }
 
-
-  ngOnInit(): void {
-
+  
+  ngOnChanges(): void {
+    this.localPerson = this.thePerson;
     this.getAllProjects();
-
   }
 
 
   public reloadProjects(event: boolean): void {
-    console.log("logging from reload project event", event);
-    if ((event) = true) {
-      console.log("logging from reload project event, true: ", event);
 
+    if ((event) = true) {
       //reset the project to send
       this.projectToSend = new Project();
 
@@ -50,33 +50,21 @@ export class ProjectsComponent implements OnInit {
 
   private getAllProjects(): void {
 
-
-    this.projectService.getProjectsByPersonId(1).subscribe({
+    this.projectService.getProjectsByPersonId(this.localPerson?.getId!).subscribe({
 
       next: (data) => {
         this.allProjects = data;
-
-        console.log("The data of allProjects: ", this.allProjects);
       },
-
       error: (err) => {
         console.log("Error from getAllProjects, Project Component", err);
         this.allProjects = [];
       }
-
     });
 
-
-  }
-
-
-  protected logProject(message: any) {
-    console.log("The child parameter is: ", message);
   }
 
 
   protected sendProject(theProject: Project) {
-    console.log("the project to send is Project", theProject);
     this.projectToSend = theProject;
   }
 

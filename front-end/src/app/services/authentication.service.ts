@@ -8,7 +8,7 @@ import { PersonData } from '../model/data';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class AuthenticationService {
 
 
   private url = 'http://localhost:8080/person/login';
@@ -20,36 +20,50 @@ export class LoginService {
   }
 
 
-  // public login(credentials: any): Observable<HttpResponse<JSON>> {
   public login(credentials: any): Observable<HttpResponse<Person>> {
 
     console.log("Login service, expected: personId and name from backend");
 
     return this.httpClient.post<PersonData>(this.url, credentials).pipe(
       map(response => {
-        
-        let personData = {
-          id: response.id,
-          email: response.email
-        } as PersonData;
-        
-        const thePerson = new Person(personData);
-        sessionStorage.setItem('currentUser', JSON.stringify(thePerson));
 
-        console.log("The current user subject BEFORE-------------------------:", this.currentUserSubject.value);
-        this.currentUserSubject.next(personData);
-        console.log("The current user subject AFTER-------------------------:", this.currentUserSubject.value);
+        let thePerson: Person = new Person();
         
-        // return response;        
-        return new HttpResponse({ status: 200, body: thePerson });
+        if (response.id) {
+
+          let personData = {
+            id: response.id,
+            email: response.email,
+            name: response.name
+          } as PersonData;
+          
+          thePerson = new Person(personData);
+          sessionStorage.setItem('currentUser', JSON.stringify(thePerson));
+          
+          this.currentUserSubject.next(personData);
+
+          // return response;        
+          return new HttpResponse({ status: 200, body: thePerson });
+
+        } else {
+
+          sessionStorage.setItem('currentUser', JSON.stringify({}));          
+          return new HttpResponse({ status: 401 });
+
+        }
+
       })
     );
 
   }
 
 
-  public get autenticatedUser() {
+  public get authenticatedUser() {
     return this.currentUserSubject.value;
+  }  
+
+  public set authenticatedUser(user: PersonData) {
+    this.currentUserSubject.next(user);
   }
 
 

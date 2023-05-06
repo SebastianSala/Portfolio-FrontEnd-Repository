@@ -10,11 +10,11 @@
         <!-- <app-imagen></app-imagen> -->
         <!-- Header -->
         <!-- <app-header (logged)="loginState($event)"></app-header> -->
-        <app-header (logged)="loginState($event)"></app-header>
+        <app-header (logged)="loginState($event)" [isLogged]="isLogged" [thePerson]="thePerson"></app-header>
         <!-- /Header -->
 
         <!-- Banner / Hero section -->
-        <app-banner [isLogged]="isLogged"></app-banner>
+        <app-banner [isLogged]="isLogged" [thePerson]="thePerson"></app-banner>
         <!-- /Banner / Hero section -->
 
         <!-- HR -->
@@ -22,7 +22,7 @@
         <!-- /HR -->
 
         <!-- About Me -->
-        <app-about-me></app-about-me>
+        <app-about-me [isLogged]="isLogged" [thePerson]="thePerson"></app-about-me>
         <!-- /About Me -->
 
         <!-- HR -->
@@ -46,7 +46,7 @@
         <!-- /HR -->
 
         <!-- Projects -->
-        <app-projects></app-projects>
+        <app-projects [isLogged]="isLogged" [thePerson]="thePerson"></app-projects>
         <!-- /Projects -->
 
         <!-- HR -->

@@ -25,8 +25,15 @@ export class PersonService {
 
   }
 
-  public getPersonByIdAndEmail(personId: number, email: string): Observable<Person> {
-    return this.httpClient.get<PersonData>(this.url + `/list/${personId}`).pipe(
+  //bad request
+  // public getPersonByIdAndEmail(personId: number, email: string): Observable<Person> {
+  //   return this.httpClient.get<PersonData>(this.url + `/list/${personId}`).pipe(
+  //     map(personData => new Person(personData))
+  //   )
+  // }
+
+  public getPersonByEmail(email: string): Observable<Person> {
+    return this.httpClient.get<PersonData>(this.url + `/list/person?email=${email}`).pipe(
       map(personData => new Person(personData))
     )
   }
