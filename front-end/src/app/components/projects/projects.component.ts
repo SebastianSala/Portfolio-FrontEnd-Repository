@@ -4,6 +4,7 @@ import { ProjectService } from '../../services/project.service';
 
 import { Project } from '../../model/project';
 import { Person } from '../../model/person';
+import { AuthenticationService } from '../../services/authentication.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class ProjectsComponent implements OnChanges {
   projectToSend: Project = new Project();
 
 
-  constructor(private projectService: ProjectService) {
+  constructor(private projectService: ProjectService, private authenticationService: AuthenticationService) {
 
   }
 
@@ -50,10 +51,16 @@ export class ProjectsComponent implements OnChanges {
 
   private getAllProjects(): void {
 
-    this.projectService.getProjectsByPersonId(this.localPerson?.getId!).subscribe({
-
-      next: (data) => {
-        this.allProjects = data;
+    // const personId = this.authenticationService.authenticatedUser.id
+    const personId = this.localPerson?.getId
+    console.log("-----From getAllProjects, personId: ", personId);
+    
+    this.projectService.getProjectsByPersonId(personId as number).subscribe({
+      // this.projectService.getProjectsByPersonId(personId).subscribe({
+        
+        next: (data) => {
+          this.allProjects = data;
+          console.log("-----From getAllProjects, personId: ", data, data[0].getPerson.getId);
       },
       error: (err) => {
         console.log("Error from getAllProjects, Project Component", err);

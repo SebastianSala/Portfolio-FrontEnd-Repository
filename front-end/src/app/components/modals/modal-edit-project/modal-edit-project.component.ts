@@ -135,7 +135,10 @@ export class ModalEditProjectComponent implements OnInit, OnChanges {
     // this.projectService.createProjectByPersonId(1, theProject).subscribe({
     this.projectService.updateProjectByPersonIdByProjectId(theProject.getPerson.getId!, theProject.getId!, theProject).subscribe({
       next: (data) => {
-        console.log("the return of create: ", data);
+        console.log("the return of edit project 1: ", data);
+        console.log("the return of edit project 2: ", data.body);
+        console.log("the return of edit project 3: ", ((data.body) as unknown as {message: string}).message);
+        console.log("the return of edit project 4: ", data.statusText);
 
         // window.location.reload();
         // alert("Proyecto cargado: " + theProject.getName);
