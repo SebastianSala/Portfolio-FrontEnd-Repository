@@ -1,9 +1,12 @@
 import { Person } from "./person";
 
-export interface ResponseData extends JSON{
-    key: string;
-    value: string;
+export interface ResponseMessage extends JSON{
+    message: string;
 }
+
+// export interface ResponseMessage {
+//     message: string;
+// }
 
 export interface PersonData {
     id: number;

@@ -13,9 +13,9 @@ export class AboutMeComponent implements OnChanges {
   @Input() isLogged: boolean = false;
 
   @Input() thePerson?: Person;
-  localPerson?: Person;
+  localPerson?: Person = new Person();
 
-  aboutMeSplit: any;
+  aboutMeSplit: any = '';
   aboutMeArray?: string[];
 
 
@@ -34,10 +34,13 @@ export class AboutMeComponent implements OnChanges {
 
     this.aboutMeSplit = this.localPerson?.getAboutMe;
     console.log(this.aboutMeSplit);
-    this.aboutMeSplit = this.aboutMeSplit.trim();
-    this.aboutMeArray = this.aboutMeSplit.split("/");
-    console.log(this.aboutMeSplit);
-    console.log(this.aboutMeArray);
+    
+    if(this.aboutMeSplit) {
+      this.aboutMeSplit = this.aboutMeSplit.trim();
+      this.aboutMeArray = this.aboutMeSplit.split("/");
+      console.log(this.aboutMeSplit);
+      console.log(this.aboutMeArray);
+    }
 
   }
 

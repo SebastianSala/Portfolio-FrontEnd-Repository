@@ -77,10 +77,12 @@ export class ModalLoginComponent implements OnInit {
     this.authenticationService.login(this.formGroup.value).subscribe({
       next: (response) => {
 
+        const res = response as Person;
+
         let personData = {
-          id: response.body?.getId,
-          email: response.body?.getEmail,
-          name: response.body?.getName
+          id: res.getId,
+          email: res.getEmail,
+          name: res.getName
         } as PersonData;
 
         // this.personLogin = new Person(JSON.parse(JSON.stringify(response.body)))// as PersonData)
@@ -88,7 +90,8 @@ export class ModalLoginComponent implements OnInit {
 
       },
       error: (err) => {
-        console.log("Error in login method: ", err.body, err.status);
+        console.log("Error in login method: ", err.error.message, err.status);
+        alert(err.error.message);
         // this.router.navigate(['/index']);
         this.logged.emit(false);
       },

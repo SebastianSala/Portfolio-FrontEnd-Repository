@@ -1,0 +1,101 @@
+<div
+    class="container-fluid container-md bg-primary px-md-5 min-vh-100 align-items-center d-flex justify-content-center mx-auto py-4">
+
+    <div class="row bg-dark border rounded px-1 justify-content-center w-100 h-100 align-items-start pb-5">
+
+        <div class="row text-center text-white align-items-center">
+            <h4 class="pt-4">Crear Cuenta</h4>
+        </div>
+
+        <div class="row justify-content-center align-items-center px-0">
+            <div class="col-11 col-md-10 col-lg-9 pt-2 pb-4 bg-secondary border rounded">
+
+                <form [formGroup]="formGroup" (ngSubmit)="validateForm($event)">
+                    <div class="row form-group justify-content-center px-3 py-3">
+
+
+                        <div class="row pb-4 pb-md-5">
+                            <div class="col-12 col-md-10 col-lg-6 mx-auto mb-md-5">
+
+                                <div class="pb-3">
+                                    <label for="newPersonName" class="form-label">Tu nombre</label>
+                                    <input type="text" class="form-control" id="newPersonName" formControlName="name"
+                                        [ngClass]="{'is-invalid': formControl['name'].errors && formGroup.controls['name'].touched, 'is-valid': formControl['name'].touched && !formControl['name'].errors}">
+
+                                    <div class="invalid-feedback">
+                                        <div *ngIf="formControl['name'].hasError('required')">El nombre no puede faltar
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="pb-3">
+                                    <label for="newPersonEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="newPersonEmail" formControlName="email"
+                                        [ngClass]="{'is-invalid': formControl['email'].errors && formGroup.controls['email'].touched, 'is-valid': formControl['email'].touched && !formControl['email'].errors}">
+
+                                    <div class="invalid-feedback">
+                                        <div *ngIf="formControl['email'].hasError('required')">El email no puede faltar
+                                        </div>
+                                        <div *ngIf="formControl['email'].hasError('email')">Ingresar un mail válido
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="pb-3">
+                                    <label for="newPersonEmail" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="newPersonPassword"
+                                        formControlName="password"
+                                        [ngClass]="{'is-invalid': formControl['password'].errors && formGroup.controls['password'].touched, 'is-valid': formControl['password'].touched && !formControl['password'].errors}">
+
+                                    <div class="invalid-feedback">
+                                        <div *ngIf="formControl['password'].hasError('required')">El password no puede
+                                            faltar
+                                        </div>
+                                        <div *ngIf="formControl['password'].hasError('minlength')">El mínimo es 8
+                                            caracteres
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="row justify-content-center d-flex bg-dark w-auto border rounded p-2 align-items-center">
+
+                            <div class="col-12 col-md-4 col-lg-4 pb-1">
+                                <button type="submit"
+                                    class="btn btn-outline-secondary w-100 text-nowrap text-center mx-1 pe-md-6 shadow">
+                                    Crear Cuenta!
+                                </button>
+                            </div>
+
+                            <div class="col-12 col-md-4 col-lg-4 pb-1">
+                                <button type="button" class="btn btn-outline-light mx-1 w-100"
+                                    (click)="clearForm()">Limpiar
+                                </button>
+                            </div>
+
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <button type="button" [routerLink]="['/index']" fragment="start"
+                                    class="btn btn-outline-danger mx-1 me-auto w-100">
+                                    Cancelar!
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

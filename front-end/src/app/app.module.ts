@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +18,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { IndexComponent } from './components/index/index.component';
 import { Error404Component } from './components/error404/error404.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-// import { LoginComponent } from './components/login/login.component';
 import { SiteMapComponent } from './components/site-map/site-map.component';
 import { StudiesComponent } from './components/studies/studies.component';
 import { NetworksComponent } from './components/networks/networks.component';
@@ -27,7 +26,7 @@ import { ModalEditProjectComponent } from './components/modals/modal-edit-projec
 import { ModalAddProjectComponent } from './components/modals/modal-add-project/modal-add-project.component';
 import { ModalDeleteProjectComponent } from './components/modals/modal-delete-project/modal-delete-project.component';
 import { ModalLogoutComponent } from './components/modals/modal-logout/modal-logout.component';
-//import { StorageService } from './services/storage.service';
+import { NewUserComponent } from './components/new-user/new-user.component';
 
 
 @NgModule({
@@ -46,7 +45,6 @@ import { ModalLogoutComponent } from './components/modals/modal-logout/modal-log
     IndexComponent,
     Error404Component,
     NavbarComponent,
-    // LoginComponent,
     SiteMapComponent,
     StudiesComponent,
     NetworksComponent,
@@ -54,7 +52,8 @@ import { ModalLogoutComponent } from './components/modals/modal-logout/modal-log
     ModalEditProjectComponent,
     ModalAddProjectComponent,
     ModalDeleteProjectComponent,
-    ModalLogoutComponent,    
+    ModalLogoutComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,9 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Person } from '../model/person';
 import { PersonData } from '../model/data';
+import { ResponseMessage } from '../model/data';
 
 
 @Injectable({
@@ -15,26 +16,32 @@ export class AuthenticationService {
 
   currentUserSubject: BehaviorSubject<PersonData>;
 
+  private loggedIn: boolean = false;
+
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<PersonData>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
   }
 
 
-  public login(credentials: any): Observable<HttpResponse<Person>> {
+  // public login(credentials: any): Observable<HttpResponse<Person>> {
+  public login(credentials: any): Observable<Person | ResponseMessage> {
+  // public login(credentials: any): Observable<any> {
 
     console.log("Login service, expected: personId and name from backend");
 
-    return this.httpClient.post<PersonData>(this.url, credentials).pipe(
+    // return this.httpClient.post<PersonData | ResponseMessage>(this.url, credentials).pipe(
+    return this.httpClient.post<PersonData | ResponseMessage>(this.url, credentials).pipe(
       map(response => {
 
         let thePerson: Person = new Person();
+        const res = response as PersonData;
         
-        if (response.id) {
+        if (res.id) {
 
           let personData = {
-            id: response.id,
-            email: response.email,
-            name: response.name
+            id: res.id,
+            email: res.email,
+            name: res.name
           } as PersonData;
           
           thePerson = new Person(personData);
@@ -42,13 +49,20 @@ export class AuthenticationService {
           
           this.currentUserSubject.next(personData);
 
+          this.loggedIn = true;
+
           // return response;        
-          return new HttpResponse({ status: 200, body: thePerson });
+          // return new HttpResponse({ status: 200, body: thePerson });
+          return thePerson as Person;
 
         } else {
 
+          this.loggedIn = false;
+
           sessionStorage.setItem('currentUser', JSON.stringify({}));          
-          return new HttpResponse({ status: 401 });
+          // return new HttpResponse({ status: 401 });
+          const res = response as ResponseMessage;
+          return res;
 
         }
 
@@ -61,10 +75,17 @@ export class AuthenticationService {
   public get authenticatedUser() {
     return this.currentUserSubject.value;
   }  
-
   public set authenticatedUser(user: PersonData) {
     this.currentUserSubject.next(user);
   }
+  
+  public get isLoggedIn(): boolean {
+    return this.loggedIn;
+  }
+  public set isLoggedIn(loggedIn: boolean) {
+    this.loggedIn = loggedIn;
+  }
+
 
 
 }

@@ -93,7 +93,7 @@ export class ModalAddProjectComponent {
         this.isAdded = true;
         this.addEmit(this.isAdded);
         //close modal
-        document.getElementById("modalClose")?.click()
+        document.getElementById("modalAddClose")?.click()
 
         //scroll to the newly created Project
         this.router.navigate(['/index'], { fragment: 'projects' });

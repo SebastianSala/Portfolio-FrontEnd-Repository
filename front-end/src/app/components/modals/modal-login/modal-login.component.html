@@ -32,7 +32,8 @@
 
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Log in</h1>
-                    <button type="button" id="modalLoginClose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" id="modalLoginClose" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
@@ -103,8 +104,8 @@
                                     </div> -->
 
                                     <!-- <div class="d-grid"> -->
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary w-100">
+                                    <div class="mb-3 shadow rounded">
+                                        <button type="submit" class="btn btn-outline-light w-100 shadow border-light border-3 fw-bold">
                                             Iniciar sesión
                                         </button>
                                     </div>
@@ -166,7 +167,12 @@
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button> -->
-                    <a href="" class="text-light">Crear cuenta?</a>
+                    <span class="text-white">No tenés cuenta?
+                        <!-- <a [routerLink]="['/new-user']" data-bs-dismiss="modal" class="text-light"> Crear cuenta nueva</a> -->
+                        <button type="button" [routerLink]="['/new-user']" data-bs-dismiss="modal" class="btn btn-outline-info shadow">
+                            Crear cuenta nueva
+                        </button>
+                    </span>
                 </div>
 
             </div>

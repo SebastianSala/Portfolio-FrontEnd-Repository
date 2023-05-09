@@ -77,7 +77,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
     } else {
       //this is log out, needs to reload
       console.log("False from login State");
-      alert("false from login state")
+      // alert("false from login state")
 
       if (user && user.id) {
         this.isLogged = true;
@@ -149,6 +149,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
   getFirstPerson(email: string) {
     this.personService.getPersonByEmail(email).subscribe({
       next: (res) => {
+        this.thePerson = new Person();
         this.thePerson = res;
         console.log("The first Person to load is: ", this.thePerson);
       },
