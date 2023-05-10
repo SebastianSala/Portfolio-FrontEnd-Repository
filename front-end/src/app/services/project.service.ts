@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Project } from '../model/project';
 import { ProjectData } from '../model/data';
+import { ENVIROMENT } from '../enviroments/enviroment';
 
 
 @Injectable({
@@ -11,7 +12,8 @@ import { ProjectData } from '../model/data';
 export class ProjectService {
 
 
-  private url: string = "http://localhost:8080/project";
+  // private url: string = "http://localhost:8080/project";
+  private  url: string = ENVIROMENT.remoteUrl + '/project';
 
 
   constructor(private httpClient: HttpClient) { }

@@ -7,13 +7,13 @@ import { Error404Component } from './components/error404/error404.component';
 import { GuardGuard } from './services/guard.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/index', pathMatch: 'full' },
-  // { path: 'index', component: IndexComponent, pathMatch: 'full' },
+  { path: '', component: IndexComponent },
   { path: 'index', component: IndexComponent },
   { path: 'new-user', component: NewUserComponent },
   // { path: 'index', component: IndexComponent, pathMatch: 'full', fragment: 'experience' } as Route,
   // { path: 'index', component: IndexComponent, pathMatch: 'full', fragment: 'aboutMe' } as Route,
   // { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: '**', component: Error404Component, canActivate: [GuardGuard] }
 
 ];

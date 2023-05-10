@@ -80,6 +80,7 @@ export class ModalAddProjectComponent {
       next: (data) => {
         console.log("the return of create: ", data);
         this.formGroup.reset();
+        alert(`Proyecto ${data.body} creado`)
       },
 
       error: (err) => {

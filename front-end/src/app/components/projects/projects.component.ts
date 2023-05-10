@@ -55,18 +55,22 @@ export class ProjectsComponent implements OnChanges {
     const personId = this.localPerson?.getId
     console.log("-----From getAllProjects, personId: ", personId);
     
-    this.projectService.getProjectsByPersonId(personId as number).subscribe({
-      // this.projectService.getProjectsByPersonId(personId).subscribe({
-        
-        next: (data) => {
-          this.allProjects = data;
-          console.log("-----From getAllProjects, personId: ", data, data[0].getPerson.getId);
-      },
-      error: (err) => {
-        console.log("Error from getAllProjects, Project Component", err);
-        this.allProjects = [];
-      }
-    });
+    if(personId) {
+      
+      this.projectService.getProjectsByPersonId(personId!).subscribe({
+        // this.projectService.getProjectsByPersonId(personId).subscribe({
+          
+          next: (data) => {
+            this.allProjects = data;
+            console.log("-----From getAllProjects, personId: ", data, data[0].getPerson.getId);
+        },
+        error: (err) => {
+          console.log("Error from getAllProjects, Project Component", err);
+          this.allProjects = [];
+        }
+      });
+      
+    }
 
   }
 
