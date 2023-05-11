@@ -2,6 +2,11 @@
     <header class="row mb-1 pt-3 mx-auto" id="headerId">
 
 
+        <!-- Navbar -->
+        <app-navbar [isLogged]="isLogged"></app-navbar>
+        <!-- /Navbar -->
+
+
         <!-- Redes -->
 
         <!-- Edit -->
@@ -37,11 +42,11 @@
             <!-- Log in -->
             <div class="col-3 col-md-4 text-end px-0 shadow">
                 <a *ngIf="!isLogged" data-bs-toggle="modal" data-bs-target="#modalLogIn"
-                    class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
+                    class="shadow btn btn-outline-secondary py-1 py-md-2 px-2 px-md-3 word-wrap">
                     Log In!
                 </a>
                 <a *ngIf="isLogged" data-bs-toggle="modal" data-bs-target="#modalLogOut"
-                    class="shadow btn btn-outline-primary py-1 py-md-2 px-2 px-md-3 word-wrap">
+                    class="shadow btn btn-outline-danger py-1 py-md-2 px-2 px-md-3 word-wrap">
                     Log out!
                 </a>
             </div>

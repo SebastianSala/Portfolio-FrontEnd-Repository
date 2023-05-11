@@ -18,6 +18,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
   user?: PersonData;
 
   thePerson: Person = new Person();
+  //if no other user logs in, this is the first person to show on the page, Sebastian Sala, since this is the owner of the site.
   firstPerson: PersonData = {
     email: "sebastiansala.dev@gmail.com"
   } as PersonData
@@ -56,7 +57,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
           this.thePerson = res;
         },
         error: (err) => {
-          console.log("Error from login State: ", err);
+          console.log("Error from login State: ", err.error.message);
         },
         complete: () => {
 
@@ -77,7 +78,6 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
     } else {
       //this is log out, needs to reload
       console.log("False from login State");
-      // alert("false from login state")
 
       if (user && user.id) {
         this.isLogged = true;
@@ -85,6 +85,9 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
       } else {
         this.isLogged = false;
         this.setFirstPerson(user.email);
+
+        //navigating to index and top when loggin out
+        this.router.navigate(['/index'], { fragment: 'start' });
       }
 
     }
@@ -93,27 +96,26 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
   private checkLogin(): void {
 
+
     let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser")!);
 
     if (user && user.id) {
 
       this.isLogged = true;
-      console.log("3------log from checklogin-true: ", user, user.id, user.email);
+      //set to load the person from currentUser if it has logged in
       this.setFirstPerson(user.email);
-      console.log("3------log from checklogin-true: ", user, user.id, user.email);
 
     } else {
+
+
       this.isLogged = false;
 
-      // console.log("------log from checklogin-false: ", user, user.email);
-
-
       if (user && user.email) {
+        //if logged out, show the data of the person that has just finished editing the portfolio
         this.setFirstPerson(user.email);
-        console.log("2------log from checklogin-false: ", user, user.email);
-      
-      } else {
 
+      } else {
+        //if there is no email set in current user, it means its the first load of the site, so set the default user to show to Sebastian Sala, since its the owner of the portfolio
         let personData = {
           //id: response.id,
           email: this.firstPerson.email,
@@ -124,32 +126,29 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         sessionStorage.setItem('currentUser', JSON.stringify(tempPerson));
 
         this.authenticationService.authenticatedUser = (personData);
-        // this.currentUserSubject.next(personData);
-        console.log("From checkLogin, initial?: ", this.authenticationService.authenticatedUser);
 
       }
 
+
     }
+
 
   }
 
   setFirstPerson(email: string): void {
-
-    // console.log("the firstPerson and email: ", this.firstPerson, this.firstPerson.email);
-
-    // this.firstPerson.email = JSON.parse(sessionStorage.getItem('email') || JSON.stringify(this.firstPerson));
-    // this.firstPerson.email = JSON.parse(sessionStorage.getItem('email') || '{}').email;
-    console.log("the firstPerson and email: ", this.firstPerson, this.firstPerson.email);
+    // this is the first person that will load in the portfolio regardles of login
     this.firstPerson.email = email;
-    // console.log("the firstPerson and email: ", this.firstPerson, this.firstPerson.email);
-    console.log("the firstPerson and email: ", this.firstPerson, this.firstPerson.email);
   }
 
 
   getFirstPerson(email: string) {
+    
     this.personService.getPersonByEmail(email).subscribe({
+    
       next: (res) => {
+        //reseting the person so it has no garbage data
         this.thePerson = new Person();
+        //assignin the person to show
         this.thePerson = res;
         console.log("The first Person to load is: ", this.thePerson);
       },
@@ -157,8 +156,10 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         console.log("Error from getFirstPerson: ", err);
       },
       complete: () => {
+        //once the person is retrived from the backend, navigato to index to see it.
         this.router.navigate(['/index'], { fragment: 'start' });
       }
+
     });
 
   }

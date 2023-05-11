@@ -12,22 +12,15 @@ import { ENVIROMENT } from '../enviroments/enviroment';
 export class PersonService {
 
 
-  // private url: string = "http://localhost:8080/person"
-  private url: string = ENVIROMENT.remoteUrl + '/person';
+  private url: string = ENVIROMENT.url + '/person';
 
 
   constructor(private httpClient: HttpClient) { }
 
 
-  // public createPerson(person: Person): Observable<HttpResponse<ResponseMessage>> {
   public createPerson(person: Person): Observable<ResponseMessage> {
 
     const theUrl: string = `${this.url}/create`;
-    console.log("From create person, url: ", theUrl);
-
-    console.log("From create person service, person: ", person);
-
-    // return this.httpClient.post<ResponseMessage>(theUrl, person, { observe: "response" });
     return this.httpClient.post<ResponseMessage>(theUrl, person);
 
   }
