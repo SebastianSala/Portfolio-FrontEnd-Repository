@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PersonData } from '../../model/data';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+
 import { Person } from '../../model/person';
 
 
@@ -8,12 +8,12 @@ import { Person } from '../../model/person';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnChanges {
 
 
   @Output() private logged = new EventEmitter<boolean>;
   @Input() isLogged: boolean = false;
-  
+
   @Input() thePerson?: Person;
   localPerson?: Person;
 
@@ -27,36 +27,11 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-    // this.getNameSessionStorage();
-    this.getNameInputVariable();
-  }
-
   ngOnChanges() {
     this.localPerson = this.thePerson;
-    // this.getNameInputVariable();
   }
 
 
-  private getName(): void {
-
-    const tempName: PersonData = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
-
-    this.theName = (tempName && tempName.name
-      ? tempName.name
-      : '');
-
-  }
-  
-
-  private getNameInputVariable(): void {
-
-    let tempName: string = this.thePerson?.getName || "Nombre";
-    this.theName = tempName;
-
-  }
-
-  
   protected isHovering(id: number): void {
     // this.hover = !this.hover;
     switch (id) {

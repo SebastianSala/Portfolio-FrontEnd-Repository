@@ -20,53 +20,53 @@
 
 
             <!-- Navbar links -->
-            <!-- <div class="collapse navbar-collapse mt-1 text-center justify-content-center align-item-center" id="collapsibleNavbar" (mouseleave)="toggleMenu()"> -->
-            <div class="collapse navbar-collapse mt-1 text-center justify-content-center align-item-center"
+            <div class="collapse navbar-collapse text-center justify-content-center align-item-center py-2 py-md-0"
                 id="collapsibleNavbar">
-                <!-- <p class="navbar-text d-block d-md-none">menú</p> -->
 
-                <div class="d-flex">
-                    <div class="d-flex flex-column text-center justify-content-center align-item-center">
-                        <!-- <hr class="w-50"> -->
-                    </div>
-                </div>
-                <ul class="navbar-nav col-12 justify-content-between align-items-center text-shadow-light gap-2 mb-3">
+                
+                <ul class="navbar-nav col-12 justify-content-between align-items-center text-shadow-light gap-2 py-3 py-md-1">
+                    
                     <li class="w-50 nav-item d-flex justify-content-center flex-column">
-                        <!-- <a [routerLink]="['/index']" fragment=""
-                            class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Conoceme!</a> -->
-                        <a [routerLink]="['/index']" fragment="aboutMe"
-                            class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Conoceme!</a>
+                        <button [routerLink]="['/index']" fragment="aboutMe"
+                        class="shadow btn btn-outline-info rounded-pill">Conoceme!</button>
                     </li>
                     <li class="w-50 nav-item d-flex justify-content-center flex-column">
-                        <!-- <a href="#experience"
-                            class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Trabajos</a> -->
-                        <a [routerLink]="['/index']" fragment="experience"
-                            class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Trabajos</a>
-                    </li>
-                    <li class="w-50 nav-item flex-column">
-                        <!-- <a href="#projects"
-                            class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Proyectos</a> -->
-                        <a [routerLink]="['/index']" fragment="projects"
-                            class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Proyectos</a>
-                    </li>
-                    <li class="w-50 nav-item flex-column">
-                        <!-- <a href="#studies"
-                            class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Estudios</a> -->
-                        <a [routerLink]="['/index']" fragment="studies"
-                            class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Estudios</a>
-                    </li>
-                    <li class="w-50 nav-item flex-column">
-                        <!-- <a href="#skills"
-                            class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Habilidades</a> -->
-                        <a [routerLink]="['/index']" fragment="skills"
-                            class="shadow rounded-pill border border-primary nav-link text-primary text-bg-info">Habilidades</a>
+                        <button [routerLink]="['/index']" fragment="experience"
+                        class="shadow btn btn-outline-info rounded-pill">Trabajos</button>
                     </li>
                     <li class="w-50 nav-item d-flex justify-content-center flex-column">
-                        <!-- <a href="#contactMe"
-                            class="shdow rounded-pill border border-primary nav-link text-primary text-bg-info">Contactame</a> -->
-                        <a [routerLink]="['/index']" fragment="contactMe"
-                            class="shdow rounded-pill border border-primary nav-link text-primary text-bg-info">Contactame</a>
+                        <button [routerLink]="['/index']" fragment="projects"
+                        class="shadow btn btn-outline-info rounded-pill">Proyectos</button>
                     </li>
+                    <li class="w-50 nav-item d-flex justify-content-center flex-column">
+                        <button [routerLink]="['/index']" fragment="studies"
+                        class="shadow btn btn-outline-info rounded-pill">Estudios</button>
+                    </li>
+                    <li class="w-50 nav-item d-flex justify-content-center flex-column">
+                        <button [routerLink]="['/index']" fragment="skills"
+                        class="shadow btn btn-outline-info rounded-pill">Habilidades</button>
+                    </li>
+                    <li class="w-50 nav-item d-flex justify-content-center flex-column">
+                        <button [routerLink]="['/index']" fragment="contactMe"
+                            class="shadow btn btn-outline-info rounded-pill">Contactame</button>
+                    </li>
+
+                    <!-- Log in -->
+                    <li class="w-50 nav-item d-flex justify-content-center flex-column">
+
+                        <button *ngIf="!isLogged" data-bs-toggle="modal" data-bs-target="#modalLogIn"
+                            class="shadow btn btn-outline-secondary py-1 py-md-2 px-2 px-md-3 text-nowrap fs-6">
+                            Log In!
+                        </button>
+                        <button *ngIf="isLogged" data-bs-toggle="modal" data-bs-target="#modalLogOut"
+                            class="shadow btn btn-outline-danger py-1 py-md-2 px-2 px-md-3 text-nowrap">
+                            Log out!
+                        </button>                        
+
+                    </li>
+                    <!-- /Log in -->
+
+
                 </ul>
             </div>
             <!-- /Navbar links -->
