@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Person } from '../../../model/person';
-import { ProjectData } from 'src/app/model/data';
-import { Project } from 'src/app/model/project';
-import { ProjectService } from 'src/app/services/project.service';
 import { Router } from '@angular/router';
+
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ProjectService } from '../../../services/project.service';
+
+import { Person } from '../../../model/person';
+import { Project } from '../../../model/project';
+import { ProjectData } from '../../../model/dataTypes';
 
 @Component({
   selector: 'app-modal-add-project',
@@ -45,7 +47,6 @@ export class ModalAddProjectComponent {
 
   protected addEmit(added: boolean) {
     if (added) {
-      console.log("Emiting from modal add: ", added);
       this.addEvent.emit(added);
     }
   }
@@ -55,7 +56,6 @@ export class ModalAddProjectComponent {
 
 
     const projectConstructor: ProjectData = {
-      // const projectConstructor = {
       //setting id to 0 to create a new project instead of updating an existing one
       id: 0,
       name: this.formControl['name'].value,
@@ -65,28 +65,28 @@ export class ModalAddProjectComponent {
       logoUrl: this.formControl['logoUrl'].value,
       imgUrl: this.formControl['imgUrl'].value,
       webUrl: this.formControl['webUrl'].value,
-      person: new Person()
-    }
-
-    //set the person to the only person relevant for this portfolio project
-    //but the backend allows creation of multiple persons with its corresponding projects, experiences, etc and proper relationships between them.
-    // projectConstructor.person.setId = 1;        
-    projectConstructor.person.setId = this.authenticationService.authenticatedUser.id;
+      // assigning the current logged in person, to enforce relationships between entities.
+      person: this.authenticationService.authenticatedUser
+    }        
 
     const theProject = new Project(projectConstructor);
 
+    // this.projectService.createProjectByPersonId(theProject.getPerson.getId!, theProject).subscribe({
     this.projectService.createProjectByPersonId(theProject.getPerson.getId!, theProject).subscribe({
 
       next: (data) => {
-        console.log("the return of create: ", data);
+        // reseting the form after creation
         this.formGroup.reset();
-        alert(`Proyecto ${data.body} creado`)
+        alert(data.message)
       },
 
       error: (err) => {
-        console.log("Error from Create Project addModal: ", err);
-        this.isAdded = false;
+        const message = err.error.message;        
+        console.log(`Error from Create Project addModal: ${message}, status: ${err.status}`);
+        // the user should never see this error
+        alert(`Error from Create Project addModal: ${message}, status: ${err.status}`);
 
+        this.isAdded = false;
       },
 
       complete: () => {
@@ -107,15 +107,11 @@ export class ModalAddProjectComponent {
 
   protected validateForm(event: Event): void {
 
-    console.log("log from onSubmit start");
     event.preventDefault();
-    console.log("log from after prevent default");
 
     if (this.formGroup.valid) {
-      console.log("form validated: ", this.formControl['value']);
       this.onSubmit();
     } else {
-      console.log("form not validated: ", JSON.stringify(this.formControl['value']));
       this.formGroup.markAllAsTouched();
       alert("revisar campos");
     }

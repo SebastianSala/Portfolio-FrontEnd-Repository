@@ -14,13 +14,15 @@
 
         <div class="card border border-light rounded-3 bg-secondary shadow-lg p-2" id="card-aboutme">
             <div class="card-body mt-0">
-                <h4 class="card-title shadow-sm text-white text-shadow-title mb-3">Conoceme!</h4>
+                <h3 class="card-title shadow-sm text-white text-shadow-title mb-3 fw-bold">
+                    Conoceme!
+                </h3>
                 <h6 class="card-subtitle mb-2 text-info shadow-sm mb-3">resumen</h6>
 
 
                 <div *ngFor="let part of aboutMeArray, let even = even">
 
-                    <p class="card-text text-end shadow-sm text-white text-shadow-simple p-3"
+                    <p class="card-text text-end shadow-sm text-white text-shadow-simple fs-5 p-3"
                         [ngClass]="{'text-start': !even, 'text-end': even}">
                         {{part}}
                     </p>

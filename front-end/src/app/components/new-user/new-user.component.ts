@@ -5,7 +5,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 
 import { PersonService } from '../../services/person.service';
 
-import { PersonData, ResponseMessage } from '../../model/data';
+import { PersonData, ResponseMessage } from '../../model/dataTypes';
 import { Person } from '../../model/person';
 
 

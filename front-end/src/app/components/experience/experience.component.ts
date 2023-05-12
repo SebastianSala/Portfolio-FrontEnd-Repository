@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DbService } from '../../services/db.service';
 
-import { Data, DataExperienceProjects } from '../../model/data';
+import { Data, DataExperienceProjects } from '../../model/dataTypes';
 
 
 @Component({

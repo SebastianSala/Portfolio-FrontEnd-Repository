@@ -1,8 +1,8 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Person } from '../model/person';
 import { Observable, map } from 'rxjs';
-import { PersonData, ResponseMessage } from '../model/data';
+import { PersonData, ResponseMessage } from '../model/dataTypes';
 import { ENVIROMENT } from '../enviroments/enviroment';
 
 
@@ -27,32 +27,51 @@ export class PersonService {
 
 
   public getPersons(): Observable<Person[]> {
-    // return this.httpClient.get<Person[]>(this.url + '/list');
-    return this.httpClient.get<PersonData[]>(this.url + '/list').pipe(
-      map(allPersons => allPersons.map(individualPerson => new Person(individualPerson)))
+
+    const theUrl = `${this.url}/list`;
+
+    return this.httpClient.get<PersonData[]>(theUrl).pipe(
+      map(
+        allPersons => allPersons.map(
+          individualPerson => new Person(individualPerson)
+        )
+      )
     )
 
   }
 
 
   public getPersonByEmail(email: string): Observable<Person> {
-    return this.httpClient.get<PersonData>(this.url + `/list/person?email=${email}`).pipe(
-      map(personData => new Person(personData))
+
+    const theUrl = `${this.url}/list/person?email=${email}`
+
+    return this.httpClient.get<PersonData>(theUrl).pipe(
+      map(
+        personData => new Person(personData)
+      )
     )
+
   }
 
 
   public getPersonById(personId: number): Observable<Person> {
-    return this.httpClient.get<PersonData>(this.url + `/list/${personId}`).pipe(
-      map(personData => new Person(personData))
+
+    const theUrl = `${this.url}/list/${personId}`;
+
+    return this.httpClient.get<PersonData>(theUrl).pipe(
+      map(
+        personData => new Person(personData)
+      )
     )
+
   }
 
 
-  public deletePersonById(personId: number): Observable<HttpResponse<JSON>> {
-    const theUrl = this.url + `/delete?id=${personId}`;
-    console.log("deleting person: ", personId, theUrl);
-    return this.httpClient.delete<JSON>(theUrl, { observe: "response" });
+  public deletePersonById(personId: number): Observable<ResponseMessage> {
+
+    const theUrl = `${this.url}/delete?id=${personId}`;
+    return this.httpClient.delete<ResponseMessage>(theUrl);
+
   }
 
 

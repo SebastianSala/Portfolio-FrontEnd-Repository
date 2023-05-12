@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Person } from '../model/person';
-import { PersonData } from '../model/data';
-import { ResponseMessage } from '../model/data';
+import { PersonData } from '../model/dataTypes';
+import { ResponseMessage } from '../model/dataTypes';
 import { ENVIROMENT } from '../enviroments/enviroment';
 
 
@@ -51,7 +51,6 @@ export class AuthenticationService {
 
           this.loggedIn = true;
 
-          // return new HttpResponse({ status: 200, body: thePerson });
           return thePerson as Person;
 
 
@@ -60,7 +59,6 @@ export class AuthenticationService {
           this.loggedIn = false;
 
           sessionStorage.setItem('currentUser', JSON.stringify({}));
-          // return new HttpResponse({ status: 401 });
           const resError = response as ResponseMessage;          
           
           return resError;

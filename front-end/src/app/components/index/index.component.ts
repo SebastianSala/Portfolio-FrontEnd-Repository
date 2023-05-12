@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PersonData } from '../../model/data';
+import { PersonData } from '../../model/dataTypes';
 import { Person } from '../../model/person';
 import { PersonService } from '../../services/person.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -50,9 +50,9 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
     let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser")!);
 
     if (event) {
-      // let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser")!);
       this.personService.getPersonByEmail(user.email).subscribe({
 
+        // Loading the person to show
         next: (res) => {
           this.thePerson = res;
         },
@@ -65,8 +65,12 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
           this.authenticationService.authenticatedUser = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
 
           if (user && user.id) {
+
             this.isLogged = true;
             this.setFirstPerson(user.email);
+
+            console.log("Logged in");
+
           } else {
             this.isLogged = false;
           }
@@ -77,17 +81,21 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
     } else {
       //this is log out, needs to reload
-      console.log("False from login State");
 
       if (user && user.id) {
+
         this.isLogged = true;
         this.setFirstPerson(user.email);
+
+        console.log("Logged in");
+
       } else {
+
         this.isLogged = false;
         this.setFirstPerson(user.email);
-
         //navigating to index and top when loggin out
         this.router.navigate(['/index'], { fragment: 'start' });
+
       }
 
     }
@@ -142,22 +150,24 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
 
   getFirstPerson(email: string) {
-    
+
     this.personService.getPersonByEmail(email).subscribe({
-    
+
       next: (res) => {
         //reseting the person so it has no garbage data
         this.thePerson = new Person();
         //assignin the person to show
         this.thePerson = res;
-        console.log("The first Person to load is: ", this.thePerson);
       },
       error: (err) => {
-        console.log("Error from getFirstPerson: ", err);
+        const message = err.error.message
+        console.log("Error from getFirstPerson: ", message);
+        alert(message);
       },
       complete: () => {
         //once the person is retrived from the backend, navigato to index to see it.
         this.router.navigate(['/index'], { fragment: 'start' });
+        console.log("Firts person loaded");        
       }
 
     });
