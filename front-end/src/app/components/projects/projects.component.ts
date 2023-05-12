@@ -1,10 +1,11 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { ProjectService } from '../../services/project.service';
 
+import { AuthenticationService } from '../../services/authentication.service';
+
 import { Project } from '../../model/project';
 import { Person } from '../../model/person';
-import { AuthenticationService } from '../../services/authentication.service';
 
 
 @Component({
@@ -16,9 +17,8 @@ export class ProjectsComponent implements OnChanges {
 
 
   @Input() isLogged: boolean = false;
-  
+
   @Input() thePerson?: Person;
-  private localPerson?: Person;
 
   allProjects: Project[] = [];
   projectToSend: Project = new Project();
@@ -28,9 +28,9 @@ export class ProjectsComponent implements OnChanges {
 
   }
 
-  
+
   ngOnChanges(): void {
-    this.localPerson = this.thePerson;
+    // Loading projects and watching for changes to reload them
     this.getAllProjects();
   }
 
@@ -38,38 +38,41 @@ export class ProjectsComponent implements OnChanges {
   public reloadProjects(event: boolean): void {
 
     if ((event) = true) {
-      //reset the project to send
+      //reset the project to send after using it
       this.projectToSend = new Project();
 
       //reload the projects from the data base to show
       this.getAllProjects();
     } else {
-      console.log("logging from reload project event, false: ", event);
+      console.log("Not reloading projects: ", event);
     }
   }
 
 
   private getAllProjects(): void {
 
-    // const personId = this.authenticationService.authenticatedUser.id
-    const personId = this.localPerson?.getId
-    console.log("-----From getAllProjects, personId: ", personId);
-    
-    if(personId) {
-      
-      this.projectService.getProjectsByPersonId(personId!).subscribe({
-        // this.projectService.getProjectsByPersonId(personId).subscribe({
-          
-          next: (data) => {
-            this.allProjects = data;
-            console.log("-----From getAllProjects, personId: ", data, data[0].getPerson.getId);
+    const personEmail = this.authenticationService.authenticatedUser.email
+
+    if (personEmail) {
+
+      this.projectService.getProjectsByPersonEmail(personEmail!).subscribe({
+
+        next: (res) => {
+          this.allProjects = res;
         },
+
         error: (err) => {
-          console.log("Error from getAllProjects, Project Component", err);
+          const message = err.error.message;
+          console.log("Error from getAllProjects: ", message);
           this.allProjects = [];
-        }
+        },
+
+        complete: () => {
+          console.log("Projects loaded");
+        },
+
       });
-      
+
     }
 
   }

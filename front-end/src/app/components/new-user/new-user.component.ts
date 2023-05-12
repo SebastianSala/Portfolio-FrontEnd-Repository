@@ -5,7 +5,11 @@ import { AuthenticationService } from '../../services/authentication.service';
 
 import { PersonService } from '../../services/person.service';
 
+<<<<<<< HEAD
 import { PersonData, ResponseMessage } from '../../model/data';
+=======
+import { PersonData, ResponseMessage } from '../../model/dataTypes';
+>>>>>>> feature-refactor-components
 import { Person } from '../../model/person';
 
 

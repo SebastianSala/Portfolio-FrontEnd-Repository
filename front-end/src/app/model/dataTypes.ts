@@ -4,10 +4,6 @@ export interface ResponseMessage extends JSON{
     message: string;
 }
 
-// export interface ResponseMessage {
-//     message: string;
-// }
-
 export interface PersonData {
     id: number;
     name: string;
@@ -30,8 +26,8 @@ export interface ProjectData {
     logoUrl: string;
     imgUrl: string;
     webUrl: string;
-    // person: PersonData;
-    person: Person;
+    person: PersonData;
+    // person: Person;
 }
 
 // export class ProjectClassData {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DbService } from './../../services/db.service';
 
-import { Data, DataSkills } from './../../model/data';
+import { Data, DataSkills } from '../../model/dataTypes';
 
 
 @Component({

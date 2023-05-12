@@ -1,4 +1,4 @@
-import { PersonData } from "./data";
+import { PersonData } from "./dataTypes";
 
 export class Person {
 
@@ -61,7 +61,7 @@ export class Person {
         } else {
             // this.id = id ?? undefined;
             this.id ??= undefined;
-            this.name = name ?? "";            
+            this.name = name ?? "";
             this.title = title ?? "";
             this.email = email ?? "";
             this.password = password ?? "";
@@ -69,7 +69,7 @@ export class Person {
             this.aboutMe = aboutMe ?? "";
             this.imgUrl = imgUrl ?? "";
             this.imgBackUrl = imgBackUrl ?? "";
-            this.webUrl = webUrl ?? "";            
+            this.webUrl = webUrl ?? "";
         }
     }
 

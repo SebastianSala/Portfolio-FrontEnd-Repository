@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from '../../services/db.service';
 
-import { Data, DataContacMe } from '../../model/data';
+import { Data, DataContacMe } from '../../model/dataTypes';
 
 @Component({
   selector: 'app-contact-me',
