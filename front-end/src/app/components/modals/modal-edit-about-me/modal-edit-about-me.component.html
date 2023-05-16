@@ -8,7 +8,8 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">
                     Editar Acerca de mi
                 </h1>
-                <button type="button" class="btn-close" id="modalEditClose" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close" id="modalEditAboutMeClose" data-bs-dismiss="modal"
+                    aria-label="Close">
                 </button>
             </div>
 
@@ -27,7 +28,7 @@
                                 </label>
                                 <textarea class="form-control" id="newAboutMe" rows="3" formControlName="aboutMe"
                                     [ngClass]="{'is-invalid': formControl['aboutMe'].errors && formGroup.controls['aboutMe'].touched, 'is-valid': formControl['aboutMe'].touched && !formControl['aboutMe'].errors}">
-                  </textarea>
+                                </textarea>
 
                                 <div class="invalid-feedback">
                                     <div *ngIf="formControl['aboutMe'].hasError('required')">

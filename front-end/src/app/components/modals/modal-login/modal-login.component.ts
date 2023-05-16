@@ -69,8 +69,6 @@ export class ModalLoginComponent implements OnInit {
 
   sendLogin() {
 
-    console.log("login: ", this.formGroup.value);
-    
 
     this.authenticationService.login(this.formGroup.value).subscribe({
 

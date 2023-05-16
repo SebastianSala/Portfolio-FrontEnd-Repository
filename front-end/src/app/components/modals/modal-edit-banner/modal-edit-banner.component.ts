@@ -94,7 +94,7 @@ export class ModalEditBannerComponent implements OnChanges {
         this.isEdited = true;
         this.editEmit(this.isEdited);
         //close modal
-        document.getElementById("modalEditClose")?.click()
+        document.getElementById("modalEditBannerClose")?.click()
       }
 
     });

@@ -62,19 +62,8 @@ export class ModalEditAboutMeComponent implements OnChanges {
   protected onSubmit() {
 
 
-
-    // const personConstructor = {
-    //   //setting id to personToEdit.getId to update an existing person instead of creating a new one
-    //   // id: this.personToEdit.getId!,
-    //   id: this.thePerson.getId!,
-    //   aboutMe: this.formControl['aboutMe'].value
-    // } as PersonData;
-
-    // const person = new Person(personConstructor);
     this.thePerson.setAboutMe = this.formControl['aboutMe'].value;
 
-    // this.projectService.updateProjectByPersonIdByProjectId(theProject.getPerson.getId!, theProject.getId!, theProject).subscribe({
-    // this.personService.updatePersonById(person.getId!, person).subscribe({
     this.personService.updatePersonById(this.thePerson.getId!, this.thePerson).subscribe({
 
       next: (res) => {
@@ -94,7 +83,7 @@ export class ModalEditAboutMeComponent implements OnChanges {
         this.isEdited = true;
         this.editEmit(this.isEdited);
         //close modal
-        document.getElementById("modalEditClose")?.click()
+        document.getElementById("modalEditAboutMeClose")?.click()
       }
 
     });
