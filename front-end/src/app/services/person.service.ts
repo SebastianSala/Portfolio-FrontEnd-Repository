@@ -68,6 +68,14 @@ export class PersonService {
 
   }
 
+  //http://localhost:8080/person/edit/1
+  public updatePersonById(personId: number, person: Person): Observable<ResponseMessage> {
+
+    const theUrl: string = `${this.url}/edit/${personId}`;
+    return this.httpClient.put<ResponseMessage>(theUrl, person);
+
+  }
+
 
   public deletePersonById(personId: number): Observable<ResponseMessage> {
 

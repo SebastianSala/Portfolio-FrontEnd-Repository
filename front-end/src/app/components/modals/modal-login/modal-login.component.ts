@@ -59,10 +59,9 @@ export class ModalLoginComponent implements OnInit {
       this.sendLogin();
 
     } else {
-      console.log("Log from validate error", this.formGroup.value);
       this.formGroup.get("email")?.markAsTouched();
       this.formGroup.get("password")?.markAsTouched();
-      alert("Mail o contraseña incorrectos")
+      alert("Error. Revisar campos")
     }
 
   }
@@ -70,6 +69,8 @@ export class ModalLoginComponent implements OnInit {
 
   sendLogin() {
 
+    console.log("login: ", this.formGroup.value);
+    
 
     this.authenticationService.login(this.formGroup.value).subscribe({
 
@@ -82,7 +83,7 @@ export class ModalLoginComponent implements OnInit {
         this.logged.emit(false);
       },
       complete: () => {
-        console.log("Login method complete, redirecting to index edit");
+        console.log("Login complete, redirecting to index edit");
 
         this.logged.emit(true);
 

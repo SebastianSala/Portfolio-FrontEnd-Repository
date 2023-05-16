@@ -67,21 +67,19 @@ export class NewUserComponent {
 
       next: (res) => {
         const theMessage = res;
-        console.log("Create person service, next: ", res.message);
+        console.log("Create user: ", res.message);
         alert(theMessage.message);
         alert("Inicie sesión para ver sus datos y editarlos");
         this.formGroup.reset();
       },
 
       error: (err) => {
-        // const theMessage: ResponseMessage = err.error;
         const theMessage: ResponseMessage = err.error;
         console.log("Error from Create person status: ", err.status);
         console.log("Error from Create person message: ", theMessage.message);
         alert(theMessage.message);
 
         this.isPersonCreated = false;
-
       },
 
       complete: () => {
@@ -95,7 +93,7 @@ export class NewUserComponent {
 
     });
 
-    
+
   }
 
 
@@ -107,7 +105,7 @@ export class NewUserComponent {
       this.onSubmit();
     } else {
       this.formGroup.markAllAsTouched();
-      alert("revisar campos");
+      alert("Error. Revisar campos");
     }
 
   }

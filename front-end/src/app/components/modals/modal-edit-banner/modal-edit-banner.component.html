@@ -1,0 +1,140 @@
+<div class="modal fade" id="modalEditBanner" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+
+            <div class="modal-header bg-dark">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Editar Banner
+                </h1>
+                <button type="button" class="btn-close" id="modalEditClose" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+
+
+            <div class="modal-body bg-secondary py-4">
+
+
+                <div>
+                    <form [formGroup]="formGroup" (ngSubmit)="validateForm($event)">
+                        <div class="form-group">
+
+
+                            <div class="mb-3">
+                                <label for="newTitle" class="form-label">
+                                    Nombre
+                                </label>
+                                <input type="text" class="form-control" id="newName" formControlName="name"
+                                    [ngClass]="{'is-invalid': formControl['name'].errors && formGroup.controls['name'].touched, 'is-valid': formControl['name'].touched && !formControl['name'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['name'].hasError('required')">
+                                        El nombre no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="mb-3">
+                                <label for="newTitle" class="form-label">
+                                    Título
+                                </label>
+                                <input type="text" class="form-control" id="newTitle" formControlName="title"
+                                    [ngClass]="{'is-invalid': formControl['title'].errors && formGroup.controls['title'].touched, 'is-valid': formControl['title'].touched && !formControl['title'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['title'].hasError('required')">
+                                        El título no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="mb-3">
+                                <label for="newLocation" class="form-label">
+                                    Ubicación
+                                </label>
+                                <input type="text" class="form-control" id="newLocation" formControlName="location"
+                                    [ngClass]="{'is-invalid': formControl['location'].errors && formGroup.controls['location'].touched, 'is-valid': formControl['location'].touched && !formControl['location'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['location'].hasError('required')">
+                                        La ubicación no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newImgUrl" class="form-label">
+                                    Imágen de perfil
+                                </label>
+                                <input type="text" class="form-control" id="newImgUrl" formControlName="imgUrl"
+                                    [ngClass]="{'is-invalid': formControl['imgUrl'].errors && formGroup.controls['imgUrl'].touched, 'is-valid': formControl['imgUrl'].touched && !formControl['imgUrl'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['imgUrl'].hasError('required')">
+                                        La url de la imagen no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="mb-3">
+                                <label for="newImgBackUrl" class="form-label">
+                                    Imágen de Banner
+                                </label>
+                                <input type="text" class="form-control" id="newImgBackUrl" formControlName="imgBackUrl"
+                                    [ngClass]="{'is-invalid': formControl['imgBackUrl'].errors && formGroup.controls['imgBackUrl'].touched, 'is-valid': formControl['imgBackUrl'].touched && !formControl['imgBackUrl'].errors}">
+
+                                <div class="invalid-feedback fw-bold">
+                                    <div *ngIf="formControl['imgBackUrl'].hasError('required')">
+                                        La url de la imagen de banner no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="mb-3">
+                                <label for="newWebUrl" class="form-label">
+                                    Dirección de tu Web
+                                </label>
+                                <input type="text" class="form-control" id="newWebUrl" formControlName="webUrl"
+                                    [ngClass]="{'is-invalid': formControl['webUrl'].errors && formGroup.controls['webUrl'].touched, 'is-valid': formControl['webUrl'].touched && !formControl['webUrl'].errors}">
+
+                                <div class="invalid-feedback fw-bold">
+                                    <div *ngIf="formControl['webUrl'].hasError('required')">
+                                        La url de la Web no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="modal-footer bg-secondary pt-4">
+
+                                <div class="mx-auto w-100 d-flex justify-content-between">
+                                    <button type="button" class="btn btn-outline-danger mx-1 me-auto"
+                                        data-bs-dismiss="modal">
+                                        Cancelar!
+                                    </button>
+
+                                    <button type="submit" class="btn btn-outline-info mx-1">
+                                        Actualizar!
+                                    </button>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -59,8 +59,8 @@ export class Person {
             this.webUrl = webUrl;
             return;
         } else {
-            // this.id = id ?? undefined;
-            this.id ??= undefined;
+            // this.id ??= undefined;
+            this.id = id ?? undefined;
             this.name = name ?? "";
             this.title = title ?? "";
             this.email = email ?? "";
@@ -72,125 +72,6 @@ export class Person {
             this.webUrl = webUrl ?? "";
         }
     }
-
-    // constructor();
-    // constructor(data: PersonData);
-    // constructor(id: number | undefined, name: string, title: string, email: string, password: string, location: string, aboutMe: string, imgUrl: string, imgBackUrl: string, webUrl: string);
-    // constructor(
-    //     dataOrIdOrUndefined?: PersonData | number,
-    //     name?: string,
-    //     title?: string,
-    //     email?: string,
-    //     password?: string,
-    //     location?: string,
-    //     aboutMe?: string,
-    //     imgUrl?: string,
-    //     imgBackUrl?: string,
-    //     webUrl?: string
-    // ) {
-
-    //     if (typeof dataOrIdOrUndefined === undefined) {
-    //         this.id = undefined;
-    //         this.name = "";
-    //         this.title = "";
-    //         this.email = "";
-    //         this.password = "";
-    //         this.location = "";
-    //         this.aboutMe = "";
-    //         this.imgUrl = "";
-    //         this.imgBackUrl = "";
-    //         this.webUrl = "";
-    //     }
-
-    //     if (typeof dataOrIdOrUndefined === 'object') {
-    //         const {
-    //             id,
-    //             name,
-    //             title,
-    //             email,
-    //             password,
-    //             location,
-    //             aboutMe,
-    //             imgUrl,
-    //             imgBackUrl,
-    //             webUrl,
-    //         } = dataOrIdOrUndefined;
-    //         this.id = id as number;
-    //         this.name = name;
-    //         this.title = title;
-    //         this.email = email;
-    //         this.password = password;
-    //         this.location = location;
-    //         this.aboutMe = aboutMe;
-    //         this.imgUrl = imgUrl;
-    //         this.imgBackUrl = imgBackUrl;
-    //         this.webUrl = webUrl;
-    //     } else {
-    //         this.id = dataOrIdOrUndefined;
-    //         this.name = name!;
-    //         this.title = title!;
-    //         this.email = email!;
-    //         this.password = password!;
-    //         this.location = location!;
-    //         this.aboutMe = aboutMe!;
-    //         this.imgUrl = imgUrl!;
-    //         this.imgBackUrl = imgBackUrl!;
-    //         this.webUrl = webUrl!;
-    //     }
-    // }
-
-
-    // constructor(name: string, title: string, email: string, password: string, location: string, aboutMe: string, imgUrl: string, imgBackUrl: string, webUrl: string) {
-
-    //     this.name = name;
-    //     this.title = title;
-
-    //     this.email = email;
-    //     this.password = password;
-    //     this.location = location;
-    //     this.aboutMe = aboutMe;
-    //     this.imgUrl = imgUrl;
-    //     this.imgBackUrl = imgBackUrl;
-    //     this.webUrl = webUrl;
-
-    // }
-
-    // constructor(data: PersonData) {
-    //     const {
-    //         id,
-    //         name,
-    //         title,
-    //         email,
-    //         password,
-    //         location,
-    //         aboutMe,
-    //         imgUrl,
-    //         imgBackUrl,
-    //         webUrl,
-    //     } = data;
-
-    //     this.id = id;
-    //     this.name = name;
-    //     this.title = title;
-    //     this.email = email;
-    //     this.password = password;
-    //     this.location = location;
-    //     this.aboutMe = aboutMe;
-    //     this.imgUrl = imgUrl;
-    //     this.imgBackUrl = imgBackUrl;
-    //     this.webUrl = webUrl;
-    // }
-
-
-    //   public get getAboutMe(): string {
-    //     return this.aboutMe;
-    // }
-
-    //   public set setAboutMe(aboutMe: string) {
-    //     this.aboutMe = aboutMe;
-    // }
-
-
 
 
     public get getId(): number | undefined {
@@ -204,7 +85,7 @@ export class Person {
     public get getName(): string {
         return this.name;
     }
-    public set SetName(value: string) {
+    public set setName(value: string) {
         this.name = value;
     }
 
@@ -226,7 +107,7 @@ export class Person {
 
 
     public get getPassword(): string {
-        return this.password;
+        return this.password!;
     }
     public set setPassword(password: string) {
         this.password = password;

@@ -5,16 +5,16 @@
     <div class="modal-content">
 
 
-      <div class="modal-header">
+      <div class="modal-header bg-dark">
         <h1 class="modal-title fs-5" id="staticBackdropLabel">
           Agregar Proyecto
         </h1>
         <button type="button" class="btn-close" id="modalAddClose" data-bs-dismiss="modal" aria-label="Close">
         </button>
       </div>
-      
 
-      <div class="modal-body">
+
+      <div class="modal-body bg-secondary py-4">
 
 
         <div>
@@ -128,15 +128,18 @@
                 </div>
               </div>
 
-              <div class="mx-auto d-flex">
-                <button type="button" class="btn btn-outline-danger mx-1 me-auto" data-bs-dismiss="modal">
-                  Cancelar!
-                </button>
+              <div class="modal-footer bg-secondary pt-4">
 
-                <button type="button" class="btn btn-outline-light mx-1" (click)="clearForm()">Limpiar</button>
-                <button type="submit" class="btn btn-outline-secondary mx-1">
-                  Crear Proyecto!
-                </button>
+                <div class="mx-auto w-100 d-flex justify-content-between">
+                  <button type="button" class="btn btn-outline-danger mx-1 me-auto" data-bs-dismiss="modal">
+                    Cancelar!
+                  </button>
+
+                  <button type="button" class="btn btn-outline-light mx-1" (click)="clearForm()">Limpiar</button>
+                  <button type="submit" class="btn btn-outline-info mx-1">
+                    Crear Proyecto!
+                  </button>
+                </div>
 
               </div>
 
@@ -144,7 +147,7 @@
             </div>
           </form>
         </div>
-        
+
 
       </div>
 

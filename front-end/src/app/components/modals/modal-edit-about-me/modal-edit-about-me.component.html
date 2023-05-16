@@ -1,0 +1,66 @@
+<div class="modal fade" id="modalEditAboutMe" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+
+            <div class="modal-header bg-dark">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Editar Acerca de mi
+                </h1>
+                <button type="button" class="btn-close" id="modalEditClose" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+
+
+            <div class="modal-body bg-secondary py-4">
+
+
+                <div>
+                    <form [formGroup]="formGroup" (ngSubmit)="validateForm($event)">
+                        <div class="form-group">
+
+
+                            <div class="mb-3">
+                                <label for="newAboutMe" class="form-label">
+                                    Acerca de mi
+                                </label>
+                                <textarea class="form-control" id="newAboutMe" rows="3" formControlName="aboutMe"
+                                    [ngClass]="{'is-invalid': formControl['aboutMe'].errors && formGroup.controls['aboutMe'].touched, 'is-valid': formControl['aboutMe'].touched && !formControl['aboutMe'].errors}">
+                  </textarea>
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['aboutMe'].hasError('required')">
+                                        El texto acerca de mi no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="modal-footer bg-secondary pt-4">
+
+                                <div class="mx-auto w-100 d-flex justify-content-between">
+                                    <button type="button" class="btn btn-outline-danger mx-1 me-auto"
+                                        data-bs-dismiss="modal">
+                                        Cancelar!
+                                    </button>
+
+                                    <button type="submit" class="btn btn-outline-info mx-1">
+                                        Actualizar!
+                                    </button>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
