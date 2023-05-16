@@ -41,4 +41,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-../back-end
+.firebase/
+.vscode/
+.firebaserc
+firebase.json
