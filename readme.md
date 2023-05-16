@@ -34,11 +34,13 @@ Este es el frontend Single Page Aplication para el portfolio personal hecho con 
 
 
 ## Actualmente implementando:
+
 * Accesibilidad y temas de alto contraste
 * Estus de "cargando" para indicar al usuario que su acción se llevo a cabo y se está esperando la respuesta del servidor
 
 
 ## Desarrollador
+
 * Sebastián Sala - *Diseño e implementación del Sistema*
 
 
