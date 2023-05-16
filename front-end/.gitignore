@@ -44,5 +44,9 @@ Thumbs.db
 .firebase/
 .vscode/
 .firebaserc
+<<<<<<< HEAD
 firebase.json
 .angular/
+=======
+firebase.json
+>>>>>>> feature-refactor-components
