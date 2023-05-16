@@ -2,43 +2,91 @@
     <div class="row mt-3 mx-auto">
 
 
-        <!-- Edit -->
-        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="isLogged">
+        <!-- Admin Add/Edit/Delete -->
+        <div class="row mx-auto px-0 bg-dark border border-danger rounded-3 my-1" *ngIf="this.isLogged">
             <div class="col-12 text-end text-primary">
-                <i class="fas fa-pen-to-square fa-2x p-1"></i>
-                <i class="fas fa-trash fa-2x p-1"></i>
+
+                <!-- Edit -->
+                <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
+                    data-bs-target="#modalEditBanner">
+                    <i class="fas fa-pen-to-square fa-2x p-1"></i>
+                </button>
+
+                <app-modal-edit-banner [personToEdit]="thePerson"
+                    (editEvent)="reloadPerson($event)"></app-modal-edit-banner>
+                <!-- /Edit -->
+              
             </div>
         </div>
-        <!-- /Edit -->
+        <!-- /Admin Add/Edit/Delete -->
 
 
-        <div
-            class=" bg-secondary card border border-dark border-bottom-0 rounded-0 rounded-top d-flex flex-sm-col align-items-baseline">
+        <div class="row mx-auto px-0">
+            <div
+                class="bg-secondary card border border-dark border-bottom-0 rounded-3 pb-3 rounded-top d-flex flex-sm-col align-items-baselin">
 
-            <div class="card-header w-100 border-bottom-0">
-                <img class="card-img-top d-block mx-auto px-3 pt-2" [src]="localPerson?.getImgBackUrl" id="img-about">
-            </div>
 
-            <div class="card-body mt-n5">
-                <div>
-
-                    <div
-                        class="mb-3 border border-2 border-light rounded-circle overflow-hidden col-6 col-sm-6  d-block mx-auto mx-sm-4 shadow-lg">
-                        <img class="img-fluid" [src]="localPerson?.getImgUrl" id="img-about">
-                    </div>
-
+                <div class="card-header border-bottom-0">
+                    <img class="card-img-top d-block mx-auto px-3 pt-2" [src]="localPerson?.getImgBackUrl"
+                        id="img-about">
                 </div>
+
+
+                <div class="card-body mt-n5">
+                    <div>
+
+                        <div
+                            class="mb-3 border border-2 border-light rounded-circle overflow-hidden col-7 col-sm-6 col-md-4 d-block mx-auto mx-sm-4 shadow-lg">
+                            <img class="img-fluid" [src]="localPerson?.getImgUrl" id="img-about" alt="foto de perfil de {{localPerson?.getName}}">
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="card-footer w-100 rounded-3">
+                    <div class="bg-dark border border-top-0 border-dark rounded-bottom rounded-3">
+
+                        <div class="row mx-3">
+                            <div class="col-12 d-flex justify-content-end justify-content-md-start mt-3">
+
+                                <div class="card border-0 bg-secondary px-3 py-1">
+                                    <h5
+                                        class="card-title text-center bg-secondary text-white border border-secondary rounded">
+                                        {{localPerson?.getName}}
+                                    </h5>
+                                    <h6 class="card-subtitle text-muted text-end text-lightgreen text-shadow-light">
+                                        Portfolio
+                                    </h6>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 me-auto">
+
+                                <div class="text-white fs-5 p-3 w-100">
+                                    <p class="d-flex justify-content-end justify-content-md-start">
+                                        {{localPerson?.getTitle}}</p>
+                                    <p class="text-center">{{localPerson?.getLocation}}</p>
+                                    <div class="col-12 d-flex justify-content-start justify-content-md-end py-3">
+                                        <a class="btn btn-outline-info px-5" [href]="localPerson?.getWebUrl" target="_blank">
+                                            Mi Web
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
             </div>
 
-        </div>
 
-
-        <div class="d-flex justify-content-end bg-dark border border-top-0 border-dark rounded-bottom">
-            <div class="card row-cols-1 border-0 pe-2 pb-2 m-3 bg-secondary">
-                <h5 class="card-title col-sm-12 text-center bg-secondary text-white border border-secondary rounded">
-                    {{localPerson?.getName}}</h5>
-                <h6 class="card-subtitle text-muted text-end text-lightgreen text-shadow-light">Portfolio</h6>
-            </div>
         </div>
 
 

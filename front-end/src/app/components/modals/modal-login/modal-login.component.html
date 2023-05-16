@@ -1,28 +1,3 @@
-<!-- <div class="row px-0 mx-auto"> -->
-
-
-<!-- Navbar -->
-<!-- <app-navbar></app-navbar> -->
-<!-- /Navbar -->
-
-<!-- <div class="d-grid mt-4">
-        <button routerLink="/" class="btn btn-dark">Volver</button>
-    </div> -->
-
-<!-- <app-imagen></app-imagen> -->
-<!-- Header -->
-<!-- <app-header></app-header> -->
-<!-- /Header -->
-
-
-
-
-
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-    </button> -->
-
 <div class="d-flex align-items-center">
     <!-- Modal -->
     <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modalLogIn" tabindex="-1"
@@ -30,11 +5,13 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content modal-fullscreen-md-down bg-primary">
 
+
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Log in</h1>
                     <button type="button" id="modalLoginClose" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
+
 
                 <div class="modal-body">
 
@@ -60,15 +37,11 @@
 
                                     <div class="mb-4">
                                         <label for="email" class="form-label">Correo electrónico</label>
-                                        <!-- <input type="email" class="form-control" name="email"
-                                            placeholder="ej: usuario@mail.com" formControlName="email"
-                                            [class.border-danger]="EmailInvalid"> -->
                                         <input type="email" class="form-control" name="email"
                                             placeholder="ej: usuario@mail.com" formControlName="email"
                                             [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}">
 
                                         <div class="invalid-feedback fw-bold">
-                                            <!-- <p *ngIf="Email?.hasError('required')" class="border border-warning"> -->
                                             <span *ngIf="Email?.hasError('required')" class="">
                                                 Email es requerido
                                             </span>
@@ -86,9 +59,7 @@
                                             [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}">
 
                                         <div class="invalid-feedback fw-bold">
-                                            <!-- <p *ngIf="( Password?.hasError('required') || Password?.hasError('minlength') )" -->
                                             <span *ngIf="( Password?.hasError('required') )">
-                                                <!-- <p *ngIf="( PasswordInvalid )" class="border border-warning"> -->
                                                 El password es requerido
                                             </span>
                                             <span *ngIf="Password?.hasError('minlength')">
@@ -98,91 +69,41 @@
 
                                     </div>
 
-                                    <!-- <div class="mb-4 form-check">
-                                        <input type="checkbox" name="connected" class="form-check-input">
-                                        <label for="connected" class="form-check-label">Mantenerme conectado</label>
-                                    </div> -->
-
-                                    <!-- <div class="d-grid"> -->
-                                    <div class="mb-3 shadow rounded">
-                                        <button type="submit" class="btn btn-outline-light w-100 shadow border-light border-3 fw-bold">
+                                    
+                                    <div class="mb-3 shadow rounded d-flex">
+                                        <button type="button" class="btn btn-outline-danger shadow border-3 fw-bold me-auto" data-bs-dismiss="modal">
+                                            Volver
+                                        </button>
+                                        
+                                        <button type="submit" class="btn btn-outline-light shadow border-light border-3 fw-bold ms-auto">
                                             Iniciar sesión
                                         </button>
                                     </div>
-
-                                    <!-- <div class="my-3">
-                                        <span>No tienes cuenta? <a class="text-dark" href="#">Regístrate</a></span>
-                                        <br>
-                                        <span><a class="text-dark" href="#">Recuperar password</a></span>
-                                    </div> -->
+                                    
 
                                 </form>
 
-                                <!-- LOGIN CON REDES SOCIALES -->
-                                <!-- <div class="container w-100 my-5">
-                                    <div class="row text-center">
-                                        <div class="col-12">Iniciar sesión</div>
-                                    </div>
-                                    <div class="row">
-                
-                                        <div class="col">
-                                            <button class="btn btn-outline-dark w-100 my-1">
-                                                <div class="row align-items-center">
-                                                    <div class="col-2 d-none d-md-block">
-                                                        <img src="./../../../assets/img/favicon.png" width="32" alt="Facebook">
-                                                    </div>
-                                                    <div class="col-12 col-md-10 text-center">
-                                                        Facebook
-                                                    </div>
-                                                </div>
-                                            </button>
-                                        </div>
-                                        <div class="col">
-                                            <button class="btn btn-outline-danger w-100 my-1">
-                                                <div class="row align-items-center">
-                                                    <div class="col-2 d-none d-md-block">
-                                                        <img src="./../../../assets/img/favicon.png" width="32" alt="Google">
-                                                    </div>
-                                                    <div class="col-12 col-md-10 text-center">
-                                                        Google
-                                                    </div>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </div>
-                
-                                </div> -->
-                                <!-- /LOGIN CON REDES SOCIALES -->
-
                             </div>
-
 
                         </div>
 
-
                     </div>
+
 
                 </div>
 
+
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button> -->
                     <span class="text-white">No tenés cuenta?
-                        <!-- <a [routerLink]="['/new-user']" data-bs-dismiss="modal" class="text-light"> Crear cuenta nueva</a> -->
                         <button type="button" [routerLink]="['/new-user']" data-bs-dismiss="modal" class="btn btn-outline-info shadow">
                             Crear cuenta nueva
                         </button>
                     </span>
                 </div>
+                
 
             </div>
         </div>
     </div>
 
 </div>
-
-
-<!-- <app-footer></app-footer> -->
-
-
-<!-- </div> -->

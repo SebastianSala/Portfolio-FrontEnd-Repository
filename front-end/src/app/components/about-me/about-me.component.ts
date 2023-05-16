@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
 import { Person } from '../../model/person';
 
@@ -9,6 +9,7 @@ import { Person } from '../../model/person';
 })
 export class AboutMeComponent implements OnChanges {
 
+  @Output() changed = new EventEmitter<boolean>();
 
   @Input() isLogged: boolean = false;
 
@@ -30,18 +31,21 @@ export class AboutMeComponent implements OnChanges {
   }
 
 
-  public splitAboutMe(): void {
+  private splitAboutMe(): void {
 
     this.aboutMeSplit = this.localPerson?.getAboutMe;
-    console.log(this.aboutMeSplit);
-    
-    if(this.aboutMeSplit) {
+
+    if (this.aboutMeSplit) {
       this.aboutMeSplit = this.aboutMeSplit.trim();
-      this.aboutMeArray = this.aboutMeSplit.split("/");
-      console.log(this.aboutMeSplit);
-      console.log(this.aboutMeArray);
+      // split the string by "." So every new paragraph is displayed with different alignment
+      this.aboutMeArray = this.aboutMeSplit.split(".");
     }
 
+  }
+
+
+  protected reloadPerson(event: boolean) {
+    this.changed.emit(event);
   }
 
 

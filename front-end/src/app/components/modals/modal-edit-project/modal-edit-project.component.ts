@@ -62,7 +62,7 @@ export class ModalEditProjectComponent implements OnChanges {
       this.onSubmit();
     } else {
       this.formGroup.markAllAsTouched();
-      alert("revisar campos");
+      alert("Error. Revisar campos");
     }
 
   }
@@ -92,7 +92,6 @@ export class ModalEditProjectComponent implements OnChanges {
     this.projectService.updateProjectByPersonIdByProjectId(theProject.getPerson.getId!, theProject.getId!, theProject).subscribe({
 
       next: (res) => {
-        console.log("-- Return of edit project: ", res.message);
         alert(res.message);
       },
 

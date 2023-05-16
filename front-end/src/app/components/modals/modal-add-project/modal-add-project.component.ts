@@ -84,7 +84,7 @@ export class ModalAddProjectComponent {
         const message = err.error.message;        
         console.log(`Error from Create Project addModal: ${message}, status: ${err.status}`);
         // the user should never see this error
-        alert(`Error from Create Project addModal: ${message}, status: ${err.status}`);
+        alert(`Error Creating Project: ${message}, status: ${err.status}`);
 
         this.isAdded = false;
       },
@@ -113,7 +113,7 @@ export class ModalAddProjectComponent {
       this.onSubmit();
     } else {
       this.formGroup.markAllAsTouched();
-      alert("revisar campos");
+      alert("Error. Revisar campos");
     }
 
   }

@@ -18,7 +18,7 @@ export class ProjectsComponent implements OnChanges {
 
   @Input() isLogged: boolean = false;
 
-  @Input() thePerson?: Person;
+  // @Input() thePerson?: Person;
 
   allProjects: Project[] = [];
   projectToSend: Project = new Project();
@@ -51,7 +51,7 @@ export class ProjectsComponent implements OnChanges {
 
   private getAllProjects(): void {
 
-    const personEmail = this.authenticationService.authenticatedUser.email
+    const personEmail = this.authenticationService.authenticatedUser.email;
 
     if (personEmail) {
 
@@ -63,16 +63,19 @@ export class ProjectsComponent implements OnChanges {
 
         error: (err) => {
           const message = err.error.message;
-          console.log("Error from getAllProjects: ", message);
+          console.log("Error retrieving projects: ", message);
           this.allProjects = [];
         },
 
         complete: () => {
-          console.log("Projects loaded");
+          console.log("Ok. Projects loaded");
         },
 
       });
 
+    } else {
+      console.log("Error. No person to load projects from");
+      
     }
 
   }

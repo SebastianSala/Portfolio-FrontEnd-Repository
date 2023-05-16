@@ -1,15 +1,24 @@
 <article id="aboutMe">
     <div class="row mx-auto my-5 pt-8">
+        
 
-
-        <!-- Edit -->
-        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.isLogged">
+        <!-- Admin Add/Edit/Delete -->
+        <div class="row mx-auto px-0 bg-dark border border-danger rounded-3 my-1" *ngIf="this.isLogged">
             <div class="col-12 text-end text-primary">
-                <i class="fas fa-pen-to-square fa-2x p-1"></i>
-                <i class="fas fa-trash fa-2x p-1"></i>
+
+                <!-- Edit -->
+                <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
+                    data-bs-target="#modalEditAboutMe">
+                    <i class="fas fa-pen-to-square fa-2x p-1"></i>
+                </button>
+
+                <app-modal-edit-about-me [personToEdit]="thePerson"
+                    (editEvent)="reloadPerson($event)"></app-modal-edit-about-me>
+                <!-- /Edit -->                
+
             </div>
         </div>
-        <!-- /Edit -->
+        <!-- /Admin Add/Edit/Delete -->
 
 
         <div class="card border border-light rounded-3 bg-secondary shadow-lg p-2" id="card-aboutme">

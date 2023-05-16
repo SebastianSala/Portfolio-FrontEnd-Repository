@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
 import { Person } from '../../model/person';
 
@@ -10,7 +10,8 @@ import { Person } from '../../model/person';
 })
 export class BannerComponent implements OnChanges {
 
-  // modoEdit: boolean = true;
+  @Output() changed = new EventEmitter<boolean>();
+
   @Input() isLogged: boolean = false;
   @Input() thePerson?: Person;
   localPerson?: Person;
@@ -25,5 +26,10 @@ export class BannerComponent implements OnChanges {
     this.localPerson = this.thePerson;
   }
 
+
+  protected reloadPerson(event: boolean) {
+    this.changed.emit(event);
+  }
+  
 
 }

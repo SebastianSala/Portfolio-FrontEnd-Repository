@@ -77,7 +77,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
         }
 
-      })
+      });
 
     } else {
       //this is log out, needs to reload
@@ -87,7 +87,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 >>>>>>> feature-refactor-components
 
       if (user && user.id) {
-
+        // In the case is was not log out but page reload
         this.isLogged = true;
         this.setFirstPerson(user.email);
 
@@ -183,7 +183,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
       complete: () => {
         //once the person is retrived from the backend, navigato to index to see it.
         this.router.navigate(['/index'], { fragment: 'start' });
-        console.log("Firts person loaded");        
+        console.log("First person loaded");
       }
 
     });

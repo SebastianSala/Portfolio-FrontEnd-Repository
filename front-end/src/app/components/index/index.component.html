@@ -9,7 +9,7 @@
         <!-- /Header -->
 
         <!-- Banner / Hero section -->
-        <app-banner [isLogged]="isLogged" [thePerson]="thePerson"></app-banner>
+        <app-banner [isLogged]="isLogged" [thePerson]="thePerson" (changed)="loginState($event)"></app-banner>
         <!-- /Banner / Hero section -->
 
         <!-- HR -->
@@ -17,7 +17,7 @@
         <!-- /HR -->
 
         <!-- About Me -->
-        <app-about-me [isLogged]="isLogged" [thePerson]="thePerson"></app-about-me>
+        <app-about-me [isLogged]="isLogged" [thePerson]="thePerson" (changed)="loginState($event)"></app-about-me>
         <!-- /About Me -->
 
         <!-- HR -->

@@ -27,6 +27,8 @@ import { ModalAddProjectComponent } from './components/modals/modal-add-project/
 import { ModalDeleteProjectComponent } from './components/modals/modal-delete-project/modal-delete-project.component';
 import { ModalLogoutComponent } from './components/modals/modal-logout/modal-logout.component';
 import { NewUserComponent } from './components/new-user/new-user.component';
+import { ModalEditAboutMeComponent } from './components/modals/modal-edit-about-me/modal-edit-about-me.component';
+import { ModalEditBannerComponent } from './components/modals/modal-edit-banner/modal-edit-banner.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { NewUserComponent } from './components/new-user/new-user.component';
     ModalDeleteProjectComponent,
     ModalLogoutComponent,
     NewUserComponent,
+    ModalEditAboutMeComponent,
+    ModalEditBannerComponent,
   ],
   imports: [
     BrowserModule,
