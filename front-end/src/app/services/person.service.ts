@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Person } from '../model/person';
 import { Observable, map } from 'rxjs';
 import { PersonData, ResponseMessage } from '../model/dataTypes';
-import { ENVIROMENT } from '../enviroments/enviroment';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -12,7 +12,7 @@ import { ENVIROMENT } from '../enviroments/enviroment';
 export class PersonService {
 
 
-  private url: string = ENVIROMENT.url + '/person';
+  private url: string = environment.URL + '/person';
 
 
   constructor(private httpClient: HttpClient) {

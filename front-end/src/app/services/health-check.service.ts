@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { ResponseMessage } from '../model/dataTypes';
 
-import { ENVIROMENT } from '../enviroments/enviroment';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -14,7 +14,7 @@ export class HealthCheckService {
 
 
   // Health check path that returns in JSON format
-  private url: string = ENVIROMENT.url + '/check';
+  private url: string = environment.URL + '/check';
 
 
   constructor(private httpClient: HttpClient) {

@@ -9,6 +9,14 @@
     "test": "ng test"
   },
   "private": true,
+  "overrides": {
+    "@angular-devkit/build-angular": {
+      "critters": {
+        "css-select": "4.2.1",
+        "domhandler": "^4.3.1"
+      }
+    }
+  },
   "dependencies": {
     "@angular/animations": "^15.2.0",
     "@angular/common": "^15.2.0",

@@ -4,7 +4,7 @@ import firebase from 'firebase/compat/app';
 
 import 'firebase/compat/storage';
 
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment.development';
 // import 'firebase/compat/auth';
 //import 'firebase/compat/firestore';
 

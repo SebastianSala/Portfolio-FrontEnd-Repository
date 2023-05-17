@@ -1,5 +1,5 @@
 export const environment = {
-    production: true,
+    production: false,
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     firebaseConfig: {
         apiKey: "AIzaSyBstgkUbYg_1Dhm_H97HVsu4PlqGw6B8uY",
@@ -10,5 +10,5 @@ export const environment = {
         appId: "1:610419173463:web:9dfca06946a8e4fd8e1b12",
         measurementId: "G-GHE0PLYSPL"
     },
-    URL: 'https://portfolio-backend-ss.onrender.com'
+    URL: 'http://localhost:8080',
 } 

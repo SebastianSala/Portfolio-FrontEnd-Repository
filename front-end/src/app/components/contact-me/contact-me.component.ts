@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { DbService } from '../../services/db.service';
+import { Component, OnChanges, OnInit } from '@angular/core';
 
-import { Data, DataContacMe } from '../../model/dataTypes';
+import { ChangeEventService } from '../../services/change-event.service';
+
+import { Person } from '../../model/person';
+
 
 @Component({
   selector: 'app-contact-me',
@@ -10,20 +12,37 @@ import { Data, DataContacMe } from '../../model/dataTypes';
 })
 export class ContactMeComponent implements OnInit {
 
-  dContactMe?: DataContacMe;   
 
-  constructor(private db: DbService) {
+  protected thePerson?: Person;
+
+
+  constructor(private changeEvent: ChangeEventService) {
 
   }
+
 
   ngOnInit(): void {
-    this.db.getData().subscribe(
-      data => {
-        // usando aliases para tener la información de tipos y autocompletado de typescript y hacer más robusta la app
-        const datos = data as Data;
-        this.dContactMe = datos.ContactMe
-      }
-    )
+    this.updatePerson();
   }
+
+
+  private updatePerson() {
+
+
+    this.changeEvent.changedPerson.subscribe({
+
+      next: (res: Person) => {
+        this.thePerson = res;
+      },
+
+      error: (err: any) => {
+        console.log("Error. contactme updatePerson", err);
+      }
+      
+    });
+
+
+  }
+
 
 }

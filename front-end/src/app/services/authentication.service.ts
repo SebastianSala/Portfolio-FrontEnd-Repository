@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Person } from '../model/person';
 import { PersonData } from '../model/dataTypes';
 import { ResponseMessage } from '../model/dataTypes';
-import { ENVIROMENT } from '../enviroments/enviroment';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ import { ENVIROMENT } from '../enviroments/enviroment';
 export class AuthenticationService {
 
 
-  private url = ENVIROMENT.url + '/person/login';
+  private url = environment.URL + '/person/login';
 
   currentUserSubject: BehaviorSubject<PersonData>;
 

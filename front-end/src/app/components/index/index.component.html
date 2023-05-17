@@ -5,7 +5,7 @@
         <!-- <app-imagen></app-imagen> -->
 
         <!-- Header -->
-        <app-header (logged)="loginState($event)" [isLogged]="isLogged" [thePerson]="thePerson"></app-header>
+        <app-header [isLogged]="isLogged" [thePerson]="thePerson" (logged)="loginState($event)"></app-header>
         <!-- /Header -->
 
         <!-- Banner / Hero section -->
@@ -24,9 +24,9 @@
         <app-hr></app-hr>
         <!-- /HR -->
 
-        <!-- Studies -->
-        <app-studies></app-studies>
-        <!-- /Studies -->
+        <!-- Projects -->
+        <app-projects [isLogged]="isLogged"></app-projects>
+        <!-- /Projects -->
 
         <!-- HR -->
         <app-hr></app-hr>
@@ -40,10 +40,9 @@
         <app-hr></app-hr>
         <!-- /HR -->
 
-        <!-- Projects -->
-        <!-- <app-projects [isLogged]="isLogged" [thePerson]="thePerson"></app-projects> -->
-        <app-projects [isLogged]="isLogged"></app-projects>
-        <!-- /Projects -->
+        <!-- Studies -->
+        <app-studies></app-studies>
+        <!-- /Studies -->
 
         <!-- HR -->
         <app-hr></app-hr>

@@ -1,9 +1,12 @@
 import { AfterViewInit, Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { PersonService } from '../../services/person.service';
+import { ChangeEventService } from '../../services/change-event.service';
+
 import { PersonData } from '../../model/dataTypes';
 import { Person } from '../../model/person';
-import { PersonService } from '../../services/person.service';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 @Component({
@@ -24,7 +27,9 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
   } as PersonData
 
 
-  constructor(private router: Router, private personService: PersonService, private authenticationService: AuthenticationService) {
+  constructor(private router: Router, private personService: PersonService,
+    private authenticationService: AuthenticationService,
+    private changeEventService: ChangeEventService) {
 
   }
 
@@ -55,6 +60,8 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         // Loading the person to show
         next: (res) => {
           this.thePerson = res;
+          // emiting the person loaded
+          this.changeEventService.changePerson(res);
         },
         error: (err) => {
           console.log("Error from login State: ", err.error.message);
@@ -158,6 +165,8 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         this.thePerson = new Person();
         //assignin the person to show
         this.thePerson = res;
+        // emiting the person loaded
+        this.changeEventService.changePerson(res);
       },
       error: (err) => {
         const message = err.error.message

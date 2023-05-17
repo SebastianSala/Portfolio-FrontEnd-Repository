@@ -5,7 +5,7 @@ import { Observable, map } from 'rxjs';
 import { Project } from '../model/project';
 import { ProjectData, ResponseMessage } from '../model/dataTypes';
 
-import { ENVIROMENT } from '../enviroments/enviroment';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -14,7 +14,7 @@ import { ENVIROMENT } from '../enviroments/enviroment';
 export class ProjectService {
 
 
-  private url: string = ENVIROMENT.url + '/project';
+  private url: string = environment.URL + '/project';
 
 
   constructor(private httpClient: HttpClient) {
