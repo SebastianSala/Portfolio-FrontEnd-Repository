@@ -39,8 +39,11 @@ export class AppComponent implements OnInit {
 
       error: (err) => {
 
-        console.log("-------- Status Check, error: Backend connection fail: ", err.error.error);
+        const message = err.error.error ?? "Error. El servidor esta tardando en responder. Intente nuevamente en unos minutos";
+
+        console.log("-------- Status Check, error: Backend connection fail: ", message);
         console.log("-------- Full error message: ", err);
+        alert(message);
 
       },
 

@@ -19,9 +19,11 @@ Este es el frontend Single Page Aplication para el portfolio personal hecho con 
 * UpTimeRobot para monitorear el estado del backend y tenerlo siempre corriendo por más que sea en un servicio gratuito que apaga la app cuando no se usa. https://uptimerobot.com/
 
 
-## Diseño de clases:
+## Desiciones de diseño:
 
 * Se aplicó los principios de Programación Orientada a Objetos, división en componentes y comunicación a través de servicios y directivas para comunicación entre componentes y división en capas. Tratando siempre de respetar los principios SOLID.
+* Para el versionado se siguió la canvención  <a href="https://semver.org/" target="_blank">Semantic versioning</a>
+* La decición de usar distintos métodos para cosas similares (ej: @Input/@Output para comunicación entre componentes en algunas entidades y Servicios y eventos para otras) es porque este es un proyecto de práctica y quise explorar distintas formas para cumplir los objetivos y para generar criterio y en el futuro poder decidir con experiencia cual es la más apropiada, aunque le quite consistencia al proyecto actual.
 
 
 ## Estado Actual:

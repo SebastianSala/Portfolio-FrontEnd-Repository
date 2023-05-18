@@ -1,6 +1,7 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { ChangeEventService } from '../../services/change-event.service';
+import { ChangePersonService } from '../../services/change-person.service';
 
 import { Person } from '../../model/person';
 
@@ -10,26 +11,16 @@ import { Person } from '../../model/person';
   templateUrl: './contact-me.component.html',
   styleUrls: ['./contact-me.component.scss']
 })
-export class ContactMeComponent implements OnInit {
+export class ContactMeComponent implements OnDestroy {
 
 
   protected thePerson?: Person;
+  personSubscription?: Subscription;
 
 
-  constructor(private changeEvent: ChangeEventService) {
+  constructor(private changePerson: ChangePersonService) {
 
-  }
-
-
-  ngOnInit(): void {
-    this.updatePerson();
-  }
-
-
-  private updatePerson() {
-
-
-    this.changeEvent.changedPerson.subscribe({
+    this.personSubscription = this.changePerson.personChanged.subscribe({
 
       next: (res: Person) => {
         this.thePerson = res;
@@ -38,10 +29,14 @@ export class ContactMeComponent implements OnInit {
       error: (err: any) => {
         console.log("Error. contactme updatePerson", err);
       }
-      
+
     });
 
+  }
 
+
+  ngOnDestroy(): void {
+    this.personSubscription?.unsubscribe();
   }
 
 

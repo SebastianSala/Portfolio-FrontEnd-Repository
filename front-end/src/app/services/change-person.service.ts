@@ -6,13 +6,10 @@ import { Person } from '../model/person';
 @Injectable({
   providedIn: 'root'
 })
-export class ChangeEventService {
+export class ChangePersonService {
 
 
-  public changedPerson: EventEmitter<Person> = new EventEmitter<Person>();
-
-  // thePerson: Person = new Person();
-  thePerson?: Person;
+  public personChanged: EventEmitter<Person> = new EventEmitter<Person>();
 
 
   constructor() {
@@ -21,7 +18,7 @@ export class ChangeEventService {
 
 
   public changePerson(person: Person): void {
-    this.changedPerson.emit(person);
+    this.personChanged.emit(person);
   }
 
 

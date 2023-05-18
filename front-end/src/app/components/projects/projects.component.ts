@@ -40,12 +40,13 @@ export class ProjectsComponent implements OnChanges {
     if ((event) = true) {
       //reset the project to send after using it
       this.projectToSend = new Project();
-
       //reload the projects from the data base to show
       this.getAllProjects();
+    
     } else {
       console.log("Not reloading projects: ", event);
     }
+    
   }
 
 
@@ -62,7 +63,7 @@ export class ProjectsComponent implements OnChanges {
         },
 
         error: (err) => {
-          const message = err.error.message;
+          const message = err.error.message ?? err;
           console.log("Error retrieving projects: ", message);
           this.allProjects = [];
         },

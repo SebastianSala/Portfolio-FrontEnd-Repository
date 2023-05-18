@@ -3,9 +3,11 @@
   "version": "0.8.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve -o",
+    "build": "ng build && http-server ./dist -o -a localhost -p 9090 --proxy http://localhost:9090?",
     "watch": "ng build --watch --configuration development",
+    "staging": "ng build --watch --configuration staging",
+    "prod": "ng build --watch --configuration production",
     "test": "ng test"
   },
   "private": true,

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { PersonService } from '../../services/person.service';
-import { ChangeEventService } from '../../services/change-event.service';
+import { ChangePersonService } from '../../services/change-person.service';
 
 import { PersonData } from '../../model/dataTypes';
 import { Person } from '../../model/person';
@@ -29,7 +29,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
   constructor(private router: Router, private personService: PersonService,
     private authenticationService: AuthenticationService,
-    private changeEventService: ChangeEventService) {
+    private changePersonService: ChangePersonService) {
 
   }
 
@@ -61,7 +61,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         next: (res) => {
           this.thePerson = res;
           // emiting the person loaded
-          this.changeEventService.changePerson(res);
+          this.changePersonService.changePerson(res);
         },
         error: (err) => {
           console.log("Error from login State: ", err.error.message);
@@ -166,12 +166,11 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         //assignin the person to show
         this.thePerson = res;
         // emiting the person loaded
-        this.changeEventService.changePerson(res);
+        this.changePersonService.changePerson(this.thePerson);
       },
       error: (err) => {
-        const message = err.error.message
+        const message = err.error.message ?? err
         console.log("Error from getFirstPerson: ", message);
-        alert(message);
       },
       complete: () => {
         //once the person is retrived from the backend, navigato to index to see it.

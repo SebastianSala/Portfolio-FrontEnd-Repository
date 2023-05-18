@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { ChangeEventService } from '../../services/change-event.service';
+import { ChangePersonService } from '../../services/change-person.service';
 
 import { Person } from '../../model/person';
+import { Observable, Subscription } from 'rxjs';
 
 
 @Component({
@@ -10,14 +11,16 @@ import { Person } from '../../model/person';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
 
   
   protected thePerson?: Person;
+  protected person$: Observable<Person>;
+  personSubscription?: Subscription;
 
 
-  constructor(private changeEventService: ChangeEventService) {
-
+  constructor(private changePersonService: ChangePersonService) {
+    this.person$ = this.changePersonService.personChanged;
   }
 
 
@@ -28,7 +31,7 @@ export class FooterComponent implements OnInit {
 
   private updatePerson() {
 
-    this.changeEventService.changedPerson.subscribe({
+    this.personSubscription = this.changePersonService.personChanged.subscribe({
       next: (res: Person) => {
         this.thePerson = res;
       },
@@ -40,6 +43,12 @@ export class FooterComponent implements OnInit {
 
     });
 
+  }
+
+
+  ngOnDestroy(): void {
+    // Unsubscribing to avoid memory leakeages
+    this.personSubscription?.unsubscribe();
   }
 
 

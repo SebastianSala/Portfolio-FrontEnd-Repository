@@ -1,14 +1,14 @@
 <div class="row mx-auto">
 
     <!-- Admin Add/Edit/Delete -->
-    <div class="row mx-auto px-0 bg-dark border border-light my-1 rounded-3" *ngIf="this.isLogged">
-        <div class="col-12 text-end">
+    <div class="mx-auto px-0 bg-dark border border-light my-1 rounded-3" *ngIf="this.isLogged">
+        <div class="col-12 text-center">
 
             <!-- Add -->
             <button type="button" class="btn btn-outline-info my-2" data-bs-toggle="modal"
                 data-bs-target="#modalAddProject">
-                <i class="fa-solid fa-plus fa-2x p-md-1 d-flex align-items-center">
-                    <span class="fs-6 ps-md-2">Agregar una red</span>
+                <i class="fa-solid fa-plus p-md-1 d-flex align-items-center">
+                    <span class="fs-6 ps-md-2 fw-light">Agregar red</span>
                 </i>
             </button>
 
@@ -21,65 +21,55 @@
 
 
 
-    <ul
-        class="nav d-flex justify-content-around flex-nowrap gap-2 gap-md-4 mx-1 shadow border border-secondary rounded-5">
+    <div class="justify-content-center d-inline-block d-md-flex shadow border border-secondary rounded-5 w-100 align-items-baseline">
         <!-- <ul class="nav d-flex justify-content-around flex-nowrap gap-2 gap-md-4 mx-1 shadow border border-secondary rounded-5"
         *ngFor="let newtwork of allNetworks, let i = index" id="network{{i}}"> -->
 
+        <h6 class="text-white text-center py-1">Mis redes</h6>
 
-        <!-- Admin Add/Edit/Delete -->
-        <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.isLogged">
-            <div class="col-12 text-end text-primary">
 
-                <!-- Edit -->
-                <!-- <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
-                    data-bs-target="#modalEditProject" (click)="sendNetwork(network)">
-                    <i class="fas fa-pen-to-square fa-2x p-1"></i>
-                </button> -->
+        <div *ngFor="let network of allNetworks" class="col-12 col-md-3 d-inline-block mx-md-2 p-1 px-md-2 shadow" [ngClass]="{'border border-info': isLogged}">
 
-                <!-- <app-modal-edit-project [projectToEdit]="projectToSend"
-                    (editEvent)="reloadProjects($event)"></app-modal-edit-project> -->
-                <!-- /Edit -->
+            <!-- Admin Add/Edit/Delete -->
+            <div class="row mx-auto px-0 my-1" *ngIf="this.isLogged">
+                <div class="col-12 text-end text-primary d-flex justify-content-around justify-content-md-between">
 
-                <!-- Delete -->
-                <!-- <button type="button" class="btn btn-outline-dark text-danger" data-bs-toggle="modal"
-                    data-bs-target="#modalDeleteProject" (click)="sendProject(project)">
-                    <i class="fas fa-trash fa-2x p-1"></i>
-                </button> -->
+                    <!-- Edit -->
+                    <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
+                        data-bs-target="#modalEditProject" (click)="sendNetwork(network)">
+                        <i class="fas fa-pen-to-square p-"></i>
+                    </button>
 
-                <!-- <app-modal-delete-project [projectToDelete]="project"></app-modal-delete-project> -->
-                <!-- <app-modal-delete-project [projectToDelete]="projectToSend"
-                    (deleteEvent)="reloadProjects($event)"></app-modal-delete-project> -->
-                <!-- /Delete -->
+                    <!-- <app-modal-edit-project [projectToEdit]="networkToSend"
+                    (editEvent)="reloadNetworks($event)"></app-modal-edit-project> -->
+                    <!-- /Edit -->
 
+                    <!-- Delete -->
+                    <button type="button" class="btn btn-outline-dark text-danger" data-bs-toggle="modal"
+                        data-bs-target="#modalDeleteProject" (click)="sendNetwork(network)">
+                        <i class="fas fa-trash p-"></i>
+                    </button>
+
+                    <!-- <app-modal-delete-project [projectToDelete]="networkToSend"
+                    (deleteEvent)="reloadNetworks($event)"></app-modal-delete-project> -->
+                    <!-- /Delete -->
+
+                </div>
             </div>
+            <!-- /Admin Add/Edit/Delete -->
+
+
+            <div class="shadow py-2">
+                <a target="_blank" [href]="network.getNetUrl" class="shadow btn btn-outline-light d-inline-flex w-100 justify-content-center">
+                    <i id="icon1" class="fa-solid fa-user-group  p-1"></i>
+                    {{network.getName}}
+                </a>
+            </div>
+
         </div>
-        <!-- /Admin Add/Edit/Delete -->
 
 
-        <li class="nav-item shadow">
-            <a target="_blank" href="https://www.linkedin.com/in/sebastian-sala-perfil"
-                class="shadow nav-link d-flex align-items-center borde border-info p-0">
-                <i id="icon1" class="fa-brands fab-hover fa-linkedin fa-2x p-1"></i>
-            </a>
-        </li>
-
-        <li class="nav-item shadow">
-            <a target="_blank" href="https://github.com/SebastianSala"
-                class="shadow nav-link d-flex align-items-center borde border-info rounded-circle p-0">
-                <i id="icon2" class="fab fab-hover fa-github fa-2x p-1"></i>
-            </a>
-        </li>
-
-        <li class="nav-item shadow">
-            <a target="_blank" href="https://www.instagram.com/sebastiansala.ig/"
-                class="shadow nav-link d-flex align-items-center borde border-info p-0">
-                <i id="icon3" class="fab fab-hover fa-instagram fa-2x p-1"></i>
-            </a>
-        </li>
-
-
-    </ul>
+    </div>
 
 
 </div>

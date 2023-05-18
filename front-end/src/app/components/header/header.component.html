@@ -1,5 +1,5 @@
 <section>
-    <header class="row mb-1 pt-3 mx-auto" id="headerId">
+    <header class="row mb-1 pt-3 mx-auto w-100" id="headerId">
 
 
         <!-- Navbar -->
@@ -7,47 +7,7 @@
         <!-- /Navbar -->
 
 
-        <!-- Redes -->
-
-
-        <div
-            class="row bg-dark py-1 d-flex justify-content-between align-items-center mx-auto rounded-3 mb-1 border border-white px-1">
-
-            <div class="col-3 col-md-4 text-start px-0">
-                <a target="_blanc"
-                    href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa">
-                    <img class="img-fluid rounded shadow bg-dark" id="argProgLogo"
-                        src="./assets/img/argprog-logo-scaled.png" alt="logo argentina programa">
-                </a>
-            </div>
-
-
-            <div class="col-6 col-md-4 px-0">
-                <app-networks [isLogged]="isLogged"></app-networks>
-            </div>
-
-
-            <!-- Log in -->
-            <div class="col-3 col-md-4 text-end px-0 shadow">
-                <a *ngIf="!isLogged" data-bs-toggle="modal" data-bs-target="#modalLogIn"
-                    class="shadow btn btn-outline-secondary py-1 py-md-2 px-2 px-md-3 word-wrap">
-                    Log In!
-                </a>
-                <a *ngIf="isLogged" data-bs-toggle="modal" data-bs-target="#modalLogOut"
-                    class="shadow btn btn-outline-danger py-1 py-md-2 px-2 px-md-3 word-wrap">
-                    Log out!
-                </a>
-            </div>
-
-            <app-modal-login (logged)="loginState($event)"></app-modal-login>
-            <app-modal-logout (logged)="loginState($event)"></app-modal-logout>
-            <!-- /Log in -->
-
-        </div>
-        <!-- Redes -->
-
         <div class="row bg-secondary py-0 mx-auto align-items-center rounded-3 mb-1 border border-white">
-
 
             <div class="d-flex justify-content-start px-3 py-2">
                 <div class="card row-cols-1 border-0 p-2 bg-secondary">
@@ -57,11 +17,54 @@
                         class="card-title col-sm-12 text-center bg-secondary text-white border border-light rounded text-shadow-light">
                         {{localPerson?.getName}}
                     </h5>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Redes -->
+        <div class="row bg-dark py-1 mx-auto rounded-3 mb-1 border border-white my-2">
+
+            <div class="row text-start px-0 justify-content-start m-2">
+                <div class="col-3 col-md-4 text-start px-0">
+                    <a target="_blanc"
+                        href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa">
+                        <img class="img-fluid rounded shadow bg-dark" id="argProgLogo"
+                            src="./assets/img/argprog-logo-scaled.png" alt="logo argentina programa">
+                    </a>
                 </div>
             </div>
 
 
+            <div class="row justify-content-center">
+                <!-- <div class="col-6 col-md-4 px-0"> -->
+                <app-networks [isLogged]="isLogged"></app-networks>
+                <!-- </div> -->
+            </div>
+
+
+            <!-- Log in -->
+            <div class="row justify-content-end">
+                <div class="col-3 col-md-4 text-end px-0 shadow mx-0 my-3">
+                    <a *ngIf="!isLogged" data-bs-toggle="modal" data-bs-target="#modalLogIn"
+                        class="shadow btn btn-outline-secondary py-1 py-md-2 px-2 px-md-3 word-wrap">
+                        Log In!
+                    </a>
+                    <a *ngIf="isLogged" data-bs-toggle="modal" data-bs-target="#modalLogOut"
+                        class="shadow btn btn-outline-danger py-1 py-md-2 px-2 px-md-3 word-wrap">
+                        Log out!
+                    </a>
+                </div>
+
+                <app-modal-login (logged)="loginState($event)"></app-modal-login>
+                <app-modal-logout (logged)="loginState($event)"></app-modal-logout>
+            </div>
+            <!-- /Log in -->
+
         </div>
+        <!-- Redes -->
 
 
     </header>

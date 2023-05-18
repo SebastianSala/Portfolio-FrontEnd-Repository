@@ -1,9 +1,10 @@
-import { PersonData } from "./dataTypes";
+import { Entity, PersonData } from "./dataTypes";
 
-export class Person {
+export class Person extends Entity {
 
 
-    private id?: number;
+    //inherited from Entity class
+    // private id?: number;
 
     private name: string;
     private title: string;
@@ -34,6 +35,9 @@ export class Person {
         imgBackUrl?: string,
         webUrl?: string
     ) {
+
+        super();
+
         if (data) {
             const {
                 id,

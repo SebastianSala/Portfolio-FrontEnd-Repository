@@ -1,5 +1,9 @@
 import { Person } from "./person";
 
+export abstract class Entity {
+    protected id?: number;
+}
+
 export interface ResponseMessage extends JSON{
     message: string;
 }
@@ -27,7 +31,13 @@ export interface ProjectData {
     imgUrl: string;
     webUrl: string;
     person: PersonData;
-    // person: Person;
+}
+
+export interface NetworkData {
+    id: number;
+    name: string;
+    netUrl: string;
+    person: PersonData;
 }
 
 // export class ProjectClassData {

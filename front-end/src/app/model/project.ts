@@ -1,13 +1,14 @@
-import { PersonData, ProjectData } from "./dataTypes";
+import { Entity, PersonData, ProjectData } from "./dataTypes";
 
 import { Person } from "./person";
 
 
 // export class Project implements ProjectData{
-export class Project {
+export class Project extends Entity {
 
 
-    private id?: number;
+    // Inherited from Entity
+    // private id?: number;
 
     private name: string;
     private date: string;
@@ -32,6 +33,9 @@ export class Project {
         webUrl?: string,
         person?: PersonData
     ) {
+
+        super();
+
         if (data) {
             const {
                 id,
