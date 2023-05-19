@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 
-import { Entity } from '../model/dataTypes';
+import { EntityChange, Entity } from '../model/dataTypes';
 
 
 @Injectable({
@@ -9,7 +9,8 @@ import { Entity } from '../model/dataTypes';
 export class ChangeEntityService {
 
 
-  public entityChanged: EventEmitter<Entity> = new EventEmitter<Entity>();
+  public entityChanged: EventEmitter<EntityChange> = new EventEmitter<EntityChange>();
+
   public entityCreated: EventEmitter<Entity> = new EventEmitter<Entity>();
   public entityUpdated: EventEmitter<Entity> = new EventEmitter<Entity>();
   public entityDeleted: EventEmitter<Entity> = new EventEmitter<Entity>();
@@ -20,8 +21,8 @@ export class ChangeEntityService {
   }
 
 
-  public changeEntity(entity: Entity): void {
-    this.entityChanged.emit(entity);
+  public changeEntity(entityChange: EntityChange): void {
+    this.entityChanged.emit(entityChange);
   }
 
   public createEntity(entity: Entity): void {

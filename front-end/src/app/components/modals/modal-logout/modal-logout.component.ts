@@ -24,7 +24,7 @@ export class ModalLogoutComponent {
 
   protected logout() {
 
-    console.log("---------loggin out----------");
+    console.log("*** Loggin out");
 
     const currentUser = this.authenticationService.authenticatedUser;
 

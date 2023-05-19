@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -34,7 +34,7 @@ export class ModalEditProjectComponent implements OnChanges {
   }
 
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
 
     this.formGroup = this.formBuilder.group({
       name: [this.projectToEdit.getName, [Validators.required]],
@@ -74,7 +74,7 @@ export class ModalEditProjectComponent implements OnChanges {
 
     const projectConstructor: ProjectData = {
 
-      //setting id to projectToEdit.getId to update an existing project instead of creating a new one
+      // setting id to projectToEdit.getId to update an existing project instead of creating a new one
       id: this.projectToEdit.getId!,
       name: this.formControl['name'].value,
       date: this.formControl['date'].value,
@@ -83,11 +83,13 @@ export class ModalEditProjectComponent implements OnChanges {
       logoUrl: this.formControl['logoUrl'].value,
       imgUrl: this.formControl['imgUrl'].value,
       webUrl: this.formControl['webUrl'].value,
-      //setting the person of the project to the person that has logged in
+      // setting the person of the project to the person that has logged in
       person: this.authenticationService.authenticatedUser
     }
 
     const theProject = new Project(projectConstructor);
+
+    console.log("*** Editing Project");
 
     this.projectService.updateProjectByPersonIdByProjectId(theProject.getPerson.getId!, theProject.getId!, theProject).subscribe({
 
@@ -96,14 +98,16 @@ export class ModalEditProjectComponent implements OnChanges {
       },
 
       error: (err) => {
+        console.log("--- Error. Edit Project modal");
         const message = err.error.message;
         console.log(`Error from edit Project editModal: ${message}, Status: ${err.status}`,);
         alert(message)
         this.isEdited = false;
-
       },
 
       complete: () => {
+        console.log("+++ Ok. Edit Project complete");
+
         //reload and show all projects
         this.isEdited = true;
         this.editEmit(this.isEdited);

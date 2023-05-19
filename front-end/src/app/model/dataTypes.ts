@@ -4,6 +4,11 @@ export abstract class Entity {
     protected id?: number;
 }
 
+export interface EntityChange {
+    change: boolean;
+    entity: Entity;
+}
+
 export interface ResponseMessage extends JSON{
     message: string;
 }

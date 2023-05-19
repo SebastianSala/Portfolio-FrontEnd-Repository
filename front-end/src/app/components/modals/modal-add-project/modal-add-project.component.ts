@@ -71,7 +71,8 @@ export class ModalAddProjectComponent {
 
     const theProject = new Project(projectConstructor);
 
-    // this.projectService.createProjectByPersonId(theProject.getPerson.getId!, theProject).subscribe({
+    console.log("*** Creating Project");
+
     this.projectService.createProjectByPersonId(theProject.getPerson.getId!, theProject).subscribe({
 
       next: (data) => {
@@ -82,7 +83,7 @@ export class ModalAddProjectComponent {
 
       error: (err) => {
         const message = err.error.message;        
-        console.log(`Error from Create Project addModal: ${message}, status: ${err.status}`);
+        console.log(`--- Error. Create Project addModal: ${message}, status: ${err.status}`);
         // the user should never see this error
         alert(`Error Creating Project: ${message}, status: ${err.status}`);
 
@@ -90,6 +91,7 @@ export class ModalAddProjectComponent {
       },
 
       complete: () => {
+        console.log("+++ Ok. Create Project complete");
         //reload and show all projects
         this.isAdded = true;
         this.addEmit(this.isAdded);

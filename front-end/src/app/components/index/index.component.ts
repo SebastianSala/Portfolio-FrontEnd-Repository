@@ -50,11 +50,14 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
 
-  protected loginState(event: boolean): void {
+  protected loginState(login: boolean): void {
+
+    console.log("*** Loading");
+    
 
     let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser")!);
 
-    if (event) {
+    if (login) {
       this.personService.getPersonByEmail(user.email).subscribe({
 
         // Loading the person to show
@@ -64,7 +67,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
           this.changePersonService.changePerson(res);
         },
         error: (err) => {
-          console.log("Error from login State: ", err.error.message);
+          console.log("--- Error. Login State: ", err.error.message);
         },
         complete: () => {
 
@@ -76,7 +79,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
             this.isLogged = true;
             this.setFirstPerson(user.email);
 
-            console.log("Logged in");
+            console.log("+++ Ok. Logged in");
 
           } else {
             this.isLogged = false;
@@ -94,14 +97,16 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         this.isLogged = true;
         this.setFirstPerson(user.email);
 
-        console.log("Logged in");
-
+        console.log("+++ Ok. Logged in");
+        
       } else {
+        
+        console.log("+++ Ok. Logged out");
 
         this.isLogged = false;
         this.setFirstPerson(user.email);
         //navigating to index and top when loggin out
-        this.router.navigate(['/index'], { fragment: 'start' });
+        this.router.navigate(['/index'], { fragment: 'start' });      
 
       }
 
@@ -158,6 +163,9 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
   getFirstPerson(email: string) {
 
+    console.log("*** Loading Person");
+    
+
     this.personService.getPersonByEmail(email).subscribe({
 
       next: (res) => {
@@ -170,12 +178,12 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
       },
       error: (err) => {
         const message = err.error.message ?? err
-        console.log("Error from getFirstPerson: ", message);
+        console.log("--- Error. getFirstPerson: ", message);
       },
       complete: () => {
         //once the person is retrived from the backend, navigato to index to see it.
         this.router.navigate(['/index'], { fragment: 'start' });
-        console.log("First person loaded");
+        console.log("+++ Ok. Load Person complete");
       }
 
     });
