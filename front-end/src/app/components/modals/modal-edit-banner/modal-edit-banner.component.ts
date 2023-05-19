@@ -67,6 +67,8 @@ export class ModalEditBannerComponent implements OnChanges {
 
   protected onSubmit() {
 
+    console.log("*** Editing Banner");
+
 
     this.thePerson.setName = this.formControl['name'].value;
     this.thePerson.setTitle = this.formControl['title'].value;
@@ -83,13 +85,15 @@ export class ModalEditBannerComponent implements OnChanges {
 
       error: (err) => {
         const message = err.error.message;
-        console.log(`Error from edit Banner editModal: ${message}, Status: ${err.status}`,);
+        console.log(`--- Error. Edit Banner editModal: ${message}, Status: ${err.status}`,);
         alert(message)
         this.isEdited = false;
 
       },
 
       complete: () => {
+        console.log("+++ Ok. Edit Banner complete");
+
         //reload and show all projects
         this.isEdited = true;
         this.editEmit(this.isEdited);

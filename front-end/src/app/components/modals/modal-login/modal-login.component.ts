@@ -69,6 +69,7 @@ export class ModalLoginComponent implements OnInit {
 
   sendLogin() {
 
+    console.log("*** Loging in");
 
     this.authenticationService.login(this.formGroup.value).subscribe({
 
@@ -76,12 +77,12 @@ export class ModalLoginComponent implements OnInit {
 
       },
       error: (err) => {
-        console.log("Error in login method: ", err.error.message, err.status);
+        console.log("--- Error. Login method: ", err.error.message, err.status);
         alert(err.error.message);
         this.logged.emit(false);
       },
       complete: () => {
-        console.log("Login complete, redirecting to index edit");
+        console.log("+++ Ok. Login complete, redirecting to index edit");
 
         this.logged.emit(true);
 

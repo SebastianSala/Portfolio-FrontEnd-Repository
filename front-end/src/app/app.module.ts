@@ -29,6 +29,9 @@ import { ModalLogoutComponent } from './components/modals/modal-logout/modal-log
 import { NewUserComponent } from './components/new-user/new-user.component';
 import { ModalEditAboutMeComponent } from './components/modals/modal-edit-about-me/modal-edit-about-me.component';
 import { ModalEditBannerComponent } from './components/modals/modal-edit-banner/modal-edit-banner.component';
+import { ModalAddNetworkComponent } from './components/modals/modal-add-network/modal-add-network.component';
+import { ModalDeleteNetworkComponent } from './components/modals/modal-delete-network/modal-delete-network.component';
+import { ModalEditNetworkComponent } from './components/modals/modal-edit-network/modal-edit-network.component';
 
 
 @NgModule({
@@ -58,6 +61,9 @@ import { ModalEditBannerComponent } from './components/modals/modal-edit-banner/
     NewUserComponent,
     ModalEditAboutMeComponent,
     ModalEditBannerComponent,
+    ModalAddNetworkComponent,
+    ModalDeleteNetworkComponent,
+    ModalEditNetworkComponent
   ],
   imports: [
     BrowserModule,

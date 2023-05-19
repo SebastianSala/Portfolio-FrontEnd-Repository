@@ -1,11 +1,9 @@
 import { Component, Input, OnChanges } from '@angular/core';
 
 import { ProjectService } from '../../services/project.service';
-
 import { AuthenticationService } from '../../services/authentication.service';
 
 import { Project } from '../../model/project';
-import { Person } from '../../model/person';
 
 
 @Component({
@@ -17,8 +15,6 @@ export class ProjectsComponent implements OnChanges {
 
 
   @Input() isLogged: boolean = false;
-
-  // @Input() thePerson?: Person;
 
   allProjects: Project[] = [];
   projectToSend: Project = new Project();
@@ -42,15 +38,18 @@ export class ProjectsComponent implements OnChanges {
       this.projectToSend = new Project();
       //reload the projects from the data base to show
       this.getAllProjects();
-    
+
     } else {
       console.log("Not reloading projects: ", event);
     }
-    
+
   }
 
 
   private getAllProjects(): void {
+
+    console.log("*** Loading Projects");
+
 
     const personEmail = this.authenticationService.authenticatedUser.email;
 
@@ -64,19 +63,19 @@ export class ProjectsComponent implements OnChanges {
 
         error: (err) => {
           const message = err.error.message ?? err;
-          console.log("Error retrieving projects: ", message);
+          console.log("--- Error retrieving projects: ", message);
           this.allProjects = [];
         },
 
         complete: () => {
-          console.log("Ok. Projects loaded");
+          console.log("+++ Ok. Load Projects complete");
         },
 
       });
 
     } else {
-      console.log("Error. No person to load projects from");
-      
+      console.log("--- Error. No person to load projects from");
+
     }
 
   }

@@ -32,6 +32,8 @@ export class ModalDeleteProjectComponent {
 
   deleteProject(): void {
 
+    console.log("*** Deleting Project");
+
     this.projectService.deleteProjectByPersonIdByProjectId(this.projectToDelete.getPerson.getId as number, this.projectToDelete.getId as number).subscribe({
 
       next: (res) => {
@@ -40,14 +42,14 @@ export class ModalDeleteProjectComponent {
 
       error: (err) => {
         const message = err.error.message;
-        console.log("Error from delete project method in deleteModal: ", message);
+        console.log("--- Error. Delete project method in deleteModal: ", message);
         alert(message);
 
         this.isDeleted = false;
       },
 
       complete: () => {
-        console.log("deletion completed!");
+        console.log("+++ Ok. Delete Project complete");
         this.isDeleted = true;
         this.deleteEmit(this.isDeleted);
         this.router.navigate(['/index'], { fragment: 'projects' });

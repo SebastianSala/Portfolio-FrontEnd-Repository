@@ -17,38 +17,37 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-
     // Checking if the backend server is running the application
     // regardles of the database server state, only quering a message that does not connect to the database
     this.doChecks();
-
   }
 
 
   private doChecks() {
 
+    console.log("*** Starting Backend heath check");
 
     this.healthCheck.check().subscribe({
 
       next: (response) => {
         const message = response as unknown as ResponseMessage
-        console.log("-------- Status Check for Backend application");
-        console.log("-------- (only backend app, without database server)");
-        console.log("-------- 1.", message.message);
+        console.log("*** Status Check for Backend application");
+        console.log("*** (only backend app, without database server)");
+        console.log("+++ Ok.", message.message);
       },
 
       error: (err) => {
 
         const message = err.error.error ?? "Error. El servidor esta tardando en responder. Intente nuevamente en unos minutos";
 
-        console.log("-------- Status Check, error: Backend connection fail: ", message);
-        console.log("-------- Full error message: ", err);
+        console.log("--- Error. Status Check, error: Backend connection fail: ", message);
+        console.log("--- Full error message: ", err);
         alert(message);
 
       },
 
       complete: () => {
-        console.log("-------- Status Check, complete: Backend connection success!");
+        console.log("+++ Ok. Status Check, complete: Backend connection success!");
       }
 
     });

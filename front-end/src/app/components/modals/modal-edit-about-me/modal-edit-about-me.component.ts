@@ -61,6 +61,7 @@ export class ModalEditAboutMeComponent implements OnChanges {
 
   protected onSubmit() {
 
+    console.log("*** Editing About me");
 
     this.thePerson.setAboutMe = this.formControl['aboutMe'].value;
 
@@ -72,13 +73,15 @@ export class ModalEditAboutMeComponent implements OnChanges {
 
       error: (err) => {
         const message = err.error.message;
-        console.log(`Error from edit AboutMe editModal: ${message}, Status: ${err.status}`,);
+        console.log(`--- Error. Edit AboutMe editModal: ${message}, Status: ${err.status}`,);
         alert(message)
         this.isEdited = false;
 
       },
 
       complete: () => {
+        console.log("+++ Ok. Edit About me complete");
+
         //reload and show all projects
         this.isEdited = true;
         this.editEmit(this.isEdited);
