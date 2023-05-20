@@ -53,7 +53,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
   protected loginState(login: boolean): void {
 
     console.log("*** Loading");
-    
+
 
     let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser")!);
 
@@ -67,7 +67,8 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
           this.changePersonService.changePerson(res);
         },
         error: (err) => {
-          console.log("--- Error. Login State: ", err.error.message);
+          const errorMessage = err.error.message ?? err.error ?? err;
+          console.error("--- Error. Login State: ", errorMessage, err.status);
         },
         complete: () => {
 
@@ -98,15 +99,15 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         this.setFirstPerson(user.email);
 
         console.log("+++ Ok. Logged in");
-        
+
       } else {
-        
+
         console.log("+++ Ok. Logged out");
 
         this.isLogged = false;
         this.setFirstPerson(user.email);
         //navigating to index and top when loggin out
-        this.router.navigate(['/index'], { fragment: 'start' });      
+        this.router.navigate(['/index'], { fragment: 'start' });
 
       }
 
@@ -164,7 +165,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
   getFirstPerson(email: string) {
 
     console.log("*** Loading Person");
-    
+
 
     this.personService.getPersonByEmail(email).subscribe({
 
@@ -177,8 +178,8 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         this.changePersonService.changePerson(this.thePerson);
       },
       error: (err) => {
-        const message = err.error.message ?? err
-        console.log("--- Error. getFirstPerson: ", message);
+        const errorMessage = err.error.message ?? err.error ?? err;
+        console.error("--- Error. getFirstPerson: ", errorMessage, err.status);
       },
       complete: () => {
         //once the person is retrived from the backend, navigato to index to see it.

@@ -41,9 +41,9 @@ export class ModalDeleteProjectComponent {
       },
 
       error: (err) => {
-        const message = err.error.message;
-        console.log("--- Error. Delete project method in deleteModal: ", message);
-        alert(message);
+        const errorMessage = err.error.message ?? err.error ?? err;
+        console.error("--- Error. Delete project method in deleteModal: ", errorMessage);
+        alert(errorMessage);
 
         this.isDeleted = false;
       },

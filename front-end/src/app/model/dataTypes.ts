@@ -9,7 +9,7 @@ export interface EntityChange {
     entity: Entity;
 }
 
-export interface ResponseMessage extends JSON{
+export interface ResponseMessage extends JSON {
     message: string;
 }
 
@@ -42,6 +42,18 @@ export interface NetworkData {
     id: number;
     name: string;
     netUrl: string;
+    person: PersonData;
+}
+
+export interface ExperienceData {
+    id: number;
+    position: string;
+    description: string;
+    company: string;
+    startDate: string;
+    endDate: string;
+    logoUrl: string;
+    webUrl: string;
     person: PersonData;
 }
 

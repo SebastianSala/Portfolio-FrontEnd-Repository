@@ -2,17 +2,24 @@
     <div class="row mx-auto my-5 pt-8">
 
 
-        <!-- Edit -->
-        <div class="row mx-auto px-0 bg-secondary border border-danger my-1" *ngIf="this.modoEdit">
-            <div class="col-12 text-end text-primary">
-                <!-- <p>edit icons</p>                 -->
-                <!-- <i class="fa-solid fa-pen-to-square fa-2x px-2"></i> -->
-                <!-- <i class="fa-solid fa-trash fa-2x px-2"></i> -->
-                <i class="fas fa-pen-to-square fa-2x p-1"></i>
-                <i class="fas fa-trash fa-2x p-1"></i>
+        <!-- Admin Add/Edit/Delete -->
+        <div class="mx-auto px-0 bg-dark border border-light my-1 rounded-3" *ngIf="this.isLogged">
+            <div class="col-12 text-center">
+
+                <!-- Add -->
+                <button type="button" class="btn btn-outline-info my-2" data-bs-toggle="modal"
+                    data-bs-target="#modalAddExperience">
+                    <i class="fa-solid fa-plus p-md-1 d-flex align-items-center">
+                        <span class="fs-6 ps-md-2 fw-light">Agregar experiencia laboral</span>
+                    </i>
+                </button>
+
+                <app-modal-add-network></app-modal-add-network>
+                <!-- /Add -->
+
             </div>
         </div>
-        <!-- /Edit -->
+        <!-- /Admin Add/Edit/Delete -->
 
 
         <div class="card border border-light rounded-3 bg-secondary shadow-lg pb-5">
@@ -22,36 +29,38 @@
                 <h4 class="card-title text-white text-shadow-title pb-2 pt-1">Trabajos</h4>
                 <h6 class="card-subtitle mb-2 text-info pb-2">Algunos de mis trabajos</h6>
 
-                <div *ngFor="let experience of dExperience, let i = index, let even = even">
-                    <div class="card text-white text-center border border-primary rounded-3 bg-dark shadow-lg py-4 text-shadow-simple">
-                        
+                <div *ngFor="let experience of allExperiences, let i = index, let even = even">
+                    <div
+                        class="card text-white text-center border border-primary rounded-3 bg-dark shadow-lg py-4 text-shadow-simple">
+
                         <div class="card-header shadow">
-                            <h4 class="fw-bold py-3 shadow-sm">{{experience.name}}</h4>
+                            <h4 class="fw-bold py-3 shadow-sm">{{experience.getPosition}}</h4>
+                            <p class="card-text p-3 shadow-sm">{{experience.getStartDate  | date: 'MMMM/yyyy' : 'es:AR'}} - {{experience.getEndDate | date: 'MMMM/yyyy' : 'es:AR'}}</p>
                         </div>
 
                         <div class="card-body p-4 shadow-sm">
-                            <h5 class="card-title p-3">{{experience.title}}</h5>
-                            <p class="card-text p-3 shadow-sm">{{experience.description}}</p>
+                            <h5 class="card-title p-3">{{experience.getCompany}}</h5>
+                            <p class="card-text p-3 shadow-sm">{{experience.getDescription}}</p>
                         </div>
-                        
-                        <div class="card-footer text-muted d-flex flex-column shadow-sm">
-                            <img class="img-thumbnail w-25 mb-2 mx-auto shadow-lg mt-5 mb-5" src="{{experience.img[0].url}}"
-                                alt="Web Jésica Confecciones">                                                                
 
-                            <a target="_blank" [href]="experience.url"
-                                class="btn btn-primary align-items-end">Sitio {{experience.name}}</a>
+                        <div class="card-footer text-muted d-flex flex-column shadow-sm">
+                            <img class="img-thumbnail w-25 mb-2 mx-auto shadow-lg mt-5 mb-5"
+                                [src]="experience.getLogoUrl" alt="Web Jésica Confecciones">
+
+                            <a target="_blank" [href]="experience.getWebUrl"
+                                class="btn btn-primary align-items-end">Sitio {{experience.getPosition}}</a>
                         </div>
-                    
+
                     </div>
 
-                    <div class="py-4" *ngIf="i!==(dExperience.length-1)">
+                    <div class="py-4" *ngIf="i!==(allExperiences.length-1)">
                         <hr>
                         <hr>
                         <hr>
                     </div>
 
                 </div>
-                
+
 
             </div>
         </div>

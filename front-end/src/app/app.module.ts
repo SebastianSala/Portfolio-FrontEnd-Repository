@@ -20,7 +20,7 @@ import { Error404Component } from './components/error404/error404.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SiteMapComponent } from './components/site-map/site-map.component';
 import { StudiesComponent } from './components/studies/studies.component';
-import { NetworksComponent } from './components/networks/networks.component';
+import { NetworksComponent } from './components/network/network.component';
 import { ModalLoginComponent } from './components/modals/modal-login/modal-login.component';
 import { ModalEditProjectComponent } from './components/modals/modal-edit-project/modal-edit-project.component';
 import { ModalAddProjectComponent } from './components/modals/modal-add-project/modal-add-project.component';
@@ -32,6 +32,13 @@ import { ModalEditBannerComponent } from './components/modals/modal-edit-banner/
 import { ModalAddNetworkComponent } from './components/modals/modal-add-network/modal-add-network.component';
 import { ModalDeleteNetworkComponent } from './components/modals/modal-delete-network/modal-delete-network.component';
 import { ModalEditNetworkComponent } from './components/modals/modal-edit-network/modal-edit-network.component';
+
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeEsAR from '@angular/common/locales/es-AR';
+
+// Register the 'es-AR' locale data
+registerLocaleData(localeEsAR);
 
 
 @NgModule({
@@ -71,7 +78,9 @@ import { ModalEditNetworkComponent } from './components/modals/modal-edit-networ
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-AR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

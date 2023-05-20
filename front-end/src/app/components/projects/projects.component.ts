@@ -62,8 +62,8 @@ export class ProjectsComponent implements OnChanges {
         },
 
         error: (err) => {
-          const message = err.error.message ?? err;
-          console.log("--- Error retrieving projects: ", message);
+          const errorMessage = err.error.message ?? err.error ?? err;
+          console.error("--- Error retrieving projects: ", errorMessage, err.status);
           this.allProjects = [];
         },
 

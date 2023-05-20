@@ -98,10 +98,9 @@ export class ModalEditProjectComponent implements OnChanges {
       },
 
       error: (err) => {
-        console.log("--- Error. Edit Project modal");
-        const message = err.error.message;
-        console.log(`Error from edit Project editModal: ${message}, Status: ${err.status}`,);
-        alert(message)
+        const errorMessage = err.error.message ?? err.error ?? err;
+        console.error(`Error from edit Project editModal: ${errorMessage}, Status: ${err.status}`,);
+        alert(errorMessage)
         this.isEdited = false;
       },
 

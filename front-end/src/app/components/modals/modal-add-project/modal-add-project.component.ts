@@ -67,7 +67,7 @@ export class ModalAddProjectComponent {
       webUrl: this.formControl['webUrl'].value,
       // assigning the current logged in person, to enforce relationships between entities.
       person: this.authenticationService.authenticatedUser
-    }        
+    }
 
     const theProject = new Project(projectConstructor);
 
@@ -82,10 +82,10 @@ export class ModalAddProjectComponent {
       },
 
       error: (err) => {
-        const message = err.error.message;        
-        console.log(`--- Error. Create Project addModal: ${message}, status: ${err.status}`);
+        const errorMessage = err.error.message ?? err.error ?? err;
+        console.error(`--- Error. Create Project addModal: ${errorMessage}, status: ${err.status}`);
         // the user should never see this error
-        alert(`Error Creating Project: ${message}, status: ${err.status}`);
+        alert(`Error Creating Project: ${errorMessage}, status: ${err.status}`);
 
         this.isAdded = false;
       },

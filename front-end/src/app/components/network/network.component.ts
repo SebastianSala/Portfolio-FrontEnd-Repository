@@ -5,14 +5,14 @@ import { NetworkService } from '../../services/network.service';
 import { ChangeEntityService } from '../../services/change-entity.service';
 
 import { Network } from '../../model/network';
-import { Subscription } from 'rxjs';
+import { Subscription, throwError } from 'rxjs';
 import { EntityChange } from '../../model/dataTypes';
 
 
 @Component({
-  selector: 'app-networks',
-  templateUrl: './networks.component.html',
-  styleUrls: ['./networks.component.scss']
+  selector: 'app-network',
+  templateUrl: './network.component.html',
+  styleUrls: ['./network.component.scss']
 })
 export class NetworksComponent implements OnInit, OnDestroy {
 
@@ -81,8 +81,7 @@ export class NetworksComponent implements OnInit, OnDestroy {
 
       error: (err) => {
         const errorMessage = err.error.message ?? err.error ?? err;
-        console.log("--- Error. Load networks: ", err);
-        alert(errorMessage);
+        console.error("--- Error. Load networks: ", errorMessage, err.status);
       },
 
       complete: () => {

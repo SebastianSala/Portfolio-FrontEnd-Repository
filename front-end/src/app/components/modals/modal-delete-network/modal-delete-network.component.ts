@@ -33,16 +33,16 @@ export class ModalDeleteNetworkComponent {
       },
 
       error: (err) => {
-        const message = err.error.message;
-        console.log("--- Error. Delete network method in deleteModal: ", message);
-        alert(message);
+        const errorMessage = err.error.message ?? err.error ?? err;
+        console.error("--- Error. Delete network method in deleteModal: ", errorMessage);
+        alert(errorMessage);
       },
 
       complete: () => {
         // reload entities
-        this.changeEntityService.changeEntity({change: true, entity: this.networkToDelete});
+        this.changeEntityService.changeEntity({ change: true, entity: this.networkToDelete });
         console.log("+++ Ok. Delete network complete!");
-        
+
         this.router.navigate(['/index'], { fragment: 'headerId' });
       }
     });

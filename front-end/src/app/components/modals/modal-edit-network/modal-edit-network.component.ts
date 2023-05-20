@@ -81,10 +81,10 @@ export class ModalEditNetworkComponent implements OnChanges {
       },
 
       error: (err) => {
-        const message = err.error.message;
-        console.log(`--- Error. Edit Network editModal: ${message}, status: ${err.status}`);
+        const errorMessage = err.error.message ?? err.error ?? err;
+        console.error(`--- Error. Edit Network editModal: ${errorMessage}, status: ${err.status}`);
         // the user should never see this error
-        alert(`Error al editar Red: ${message}, status: ${err.status}`);
+        alert(`Error al editar Red: ${errorMessage}, status: ${err.status}`);
       },
       
       complete: () => {

@@ -84,11 +84,10 @@ export class ModalEditBannerComponent implements OnChanges {
       },
 
       error: (err) => {
-        const message = err.error.message;
-        console.log(`--- Error. Edit Banner editModal: ${message}, Status: ${err.status}`,);
-        alert(message)
+        const errorMessage = err.error.message ?? err.error ?? err;
+        console.error(`--- Error. Edit Banner editModal: ${errorMessage}, Status: ${err.status}`,);
+        alert(errorMessage)
         this.isEdited = false;
-
       },
 
       complete: () => {

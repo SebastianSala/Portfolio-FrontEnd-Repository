@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
-import { DbService } from '../../services/db.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { ExperienceService } from '../../services/experience.service';
+import { ChangeEntityService } from '../../services/change-entity.service';
 
-import { Data, DataExperienceProjects } from '../../model/dataTypes';
+import { Experience } from '../../model/experience';
+import { Subscription } from 'rxjs';
+import { EntityChange } from '../../model/dataTypes';
 
 
 @Component({
@@ -10,28 +14,88 @@ import { Data, DataExperienceProjects } from '../../model/dataTypes';
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.scss']
 })
-export class ExperienceComponent implements OnInit {
+export class ExperienceComponent implements OnInit, OnDestroy {
 
 
-  modoEdit: boolean = true;
-  dExperience!: DataExperienceProjects[];
+  @Input() isLogged: boolean = false;
+
+  protected allExperiences: Experience[] = [];
+  protected experienceToSend: Experience = new Experience();
+
+  private experienceSubscription?: Subscription;
 
 
-  constructor(private db: DbService) {
+  constructor(private experienceService: ExperienceService, private authenticationService: AuthenticationService, private changeEntityService: ChangeEntityService) {
+    this.updateExperiences();
 
   }
 
 
   ngOnInit(): void {
+    this.getAllExperiences();
+  }
 
-    this.db.getData().subscribe(
-      (data) => {
-        const datos = data as Data;
-        this.dExperience = datos.experience; //as unknown as DataWorksProjects[]
+  ngOnDestroy(): void {
+    this.experienceSubscription?.unsubscribe();
+  }
+
+
+  private updateExperiences(): void {
+
+    this.experienceSubscription = this.changeEntityService.entityChanged.subscribe({
+
+      next: (res: EntityChange) => {
+        if (res.entity instanceof Experience) {
+          console.log("updateExperiences, is Experience type: ", res.entity);
+          //reset the entity to send after using it
+          this.experienceToSend = new Experience();
+          //reload the entities from the data base to show
+          this.getAllExperiences();
+        } else {
+          console.log("updateExperience, not of type Experience: ", res.entity);
+
+        }
+      },
+
+      error: (err: any) => {
+        console.log("Error. UpdateExperience: ", err);
       }
-      
-    );
 
+    });
+
+  }
+
+
+  private getAllExperiences(): void {
+
+
+    console.log("*** Loading Experiences");
+
+    const personEmail = this.authenticationService.authenticatedUser.email;
+
+    this.experienceService.getExperiencesByPersonEmail(personEmail).subscribe({
+
+      next: (res) => {
+        this.allExperiences = res;
+      },
+
+      error: (err) => {
+        const errorMessage = err.error.message ?? err.error ?? err;
+        console.error("--- Error. Load experiences: ", errorMessage, err.status);
+      },
+
+      complete: () => {
+        console.log("+++ Ok. Load Experiences complete");
+
+      }
+
+    });
+
+  }
+
+
+  protected sendExperience(experience: Experience): void {
+    this.experienceToSend = experience;
   }
 
 

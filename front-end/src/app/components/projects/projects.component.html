@@ -1,4 +1,4 @@
-<article id="projects">
+<article id="project">
     <div class="row mx-auto my-5 pt-8">
 
 
@@ -63,8 +63,8 @@
 
                     <div class="card-header my-2">
                         <h4 class="shadow text-shadow-simple">{{project.getName}}</h4>
-                        <!-- <h6 class="text-shadow-simple"> {{project.getDate | date}}</h6> -->
-                        <h6 class="text-shadow-simple"> {{project.getDate}}</h6>
+                        <h6 class="text-shadow-simple"> {{ project.getDate | date :'dd - MMMM - yyyy':'es-AR' }}</h6>
+
 
                     </div>
 

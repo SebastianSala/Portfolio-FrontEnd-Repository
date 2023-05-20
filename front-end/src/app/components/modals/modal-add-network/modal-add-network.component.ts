@@ -68,10 +68,10 @@ export class ModalAddNetworkComponent {
       },
 
       error: (err) => {
-        const message = err.error.message;
-        console.log(`Error. Create Network addModal: ${message}, status: ${err.status}`);
+        const errorMessage = err.error.message ?? err.error ?? err;
+        console.error(`Error. Create Network addModal: ${errorMessage}, status: ${err.status}`);
         // the user should never see this error
-        alert(`Error Creating Network: ${message}, status: ${err.status}`);
+        alert(`Error Creating Network: ${errorMessage}, status: ${err.status}`);
       },
 
       complete: () => {

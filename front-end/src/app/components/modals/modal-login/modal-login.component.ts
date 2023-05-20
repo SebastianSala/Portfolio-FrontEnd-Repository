@@ -77,8 +77,9 @@ export class ModalLoginComponent implements OnInit {
 
       },
       error: (err) => {
-        console.log("--- Error. Login method: ", err.error.message, err.status);
-        alert(err.error.message);
+        const errorMessage = err.error.message ?? err.error ?? err;
+        console.error("--- Error. Login method: ", errorMessage, err.status);
+        alert(errorMessage);
         this.logged.emit(false);
       },
       complete: () => {
