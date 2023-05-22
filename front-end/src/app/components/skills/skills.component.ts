@@ -12,7 +12,7 @@ import { Data, DataSkills } from '../../model/dataTypes';
 })
 export class SkillsComponent implements OnInit {
 
-  modoEdit: boolean = true;
+  modoEdit: boolean = false;
   hardSkills: any;
   softSkills: any;
   skills?: DataSkills;

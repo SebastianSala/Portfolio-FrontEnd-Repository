@@ -12,7 +12,7 @@ import { Data, DataStudies } from '../../model/dataTypes';
 })
 export class StudiesComponent implements OnInit {
 
-  modoEdit: boolean = true;
+  modoEdit: boolean = false;
   dStudies!: DataStudies[];
 
   constructor(private db: DbService) {
