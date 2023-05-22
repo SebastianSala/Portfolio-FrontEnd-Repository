@@ -14,7 +14,6 @@ export class Project extends Entity {
     private date: string;
     private shortDescription: string;
     private longDescription: string;
-    private logoUrl: string;
     private imgUrl: string;
     private webUrl: string;
 
@@ -28,7 +27,6 @@ export class Project extends Entity {
         date?: string,
         shortDescription?: string,
         longDescription?: string,
-        logoUrl?: string,
         imgUrl?: string,
         webUrl?: string,
         person?: PersonData
@@ -43,7 +41,6 @@ export class Project extends Entity {
                 date,
                 shortDescription,
                 longDescription,
-                logoUrl,
                 imgUrl,
                 webUrl,
                 person
@@ -53,7 +50,6 @@ export class Project extends Entity {
             this.date = date;
             this.shortDescription = shortDescription;
             this.longDescription = longDescription;
-            this.logoUrl = logoUrl;
             this.imgUrl = imgUrl;
             this.webUrl = webUrl;
             this.person = new Person(person);
@@ -65,7 +61,6 @@ export class Project extends Entity {
             this.date = date ?? "";
             this.shortDescription = shortDescription ?? "";
             this.longDescription = longDescription ?? "";
-            this.logoUrl = logoUrl ?? "";
             this.imgUrl = imgUrl ?? "";
             this.webUrl = webUrl ?? "";
             this.person = (person ? new Person(person) : new Person());
@@ -110,14 +105,6 @@ export class Project extends Entity {
     }
     public set setLongDescription(longDescription: string) {
         this.longDescription = longDescription;
-    }
-
-
-    public get getLogoUrl(): string {
-        return this.logoUrl;
-    }
-    public set setLogoUrl(logoUrl: string) {
-        this.logoUrl = logoUrl;
     }
 
 

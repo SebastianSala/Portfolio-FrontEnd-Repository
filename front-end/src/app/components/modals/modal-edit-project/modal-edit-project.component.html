@@ -84,19 +84,6 @@
 
 
               <div class="mb-3">
-                <label for="newProjectLogoUrl" class="form-label">Logo del Projecto</label>
-                <input type="text" class="form-control" id="newProjectLogoUrl" formControlName="logoUrl"
-                  [ngClass]="{'is-invalid': formControl['logoUrl'].errors && formGroup.controls['logoUrl'].touched, 'is-valid': formControl['logoUrl'].touched && !formControl['logoUrl'].errors}">
-
-                <div class="invalid-feedback">
-                  <div *ngIf="formControl['logoUrl'].hasError('required')">
-                    El logo no puede faltar
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="mb-3">
                 <label for="newProjectImgUrl" class="form-label">
                   Imagen del Projecto
                 </label>

@@ -32,7 +32,6 @@ export interface ProjectData {
     date: string;
     shortDescription: string;
     longDescription: string;
-    logoUrl: string;
     imgUrl: string;
     webUrl: string;
     person: PersonData;

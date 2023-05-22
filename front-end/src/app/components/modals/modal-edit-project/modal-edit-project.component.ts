@@ -41,7 +41,6 @@ export class ModalEditProjectComponent implements OnChanges {
       date: [this.projectToEdit.getDate, [Validators.required]],
       shortDescription: [this.projectToEdit.getShortDescription, [Validators.required]],
       longDescription: [this.projectToEdit.getLongDescription, [Validators.required]],
-      logoUrl: [this.projectToEdit.getLogoUrl, [Validators.required]],
       imgUrl: [this.projectToEdit.getImgUrl, [Validators.required]],
       webUrl: [this.projectToEdit.getWebUrl, [Validators.required]]
     })
@@ -80,7 +79,6 @@ export class ModalEditProjectComponent implements OnChanges {
       date: this.formControl['date'].value,
       shortDescription: this.formControl['shortDescription'].value,
       longDescription: this.formControl['longDescription'].value,
-      logoUrl: this.formControl['logoUrl'].value,
       imgUrl: this.formControl['imgUrl'].value,
       webUrl: this.formControl['webUrl'].value,
       // setting the person of the project to the person that has logged in

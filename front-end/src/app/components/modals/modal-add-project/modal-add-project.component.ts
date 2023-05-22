@@ -32,7 +32,6 @@ export class ModalAddProjectComponent {
       date: ['', [Validators.required]],
       shortDescription: ['', [Validators.required]],
       longDescription: ['', [Validators.required]],
-      logoUrl: ['', [Validators.required]],
       imgUrl: ['', [Validators.required]],
       webUrl: ['', [Validators.required]],
     })
@@ -62,7 +61,6 @@ export class ModalAddProjectComponent {
       date: this.formControl['date'].value,
       shortDescription: this.formControl['shortDescription'].value,
       longDescription: this.formControl['longDescription'].value,
-      logoUrl: this.formControl['logoUrl'].value,
       imgUrl: this.formControl['imgUrl'].value,
       webUrl: this.formControl['webUrl'].value,
       // assigning the current logged in person, to enforce relationships between entities.
