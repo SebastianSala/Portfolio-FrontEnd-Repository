@@ -12,7 +12,7 @@ import { Data, DataSkills } from '../../model/dataTypes';
 })
 export class SkillsComponent implements OnInit {
 
-  modoEdit: boolean = true;
+  modoEdit: boolean = false;
   hardSkills: any;
   softSkills: any;
   skills?: DataSkills;
@@ -28,7 +28,7 @@ export class SkillsComponent implements OnInit {
         const lData: Data = data as Data;
         this.skills = lData.skills;
       },
-      error => console.error("Error in Skills, error")      
+      error => console.error("Error in Skills, error")
     )
 
   }
