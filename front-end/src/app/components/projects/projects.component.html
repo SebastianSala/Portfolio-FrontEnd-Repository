@@ -1,5 +1,5 @@
 <article id="project">
-    <div class="row mx-auto my-5 pt-8">
+    <div class="row mx-auto my-5 pt-8 text-white text-shadow-simple">
 
 
         <!-- Admin Add/Edit/Delete -->
@@ -34,7 +34,7 @@
 
                     <!-- Admin Add/Edit/Delete -->
                     <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.isLogged">
-                        <div class="col-12 text-end text-primary">
+                        <div class="col-12 text-end">
 
                             <!-- Edit -->
                             <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
@@ -64,13 +64,11 @@
                     <div class="card-header my-2">
                         <h4 class="shadow text-shadow-simple">{{project.getName}}</h4>
                         <h6 class="text-shadow-simple"> {{ project.getDate | date :'dd - MMMM - yyyy':'es-AR' }}</h6>
-
-
                     </div>
 
                     <div class="card-body m-3">
                         <h5 class="card-title text-shadow-simple">{{project.getShortDescription}}</h5>
-                        <p class="card-text text-shadow-simple">{{project.getLongDescription}}</p>
+                        <p class="card-text text-shadow-simple fs-5">{{project.getLongDescription}}</p>
                     </div>
 
                     <div class="card-footer my-0 pt-5">

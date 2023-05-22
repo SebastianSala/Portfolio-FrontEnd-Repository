@@ -57,6 +57,16 @@ export interface ExperienceData {
     person: PersonData;
 }
 
+export enum ExperienceProperties {
+    Position = 'position',
+    Description = 'description',
+    Company = 'company',
+    StartDate = 'startDate',
+    EndDate = 'endDate',
+    LogoUrl = 'logoUrl',
+    WebUrl = 'webUrl'
+};
+
 // export class ProjectClassData {
 //     protected id: number | undefined;
 //     protected name: string | undefined;

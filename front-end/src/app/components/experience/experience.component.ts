@@ -69,7 +69,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   private getAllExperiences(): void {
 
 
-    console.log("*** Loading Experiences");
+    console.info("*** Loading Experiences");
 
     const personEmail = this.authenticationService.authenticatedUser.email;
 

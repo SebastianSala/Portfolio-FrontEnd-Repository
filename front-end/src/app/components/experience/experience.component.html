@@ -3,18 +3,18 @@
 
 
         <!-- Admin Add/Edit/Delete -->
-        <div class="mx-auto px-0 bg-dark border border-light my-1 rounded-3" *ngIf="this.isLogged">
-            <div class="col-12 text-center">
+        <div class="row mx-auto px-0 bg-dark border border-light my-1 rounded-3" *ngIf="this.isLogged">
+            <div class="col-12 text-end">
 
                 <!-- Add -->
                 <button type="button" class="btn btn-outline-info my-2" data-bs-toggle="modal"
                     data-bs-target="#modalAddExperience">
-                    <i class="fa-solid fa-plus p-md-1 d-flex align-items-center">
-                        <span class="fs-6 ps-md-2 fw-light">Agregar experiencia laboral</span>
+                    <i class="fa-solid fa-plus fa-2x p-1 d-flex align-items-center">
+                        <span class="fs-5 ps-2">Agregar experiencia laboral</span>
                     </i>
                 </button>
 
-                <app-modal-add-network></app-modal-add-network>
+                <app-modal-add-experience></app-modal-add-experience>
                 <!-- /Add -->
 
             </div>
@@ -22,47 +22,80 @@
         <!-- /Admin Add/Edit/Delete -->
 
 
-        <div class="card border border-light rounded-3 bg-secondary shadow-lg pb-5">
-            <div class="card-body shadow-sm">
+        <div class="card text-white text-center border border-primary rounded-3 bg-dark shadow-lg p-2">
+            <div class="card-body">
 
 
-                <h4 class="card-title text-white text-shadow-title pb-2 pt-1">Trabajos</h4>
-                <h6 class="card-subtitle mb-2 text-info pb-2">Algunos de mis trabajos</h6>
+                <h3 class="card-title fw-bold text-shadow-title py-2">Trabajos</h3>
+                <h6 class="card-subtitle mb-2 text-muted">Algunos de mis trabajos</h6>
 
-                <div *ngFor="let experience of allExperiences, let i = index, let even = even">
-                    <div
-                        class="card text-white text-center border border-primary rounded-3 bg-dark shadow-lg py-4 text-shadow-simple">
+                <div class="card text-white text-center border border-primary rounded-3 bg-secondary shadow-lg my-5 py-3"
+                    *ngFor="let experience of allExperiences, let i = index, let even = even" id="experience{{i}}">
 
-                        <div class="card-header shadow">
-                            <h4 class="fw-bold py-3 shadow-sm">{{experience.getPosition}}</h4>
-                            <p class="card-text p-3 shadow-sm">{{experience.getStartDate  | date: 'MMMM/yyyy' : 'es:AR'}} - {{experience.getEndDate | date: 'MMMM/yyyy' : 'es:AR'}}</p>
+                    <!-- Admin Add/Edit/Delete -->
+                    <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.isLogged">
+                        <div class="col-12 text-end text-primary">
+
+                            <!-- Edit -->
+                            <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
+                                data-bs-target="#modalEditExperience" (click)="sendExperience(experience)">
+                                <i class="fas fa-pen-to-square fa-2x p-1"></i>
+                            </button>
+                            <!-- /Edit -->
+
+                            <!-- Delete -->
+                            <button type="button" class="btn btn-outline-dark text-danger" data-bs-toggle="modal"
+                                data-bs-target="#modalDeleteExperience" (click)="sendExperience(experience)">
+                                <i class="fas fa-trash fa-2x p-1"></i>
+                            </button>
+                            <!-- /Delete -->
+
                         </div>
-
-                        <div class="card-body p-4 shadow-sm">
-                            <h5 class="card-title p-3">{{experience.getCompany}}</h5>
-                            <p class="card-text p-3 shadow-sm">{{experience.getDescription}}</p>
-                        </div>
-
-                        <div class="card-footer text-muted d-flex flex-column shadow-sm">
-                            <img class="img-thumbnail w-25 mb-2 mx-auto shadow-lg mt-5 mb-5"
-                                [src]="experience.getLogoUrl" alt="Web Jésica Confecciones">
-
-                            <a target="_blank" [href]="experience.getWebUrl"
-                                class="btn btn-primary align-items-end">Sitio {{experience.getPosition}}</a>
-                        </div>
-
                     </div>
 
-                    <div class="py-4" *ngIf="i!==(allExperiences.length-1)">
-                        <hr>
-                        <hr>
-                        <hr>
+                    <app-modal-edit-experience [experienceToEdit]="experienceToSend"></app-modal-edit-experience>
+                    <app-modal-delete-experience [experienceToDelete]="experienceToSend"></app-modal-delete-experience>
+                    <!-- /Admin Add/Edit/Delete -->
+
+                    <div class="card-header my-2">
+                        <h4 class="shadow text-shadow-simple">{{experience.getPosition}}</h4>
+                        <h6 class="text-shadow-simple">{{experience.getStartDate | date: 'MMMM/yyyy' : 'es:AR'}}
+                            - {{experience.getEndDate | date: 'MMMM/yyyy' : 'es:AR'}}</h6>
                     </div>
+
+                    <div class="card-body m-3">
+
+                        <div class="col d-flex align-items-center py-4 py-md-5 gap-3 gap-md-0">
+
+                            <div class="col-6 col-md-8 d-flex justify-content-start ">
+                                <h5 class="card-title text-shadow-simple d-inline-flex">{{experience.getCompany}}</h5>
+                            </div>
+
+                            <div class="col-6 col-md-2 col-md-1 d-flex justify-content-end align-items-center">
+                                <div class="card bg-secondary rounded-circle w-auto ms-auto d-inline-flex"
+                                    *ngIf="experience.getLogoUrl">
+                                    <img class="mx-auto img-fluid rounded-3 text-shadow-simple"
+                                        [src]="experience.getLogoUrl" alt="imagen {{experience.getCompany}}">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <p class="card-text text-shadow-simple fs-5">{{experience.getDescription}}</p>
+                    </div>
+
+
+                    <div class="card-footer my-0 pt-5" *ngIf="experience.getWebUrl">
+                        <a target="_blank" [href]="experience.getWebUrl" class="btn btn-dark mx-3 my-3 w-50">
+                            Web
+                        </a>
+                    </div>
+
 
                 </div>
 
-
             </div>
         </div>
+
     </div>
 </article>

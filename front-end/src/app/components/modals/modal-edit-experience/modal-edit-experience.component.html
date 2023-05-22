@@ -1,0 +1,167 @@
+<!-- Modal -->
+<div class="modal fade" id="modalEditExperience" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-secondary">
+
+
+            <div class="modal-header bg-dark py-2 py-md-1">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Editar Experiencia laboral
+                </h1>
+                <button type="button" class="btn-close" id="modalEditExperienceClose" data-bs-dismiss="modal"
+                    aria-label="Close">
+                </button>
+            </div>
+
+
+            <div class="modal-body bg-secondary py-4 rounded-3">
+
+
+                <div>
+                    <form [formGroup]="formGroup" (ngSubmit)="validateForm($event)">
+                        <div class="form-group">
+
+
+                            <div class="mb-3">
+                                <label for="newExperiencePosition" class="form-label">
+                                    Puesto de la experiencia laboral
+                                </label>
+                                <input type="text" class="form-control" id="newExperiencePosition"
+                                    formControlName="position"
+                                    [ngClass]="{'is-invalid': formControl['position'].errors && formGroup.controls['position'].touched, 'is-valid': formControl['position'].touched && !formControl['position'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['position'].hasError('required')">
+                                        El puesto no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newExperienceDescription" class="form-label">
+                                    Descripción la experiencia laboral
+                                </label>
+                                <textarea class="form-control" id="newExperienceDescription" rows="3"
+                                    formControlName="description"
+                                    [ngClass]="{'is-invalid': formControl['description'].errors && formGroup.controls['description'].touched, 'is-valid': formControl['description'].touched && !formControl['description'].errors}">
+                                </textarea>
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['description'].hasError('required')">
+                                        La descripción no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newExperienceCompany" class="form-label">
+                                    Nombre de la empresa
+                                </label>
+                                <input type="text" class="form-control" id="newExperienceCompany"
+                                    formControlName="company"
+                                    [ngClass]="{'is-invalid': formControl['company'].errors && formGroup.controls['company'].touched, 'is-valid': formControl['company'].touched && !formControl['company'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['company'].hasError('required')">
+                                        El nombre de la empresa no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newExperienceStartDate" class="form-label">
+                                    Fecha de inicio
+                                </label>
+                                <input type="date" class="form-control" id="newExperienceStartDate"
+                                    formControlName="startDate"
+                                    [ngClass]="{'is-invalid': formControl['startDate'].errors && formGroup.controls['startDate'].touched, 'is-valid': formControl['startDate'].touched && !formControl['startDate'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['startDate'].hasError('required')">
+                                        La fecha de inicio no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newExperienceEndDate" class="form-label">
+                                    Fecha final
+                                </label>
+                                <input type="date" class="form-control" id="newExperienceEndDate"
+                                    formControlName="endDate"
+                                    [ngClass]="{'is-invalid': formControl['endDate'].errors && formGroup.controls['endDate'].touched, 'is-valid': formControl['endDate'].touched && !formControl['endDate'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['endDate'].hasError('required')">
+                                        La fecha final no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newExperienceLogoUrl" class="form-label">
+                                    Logo
+                                </label>
+                                <input type="text" class="form-control" id="newExperienceLogoUrl"
+                                    formControlName="logoUrl"
+                                    [ngClass]="{'is-invalid': formControl['logoUrl'].errors && formGroup.controls['logoUrl'].touched, 'is-valid': formControl['logoUrl'].touched && !formControl['logoUrl'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['logoUrl'].hasError('required')">
+                                        El Logo no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newExperienceWebUrl" class="form-label">
+                                    Web
+                                </label>
+                                <input type="text" class="form-control" id="newExperienceWebUrl"
+                                    formControlName="webUrl"
+                                    [ngClass]="{'is-invalid': formControl['webUrl'].errors && formGroup.controls['webUrl'].touched, 'is-valid': formControl['webUrl'].touched && !formControl['webUrl'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['webUrl'].hasError('required')">
+                                        La Web no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="border-0 border-top border-white bg-secondary pt-4">
+
+                                <div class="mx-auto w-100 d-flex justify-content-between">
+                                    <button type="button" class="btn btn-outline-danger mx-1 me-auto"
+                                        data-bs-dismiss="modal">
+                                        Cancelar!
+                                    </button>
+
+                                    <button type="button" class="btn btn-outline-light mx-1"
+                                        (click)="clearForm()">Limpiar</button>
+                                    <button type="submit" class="btn btn-outline-info mx-1">
+                                        Actualizar Experiencia!
+                                    </button>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

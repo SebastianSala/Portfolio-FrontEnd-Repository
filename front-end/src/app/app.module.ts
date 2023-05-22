@@ -36,6 +36,9 @@ import { ModalEditNetworkComponent } from './components/modals/modal-edit-networ
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeEsAR from '@angular/common/locales/es-AR';
+import { ModalAddExperienceComponent } from './components/modals/modal-add-experience/modal-add-experience.component';
+import { ModalEditExperienceComponent } from './components/modals/modal-edit-experience/modal-edit-experience.component';
+import { ModalDeleteExperienceComponent } from './components/modals/modal-delete-experience/modal-delete-experience.component';
 
 // Register the 'es-AR' locale data
 registerLocaleData(localeEsAR);
@@ -70,7 +73,10 @@ registerLocaleData(localeEsAR);
     ModalEditBannerComponent,
     ModalAddNetworkComponent,
     ModalDeleteNetworkComponent,
-    ModalEditNetworkComponent
+    ModalEditNetworkComponent,
+    ModalAddExperienceComponent,
+    ModalEditExperienceComponent,
+    ModalDeleteExperienceComponent
   ],
   imports: [
     BrowserModule,

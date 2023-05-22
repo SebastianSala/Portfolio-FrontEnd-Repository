@@ -67,13 +67,11 @@ export class ModalEditNetworkComponent implements OnChanges {
 
     const theNetwork = new Network(networkConstructor);
     
-    console.log("*** Editing Network");
+    console.info("*** Editing Network");
 
     this.networkService.updateNetworkByPersonIdByNetworkId(theNetwork.getPerson.getId!, theNetwork.getId!, theNetwork).subscribe({
 
       next: (data) => {
-        // reseting the form after creation
-        this.formGroup.reset();
         // reload entities
         const change: EntityChange = { change: true, entity: theNetwork };
         this.changeEntityService.changeEntity(change);
