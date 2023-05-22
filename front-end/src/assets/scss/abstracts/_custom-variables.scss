@@ -71,6 +71,6 @@ $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);
 
 $enable-shadows: true;
 
-#card-aboutme:hover {
-  box-shadow: #FFF;
+.card:hover {
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2) !important;
 }

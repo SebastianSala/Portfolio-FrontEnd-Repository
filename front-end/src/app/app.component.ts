@@ -25,14 +25,14 @@ export class AppComponent implements OnInit {
 
   private doChecks() {
 
-    console.log("*** Starting Backend heath check");
+    console.info("*** Starting Backend heath check");
 
     this.healthCheck.check().subscribe({
 
       next: (response) => {
         const message = response as unknown as ResponseMessage
         console.log("*** Status Check for Backend application");
-        console.log("*** (only backend app, without database server)");
+        console.warn("*** (only backend app check, without database server)");
         console.log("+++ Ok.", message.message);
       },
 

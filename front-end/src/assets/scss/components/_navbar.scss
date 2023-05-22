@@ -3,6 +3,11 @@
 //     //width: 100%;
 // }
 
-#menu-toggler:hover{
-    border-color: "black";
+#theNavbar:hover{
+    border-color: lightgreen !important;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card-text:hover{
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2) !important;
 }
