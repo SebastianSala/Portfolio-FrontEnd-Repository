@@ -21,6 +21,7 @@ export class FooterComponent implements OnInit, OnDestroy {
 
   constructor(private changePersonService: ChangePersonService) {
     this.person$ = this.changePersonService.personChanged;
+    this.thePerson = new Person(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
   }
 
 

@@ -6,7 +6,7 @@ import { Error404Component } from './components/error404/error404.component';
 import { GuardGuard } from './services/guard.guard';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
+  // { path: '', component: IndexComponent },
   { path: 'index', component: IndexComponent },
   { path: 'new-user', component: NewUserComponent },
   { path: '', redirectTo: '/index', pathMatch: 'full' },

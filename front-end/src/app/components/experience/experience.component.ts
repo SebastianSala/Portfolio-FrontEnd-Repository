@@ -58,7 +58,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
       },
 
       error: (err: any) => {
-        console.log("Error. UpdateExperience: ", err);
+        console.error("Error. UpdateExperience: ", err);
       }
 
     });

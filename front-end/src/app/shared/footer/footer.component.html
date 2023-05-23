@@ -2,16 +2,15 @@
     <div class="row mx-auto pt-sm-1 py-1 my-2 shadow">
 
         <!-- <div *ngIf="person$ | async as person"> -->
-        <div *ngIf="(person$ | async) as person">
 
             <p class="text-center text-info shadow">© 2022
                 <a class="text-info fw-bold" [href]="thePerson?.getWebUrl" target="_blank">
-                    {{person.getName}}
+                    {{thePerson?.getName}}
                 </a>
             </p>
 
         </div>
 
 
-    </div>
+    <!-- </div> -->
 </footer>

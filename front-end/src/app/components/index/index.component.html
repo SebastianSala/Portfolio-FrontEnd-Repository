@@ -2,6 +2,27 @@
     <div class="col px-0 pt-7 pt-md-8" id="start">
 
 
+        <div class="row d-flex justify-content-center" *ngIf="isLoading">
+            <div class="col-3 text-center">
+                <p>Cargando</p><i class="fa-solid fa-spinner fa-spin-pulse fa-2x"></i>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center" *ngIf="serverFail">
+            <div class="col-3 text-center">
+                <p>El servidor está tardando en responder, intente nuevamente en unos minutos.</p><i
+                    class="fa-solid fa-bomb fa-bounce fa-2x"></i>
+            </div>
+        </div>
+
+        <!-- <div class="row d-flex justify-content-center">
+            <div class="col-3 text-center">
+                <p *ngIf="userLogged">User is logged in!<i class="fa-solid fa-bomb fa-bounce fa-2x"></i></p>
+                <p *ngIf="!userLogged">User is NOT logged in!<i class="fa-solid fa-bomb fa-spin"></i></p>
+            </div>
+        </div> -->
+
+
         <!-- <app-imagen></app-imagen> -->
 
         <!-- Header -->

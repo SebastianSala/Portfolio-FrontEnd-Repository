@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { Person } from '../model/person';
 import { PersonData } from '../model/dataTypes';
 import { ResponseMessage } from '../model/dataTypes';
@@ -15,13 +15,19 @@ export class AuthenticationService {
 
   private url = environment.URL + '/person/login';
 
-  currentUserSubject: BehaviorSubject<PersonData>;
+  private currentUserSubject: BehaviorSubject<PersonData>;
+
+  private currentUserIsLogged: BehaviorSubject<boolean>;
 
   private loggedIn: boolean = false;
 
 
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<PersonData>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
+    // this.currentUserIsLogged = new BehaviorSubject<boolean>(false);
+    let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser") || '{}');
+    const condition: boolean = ((user.id == null) ? false : true);
+    this.currentUserIsLogged = new BehaviorSubject<boolean>(condition);
   }
 
 
@@ -36,7 +42,7 @@ export class AuthenticationService {
 
 
         if (res.id != null) {
- 
+
 
           let personData = {
             id: res.id,
@@ -49,6 +55,8 @@ export class AuthenticationService {
 
           this.currentUserSubject.next(personData);
 
+          this.currentUserIsLogged.next(true);
+
           this.loggedIn = true;
 
           return thePerson as Person;
@@ -58,19 +66,45 @@ export class AuthenticationService {
 
           this.loggedIn = false;
 
+          this.currentUserIsLogged.next(false);
+
           sessionStorage.setItem('currentUser', JSON.stringify({}));
-          const resError = response as ResponseMessage;          
-          
+          const resError = response as ResponseMessage;
+
           return resError;
 
         }
 
 
-      })
+      }),
+
+      catchError(this.handleError)
+
     );
 
 
   }
+
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error("An Error ocurred", error.error);
+    } else {
+      console.error("Backend message: ", error.error.message, error.status);
+    }
+    return throwError(() => error || new Error("Error ocurred, try again"))
+  }
+
+
+  public get getUserIsLogged$(): Observable<boolean> {
+    return this.currentUserIsLogged.asObservable();
+  }
+
+  public set setUserIsLogged(logState: boolean) {
+    this.currentUserIsLogged.next(logState);
+  }
+
+
 
 
   public get authenticatedUser() {
@@ -86,7 +120,6 @@ export class AuthenticationService {
   public set isLoggedIn(loggedIn: boolean) {
     this.loggedIn = loggedIn;
   }
-
 
 
 }

@@ -74,7 +74,7 @@ export class ProjectsComponent implements OnChanges {
       });
 
     } else {
-      console.log("--- Error. No person to load projects from");
+      console.error("--- Error. No person to load projects from");
 
     }
 

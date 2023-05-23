@@ -7,6 +7,7 @@ import { ChangePersonService } from '../../services/change-person.service';
 
 import { PersonData } from '../../model/dataTypes';
 import { Person } from '../../model/person';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -16,6 +17,10 @@ import { Person } from '../../model/person';
 })
 export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
+  isLoading = false;
+  serverFail = false;
+  userLogged = false;
+  userLogSubscription?: Subscription;
 
   isLogged: boolean = false;
   user?: PersonData;
@@ -35,8 +40,24 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
 
   ngOnInit(): void {
+
     this.checkLogin();
     this.getFirstPerson(this.firstPerson.email);
+
+    // checking for logged in state and assigning the subscription to a variable to unsubscribe later
+    this.userLogSubscription = this.authenticationService.getUserIsLogged$.subscribe({
+      next: (loggedState) => {
+        this.userLogged = loggedState;
+        console.log("user is logged in: ", this.userLogged);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.info("log complete");
+      }
+    });
+
   }
 
   ngOnChanges(): void {
@@ -49,6 +70,11 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
     this.router.navigate(['/index'], { fragment: 'start' });
   }
 
+  ngOnDestroy(): void {
+    // Unsubscribing for good practice
+    this.userLogSubscription?.unsubscribe();
+  }
+
 
   protected loginState(login: boolean): void {
 
@@ -57,6 +83,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
     let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser")!);
 
+    this.isLoading = true;
     if (login) {
       this.personService.getPersonByEmail(user.email).subscribe({
 
@@ -80,13 +107,17 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
             this.isLogged = true;
             this.setFirstPerson(user.email);
 
-            console.log("+++ Ok. Logged in");
+            console.info("+++ Ok. Logged in");
+
+            window.location.reload();
 
           } else {
             this.isLogged = false;
           }
 
+          this.isLoading = false;
         }
+
 
       });
 
@@ -98,11 +129,11 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         this.isLogged = true;
         this.setFirstPerson(user.email);
 
-        console.log("+++ Ok. Logged in");
+        console.info("+++ Ok. Logged in");
 
       } else {
 
-        console.log("+++ Ok. Logged out");
+        console.info("+++ Ok. Logged out");
 
         this.isLogged = false;
         this.setFirstPerson(user.email);
@@ -110,6 +141,8 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         this.router.navigate(['/index'], { fragment: 'start' });
 
       }
+
+      this.isLoading = false;
 
     }
   }
@@ -166,6 +199,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
     console.log("*** Loading Person");
 
+    this.isLoading = true;
 
     this.personService.getPersonByEmail(email).subscribe({
 
@@ -180,11 +214,18 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
       error: (err) => {
         const errorMessage = err.error.message ?? err.error ?? err;
         console.error("--- Error. getFirstPerson: ", errorMessage, err.status);
+        alert(errorMessage);
+
+        this.isLoading = false;
+        this.serverFail = true;
       },
       complete: () => {
         //once the person is retrived from the backend, navigato to index to see it.
         this.router.navigate(['/index'], { fragment: 'start' });
         console.log("+++ Ok. Load Person complete");
+
+        this.isLoading = false;
+        this.serverFail = false;
       }
 
     });

@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Person } from '../model/person';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { PersonData, ResponseMessage } from '../model/dataTypes';
 import { environment } from '../../environments/environment';
 
@@ -16,7 +16,7 @@ export class PersonService {
 
 
   constructor(private httpClient: HttpClient) {
-    
+
   }
 
 
@@ -37,7 +37,8 @@ export class PersonService {
         allPersons => allPersons.map(
           individualPerson => new Person(individualPerson)
         )
-      )
+      ),
+      catchError(this.handleError)
     )
 
   }
@@ -50,7 +51,8 @@ export class PersonService {
     return this.httpClient.get<PersonData>(theUrl).pipe(
       map(
         personData => new Person(personData)
-      )
+      ),
+      catchError(this.handleError)
     )
 
   }
@@ -82,6 +84,17 @@ export class PersonService {
     const theUrl = `${this.url}/delete?id=${personId}`;
     return this.httpClient.delete<ResponseMessage>(theUrl);
 
+  }
+
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error("An Error ocurred", error.error);
+    } else {
+      console.error("Backend message: ", error.error.message, error.status);
+    }
+    // return throwError(() => new Error(error.error.message || "Error ocurred, try again"))
+    return throwError(() => error || new Error("Error ocurred, try again"))
   }
 
 

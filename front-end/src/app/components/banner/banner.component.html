@@ -15,7 +15,7 @@
                 <app-modal-edit-banner [personToEdit]="thePerson"
                     (editEvent)="reloadPerson($event)"></app-modal-edit-banner>
                 <!-- /Edit -->
-              
+
             </div>
         </div>
         <!-- /Admin Add/Edit/Delete -->
@@ -35,9 +35,10 @@
                 <div class="card-body mt-n5">
                     <div>
 
-                        <div
+                        <div *ngIf="localPerson?.getImgUrl"
                             class="mb-3 border border-2 border-light rounded-circle overflow-hidden col-7 col-sm-6 col-md-4 d-block mx-auto mx-sm-4 shadow-lg">
-                            <img class="img-fluid" [src]="localPerson?.getImgUrl" id="img-about" alt="foto de perfil de {{localPerson?.getName}}">
+                            <img class="img-fluid" [src]="localPerson?.getImgUrl" id="img-about"
+                                alt="foto de perfil de {{localPerson?.getName}}">
                         </div>
 
                     </div>
@@ -71,7 +72,8 @@
                                         {{localPerson?.getTitle}}</p>
                                     <p class="text-center">{{localPerson?.getLocation}}</p>
                                     <div class="col-12 d-flex justify-content-start justify-content-md-end py-3">
-                                        <a class="btn btn-outline-info px-5" [href]="localPerson?.getWebUrl" target="_blank">
+                                        <a class="btn btn-outline-info px-5" [href]="localPerson?.getWebUrl"
+                                            target="_blank">
                                             Mi Web
                                         </a>
                                     </div>

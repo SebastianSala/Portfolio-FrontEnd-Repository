@@ -39,6 +39,9 @@ export class ModalLogoutComponent {
 
     this.authenticationService.authenticatedUser = personData;
 
+    // new log in check
+    this.authenticationService.setUserIsLogged = false;
+
     this.logged.emit(false);
 
   }

@@ -76,16 +76,20 @@ export class ModalLoginComponent implements OnInit {
       next: (response) => {
 
       },
+
       error: (err) => {
         const errorMessage = err.error.message ?? err.error ?? err;
         console.error("--- Error. Login method: ", errorMessage, err.status);
         alert(errorMessage);
         this.logged.emit(false);
       },
+
       complete: () => {
         console.log("+++ Ok. Login complete, redirecting to index edit");
 
         this.logged.emit(true);
+
+        this.router.navigate(['/index'], { fragment: 'start' });
 
         //close the modal before redirecting
         document.getElementById("modalLoginClose")?.click();
