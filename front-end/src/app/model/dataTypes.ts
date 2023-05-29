@@ -44,6 +44,18 @@ export interface NetworkData {
     person: PersonData;
 }
 
+export interface EducationData {
+    id: number;
+    title: string;
+    institution: string;
+    description: string;
+    startDate: string;
+    endDate: string;
+    logoUrl: string;
+    webUrl: string;
+    person: PersonData;
+}
+
 export interface ExperienceData {
     id: number;
     position: string;
