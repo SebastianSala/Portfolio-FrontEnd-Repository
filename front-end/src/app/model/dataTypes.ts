@@ -56,6 +56,16 @@ export interface EducationData {
     person: PersonData;
 }
 
+export enum EducationProperties {
+    Title = 'title',
+    Institution = 'institution',
+    Description = 'description',
+    StartDate = 'startDate',
+    EndDate = 'endDate',
+    LogoUrl = 'logoUrl',
+    WebUrl = 'webUrl'
+};
+
 export interface ExperienceData {
     id: number;
     position: string;

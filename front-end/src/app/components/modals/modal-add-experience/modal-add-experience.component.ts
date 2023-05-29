@@ -90,7 +90,7 @@ export class ModalAddExperienceComponent {
         const errorMessage = err.error.message ?? err.error ?? err;
         console.error(`Error. Create Experience addModal: ${errorMessage}, status: ${err.status}`);
         // the user should never see this error
-        alert(`Error al creating Experiencia: ${errorMessage}, status: ${err.status}`);
+        alert(`Error al crear Experiencia: ${errorMessage}, status: ${err.status}`);
       },
 
       complete: () => {
