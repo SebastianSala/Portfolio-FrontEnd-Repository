@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ImagenComponent } from './components/imagen/imagen.component';
 import { BannerComponent } from './components/banner/banner.component';
-import { HrComponent } from './components/utilities/hr/hr.component';
+import { HrComponent } from './shared/utilities/hr/hr.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { ProjectsComponent } from './components/projects/projects.component';
@@ -19,7 +19,7 @@ import { IndexComponent } from './components/index/index.component';
 import { Error404Component } from './components/error404/error404.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SiteMapComponent } from './components/site-map/site-map.component';
-import { StudiesComponent } from './components/studies/studies.component';
+import { EducationComponent } from './components/education/education.component';
 import { NetworksComponent } from './components/network/network.component';
 import { ModalLoginComponent } from './components/modals/modal-login/modal-login.component';
 import { ModalEditProjectComponent } from './components/modals/modal-edit-project/modal-edit-project.component';
@@ -39,6 +39,8 @@ import localeEsAR from '@angular/common/locales/es-AR';
 import { ModalAddExperienceComponent } from './components/modals/modal-add-experience/modal-add-experience.component';
 import { ModalEditExperienceComponent } from './components/modals/modal-edit-experience/modal-edit-experience.component';
 import { ModalDeleteExperienceComponent } from './components/modals/modal-delete-experience/modal-delete-experience.component';
+import { CustomCardComponent } from './shared/utilities/custom-card/custom-card.component';
+import { AddEntityComponent } from './shared/utilities/add-entity/add-entity.component';
 
 // Register the 'es-AR' locale data
 registerLocaleData(localeEsAR);
@@ -61,7 +63,7 @@ registerLocaleData(localeEsAR);
     Error404Component,
     NavbarComponent,
     SiteMapComponent,
-    StudiesComponent,
+    EducationComponent,
     NetworksComponent,
     ModalLoginComponent,
     ModalEditProjectComponent,
@@ -76,7 +78,9 @@ registerLocaleData(localeEsAR);
     ModalEditNetworkComponent,
     ModalAddExperienceComponent,
     ModalEditExperienceComponent,
-    ModalDeleteExperienceComponent
+    ModalDeleteExperienceComponent,
+    CustomCardComponent,
+    AddEntityComponent
   ],
   imports: [
     BrowserModule,

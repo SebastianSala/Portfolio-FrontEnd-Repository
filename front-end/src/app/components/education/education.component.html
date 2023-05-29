@@ -1,0 +1,101 @@
+<article id="education">
+    <div class="row mx-auto my-5 pt-8">
+
+
+        <!-- Admin Add/Edit/Delete -->
+        <div class="row mx-auto px-0 bg-dark border border-light my-1 rounded-3" *ngIf="this.isLogged">
+            <div class="col-12 text-end">
+
+                <!-- Add -->
+                <button type="button" class="btn btn-outline-info my-2" data-bs-toggle="modal"
+                    data-bs-target="#modalAddExperience">
+                    <i class="fa-solid fa-plus fa-2x p-1 d-flex align-items-center">
+                        <span class="fs-5 ps-2">Agregar estudio</span>
+                    </i>
+                </button>
+
+                <app-modal-add-experience></app-modal-add-experience>
+                <!-- /Add -->
+
+            </div>
+        </div>
+        <!-- /Admin Add/Edit/Delete -->
+
+
+        <div class="card text-white text-center border border-primary rounded-3 bg-dark shadow-lg p-2">
+            <div class="card-body">
+
+
+                <h3 class="card-title fw-bold text-shadow-title py-2">Estudios</h3>
+                <h6 class="card-subtitle mb-2 text-muted">Algunos de mis estudios</h6>
+
+                <div class="card text-white text-center border border-primary rounded-3 bg-secondary shadow-lg my-5 py-3"
+                    *ngFor="let education of allEducations, let i = index, let even = even" id="education{{i}}">
+
+                    <!-- Admin Add/Edit/Delete -->
+                    <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.isLogged">
+                        <div class="col-12 text-end text-primary">
+
+                            <!-- Edit -->
+                            <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
+                                data-bs-target="#modalEditEducation" (click)="sendEducation(education)">
+                                <i class="fas fa-pen-to-square fa-2x p-1"></i>
+                            </button>
+                            <!-- /Edit -->
+
+                            <!-- Delete -->
+                            <button type="button" class="btn btn-outline-dark text-danger" data-bs-toggle="modal"
+                                data-bs-target="#modalDeleteEducation" (click)="sendEducation(education)">
+                                <i class="fas fa-trash fa-2x p-1"></i>
+                            </button>
+                            <!-- /Delete -->
+
+                        </div>
+                    </div>
+
+                    <!-- <app-modal-edit-experience [educationToEdit]="educationToSend"></app-modal-edit-experience>
+                    <app-modal-delete-experience [educationToDelete]="educationToSend"></app-modal-delete-experience> -->
+                    <!-- /Admin Add/Edit/Delete -->
+
+                    <div class="card-header my-2">
+                        <h4 class="shadow text-shadow-simple">{{education.getTitle}}</h4>
+                        <h6 class="text-shadow-simple">{{education.getStartDate | date: 'MMMM/yyyy' : 'es:AR'}}
+                            - {{education.getEndDate | date: 'MMMM/yyyy' : 'es:AR'}}</h6>
+                    </div>
+
+                    <div class="card-body m-3">
+
+                        <div class="col d-flex align-items-center py-4 py-md-5 gap-3 gap-md-0">
+
+                            <div class="col-6 col-md-8 d-flex justify-content-start ">
+                                <h5 class="card-title text-shadow-simple d-inline-flex">{{education.getInstitution}}</h5>
+                            </div>
+
+                            <div class="col-6 col-md-2 col-md-1 d-flex justify-content-end align-items-center">
+                                <div class="card rounded-circl w-auto ms-auto d-inline-flex"
+                                    *ngIf="education.getLogoUrl">
+                                    <img class="mx-auto img-fluid rounded-3 text-shadow-simple p-"
+                                        [src]="education.getLogoUrl" alt="logo de {{education.getInstitution}}">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <p class="card-text text-shadow-simple fs-5">{{education.getDescription}}</p>
+                    </div>
+
+
+                    <div class="card-footer my-0 pt-5" *ngIf="education.getWebUrl">
+                        <a target="_blank" [href]="education.getWebUrl" class="btn btn-dark mx-3 my-3 w-50">
+                            Web
+                        </a>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</article>

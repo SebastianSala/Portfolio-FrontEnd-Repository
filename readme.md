@@ -46,6 +46,6 @@ Este es el frontend Single Page Aplication para el portfolio personal hecho con 
 * Sebastián Sala - *Diseño e implementación del Sistema*
 
 
-## Contacto
-* sebastiansala.dev@gmail.com
-* https://sebastiansala.web.app
+## Web del proyecto
+
+* https://sebastiansala-portfolio.web.app
