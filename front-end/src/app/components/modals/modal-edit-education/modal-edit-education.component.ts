@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ import { EducationData, EntityChange, EducationProperties } from '../../../model
   templateUrl: './modal-edit-education.component.html',
   styleUrls: ['./modal-edit-education.component.scss']
 })
-export class ModalEditEducationComponent {
+export class ModalEditEducationComponent implements OnChanges {
 
 
   @Input() educationToEdit!: Education;

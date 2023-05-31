@@ -66,6 +66,20 @@ export enum EducationProperties {
     WebUrl = 'webUrl'
 };
 
+export interface SkillData {
+    id: number;
+    name: string;
+    level: number;
+    isTechnical: boolean;
+    person: PersonData;
+}
+
+export enum SkillProperties {
+    Name = 'name',
+    Level = 'level',
+    IsTechnical = 'isTechnical',
+};
+
 export interface ExperienceData {
     id: number;
     position: string;

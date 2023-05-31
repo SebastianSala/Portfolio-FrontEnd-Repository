@@ -7,11 +7,11 @@ import { Project } from '../../model/project';
 
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  selector: 'app-project',
+  templateUrl: './project.component.html',
+  styleUrls: ['./project.component.scss']
 })
-export class ProjectsComponent implements OnChanges {
+export class ProjectComponent implements OnChanges {
 
 
   @Input() isLogged: boolean = false;

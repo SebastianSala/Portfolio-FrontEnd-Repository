@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ import { ExperienceData, EntityChange, ExperienceProperties } from '../../../mod
   templateUrl: './modal-edit-experience.component.html',
   styleUrls: ['./modal-edit-experience.component.scss']
 })
-export class ModalEditExperienceComponent {
+export class ModalEditExperienceComponent implements OnChanges {
 
   @Input() experienceToEdit!: Experience;
   protected person: Person = new Person();

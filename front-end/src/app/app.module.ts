@@ -11,8 +11,8 @@ import { BannerComponent } from './components/banner/banner.component';
 import { HrComponent } from './shared/utilities/hr/hr.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { ExperienceComponent } from './components/experience/experience.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { SkillsComponent } from './components/skills/skills.component';
+import { ProjectComponent } from './components/project/project.component';
+import { SkillComponent } from './components/skill/skill.component';
 import { ContactMeComponent } from './components/contact-me/contact-me.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { IndexComponent } from './components/index/index.component';
@@ -36,6 +36,7 @@ import { ModalEditNetworkComponent } from './components/modals/modal-edit-networ
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeEsAR from '@angular/common/locales/es-AR';
+
 import { ModalAddExperienceComponent } from './components/modals/modal-add-experience/modal-add-experience.component';
 import { ModalEditExperienceComponent } from './components/modals/modal-edit-experience/modal-edit-experience.component';
 import { ModalDeleteExperienceComponent } from './components/modals/modal-delete-experience/modal-delete-experience.component';
@@ -58,8 +59,8 @@ registerLocaleData(localeEsAR);
     HrComponent,
     AboutMeComponent,
     ExperienceComponent,
-    ProjectsComponent,
-    SkillsComponent,
+    ProjectComponent,
+    SkillComponent,
     ContactMeComponent,
     FooterComponent,
     IndexComponent,
