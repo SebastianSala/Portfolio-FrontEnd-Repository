@@ -42,6 +42,8 @@ import { ModalDeleteExperienceComponent } from './components/modals/modal-delete
 import { CustomCardComponent } from './shared/utilities/custom-card/custom-card.component';
 import { AddEntityComponent } from './shared/utilities/add-entity/add-entity.component';
 import { ModalAddEducationComponent } from './components/modals/modal-add-education/modal-add-education.component';
+import { ModalEditEducationComponent } from './components/modals/modal-edit-education/modal-edit-education.component';
+import { ModalDeleteEducationComponent } from './components/modals/modal-delete-education/modal-delete-education.component';
 
 // Register the 'es-AR' locale data
 registerLocaleData(localeEsAR);
@@ -82,7 +84,9 @@ registerLocaleData(localeEsAR);
     ModalDeleteExperienceComponent,
     CustomCardComponent,
     AddEntityComponent,
-    ModalAddEducationComponent
+    ModalAddEducationComponent,
+    ModalEditEducationComponent,
+    ModalDeleteEducationComponent
   ],
   imports: [
     BrowserModule,

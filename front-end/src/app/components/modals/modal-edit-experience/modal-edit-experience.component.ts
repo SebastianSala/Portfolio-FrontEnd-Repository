@@ -68,7 +68,6 @@ export class ModalEditExperienceComponent {
     const experienceConstructor: ExperienceData = {
       // setting id to experienceToEdit.getId to update an existing experience instead of creating a new one
       id: this.experienceToEdit.getId!,
-      // position: this.formControl[ExperienceProperties.Position].value,
       position: this.formControl[this.experienceProperties.Position].value,
       description: this.formControl[this.experienceProperties.Description].value,
       company: this.formControl[this.experienceProperties.Company].value,

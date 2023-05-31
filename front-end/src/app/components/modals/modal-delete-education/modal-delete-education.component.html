@@ -1,0 +1,43 @@
+<!-- Modal -->
+<div class="modal fade" id="modalDeleteEducation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+
+      <div class="modal-header bg-dark py-2 py-md-1">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Borrar educación?
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+
+
+      <div class="modal-body bg-secondary">
+
+        <h4>
+          {{educationToDelete.getTitle}}
+        </h4>
+
+      </div>
+
+
+      <div class="modal-footer bg-secondary">
+        
+        <div class="mx-auto w-100 d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-info me-auto" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-outline-danger ms-auto" id="buttonDelete" data-bs-dismiss="modal"
+            (click)="deleteEducation()">
+            Borrar educación!
+          </button>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

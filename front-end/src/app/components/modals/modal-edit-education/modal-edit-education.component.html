@@ -1,0 +1,167 @@
+<!-- Modal -->
+<div class="modal fade" id="modalEditEducation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-secondary">
+
+
+            <div class="modal-header bg-dark py-2 py-md-1">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Editar Educación
+                </h1>
+                <button type="button" class="btn-close" id="modalEditEducationClose" data-bs-dismiss="modal"
+                    aria-label="Close">
+                </button>
+            </div>
+
+
+            <div class="modal-body bg-secondary py-4 rounded-3">
+
+
+                <div>
+                    <form [formGroup]="formGroup" (ngSubmit)="validateForm($event)">
+                        <div class="form-group">
+
+
+                            <div class="mb-3">
+                                <label for="newEducationTitle" class="form-label">
+                                    Título de la Educación
+                                </label>
+                                <input type="text" class="form-control" id="newEducationTitle"
+                                    formControlName="title"
+                                    [ngClass]="{'is-invalid': formControl['title'].errors && formGroup.controls['title'].touched, 'is-valid': formControl['title'].touched && !formControl['title'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['title'].hasError('required')">
+                                        El Título no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="mb-3">
+                                <label for="newEducationInstitution" class="form-label">
+                                    Nombre de la Institución
+                                </label>
+                                <input type="text" class="form-control" id="newEducationInstitution"
+                                    formControlName="institution"
+                                    [ngClass]="{'is-invalid': formControl['institution'].errors && formGroup.controls['institution'].touched, 'is-valid': formControl['institution'].touched && !formControl['institution'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['institution'].hasError('required')">
+                                        El nombre de la Institución no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newEducationDescription" class="form-label">
+                                    Descripción la Educación
+                                </label>
+                                <textarea class="form-control" id="newEducationDescription" rows="3"
+                                    formControlName="description"
+                                    [ngClass]="{'is-invalid': formControl['description'].errors && formGroup.controls['description'].touched, 'is-valid': formControl['description'].touched && !formControl['description'].errors}">
+                                </textarea>
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['description'].hasError('required')">
+                                        La descripción no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newEducationStartDate" class="form-label">
+                                    Fecha de inicio
+                                </label>
+                                <input type="date" class="form-control" id="newEducationStartDate"
+                                    formControlName="startDate"
+                                    [ngClass]="{'is-invalid': formControl['startDate'].errors && formGroup.controls['startDate'].touched, 'is-valid': formControl['startDate'].touched && !formControl['startDate'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['startDate'].hasError('required')">
+                                        La fecha de inicio no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newEducationEndDate" class="form-label">
+                                    Fecha final
+                                </label>
+                                <input type="date" class="form-control" id="newEducationEndDate"
+                                    formControlName="endDate"
+                                    [ngClass]="{'is-invalid': formControl['endDate'].errors && formGroup.controls['endDate'].touched, 'is-valid': formControl['endDate'].touched && !formControl['endDate'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['endDate'].hasError('required')">
+                                        La fecha final no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newEducationLogoUrl" class="form-label">
+                                    Logo
+                                </label>
+                                <input type="text" class="form-control" id="newEducationLogoUrl"
+                                    formControlName="logoUrl"
+                                    [ngClass]="{'is-invalid': formControl['logoUrl'].errors && formGroup.controls['logoUrl'].touched, 'is-valid': formControl['logoUrl'].touched && !formControl['logoUrl'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['logoUrl'].hasError('required')">
+                                        El Logo no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="newEducationWebUrl" class="form-label">
+                                    Web
+                                </label>
+                                <input type="text" class="form-control" id="newEducationWebUrl"
+                                    formControlName="webUrl"
+                                    [ngClass]="{'is-invalid': formControl['webUrl'].errors && formGroup.controls['webUrl'].touched, 'is-valid': formControl['webUrl'].touched && !formControl['webUrl'].errors}">
+
+                                <div class="invalid-feedback">
+                                    <div *ngIf="formControl['webUrl'].hasError('required')">
+                                        La Web no puede faltar
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="border-0 border-top border-white pt-4">
+
+                                <div class="mx-auto w-100 d-flex justify-content-between">
+                                    <button type="button" class="btn btn-outline-danger mx-1 me-auto"
+                                        data-bs-dismiss="modal">
+                                        Cancelar!
+                                    </button>
+
+                                    <button type="button" class="btn btn-outline-light mx-1"
+                                        (click)="clearForm()">Limpiar</button>
+                                    <button type="submit" class="btn btn-outline-info mx-1">
+                                        Crear Educación!
+                                    </button>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

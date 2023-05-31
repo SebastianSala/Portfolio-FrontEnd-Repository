@@ -8,6 +8,7 @@ import { ChangePersonService } from '../../services/change-person.service';
 import { PersonData } from '../../model/dataTypes';
 import { Person } from '../../model/person';
 import { Subscription } from 'rxjs';
+import { HttpResponse } from '@angular/common/http/index';
 
 
 @Component({
@@ -212,9 +213,11 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         this.changePersonService.changePerson(this.thePerson);
       },
       error: (err) => {
-        const errorMessage = err.error.message ?? err.error ?? err;
+        // Check to se if the error is comming from the backend methods or it could not reach the server and is a generic error
+        // const errorMessage = err.error.message ?? err.error ?? err;
+        const errorMessage = (err.error.hasOwnProperty('message')) ? err.error.message : "";
         console.error("--- Error. getFirstPerson: ", errorMessage, err.status);
-        alert(errorMessage);
+        if (errorMessage != "") alert(errorMessage);
 
         this.isLoading = false;
         this.serverFail = true;
