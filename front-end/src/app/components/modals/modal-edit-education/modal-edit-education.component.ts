@@ -21,10 +21,9 @@ export class ModalEditEducationComponent implements OnChanges {
 
   @Input() educationToEdit!: Education;
   protected person: Person = new Person();
+  protected educationProperties: typeof EducationProperties = EducationProperties;
 
   protected formGroup: FormGroup;
-
-  protected educationProperties: typeof EducationProperties = EducationProperties;
 
 
   public constructor(protected formBuilder: FormBuilder, private educationService: EducationService, private router: Router, private authenticationService: AuthenticationService, private changeEntityService: ChangeEntityService) {

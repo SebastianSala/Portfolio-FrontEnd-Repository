@@ -24,7 +24,7 @@ export class GuardGuard implements CanActivate {
     if (currentUser && currentUser.id) {
       return true;
     } else {
-      alert("not allowed");
+      // alert("not allowed");
       this.router.navigate(['/index'], { fragment: 'start' });      
       return false;
     }

@@ -18,7 +18,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { IndexComponent } from './components/index/index.component';
 import { Error404Component } from './components/error404/error404.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SiteMapComponent } from './components/site-map/site-map.component';
+import { SiteMapComponent } from './shared/site-map/site-map.component';
 import { EducationComponent } from './components/education/education.component';
 import { NetworksComponent } from './components/network/network.component';
 import { ModalLoginComponent } from './components/modals/modal-login/modal-login.component';
@@ -45,6 +45,9 @@ import { AddEntityComponent } from './shared/utilities/add-entity/add-entity.com
 import { ModalAddEducationComponent } from './components/modals/modal-add-education/modal-add-education.component';
 import { ModalEditEducationComponent } from './components/modals/modal-edit-education/modal-edit-education.component';
 import { ModalDeleteEducationComponent } from './components/modals/modal-delete-education/modal-delete-education.component';
+import { ModalAddSkillComponent } from './components/modals/modal-add-skill/modal-add-skill.component';
+import { ModalDeleteSkillComponent } from './components/modals/modal-delete-skill/modal-delete-skill.component';
+import { ModalEditSkillComponent } from './components/modals/modal-edit-skill/modal-edit-skill.component';
 
 // Register the 'es-AR' locale data
 registerLocaleData(localeEsAR);
@@ -87,7 +90,10 @@ registerLocaleData(localeEsAR);
     AddEntityComponent,
     ModalAddEducationComponent,
     ModalEditEducationComponent,
-    ModalDeleteEducationComponent
+    ModalDeleteEducationComponent,
+    ModalAddSkillComponent,
+    ModalDeleteSkillComponent,
+    ModalEditSkillComponent
   ],
   imports: [
     BrowserModule,

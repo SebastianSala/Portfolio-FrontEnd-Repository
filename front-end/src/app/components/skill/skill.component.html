@@ -14,7 +14,7 @@
                     </i>
                 </button>
 
-                <app-modal-add-education></app-modal-add-education>
+                <app-modal-add-skill></app-modal-add-skill>
                 <!-- /Add -->
 
             </div>
@@ -37,6 +37,34 @@
 
                     <div class="mb-5 shadow" *ngFor="let skill of allSkills, let i = index, let even = even">
                         <div *ngIf="skill.getIsTechnical">
+
+
+                            <!-- Admin Add/Edit/Delete -->
+                            <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.isLogged">
+                                <div class="col-12 text-end text-primary">
+
+                                    <!-- Edit -->
+                                    <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
+                                        data-bs-target="#modalEditSkill" (click)="sendSkill(skill)">
+                                        <i class="fas fa-pen-to-square fa-2x p-1"></i>
+                                    </button>
+                                    <!-- /Edit -->
+
+                                    <!-- Delete -->
+                                    <button type="button" class="btn btn-outline-dark text-danger"
+                                        data-bs-toggle="modal" data-bs-target="#modalDeleteSkill"
+                                        (click)="sendSkill(skill)">
+                                        <i class="fas fa-trash fa-2x p-1"></i>
+                                    </button>
+                                    <!-- /Delete -->
+
+                                </div>
+                            </div>
+
+                            <app-modal-edit-skill [skillToEdit]="skillToSend"></app-modal-edit-skill>
+                            <app-modal-delete-skill [skillToDelete]="skillToSend"></app-modal-delete-skill>
+                            <!-- /Admin Add/Edit/Delete -->
+
 
                             <div class="d-flex justify-content-between shadow">
                                 <h6 class="font-width-bold shadow fw-bold text-shadow-simple">{{skill.getName}}</h6>
@@ -72,6 +100,34 @@
 
                     <div *ngFor="let skill of allSkills, let i = index, let even = even">
                         <div *ngIf="!skill.getIsTechnical">
+
+
+                            <!-- Admin Add/Edit/Delete -->
+                            <div class="row mx-auto px-0 bg-dark border border-danger my-1" *ngIf="this.isLogged">
+                                <div class="col-12 text-end text-primary">
+
+                                    <!-- Edit -->
+                                    <button type="button" class="btn btn-outline-dark text-light" data-bs-toggle="modal"
+                                        data-bs-target="#modalEditSkill" (click)="sendSkill(skill)">
+                                        <i class="fas fa-pen-to-square fa-2x p-1"></i>
+                                    </button>
+                                    <!-- /Edit -->
+
+                                    <!-- Delete -->
+                                    <button type="button" class="btn btn-outline-dark text-danger"
+                                        data-bs-toggle="modal" data-bs-target="#modalDeleteSkill"
+                                        (click)="sendSkill(skill)">
+                                        <i class="fas fa-trash fa-2x p-1"></i>
+                                    </button>
+                                    <!-- /Delete -->
+
+                                </div>
+                            </div>
+
+                            <app-modal-edit-skill [skillToEdit]="skillToSend"></app-modal-edit-skill>
+                            <app-modal-delete-skill [skillToDelete]="skillToSend"></app-modal-delete-skill>
+                            <!-- /Admin Add/Edit/Delete -->
+
 
                             <div class="btn-group dropend mt-3 mb-5 shadow">
                                 <button type="button" class="btn text-white shadow fw-bold text-shadow-simple"

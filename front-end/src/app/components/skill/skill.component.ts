@@ -82,6 +82,7 @@ export class SkillComponent implements OnInit, OnDestroy {
       error: (err) => {
         const errorMessage = err.error.message ?? err.error ?? err;
         console.error("--- Error. Load skills: ", errorMessage, err.status);
+        this.allSkills = [];
       },
 
       complete: () => {

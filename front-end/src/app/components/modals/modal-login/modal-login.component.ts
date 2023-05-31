@@ -89,10 +89,10 @@ export class ModalLoginComponent implements OnInit {
 
         this.logged.emit(true);
 
-        this.router.navigate(['/index'], { fragment: 'start' });
-
         //close the modal before redirecting
         document.getElementById("modalLoginClose")?.click();
+
+        window.location.reload();
         this.router.navigate(['/index'], { fragment: 'start' });
       }
 

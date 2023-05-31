@@ -110,7 +110,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
             console.info("+++ Ok. Logged in");
 
-            window.location.reload();
+            // window.location.reload();
 
           } else {
             this.isLogged = false;
