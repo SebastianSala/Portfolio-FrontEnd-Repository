@@ -32,12 +32,12 @@ export class ModalDeleteProjectComponent {
 
   deleteProject(): void {
 
-    console.log("*** Deleting Project");
+    console.info("*** Deleting Project");
 
     this.projectService.deleteProjectByPersonIdByProjectId(this.projectToDelete.getPerson.getId as number, this.projectToDelete.getId as number).subscribe({
 
       next: (res) => {
-        console.log(res.message);
+        console.log("+++ ", res.message);
       },
 
       error: (err) => {
@@ -49,7 +49,7 @@ export class ModalDeleteProjectComponent {
       },
 
       complete: () => {
-        console.log("+++ Ok. Delete Project complete");
+        console.info("+++ Ok. Delete Project complete");
         this.isDeleted = true;
         this.deleteEmit(this.isDeleted);
         this.router.navigate(['/index'], { fragment: 'projects' });

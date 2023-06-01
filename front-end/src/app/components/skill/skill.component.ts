@@ -46,14 +46,13 @@ export class SkillComponent implements OnInit, OnDestroy {
 
       next: (res: EntityChange) => {
         if (res.entity instanceof Skill) {
-          console.log("updateSkills, is Skill type: ", res.entity);
+          // console.log("updateSkills, is Skill type: ", res.entity);
           //reset the entity to send after using it
           this.skillToSend = new Skill();
           //reload the entities from the data base to show
           this.getAllSkills();
         } else {
-          console.log("updateSkill, not of type Skill: ", res.entity);
-
+          // console.log("updateSkill, not of type Skill: ", res.entity);
         }
       },
 

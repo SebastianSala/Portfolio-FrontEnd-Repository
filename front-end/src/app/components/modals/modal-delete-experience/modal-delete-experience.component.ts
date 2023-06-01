@@ -24,12 +24,12 @@ export class ModalDeleteExperienceComponent {
 
   deleteExperience(): void {
 
-    console.log("*** Deleting Experience");
+    console.info("*** Deleting Experience");
 
     this.experienceService.deleteExperienceByPersonIdByExperienceId(this.experienceToDelete.getPerson.getId as number, this.experienceToDelete.getId as number).subscribe({
 
       next: (res) => {
-        console.log(res.message);
+        console.log("+++ ", res.message);
       },
 
       error: (err) => {
@@ -41,7 +41,7 @@ export class ModalDeleteExperienceComponent {
       complete: () => {
         // reload entities
         this.changeEntityService.changeEntity({ change: true, entity: this.experienceToDelete });
-        console.log("+++ Ok. Delete experience complete!");
+        console.info("+++ Ok. Delete experience complete!");
 
         this.router.navigate(['/index'], { fragment: 'experience' });
       }

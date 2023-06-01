@@ -46,14 +46,13 @@ export class NetworksComponent implements OnInit, OnDestroy {
 
       next: (res: EntityChange) => {
         if (res.entity instanceof Network) {
-          console.log("updateNetworks, is Network type: ", res.entity);
+          // console.log("updateNetworks, is Network type: ", res.entity);
           //reset the entity to send after using it
           this.networkToSend = new Network();
           //reload the entities from the data base to show
           this.getAllNetworks();
         } else {
-          console.log("updateNetwork, not of type Network: ", res.entity);
-
+          // console.log("updateNetwork, not of type Network: ", res.entity);
         }
       },
 

@@ -46,14 +46,13 @@ export class EducationComponent implements OnInit, OnDestroy {
 
       next: (res: EntityChange) => {
         if (res.entity instanceof Education) {
-          console.log("updateEducations, is Education type: ", res.entity);
+          // console.log("updateEducations, is Education type: ", res.entity);
           //reset the entity to send after using it
           this.educationToSend = new Education();
           //reload the entities from the data base to show
           this.getAllEducations();
         } else {
-          console.log("updateEducation, not of type Education: ", res.entity);
-
+          // console.log("updateEducation, not of type Education: ", res.entity);
         }
       },
 

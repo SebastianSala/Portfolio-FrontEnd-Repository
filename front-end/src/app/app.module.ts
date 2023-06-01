@@ -48,6 +48,7 @@ import { ModalDeleteEducationComponent } from './components/modals/modal-delete-
 import { ModalAddSkillComponent } from './components/modals/modal-add-skill/modal-add-skill.component';
 import { ModalDeleteSkillComponent } from './components/modals/modal-delete-skill/modal-delete-skill.component';
 import { ModalEditSkillComponent } from './components/modals/modal-edit-skill/modal-edit-skill.component';
+import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 
 // Register the 'es-AR' locale data
 registerLocaleData(localeEsAR);
@@ -93,7 +94,8 @@ registerLocaleData(localeEsAR);
     ModalDeleteEducationComponent,
     ModalAddSkillComponent,
     ModalDeleteSkillComponent,
-    ModalEditSkillComponent
+    ModalEditSkillComponent,
+    DeleteUserComponent
   ],
   imports: [
     BrowserModule,

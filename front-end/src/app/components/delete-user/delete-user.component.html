@@ -1,0 +1,66 @@
+<!-- Header -->
+<!-- <app-header [isLogged]="isLogged" [thePerson]="thePerson" (logged)="loginState($event)"></app-header> -->
+<!-- <app-header></app-header> -->
+<!-- /Header -->
+
+<section id="deleteUser">
+
+
+    <div
+        class="container-fluid container-md bg-primary px-md-5 min-vh-100 align-items-top d-flex justify-content-center mx-auto py-4">
+
+        <div class="row bg-dark border rounded px-1 justify-content-center w-100 h-100 align-items-start pb-5">
+
+            <div class="row text-center text-white align-items-center">
+                <h4 class="pt-4">Borrar Cuenta</h4>
+            </div>
+
+            <div class="row justify-content-center align-items-center px-0 py-4 py-md-5">
+                <div class="col-11 col-md-10 col-lg-9 pt-2 pb-4 bg-secondary border rounded p-4 p-md-5">
+
+                    <h3 class="text-center">Realmente desea borrar su cuenta?</h3>
+                    <p>Se borrará el usuario junto con todos sus datos, proyectos experiencias, etc.</p>
+                    <p>Esta acción no se puede deshacer</p>
+
+
+                    <div
+                        class="row justify-content-center d-flex flex-md-row-reverse bg-dark w-auto border rounded p-2 align-items-center my-3">
+
+                        <div class="col-12 col-md-6 col-lg-4 py-3">
+                            <button type="button" [routerLink]="['/index']" fragment="start"
+                                class="btn btn-outline-info mx-1 me-auto w-100 text-nowrap">
+                                Conservar cuenta
+                            </button>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-4 py-3">
+                            <button type="submit"
+                                class="btn btn-outline-danger w-100 text-nowrap text-center mx-1 shadow"
+                                (click)="deleteUser()">
+                                BORRAR!
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- Site Map -->
+<app-site-map></app-site-map>
+<!-- /Site Map -->
+
+
+<!-- Footer -->
+<app-footer></app-footer>
+<!-- /Footer -->

@@ -25,12 +25,12 @@ export class ModalDeleteSkillComponent {
 
   deleteSkill(): void {
 
-    console.log("*** Deleting Skill");
+    console.info("*** Deleting Skill");
 
     this.skillService.deleteSkillByPersonIdBySkillId(this.skillToDelete.getPerson.getId as number, this.skillToDelete.getId as number).subscribe({
 
       next: (res) => {
-        console.log(res.message);
+        console.log("+++ ", res.message);
       },
 
       error: (err) => {
@@ -42,7 +42,7 @@ export class ModalDeleteSkillComponent {
       complete: () => {
         // reload entities
         this.changeEntityService.changeEntity({ change: true, entity: this.skillToDelete });
-        console.log("+++ Ok. Delete skill complete!");
+        console.info("+++ Ok. Delete skill complete!");
 
         this.router.navigate(['/index'], { fragment: 'skill' });
       }

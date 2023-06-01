@@ -24,12 +24,12 @@ export class ModalDeleteNetworkComponent {
 
   deleteNetwork(): void {
 
-    console.log("*** Deleting Network");
+    console.info("*** Deleting Network");
 
     this.networkService.deleteNetworkByPersonIdByNetworkId(this.networkToDelete.getPerson.getId as number, this.networkToDelete.getId as number).subscribe({
 
       next: (res) => {
-        console.log(res.message);
+        console.log("+++ ", res.message);
       },
 
       error: (err) => {
@@ -41,7 +41,7 @@ export class ModalDeleteNetworkComponent {
       complete: () => {
         // reload entities
         this.changeEntityService.changeEntity({ change: true, entity: this.networkToDelete });
-        console.log("+++ Ok. Delete network complete!");
+        console.info("+++ Ok. Delete network complete!");
 
         this.router.navigate(['/index'], { fragment: 'headerId' });
       }

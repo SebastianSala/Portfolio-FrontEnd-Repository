@@ -35,7 +35,7 @@
 
                     <!-- Hard skills -->
 
-                    <div class="mb-5 shadow" *ngFor="let skill of allSkills, let i = index, let even = even">
+                    <div class="my-5 shadow" *ngFor="let skill of allSkills, let i = index, let even = even">
                         <div *ngIf="skill.getIsTechnical">
 
 
@@ -91,7 +91,7 @@
 
                 <div class="col-md-6 text-end pb-5 ps-6 shadow">
 
-                    <div class="mb-7 mb-sm-6 shadow py-3 py-sm-2">
+                    <div class="my-3 shadow py-3 py-sm-2">
                         <h3 class="text-shadow-title">Soft Skills</h3>
                         <hr>
                     </div>
@@ -129,7 +129,7 @@
                             <!-- /Admin Add/Edit/Delete -->
 
 
-                            <div class="btn-group dropend mt-3 mb-5 shadow">
+                            <div class="btn-group dropend mt-2 mt-md-3 shadow">
                                 <button type="button" class="btn text-white shadow fw-bold text-shadow-simple"
                                     [ngClass]="{'btn-secondary': even, 'btn-light': !even}">
                                     <span class="">{{skill.getName}}</span>

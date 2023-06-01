@@ -46,14 +46,13 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
       next: (res: EntityChange) => {
         if (res.entity instanceof Experience) {
-          console.log("updateExperiences, is Experience type: ", res.entity);
+          // console.log("updateExperiences, is Experience type: ", res.entity);
           //reset the entity to send after using it
           this.experienceToSend = new Experience();
           //reload the entities from the data base to show
           this.getAllExperiences();
         } else {
-          console.log("updateExperience, not of type Experience: ", res.entity);
-
+          // console.log("updateExperience, not of type Experience: ", res.entity);
         }
       },
 

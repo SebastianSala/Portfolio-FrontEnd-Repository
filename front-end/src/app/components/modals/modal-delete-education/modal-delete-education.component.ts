@@ -25,12 +25,12 @@ export class ModalDeleteEducationComponent {
 
   deleteEducation(): void {
 
-    console.log("*** Deleting Education");
+    console.info("*** Deleting Education");
 
     this.educationService.deleteEducationByPersonIdByEducationId(this.educationToDelete.getPerson.getId as number, this.educationToDelete.getId as number).subscribe({
 
       next: (res) => {
-        console.log(res.message);
+        console.log("+++ ", res.message);
       },
 
       error: (err) => {
@@ -42,7 +42,7 @@ export class ModalDeleteEducationComponent {
       complete: () => {
         // reload entities
         this.changeEntityService.changeEntity({ change: true, entity: this.educationToDelete });
-        console.log("+++ Ok. Delete education complete!");
+        console.info("+++ Ok. Delete education complete!");
 
         this.router.navigate(['/index'], { fragment: 'education' });
       }
