@@ -13,9 +13,9 @@ const routes: Routes = [
   // { path: '', component: IndexComponent },
   { path: 'index', component: IndexComponent },
   { path: 'new-user', component: NewUserComponent },
-  { path: 'delete-user', component: DeleteUserComponent },
+  { path: 'delete-user', component: DeleteUserComponent, canActivate: [GuardGuard] },
   { path: '', redirectTo: '/index', pathMatch: 'full' },
-  { path: '**', component: Error404Component, canActivate: [GuardGuard] }
+  { path: '**', component: Error404Component }
 ];
 
 @NgModule({
