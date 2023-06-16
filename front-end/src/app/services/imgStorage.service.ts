@@ -4,7 +4,8 @@ import firebase from 'firebase/compat/app';
 
 import 'firebase/compat/storage';
 
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
+import { PersonData } from '../model/dataTypes';
 // import 'firebase/compat/auth';
 //import 'firebase/compat/firestore';
 
@@ -19,29 +20,33 @@ firebase.initializeApp(environment.firebaseConfig);
 export class StorageService {
 
 
-  // storageRef = firebase.app().storage().ref();
   storageRef = firebase.app().storage().ref();
 
-  
-  constructor() { }
+
+  constructor() {
+
+  }
 
 
   async subirImagen(nombre: string, imgBase64: any) {
 
+    const currentUser: PersonData = JSON.parse(sessionStorage.getItem('currentUser') || "{}");
+    const folder = currentUser!.email;
+
     try {
-      let respuesta = await this.storageRef.child("users/"+nombre).putString(imgBase64, 'data_url');
+      let respuesta = await this.storageRef.child("users/" + folder + "/" + nombre).putString(imgBase64, 'data_url');
       console.log(respuesta);
 
       console.log(respuesta.ref.getDownloadURL());
-      
-      
+
+
       return await respuesta.ref.getDownloadURL();
       // return null;
-      
-    }catch(err) {
+
+    } catch (err) {
       console.log(err);
       return null;
-      
+
     }
 
 

@@ -22,26 +22,30 @@
 
 
         <div class="row mx-auto px-0">
-            <div
-                class="bg-secondary card border border-dark border-bottom-0 rounded-3 pb-3 rounded-top d-flex flex-sm-col align-items-baselin">
+            <div>
+
+                <div
+                    class="bg-secondary card border border-dark border-bottom-0 rounded-3 pb-3 rounded-top d-flex flex-sm-col align-items-baselin">
 
 
-                <div class="card-header border-bottom-0">
-                    <img class="card-img-top d-block mx-auto px-3 pt-2" [src]="localPerson?.getImgBackUrl"
-                        id="img-about">
-                </div>
-
-
-                <div class="card-body mt-n5">
-                    <div>
-
-                        <div *ngIf="localPerson?.getImgUrl"
-                            class="mb-3 border border-2 border-light rounded-circle overflow-hidden col-7 col-sm-6 col-md-4 d-block mx-auto mx-sm-4 shadow-lg">
-                            <img class="img-fluid" [src]="localPerson?.getImgUrl" id="img-about"
-                                alt="foto de perfil de {{localPerson?.getName}}">
-                        </div>
-
+                    <div class="card-header border-bottom-0">
+                        <img class="card-img-top d-block mx-auto px-3 pt-2 rounded-5" [src]="localPerson?.getImgBackUrl"
+                            id="img-about">
                     </div>
+
+
+                    <div class="card-body mt-n5">
+                        <div>
+
+                            <div *ngIf="localPerson?.getImgUrl"
+                                class="mb-3 border border-2 border-light rounded-circle overflow-hidden col-7 col-sm-6 col-md-4 d-block mx-auto mx-sm-4 shadow-lg">
+                                <img class="img-fluid" [src]="localPerson?.getImgUrl" id="img-about"
+                                    alt="foto de perfil de {{localPerson?.getName}}">
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
 
 

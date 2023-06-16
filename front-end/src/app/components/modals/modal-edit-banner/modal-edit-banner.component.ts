@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { StorageService } from '../../../services/imgStorage.service';
 import { PersonService } from '../../../services/person.service';
 
 import { Person } from '../../../model/person';
@@ -22,8 +23,12 @@ export class ModalEditBannerComponent implements OnChanges {
 
   protected formGroup!: FormGroup;
 
+  imagenes: any[] = [];
+  imgBackUrl: any;
+  imgUrl: any;
 
-  constructor(private personService: PersonService, protected formBuilder: FormBuilder) {
+
+  constructor(private personService: PersonService, protected formBuilder: FormBuilder, private storageService: StorageService) {
 
   }
 
@@ -109,6 +114,51 @@ export class ModalEditBannerComponent implements OnChanges {
     if (edited) {
       this.editEvent.emit(edited);
     }
+  }
+
+
+  cargarImagen(event: any, backImg: boolean) {
+    let archivos = event.target.files;
+    // let nombre: string = "sebastian";
+    // let nombre: string = this.formGroup.get('name')?.value;
+    let nombre = "";
+    if (backImg) {
+      nombre = "imgBanner";
+    } else {
+      nombre = "imgProfile";
+    }
+
+    for (let i = 0; i < archivos.length; i++) {
+
+      let reader = new FileReader();
+
+      reader.readAsDataURL(archivos[0]);
+      reader.onloadend = () => {
+        // this.imagenes.push(reader.result);
+
+        this.storageService.subirImagen(nombre + "_" + Date.now(), reader.result).then(urlImagen => {
+          let usuario = {
+            imgProfile: urlImagen
+          }
+          if (backImg) {
+            this.imgBackUrl = urlImagen;
+            this.formGroup.get('imgBackUrl')?.setValue(this.imgBackUrl);
+            // this.personToEdit!.setImgBackUrl = this.imgBackUrl;
+            this.imagenes[0] = reader.result;
+          } else {
+            this.imgUrl = urlImagen;
+            this.formGroup.get('imgUrl')?.setValue(this.imgUrl);
+            // this.personToEdit!.setImgUrl = this.imgUrl;
+            this.imagenes[1] = reader.result;
+          }
+          // this.ngOnChanges();
+          console.log(usuario);
+        })
+      }
+
+    }
+
+
   }
 
 
