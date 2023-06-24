@@ -89,9 +89,9 @@ export class PersonService {
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
-      console.error("An Error ocurred", error.error);
+      console.error("--- Error. An Error ocurred", error.error);
     } else {
-      console.error("Backend message: ", error.error.message, error.status);
+      console.error("--- Error. Backend message: ", error.error.message, error.status);
     }
     // return throwError(() => new Error(error.error.message || "Error ocurred, try again"))
     return throwError(() => error || new Error("Error ocurred, try again"))
