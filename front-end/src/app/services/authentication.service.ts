@@ -13,7 +13,8 @@ import { environment } from '../../environments/environment';
 export class AuthenticationService {
 
 
-  private url = environment.URL + '/person/login';
+  // private url = environment.URL + '/person/login';
+  private url = environment.URL + '/auth/signin';
 
   private currentUserSubject: BehaviorSubject<PersonData>;
 

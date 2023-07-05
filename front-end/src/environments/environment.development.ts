@@ -11,5 +11,4 @@ export const environment = {
         measurementId: "G-LHLSMGB43M"
     },
     URL: 'http://localhost:8080',
-    // URL: 'http://localhost:10000',
 } 
