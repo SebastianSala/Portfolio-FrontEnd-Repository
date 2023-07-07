@@ -63,7 +63,8 @@ export class NewUserComponent {
     const thePerson = new Person(personConstructor);
 
 
-    this.personService.createPerson(thePerson).subscribe({
+    // this.personService.createPerson(thePerson).subscribe({
+    this.personService.registerPerson(thePerson).subscribe({
 
       next: (res) => {
         const theMessage = res;

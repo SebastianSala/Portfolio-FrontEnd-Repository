@@ -17,7 +17,7 @@ firebase.initializeApp(environment.firebaseConfig);
 @Injectable({
   providedIn: 'root'
 })
-export class StorageService {
+export class ImgStorageService {
 
 
   storageRef = firebase.app().storage().ref();

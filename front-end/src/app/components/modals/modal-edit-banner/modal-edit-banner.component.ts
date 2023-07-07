@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { StorageService } from '../../../services/imgStorage.service';
+import { ImgStorageService } from '../../../services/imgStorage.service';
 import { PersonService } from '../../../services/person.service';
 
 import { Person } from '../../../model/person';
@@ -28,7 +28,7 @@ export class ModalEditBannerComponent implements OnChanges {
   imgUrl: any;
 
 
-  constructor(private personService: PersonService, protected formBuilder: FormBuilder, private storageService: StorageService) {
+  constructor(private personService: PersonService, protected formBuilder: FormBuilder, private imgStorageService: ImgStorageService) {
 
   }
 
@@ -136,7 +136,7 @@ export class ModalEditBannerComponent implements OnChanges {
       reader.onloadend = () => {
         // this.imagenes.push(reader.result);
 
-        this.storageService.subirImagen(nombre + "_" + Date.now(), reader.result).then(urlImagen => {
+        this.imgStorageService.subirImagen(nombre + "_" + Date.now(), reader.result).then(urlImagen => {
           let usuario = {
             imgProfile: urlImagen
           }

@@ -50,6 +50,8 @@ import { ModalDeleteSkillComponent } from './components/modals/modal-delete-skil
 import { ModalEditSkillComponent } from './components/modals/modal-edit-skill/modal-edit-skill.component';
 import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 
+import { httpInterceptorProviders } from './services/interceptor.service';
+
 // Register the 'es-AR' locale data
 registerLocaleData(localeEsAR);
 
@@ -104,6 +106,7 @@ registerLocaleData(localeEsAR);
     ReactiveFormsModule
   ],
   providers: [
+    httpInterceptorProviders,
     { provide: LOCALE_ID, useValue: 'es-AR' }
   ],
   bootstrap: [AppComponent]

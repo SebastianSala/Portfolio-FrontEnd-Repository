@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { Person } from '../model/person';
@@ -14,7 +14,10 @@ export class AuthenticationService {
 
 
   // private url = environment.URL + '/person/login';
-  private url = environment.URL + '/auth/signin';
+  private backendUrl = environment.URL + '/auth';
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   private currentUserSubject: BehaviorSubject<PersonData>;
 
@@ -35,7 +38,8 @@ export class AuthenticationService {
   public login(credentials: any): Observable<Person | ResponseMessage> {
 
 
-    return this.httpClient.post<PersonData | ResponseMessage>(this.url, credentials).pipe(
+    const loginUrl = this.backendUrl + '/login';
+    return this.httpClient.post<PersonData | ResponseMessage>(loginUrl, credentials, this.httpOptions).pipe(
       map(response => {
 
         let thePerson: Person = new Person();

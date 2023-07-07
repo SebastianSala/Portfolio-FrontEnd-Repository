@@ -20,10 +20,23 @@ export class PersonService {
   }
 
 
+  public registerPerson(person: Person): Observable<ResponseMessage> {
+
+    // const theUrl: string = `${this.url}/create`;
+    const theUrl: string = `${environment.URL}/auth/register`;
+    return this.httpClient.post<ResponseMessage>(theUrl, person);
+    // .pipe(
+    //   catchError(this.handleError)
+    // );
+
+  }
+
   public createPerson(person: Person): Observable<ResponseMessage> {
 
     const theUrl: string = `${this.url}/create`;
-    return this.httpClient.post<ResponseMessage>(theUrl, person);
+    return this.httpClient.post<ResponseMessage>(theUrl, person).pipe(
+      catchError(this.handleError)
+    );
 
   }
 
@@ -39,7 +52,7 @@ export class PersonService {
         )
       ),
       catchError(this.handleError)
-    )
+    );
 
   }
 
@@ -53,7 +66,7 @@ export class PersonService {
         personData => new Person(personData)
       ),
       catchError(this.handleError)
-    )
+    );
 
   }
 
@@ -66,7 +79,7 @@ export class PersonService {
       map(
         personData => new Person(personData)
       )
-    )
+    );
 
   }
 

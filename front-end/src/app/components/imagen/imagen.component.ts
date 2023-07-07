@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StorageService } from 'src/app/services/imgStorage.service';
+import { ImgStorageService } from 'src/app/services/imgStorage.service';
 
 @Component({
   selector: 'app-imagen',
@@ -9,7 +9,7 @@ import { StorageService } from 'src/app/services/imgStorage.service';
 export class ImagenComponent {
 
 
-  constructor(private storageService: StorageService) {
+  constructor(private imgStorageService: ImgStorageService) {
   }
 
 
@@ -28,7 +28,7 @@ export class ImagenComponent {
       reader.onloadend = () => {
         this.imagenes.push(reader.result);
 
-        this.storageService.subirImagen(nombre + "_" + Date.now(), reader.result).then(urlImagen => {
+        this.imgStorageService.subirImagen(nombre + "_" + Date.now(), reader.result).then(urlImagen => {
           let usuario = {
             name: "sebastian",
             nickName: "seba",
