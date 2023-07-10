@@ -39,6 +39,10 @@ export class AuthenticationService {
 
 
     const loginUrl = this.backendUrl + '/login';
+
+    console.warn("*** login: ", loginUrl, credentials, this.httpOptions);
+    
+
     return this.httpClient.post<PersonData | ResponseMessage>(loginUrl, credentials, this.httpOptions).pipe(
       map(response => {
 

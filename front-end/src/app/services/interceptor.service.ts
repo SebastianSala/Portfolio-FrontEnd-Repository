@@ -43,7 +43,7 @@ export class InterceptorService implements HttpInterceptor {
       }
     );
 
-    // console.log("Interceptor is running: ");
+    console.log("Interceptor is running: ");
     
     // return XSRF-TOKEN in each request's header (anti-CSRF security)
     // const headerName = 'X-XSRF-TOKEN';
