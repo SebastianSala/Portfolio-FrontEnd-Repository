@@ -6,8 +6,10 @@ import { catchError } from 'rxjs/operators';
 
 
 import { AuthenticationService } from './authentication.service';
-import { StorageService } from './storage.service';
+import { TokenStorageService } from './TokenStorage';
 
+
+const TOKEN_HEADER_KEY = 'Authorization';
 
 
 @Injectable({
@@ -18,57 +20,64 @@ export class InterceptorService implements HttpInterceptor {
   private isRefreshing: boolean = false;
 
 
-  // constructor(private storageService: StorageService, private eventBusService: EventBusService, private authenticationService: AuthenticationService) {
-  constructor(private tokenExtractor: HttpXsrfTokenExtractor, private storageService: StorageService, private authenticationService: AuthenticationService) {
+  constructor(private tokenStorageService: TokenStorageService, private authenticationService: AuthenticationService) {
 
   }
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    // let currentUser = this.authenticationService.authenticatedUser;
+    let currentUser = this.authenticationService.authenticatedUser;
 
     // if (currentUser && currentUser.email) {
-    // req = req.clone({
-    //   setHeaders: {
-    //     Authorization: `Bearer ${currentUser.email}`
-    //   }
-    // });I
+    //   // console.log("log from interceptor 1");
+
+    //   req = req.clone({
+    //     // setHeaders: {
+    //     //   Authorization: `Bearer ${currentUser.email}`
+    //     // }
+    //   });
+    //   // console.log("log from interceptor 2");
     // }
 
+    let authReq = req;
+    const token = this.tokenStorageService.getToken();
+    if (token != null) {
+      console.log("token != null?");
+      
+      // for Spring Boot back-end
+      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
+    }
 
-    req = req.clone(
-      {
-        withCredentials: true
-      }
-    );
 
-    console.log("Interceptor is running: ");
-    
-    // return XSRF-TOKEN in each request's header (anti-CSRF security)
-    // const headerName = 'X-XSRF-TOKEN';
-    // let token = this.tokenExtractor.getToken() as string;
-    // if (token !== null && !req.headers.has(headerName)) {
-    //   req = req.clone({ headers: req.headers.set(headerName, token) });
-    // }
 
-    return next.handle(req).pipe(
-      catchError((error) => {
-        if (
-          error instanceof HttpErrorResponse &&
-          !req.url.includes('auth/login') &&
-          error.status == 401
-        ) {
-          console.log("write handle401Error");
+      // req = req.clone(
+      //   {
+      //     withCredentials: true
+      //   }
+      // );
 
-          // return this.handle401Error(req, next);
-        }
+      console.log("Interceptor is running: ");
 
-        return throwError(() => error);
-      })
-    );
 
-  }
+
+      return next.handle(authReq).pipe(
+        catchError((error) => {
+          if (
+            error instanceof HttpErrorResponse &&
+            !req.url.includes('auth/login') &&
+            error.status == 401
+          ) {
+            console.log("write handle401Error");
+
+            // return this.handle401Error(req, next);
+          }
+
+          return throwError(() => error);
+        })
+      );
+
+    }
 
 
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
@@ -76,8 +85,8 @@ export class InterceptorService implements HttpInterceptor {
     if (!this.isRefreshing) {
       this.isRefreshing = true;
 
-      if (this.storageService.isLoggedIn()) {
-        console.log("is logged in!, now the rest");
+      if (this.authenticationService.isLoggedIn) {
+        console.log("is logged in!");
       }
     }
 

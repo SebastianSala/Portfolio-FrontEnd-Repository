@@ -93,7 +93,7 @@ export class ModalLoginComponent implements OnInit {
         document.getElementById("modalLoginClose")?.click();
 
         this.router.navigate(['/index'], { fragment: 'start' });
-        window.location.reload();
+        // window.location.reload();
       }
 
     });

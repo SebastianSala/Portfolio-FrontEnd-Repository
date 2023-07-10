@@ -5,6 +5,7 @@ import { Person } from '../model/person';
 import { PersonData } from '../model/dataTypes';
 import { ResponseMessage } from '../model/dataTypes';
 import { environment } from '../../environments/environment';
+import { TokenStorageService } from './TokenStorage';
 
 
 @Injectable({
@@ -19,14 +20,15 @@ export class AuthenticationService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  private currentUserSubject: BehaviorSubject<PersonData>;
+  private currentUserSubject: BehaviorSubject<PersonData> = new BehaviorSubject<PersonData>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
 
+  // private currentUserIsLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private currentUserIsLogged: BehaviorSubject<boolean>;
 
   private loggedIn: boolean = false;
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private tokenStorage: TokenStorageService) {
     this.currentUserSubject = new BehaviorSubject<PersonData>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
     // this.currentUserIsLogged = new BehaviorSubject<boolean>(false);
     let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser") || '{}');
@@ -41,10 +43,12 @@ export class AuthenticationService {
     const loginUrl = this.backendUrl + '/login';
 
     console.warn("*** login: ", loginUrl, credentials, this.httpOptions);
-    
 
-    return this.httpClient.post<PersonData | ResponseMessage>(loginUrl, credentials, this.httpOptions).pipe(
+
+    return this.httpClient.post<PersonData | ResponseMessage | any>(loginUrl, credentials, this.httpOptions).pipe(
       map(response => {
+
+        this.tokenStorage.saveToken(response);
 
         let thePerson: Person = new Person();
         const res = response as PersonData;
@@ -56,7 +60,7 @@ export class AuthenticationService {
           let personData = {
             id: res.id,
             email: res.email,
-            name: res.name
+            name: res.name            
           } as PersonData;
 
           thePerson = new Person(personData);
@@ -111,6 +115,14 @@ export class AuthenticationService {
 
   public set setUserIsLogged(logState: boolean) {
     this.currentUserIsLogged.next(logState);
+  }
+
+
+  public get userData$():Observable<PersonData> {
+    return this.currentUserSubject.asObservable();
+  }
+  public set userData(person: PersonData) {
+    this.currentUserSubject.next(person);
   }
 
 
