@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 
 import { PersonData } from '../../../model/dataTypes';
 import { Person } from '../../../model/person';
+import { TokenStorageService } from '../../../services/TokenStorage';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class ModalLogoutComponent {
   @Output() private logged = new EventEmitter<boolean>;
 
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService, private tokenStorageService: TokenStorageService) {
 
   }
 
@@ -35,8 +36,8 @@ export class ModalLogoutComponent {
     } as PersonData;
 
     const thePerson = new Person(personData);
-    sessionStorage.setItem('currentUser', JSON.stringify(thePerson));
-
+    this.tokenStorageService.signOut();
+    this.tokenStorageService.saveUser(thePerson);
     this.authenticationService.authenticatedUser = personData;
 
     // new log in check

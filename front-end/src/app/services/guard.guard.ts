@@ -24,7 +24,7 @@ export class GuardGuard implements CanActivate {
     if (currentUser && currentUser.id) {
       return true;
     } else {
-      // alert("not allowed");
+      alert("No tiene permiso para ver esta página. Logearse con su email y contraseña para acceder.");
       this.router.navigate(['/index'], { fragment: 'start' });      
       return false;
     }

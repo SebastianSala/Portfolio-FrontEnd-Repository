@@ -13,9 +13,9 @@ export class TokenStorageService {
     window.sessionStorage.clear();
   }
 
-  public saveToken(token: string): void {
+  public saveToken(token: any): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+    window.sessionStorage.setItem(TOKEN_KEY, token.accessToken);
   }
 
   public getToken(): string | null {
@@ -24,7 +24,13 @@ export class TokenStorageService {
 
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    // if user is an object with the data in personDTO
+    if (user.personDTO) {
+      window.sessionStorage.setItem(USER_KEY, JSON.stringify(user.personDTO));
+      // else it means its an string
+    } else {
+      window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    }
   }
 
   public getUser(): any {

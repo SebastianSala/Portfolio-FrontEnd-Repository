@@ -106,8 +106,8 @@ registerLocaleData(localeEsAR);
     ReactiveFormsModule
   ],
   providers: [
-    httpInterceptorProviders,
-    { provide: LOCALE_ID, useValue: 'es-AR' }
+    httpInterceptorProviders
+    // { provide: LOCALE_ID, useValue: 'es-AR' }
   ],
   bootstrap: [AppComponent]
 })

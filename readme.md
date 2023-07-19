@@ -24,12 +24,16 @@ Este es el frontend Single Page Aplication para el portfolio personal hecho con 
 * Se aplicó los principios de Programación Orientada a Objetos, división en componentes y comunicación a través de servicios y directivas para comunicación entre componentes y división en capas. Tratando siempre de respetar los principios SOLID.
 * Para el versionado se siguió la canvención  <a href="https://semver.org/" target="_blank">Semantic versioning</a>
 * La decición de usar distintos métodos para cosas similares (ej: @Input/@Output para comunicación entre componentes en algunas entidades y Servicios y eventos para otras) es porque este es un proyecto de práctica y quise explorar distintas formas para cumplir los objetivos y para generar criterio y en el futuro poder decidir con experiencia cual es la más apropiada, aunque le quite consistencia al proyecto actual.
+* Principios SOLID
+* Flujo de trabajo GIT Flow.
+* Versionado Semantic Versioning 2.0.0
 
 
 ## Estado Actual:
 
 * Frontend dinámico responsivo
 * Login y creación, edición y eliminado en modales
+* Subir imágenes directamente del disco local del usuario al servidor de firebase para usarlas como perfil, logo, banner, etc, en vez de usr URLs de imágenes de internet.
 * Customizado bootstrap a través de SCSS para una paleta de colores personoalizada, que se indetifica con las tendencias modernas.
 * Se aplicaron principios de UX para una mejor experiencia de usuario
 * Se permite crear nuevos usuarios y logearse para editar sus datos propios

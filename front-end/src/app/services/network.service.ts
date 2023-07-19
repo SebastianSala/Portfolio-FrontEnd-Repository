@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
@@ -6,6 +6,7 @@ import { NetworkData, ResponseMessage } from '../model/dataTypes';
 import { Network } from '../model/network';
 
 import { environment } from '../../environments/environment';
+import { TokenStorageService } from './TokenStorage';
 
 
 
@@ -17,8 +18,16 @@ export class NetworkService {
 
   private url: string = environment.URL + '/network';
 
+  private token = this.tokenStorageService.getToken;
+  private httpOptions = {
+    headers: new HttpHeaders({
+      // 'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.token
+    })
+  };
 
-  constructor(private httpClient: HttpClient) {
+
+  constructor(private httpClient: HttpClient, private tokenStorageService: TokenStorageService) {
 
   }
 
@@ -27,6 +36,7 @@ export class NetworkService {
 
     const theUrl = `${this.url}/person/${personEmail}`;
 
+    // return this.httpClient.get<NetworkData[]>(theUrl, this.httpOptions).pipe(
     return this.httpClient.get<NetworkData[]>(theUrl).pipe(
       map(
         allNetworks => allNetworks.map(

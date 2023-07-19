@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "build": "ng build && http-server ./dist -o -a localhost -p 9090 --proxy http://localhost:9090?",
+    "build": "ng build && http-server ./dist -o -a localhost -p 4200 --proxy http://localhost:4200?",
     "watch": "ng build --watch --configuration development",
     "staging": "ng build --watch --configuration staging",
     "prod": "ng build --watch --configuration production",

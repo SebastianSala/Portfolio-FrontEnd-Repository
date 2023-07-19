@@ -20,7 +20,7 @@ export class Person extends Entity {
 
 
 
-    // this.thePerson = new Person(localData.id as number, localData.name, localData.title, localData.email, localData.password, localData.location, localData.aboutMe, localData.imgUrl, localData.imgBackUrl, localData.webUrl);
+    // various contructors for the different cases, passing and object, by individual argument, etc.
 
     constructor(
         data?: PersonData,

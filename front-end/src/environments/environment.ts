@@ -11,4 +11,5 @@ export const environment = {
         measurementId: "G-LHLSMGB43M"
     },
     URL: 'https://portfolio-backend-ss.onrender.com'
+    // URL: 'http://localhost:10000'
 } 

@@ -8,7 +8,6 @@ import { ChangePersonService } from '../../services/change-person.service';
 import { PersonData } from '../../model/dataTypes';
 import { Person } from '../../model/person';
 import { Subscription } from 'rxjs';
-import { HttpResponse } from '@angular/common/http/index';
 
 
 @Component({
@@ -82,7 +81,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
     console.log("*** Loading");
 
 
-    let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser")!);
+    let user: PersonData = JSON.parse(sessionStorage.getItem("auth-user")!);
 
     this.isLoading = true;
     if (login) {
@@ -100,8 +99,8 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         },
         complete: () => {
 
-          sessionStorage.setItem('currentUser', JSON.stringify(this.thePerson));
-          this.authenticationService.authenticatedUser = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
+          sessionStorage.setItem('auth-user', JSON.stringify(this.thePerson));
+          this.authenticationService.authenticatedUser = JSON.parse(sessionStorage.getItem('auth-user') || '{}');
 
           if (user && user.id) {
 
@@ -110,7 +109,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
 
             console.info("+++ Ok. Logged in");
 
-            // window.location.reload();
+            window.location.reload();
 
           } else {
             this.isLogged = false;
@@ -152,7 +151,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
   private checkLogin(): void {
 
 
-    let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser")!);
+    let user: PersonData = JSON.parse(sessionStorage.getItem("auth-user")!);
 
     if (user && user.id) {
 
@@ -178,7 +177,7 @@ export class IndexComponent implements OnInit, AfterViewInit, OnChanges {
         } as PersonData;
 
         const tempPerson = new Person(personData);
-        sessionStorage.setItem('currentUser', JSON.stringify(tempPerson));
+        sessionStorage.setItem('auth-user', JSON.stringify(tempPerson));
 
         this.authenticationService.authenticatedUser = (personData);
 

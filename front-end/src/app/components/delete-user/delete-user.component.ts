@@ -6,6 +6,7 @@ import { PersonService } from '../../services/person.service';
 
 import { PersonData, ResponseMessage } from '../../model/dataTypes';
 import { Person } from '../../model/person';
+import { TokenStorageService } from '../../services/TokenStorage';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class DeleteUserComponent {
   protected person: Person = new Person();
 
 
-  public constructor(private router: Router, private authenticationService: AuthenticationService, private personService: PersonService) {
+  public constructor(private router: Router, private authenticationService: AuthenticationService, private personService: PersonService, private tokenStorageService: TokenStorageService) {
 
   }
 
@@ -28,36 +29,43 @@ export class DeleteUserComponent {
 
     console.info("*** Deleting person");
 
-    const theUser: PersonData = JSON.parse(sessionStorage.getItem("currentUser")!);
+    // const theUser: PersonData = JSON.parse(sessionStorage.getItem("auth-user")!);
+    const theUser: PersonData = this.tokenStorageService.getUser() as PersonData;
 
-    this.personService.deletePersonById(theUser.id).subscribe({
+    if (confirm("Borrar cuenta?")) {
 
-      next: (res) => {
-        const theMessage = res;
-        console.log("+++ Ok. Delete person: ", res.message);
-        alert(`${theMessage.message} ${theUser.name} ${theUser.email}`);
-      },
+      this.personService.deletePersonById(theUser.id).subscribe({
 
-      error: (err) => {
-        const theMessage: ResponseMessage = err.error;
-        console.error("--- Error. Delete person status: ", err.status);
-        console.error("--- Error. Delete person message: ", theMessage.message);
-        alert(theMessage.message);
+        next: (res) => {
+          const theMessage = res;
+          console.log("+++ Ok. Delete person: ", res.message);
+          alert(`${theMessage.message} ${theUser.name} ${theUser.email}`);
+        },
 
-        // this.isPersonCreated = false;
-      },
+        error: (err) => {
+          const theMessage: ResponseMessage = err.error;
+          console.error("--- Error. Delete person status: ", err.status);
+          console.error("--- Error. Delete person message: ", theMessage.message);
+          alert(theMessage.message);
 
-      complete: () => {
-        console.info("*** Ok. Delete person complete");
+          // this.isPersonCreated = false;
+        },
 
-        // Reset the Person to the portfolio owner
-        this.logout();
+        complete: () => {
+          console.info("*** Ok. Delete person complete");
 
-        //navigate to home
-        this.router.navigate(['/index'], { fragment: 'start' });
-      }
+          // Reset the Person to the portfolio owner
+          this.logout();
 
-    });
+          window.location.reload();
+
+          //navigate to home
+          this.router.navigate(['/index'], { fragment: 'start' });
+        }
+
+      });
+
+    }
 
 
   }
@@ -71,11 +79,13 @@ export class DeleteUserComponent {
     // setting the person to the owner of the portfolio
     let personData = {
       email: "sebastiansala.dev@gmail.com",
-      name: ""
     } as PersonData;
 
     const thePerson = new Person(personData);
-    sessionStorage.setItem('currentUser', JSON.stringify(thePerson));
+
+    this.tokenStorageService.signOut();
+
+    this.tokenStorageService.saveUser(thePerson);
 
     this.authenticationService.authenticatedUser = personData;
 

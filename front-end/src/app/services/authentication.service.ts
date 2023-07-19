@@ -14,24 +14,21 @@ import { TokenStorageService } from './TokenStorage';
 export class AuthenticationService {
 
 
-  // private url = environment.URL + '/person/login';
   private backendUrl = environment.URL + '/auth';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  private currentUserSubject: BehaviorSubject<PersonData> = new BehaviorSubject<PersonData>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
+  private currentUserSubject: BehaviorSubject<PersonData> = new BehaviorSubject<PersonData>(JSON.parse(sessionStorage.getItem('auth-user') || '{}'));
 
-  // private currentUserIsLogged: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private currentUserIsLogged: BehaviorSubject<boolean>;
 
   private loggedIn: boolean = false;
 
 
   constructor(private httpClient: HttpClient, private tokenStorage: TokenStorageService) {
-    this.currentUserSubject = new BehaviorSubject<PersonData>(JSON.parse(sessionStorage.getItem('currentUser') || '{}'));
-    // this.currentUserIsLogged = new BehaviorSubject<boolean>(false);
-    let user: PersonData = JSON.parse(sessionStorage.getItem("currentUser") || '{}');
+    this.currentUserSubject = new BehaviorSubject<PersonData>(JSON.parse(sessionStorage.getItem('auth-user') || '{}'));
+    let user: PersonData = JSON.parse(sessionStorage.getItem("auth-user") || '{}');
     const condition: boolean = ((user.id == null) ? false : true);
     this.currentUserIsLogged = new BehaviorSubject<boolean>(condition);
   }
@@ -42,7 +39,7 @@ export class AuthenticationService {
 
     const loginUrl = this.backendUrl + '/login';
 
-    console.warn("*** login: ", loginUrl, credentials, this.httpOptions);
+    // console.warn("*** login: ", loginUrl, credentials, this.httpOptions);
 
 
     return this.httpClient.post<PersonData | ResponseMessage | any>(loginUrl, credentials, this.httpOptions).pipe(
@@ -51,7 +48,7 @@ export class AuthenticationService {
         this.tokenStorage.saveToken(response);
 
         let thePerson: Person = new Person();
-        const res = response as PersonData;
+        const res = response.personDTO as PersonData;
 
 
         if (res.id != null) {
@@ -64,7 +61,7 @@ export class AuthenticationService {
           } as PersonData;
 
           thePerson = new Person(personData);
-          sessionStorage.setItem('currentUser', JSON.stringify(thePerson));
+          this.tokenStorage.saveUser(response);
 
           this.currentUserSubject.next(personData);
 
@@ -81,7 +78,8 @@ export class AuthenticationService {
 
           this.currentUserIsLogged.next(false);
 
-          sessionStorage.setItem('currentUser', JSON.stringify({}));
+          // sessionStorage.setItem('auth-user', JSON.stringify({}));
+          this.tokenStorage.signOut();
           const resError = response as ResponseMessage;
 
           return resError;

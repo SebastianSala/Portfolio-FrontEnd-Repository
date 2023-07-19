@@ -4,6 +4,7 @@ import { Person } from '../model/person';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { PersonData, ResponseMessage } from '../model/dataTypes';
 import { environment } from '../../environments/environment';
+import { TokenStorageService } from './TokenStorage';
 
 
 @Injectable({
@@ -14,8 +15,27 @@ export class PersonService {
 
   private url: string = environment.URL + '/person';
 
+  // private httpOptions = {
+  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  // };
+  private token = this.tokenStorageService.getToken;
+  // private headers: HttpHeaders = new HttpHeaders({
+  //   // 'Content-Type': 'application/json',
+  //   'Authorization': 'Bearer ' + this.token
+  // });
 
-  constructor(private httpClient: HttpClient) {
+  private headers = new HttpHeaders()
+    .set("Authorization", 'Bearer ' + this.token)
+    .set("Content-Type", 'application/json');
+  // private httpOptions = {
+  //   headers: new HttpHeaders({
+  //     // 'Content-Type': 'application/json',
+  //     'Authorization': 'Bearer ' + this.token
+  //   })
+  // };
+
+
+  constructor(private httpClient: HttpClient, private tokenStorageService: TokenStorageService) {
 
   }
 
@@ -61,6 +81,8 @@ export class PersonService {
 
     const theUrl = `${this.url}/list/person?email=${email}`
 
+    // return this.httpClient.get<PersonData>(theUrl, this.httpOptions).pipe(
+    // return this.httpClient.get<PersonData>(theUrl, {headers: this.headers} ).pipe(
     return this.httpClient.get<PersonData>(theUrl).pipe(
       map(
         personData => new Person(personData)
@@ -87,7 +109,7 @@ export class PersonService {
   public updatePersonById(personId: number, person: Person): Observable<ResponseMessage> {
 
     const theUrl: string = `${this.url}/edit/${personId}`;
-    return this.httpClient.put<ResponseMessage>(theUrl, person);
+    return this.httpClient.put<ResponseMessage>(theUrl, person, { headers: this.headers });
 
   }
 
