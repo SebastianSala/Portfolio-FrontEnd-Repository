@@ -37,12 +37,12 @@ Este es el frontend Single Page Aplication para el portfolio personal hecho con 
 * Customizado bootstrap a través de SCSS para una paleta de colores personoalizada, que se indetifica con las tendencias modernas.
 * Se aplicaron principios de UX para una mejor experiencia de usuario
 * Se permite crear nuevos usuarios y logearse para editar sus datos propios
+* Accesibilidad para usuarios con visión reducida (opción para aumentar el tamaño de todo el texto proporcionalmente)
 
 
 ## Actualmente implementando:
 
-* Accesibilidad y temas de alto contraste
-* Status de "cargando" para indicar al usuario que su acción se llevo a cabo y se está esperando la respuesta del servidor
+* Status de "cargando" para indicar al usuario que su acción se llevo a cabo y se está esperando la respuesta del servidor, Actualmente, implementado en la carga principal del usuario, falta para el resto de los accesos a la base de datos.
 
 
 ## Desarrollador

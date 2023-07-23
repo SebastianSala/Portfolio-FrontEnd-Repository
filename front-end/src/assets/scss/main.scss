@@ -1,16 +1,29 @@
+:root {
+    --font-size-root: 1rem;
+    --font-size-base: 1rem;
+}
+
+@import "./abstracts/css-variables";
 // @import "~bootstrap/scss/functions";
 @import "./../../../node_modules/bootstrap/scss/functions";
 
 @import "./abstracts/custom-variables";
 
+// @import "bootstrap/scss/maps";
+// @import "bootstrap/scss/mixins";
+// @import "bootstrap/scss/utilities";
+// @import "bootstrap/scss/utilities/api";
+// @import "./abstracts/text-colors";
 @import "./abstracts/text-colors";
+$font-size-root: var(--font-size-root);
+$font-size-base: var(--font-size-base);
 
-// @import "./../../../node_modules/bootstrap/scss/functions";
+@import "./../../../node_modules/bootstrap/scss/functions";
 @import "./../../../node_modules/bootstrap/scss/variables";
 @import "./../../../node_modules/bootstrap/scss/bootstrap";
 @import "./../../../node_modules/bootstrap/scss/grid";
 
-@import "./abstracts/css-variables";
+
 
 @import "./../../../node_modules/bootstrap/scss/bootstrap-utilities";
 
@@ -20,6 +33,7 @@
 
 @import "./abstracts/efects-and-shadows";
 
+// @import "./abstracts/text-colors";
 
 // // Custom.scss
 // // Option B: Include parts of Bootstrap

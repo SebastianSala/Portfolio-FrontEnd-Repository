@@ -51,6 +51,7 @@ import { ModalEditSkillComponent } from './components/modals/modal-edit-skill/mo
 import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 
 import { httpInterceptorProviders } from './services/interceptor.service';
+import { AccesibilityComponent } from './shared/accesibility/accesibility.component';
 
 // Register the 'es-AR' locale data
 registerLocaleData(localeEsAR);
@@ -97,7 +98,8 @@ registerLocaleData(localeEsAR);
     ModalAddSkillComponent,
     ModalDeleteSkillComponent,
     ModalEditSkillComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    AccesibilityComponent
   ],
   imports: [
     BrowserModule,

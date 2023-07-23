@@ -1,21 +1,21 @@
-$red:   #EB40E4;
-$blue:  #0A2463;
-$yellow:#F9CB40;
+$red: #EB40E4;
+$blue: #0A2463;
+$yellow: #F9CB40;
 $white: #FFF;
 $dark: #0f172a;
 
 $grey: #eee;
 
-$palette-01:    #EB40E4;
-$palette-02:    #A35FA1;
-$palette-03:    #17EBCF;
-$palette-04:    #759E99;
-$palette-05:    #EBD171;
+$palette-01: #EB40E4;
+$palette-02: #A35FA1;
+$palette-03: #17EBCF;
+$palette-04: #759E99;
+$palette-05: #EBD171;
 
 /* Color Theme Swatches in Hex */
 $darkgreen: #3EB35D;
 $lightgreen: #4DFF7C;
-$orange: #F3819D;//FF7741;
+$orange: #F3819D; //FF7741;
 $darkblue: #1B7AB3;
 $lightblue: #33B3FF;
 $dangerred: red;
@@ -26,12 +26,12 @@ $dangerred: red;
 // $dark:      $palette-04;
 // $info:      $palette-05;
 
-$primary:   $orange;
+$primary: $orange;
 $secondary: $darkgreen;
-$light:     $lightblue;
-$dark:      $darkblue;
-$info:      $lightgreen;
-$danger:     $dangerred;
+$light: $lightblue;
+$dark: $darkblue;
+$info: $lightgreen;
+$danger: $dangerred;
 
 
 $custom-colors: (
@@ -70,6 +70,7 @@ $enable-negative-margins: true;
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);
 
 $enable-shadows: true;
+
 
 .card:hover {
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2) !important;

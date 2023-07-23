@@ -1,0 +1,69 @@
+<!-- <nav class="row d-flex justify-content-between align-items-center text-center" id="theNavbar" (click)="menuClick()"> -->
+<nav class="row" id="accesibility">
+    <div id="theAccesibility"
+        class="me-auto mt-1 navbar fixed-bottom navbar-expand-md bg-dark navbar-dark rounded-0 rounded-pill border border-white border-2 py-1 w-25 d-inline-flex">
+
+        <div class="mx-auto">
+
+            <!-- Toggler -->
+            <span id="accesibility-toggler" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapsibleAccesibility" aria-controls="collapsibleNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <!-- <span>Accesibilidad</span> -->
+                <i class="fa-brands fa-accessible-icon px-2"></i>
+                <!-- <span class="navbar-toggler-icon"></span> -->
+            </span>
+            <!-- /Toggler -->
+
+
+
+            <!-- Accesibility buttons -->
+            <div class="collapse navbar-collapse text-center justify-content-center align-item-center py-2 py-md-0"
+                id="collapsibleAccesibility">
+
+
+                <ul
+                    class="navbar-nav col-12 justify-content-between align-items-center text-shadow-light gap-2 py-3 py-md-1">
+
+                    <span class="d-none d-md-inline-block text-white">
+                        Accesibilidad
+                    </span>
+
+                    <li class="w-100 nav-item d-flex justify-content-center flex-column">
+                        <button class="shadow btn btn-outline-info rounded-pill" (click)="increaseFontSize()">
+                            <!-- Incrementar tamaño de texto -->
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </button>
+                    </li>
+
+                    <li class="w-100 nav-item d-flex justify-content-center flex-column">
+                        <button class="shadow btn btn-outline-info rounded-pill" (click)="normalFontSize()">
+                            <!-- Tamaño de texto normal -->
+                            <i class="fa-solid fa-magnifying-glass-minus"></i>
+                        </button>
+                    </li>
+
+                    <!-- Log in -->
+                    <!-- <li class="w-50 nav-item d-flex justify-content-center flex-column"> -->
+
+                        <!-- <button *ngIf="!isLogged" data-bs-toggle="modal" data-bs-target="#modalLogIn"
+                            class="shadow btn btn-outline-secondary py-1 py-md-2 px-2 px-md-3 text-nowrap fs-6">
+                            Log In!
+                        </button> -->
+                        <!-- <button *ngIf="isLogged" data-bs-toggle="modal" data-bs-target="#modalLogOut"
+                            class="shadow btn btn-outline-danger py-1 py-md-2 px-2 px-md-3 text-nowrap">
+                            Log out!
+                        </button> -->
+
+                    <!-- </li> -->
+                    <!-- /Log in -->
+
+
+                </ul>
+            </div>
+            <!-- /Accesibility buttons -->
+
+        </div>
+
+    </div>
+</nav>
