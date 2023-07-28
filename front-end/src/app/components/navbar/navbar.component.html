@@ -1,6 +1,6 @@
 <nav class="row d-flex justify-content-between align-items-center text-center" id="theNavbar" (click)="menuClick()">
     <div id="theNavbar"
-        class="mx-auto mt-1 row navbar fixed-top navbar-expand-md bg-dark navbar-dark rounded-0 rounded-pill border border-white border-2 py-1">
+        class="mx-auto mt-1 row navbar fixed-top navbar-expand-lg bg-dark navbar-dark rounded-0 rounded-pill border border-white border-2 py-1 col-11 col-md-12 col-xl-10">
 
         <div class="container-fluid d-flex justify-content-center">
 
@@ -58,11 +58,11 @@
 
                         <button *ngIf="!isLogged" data-bs-toggle="modal" data-bs-target="#modalLogIn"
                             class="shadow btn btn-outline-secondary py-1 py-md-2 px-2 px-md-3 text-nowrap fs-6">
-                            Log In!
+                            Login!
                         </button>
                         <button *ngIf="isLogged" data-bs-toggle="modal" data-bs-target="#modalLogOut"
                             class="shadow btn btn-outline-danger py-1 py-md-2 px-2 px-md-3 text-nowrap">
-                            Log out!
+                            Logout!
                         </button>
 
                     </li>
