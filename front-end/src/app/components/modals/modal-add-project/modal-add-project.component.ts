@@ -27,14 +27,16 @@ export class ModalAddProjectComponent {
   public constructor(protected formBuilder: FormBuilder, private projectService: ProjectService, private router: Router, private authenticationService: AuthenticationService) {
 
     //creation of form's form controls group
-    this.formGroup = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      date: ['', [Validators.required]],
-      shortDescription: ['', [Validators.required]],
-      longDescription: ['', [Validators.required]],
-      imgUrl: ['', [Validators.required]],
-      webUrl: ['', [Validators.required]],
-    })
+    this.formGroup = this.formBuilder.group(
+      {
+        name: ['', [Validators.required]],
+        date: ['', [Validators.required]],
+        shortDescription: ['', [Validators.required]],
+        longDescription: ['', [Validators.required]],
+        imgUrl: ['', [Validators.required]],
+        webUrl: ['', [Validators.required]],
+      }
+    );
 
   }
 

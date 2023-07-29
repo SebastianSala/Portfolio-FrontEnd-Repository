@@ -27,8 +27,7 @@
                                 <label for="newEducationTitle" class="form-label">
                                     Título de la Educación
                                 </label>
-                                <input type="text" class="form-control" id="newEducationTitle"
-                                    formControlName="title"
+                                <input type="text" class="form-control" id="newEducationTitle" formControlName="title"
                                     [ngClass]="{'is-invalid': formControl['title'].errors && formGroup.controls['title'].touched, 'is-valid': formControl['title'].touched && !formControl['title'].errors}">
 
                                 <div class="invalid-feedback">
@@ -37,8 +36,8 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+
+
                             <div class="mb-3">
                                 <label for="newEducationInstitution" class="form-label">
                                     Nombre de la Institución
@@ -104,6 +103,13 @@
                             </div>
 
 
+                            <div class="text-danger">
+                                <div *ngIf="dateRangeInvalidError">
+                                    La fecha final no puede ser anterior o igual a la inicial
+                                </div>
+                            </div>
+
+
                             <div class="mb-3">
                                 <label for="newEducationLogoUrl" class="form-label">
                                     Logo
@@ -124,8 +130,7 @@
                                 <label for="newEducationWebUrl" class="form-label">
                                     Web
                                 </label>
-                                <input type="text" class="form-control" id="newEducationWebUrl"
-                                    formControlName="webUrl"
+                                <input type="text" class="form-control" id="newEducationWebUrl" formControlName="webUrl"
                                     [ngClass]="{'is-invalid': formControl['webUrl'].errors && formGroup.controls['webUrl'].touched, 'is-valid': formControl['webUrl'].touched && !formControl['webUrl'].errors}">
 
                                 <div class="invalid-feedback">

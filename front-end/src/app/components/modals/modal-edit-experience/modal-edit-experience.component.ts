@@ -9,6 +9,7 @@ import { ChangeEntityService } from '../../../services/change-entity.service';
 import { Person } from '../../../model/person';
 import { Experience } from '../../../model/experience';
 import { ExperienceData, EntityChange, ExperienceProperties } from '../../../model/dataTypes';
+import { dateRangeValidator } from '../../../shared/utilities/CustomValidator';
 
 
 @Component({
@@ -30,36 +31,46 @@ export class ModalEditExperienceComponent implements OnChanges {
   public constructor(protected formBuilder: FormBuilder, private experienceService: ExperienceService, private router: Router, private authenticationService: AuthenticationService, private changeEntityService: ChangeEntityService) {
 
     //creation of form's form controls group
-    this.formGroup = this.formBuilder.group({
-      position: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      company: ['', [Validators.required]],
-      startDate: ['', [Validators.required]],
-      endDate: ['', [Validators.required]],
-      logoUrl: [''],
-      webUrl: [''],
-    })
+    this.formGroup = this.formBuilder.group(
+      {
+        position: ['', [Validators.required]],
+        description: ['', [Validators.required]],
+        company: ['', [Validators.required]],
+        startDate: ['', [Validators.required]],
+        endDate: ['', [Validators.required]],
+        logoUrl: [''],
+        webUrl: [''],
+      },
+      { validators: dateRangeValidator }
+    )
 
   }
 
 
   ngOnChanges(): void {
 
-    this.formGroup = this.formBuilder.group({
-      position: [this.experienceToEdit.getPosition, [Validators.required]],
-      description: [this.experienceToEdit.getDescription, [Validators.required]],
-      company: [this.experienceToEdit.getCompany, [Validators.required]],
-      startDate: [this.experienceToEdit.getStartDate, [Validators.required]],
-      endDate: [this.experienceToEdit.getEndDate, [Validators.required]],
-      logoUrl: [this.experienceToEdit.getLogoUrl],
-      webUrl: [this.experienceToEdit.getWebUrl],
-    });
+    this.formGroup = this.formBuilder.group(
+      {
+        position: [this.experienceToEdit.getPosition, [Validators.required]],
+        description: [this.experienceToEdit.getDescription, [Validators.required]],
+        company: [this.experienceToEdit.getCompany, [Validators.required]],
+        startDate: [this.experienceToEdit.getStartDate, [Validators.required]],
+        endDate: [this.experienceToEdit.getEndDate, [Validators.required]],
+        logoUrl: [this.experienceToEdit.getLogoUrl],
+        webUrl: [this.experienceToEdit.getWebUrl],
+      },
+      { validators: dateRangeValidator }
+    );
 
   }
 
 
   protected get formControl(): { [key: string]: AbstractControl } {
     return this.formGroup.controls;
+  }
+
+  protected get dateRangeInvalidError(): boolean {
+    return this.formGroup.hasError('dateRangeInvalid');
   }
 
 

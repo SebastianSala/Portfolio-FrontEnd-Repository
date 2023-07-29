@@ -104,6 +104,13 @@
                             </div>
 
 
+                            <div class="text-danger">
+                                <div *ngIf="dateRangeInvalidError">
+                                    La fecha final no puede ser anterior o igual a la inicial
+                                </div>
+                            </div>
+
+
                             <div class="mb-3">
                                 <label for="newExperienceLogoUrl" class="form-label">
                                     Logo

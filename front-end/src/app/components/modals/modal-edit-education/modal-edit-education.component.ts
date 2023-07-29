@@ -9,6 +9,7 @@ import { ChangeEntityService } from '../../../services/change-entity.service';
 import { Person } from '../../../model/person';
 import { Education } from '../../../model/education';
 import { EducationData, EntityChange, EducationProperties } from '../../../model/dataTypes';
+import { dateRangeValidator } from '../../../shared/utilities/CustomValidator';
 
 
 @Component({
@@ -29,38 +30,48 @@ export class ModalEditEducationComponent implements OnChanges {
   public constructor(protected formBuilder: FormBuilder, private educationService: EducationService, private router: Router, private authenticationService: AuthenticationService, private changeEntityService: ChangeEntityService) {
 
     //creation of form's form controls group
-    this.formGroup = this.formBuilder.group({
-      title: ['', [Validators.required]],
-      institution: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      startDate: ['', [Validators.required]],
-      endDate: ['', [Validators.required]],
-      logoUrl: [''],
-      webUrl: [''],
-    })
+    this.formGroup = this.formBuilder.group(
+      {
+        title: ['', [Validators.required]],
+        institution: ['', [Validators.required]],
+        description: ['', [Validators.required]],
+        startDate: ['', [Validators.required]],
+        endDate: ['', [Validators.required]],
+        logoUrl: [''],
+        webUrl: [''],
+      },
+      { validators: dateRangeValidator }
+    );
 
   }
 
 
-  
-  
+
+
   ngOnChanges(): void {
-    
-    this.formGroup = this.formBuilder.group({
-      title: [this.educationToEdit.getTitle, [Validators.required]],
-      institution: [this.educationToEdit.getInstitution, [Validators.required]],
-      description: [this.educationToEdit.getDescription, [Validators.required]],
-      startDate: [this.educationToEdit.getStartDate, [Validators.required]],
-      endDate: [this.educationToEdit.getEndDate, [Validators.required]],
-      logoUrl: [this.educationToEdit.getLogoUrl],
-      webUrl: [this.educationToEdit.getWebUrl],
-    });
-    
+
+    this.formGroup = this.formBuilder.group(
+      {
+        title: [this.educationToEdit.getTitle, [Validators.required]],
+        institution: [this.educationToEdit.getInstitution, [Validators.required]],
+        description: [this.educationToEdit.getDescription, [Validators.required]],
+        startDate: [this.educationToEdit.getStartDate, [Validators.required]],
+        endDate: [this.educationToEdit.getEndDate, [Validators.required]],
+        logoUrl: [this.educationToEdit.getLogoUrl],
+        webUrl: [this.educationToEdit.getWebUrl],
+      },
+      { validators: dateRangeValidator }
+    );
+
   }
-  
-  
+
+
   protected get formControl(): { [key: string]: AbstractControl } {
     return this.formGroup.controls;
+  }
+
+  protected get dateRangeInvalidError(): boolean {
+    return this.formGroup.hasError('dateRangeInvalid');
   }
 
 

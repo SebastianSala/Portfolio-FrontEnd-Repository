@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -9,6 +9,8 @@ import { ChangeEntityService } from '../../../services/change-entity.service';
 import { Person } from '../../../model/person';
 import { Experience } from '../../../model/experience';
 import { ExperienceData, EntityChange, ExperienceProperties } from '../../../model/dataTypes';
+
+import { dateRangeValidator } from '../../../shared/utilities/CustomValidator';
 
 
 @Component({
@@ -29,15 +31,18 @@ export class ModalAddExperienceComponent {
   public constructor(protected formBuilder: FormBuilder, private experienceService: ExperienceService, private router: Router, private authenticationService: AuthenticationService, private changeEntityService: ChangeEntityService) {
 
     //creation of form's form controls group
-    this.formGroup = this.formBuilder.group({
-      position: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      company: ['', [Validators.required]],
-      startDate: ['', [Validators.required]],
-      endDate: ['', [Validators.required]],
-      logoUrl: [''],
-      webUrl: [''],
-    })
+    this.formGroup = this.formBuilder.group(
+      {
+        position: ['', [Validators.required]],
+        description: ['', [Validators.required]],
+        company: ['', [Validators.required]],
+        startDate: ['', [Validators.required]],
+        endDate: ['', [Validators.required]],
+        logoUrl: [''],
+        webUrl: [''],
+      },
+      { validators: dateRangeValidator }
+    );
 
   }
 
@@ -46,16 +51,13 @@ export class ModalAddExperienceComponent {
     return this.formGroup.controls;
   }
 
+  protected get dateRangeInvalidError(): boolean {
+    return this.formGroup.hasError('dateRangeInvalid');
+  }
+
 
   protected onSubmit() {
 
-    // position: string;
-    // description: string;
-    // company: string;
-    // startDate: string;
-    // endDate: string;
-    // logoUrl: string;
-    // webUrl: string;    
     const experienceConstructor: ExperienceData = {
       //setting id to 0 to create a new experience instead of updating an existing one
       id: 0,
